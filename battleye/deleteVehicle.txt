@@ -1,0 +1,2 @@
+//new
+7 "" !"NVG_Target" !"Shot" !"Exile_Unit_Player" !"_Preview"!"NetworkMessageCreateRopeObject"!"O_G_Soldier_F"!"I_G_Soldier_F"!"O_Soldier_A_F"!"O_recon_medic_F"!"O_Soldier_lite_F"!"O_Soldier_GL_F"!"O_Soldier_A_F"!"O_Soldier_lite_F"!"Land_Laptop_unfolded_F"

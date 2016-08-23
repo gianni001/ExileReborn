@@ -1,0 +1,5 @@
+//new
+7 "" !="true" !="vehicle this land 'LAND'" !="exileserver_system_network_dispatchincomingmessage.*" !="fnc_adminreq \[.*\]"!=["true", ""] [2:1636 group, 7"!=["true", ""] [2:1420 group, 8]\"!="exadserver_fnc_clientrequest.*"
+7 "ExileClient_system_network_dispatchIncomingMessage"
+7 "FN_infiSTAR_C"
+7 "SERVER_REQ_INFI_CLIENT"
