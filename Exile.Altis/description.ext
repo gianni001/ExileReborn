@@ -1,0 +1,110 @@
+///////////////////////////////////////////////////////////////////////////////
+// Server Settings - Modify at will
+///////////////////////////////////////////////////////////////////////////////
+author = "Exile Mod Team";
+onLoadName = "Exile Mod";
+onLoadMission= "www.exilemod.com";
+loadScreen = "exile_assets\texture\mod\logo.paa"; 
+disableChannels[] = {0, 2};
+OnLoadIntro = "";
+OnLoadIntroTime = false;
+OnLoadMissionTime = false;
+
+class Header
+{
+    gameType = Survive; // Do NOT change this
+    minPlayers = 1;
+    maxPlayers = 100;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// Exile Settings - Do not change these!
+///////////////////////////////////////////////////////////////////////////////
+forceRotorLibSimulation = 2;
+skipLobby = 1;
+joinUnassigned = 1;
+respawn = "BASE";
+respawnDelay = 120;
+respawnDialog = 0;
+respawnOnStart = 0;
+respawnButton = 1; 
+respawnTemplates[] = {"Exile"};
+corpseManagerMode = 0;
+corpseLimit = 20;
+corpseRemovalMinTime = 1800;
+corpseRemovalMaxTime = 3600;
+wreckManagerMode = 0;
+wreckLimit = 2;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 360;
+scriptedPlayer = 1;
+disabledAI = 1;
+enableItemsDropping = 0;
+briefing = 0;
+debriefing = 0;
+allowFunctionsLog = 1;
+enableDebugConsole = 1; 
+allowFunctionsRecompile = 0;
+showSquadRadar = 0;
+showUAVFeed = 0;
+reviveDelay = 6;
+reviveForceRespawnDelay = 3;
+reviveBleedOutDelay = 120;
+
+showHUD[] = 
+{
+    true,   // Scripted HUD (same as showHUD command)
+    true,   // Vehicle + soldier info
+    true,   // Vehicle radar 
+    true,   // Vehicle compass
+    true,   // Tank direction indicator
+    false,  // Commanding menu
+    false,  // Group Bar
+    true,   // HUD Weapon Cursors
+    false   // Squad Radar
+};
+
+#include "config.cpp"
+//#include "infiSTAR_AdminMenu.hpp"                                         // If you are using infistar
+#include "ExAdClient\ExAd.cpp"
+#include "scarCODE\ServerInfoMenu\hpp\CfgServerInfoMenu.hpp"
+#include "scarCODE\ServerInfoMenu\hpp\RscDisplayServerInfoMenu.hpp"
+#include "sounds.hpp"
+
+class CfgRemoteExec
+{
+    class Functions
+	{
+		mode = 1;
+		jip = 0;
+		class fnc_AdminReq { allowedTargets=2; };
+		class ExileServer_system_network_dispatchIncomingMessage { allowedTargets=2; };
+        class ExAdServer_fnc_clientRequest { allowedTargets=2; };
+	};
+	class Commands
+	{
+		mode=0;
+		jip=0;
+	};
+};
+class RscTitles
+{
+	#include "logo.hpp"
+    #include "ExAdClient\RscTitles.cpp"
+};
+class CfgNetworkMessages
+{
+    #include "ExAdClient\CfgNetworkMessages.cpp"
+    #include "Client_scriptsAndFunctions\CfgNetworkMessages.hpp"
+};
+
+class CfgFunctions
+{
+    #include "ExAdClient\CfgFunctions.cpp"
+};
+class CfgHints
+{
+    #include "ExAdClient\CfgHints.cpp"
+};
+
+
