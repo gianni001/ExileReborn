@@ -16,7 +16,10 @@ if ((Event_HeliCrash_Count < Event_HeliCrash_MaxEvents) && (random 1 > 0.3)) the
 
 	if (([_landPos, 600] call ExileClient_util_world_isTraderZoneInRange) || (_safeToDebug < 1000)) exitWith
 	{
-		[format["[EVENT: HeliCrash] -- Helicrash spawned to close too trader zone OR debug island @ %1. Cancelling event",_landPos]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{
+			[format["[EVENT: HeliCrash] -- Helicrash spawned to close too trader zone OR debug island @ %1. Cancelling event",_landPos]] call MAR_fnc_log;
+		};	
 		diag_log format ["[EVENT: HeliCrash] -- Helicrash spawned too close to trader zone OR debug island @ %1. Cancelling event",_landPos];
 	};
 	
@@ -77,11 +80,16 @@ if ((Event_HeliCrash_Count < Event_HeliCrash_MaxEvents) && (random 1 > 0.3)) the
 
 	Event_HeliCrash_Count = Event_HeliCrash_Count + 1;
 	Event_HeliCrash_monitorCount = Event_HeliCrash_monitorCount + 1;
-
-	[format["[EVENT: HeliCrash] Spawned a helicrash at -- %1 | Current HELICRASH Count -- %2", _landPos,Event_HeliCrash_Count]] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{
+		[format["[EVENT: HeliCrash] Spawned a helicrash at -- %1 | Current HELICRASH Count -- %2", _landPos,Event_HeliCrash_Count]] call MAR_fnc_log;
+	};	
 	diag_log format ["[EVENT: HeliCrash] Spawned a helicrash at -- %1 | Current HELICRASH Count -- %2", _landPos,Event_HeliCrash_Count];
 }
 else
 {
-	[format["[EVENT: HeliCrash] Crash did not spawn -- Current crash count:%1 | Chance was not succesful",Event_HeliCrash_Count]] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{
+		[format["[EVENT: HeliCrash] Crash did not spawn -- Current crash count:%1 | Chance was not succesful",Event_HeliCrash_Count]] call MAR_fnc_log;
+	};	
 };	

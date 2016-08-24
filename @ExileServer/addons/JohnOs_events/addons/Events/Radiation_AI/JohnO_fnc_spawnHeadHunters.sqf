@@ -41,8 +41,10 @@ if (count AllPlayers > 0) then
 
 			_position = getPos _target;
 			_debug = Event_DEBUG_Location;
-
-			[format["Found valid player (%1) - Spawning AI to hunt target", _target]] call MAR_fnc_log;
+			if (useMarmaLoging) then
+			{
+				[format["Found valid player (%1) - Spawning AI to hunt target", _target]] call MAR_fnc_log;
+			};	
 
 			if (!(surfaceIsWater _position) && (_position distance _debug > 600)) then // Check the player is not in water
 			{	
@@ -177,5 +179,8 @@ _playerCount = count AllPlayers;
 _adjustment = _playerCount * 15;
 
 Event_HeadHunterAI_Interval_Actual = Event_HeadHunterAI_Interval_Base - _adjustment;
+if (useMarmaLoging) then
+{
 
-[format["Head hunter interval adjusted to : %1",Event_HeadHunterAI_Interval_Actual]] call MAR_fnc_log;
+	[format["Head hunter interval adjusted to : %1",Event_HeadHunterAI_Interval_Actual]] call MAR_fnc_log;
+};	

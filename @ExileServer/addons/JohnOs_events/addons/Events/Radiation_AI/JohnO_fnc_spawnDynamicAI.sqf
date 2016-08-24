@@ -80,6 +80,9 @@ if (Event_RoamingAI_CurrentAlive < Event_RoamingAI_MaxAllowedAI) then
 		};
 
 		//["toastRequest", ["InfoTitleAndText", ["Riot!", "A local town has been taken over by bandits and is being looted. Clear them out!"]]] call ExileServer_system_network_send_broadcast;
-		[format["[EVENT: Rioters] Rioters have spawned @ %1",_position]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{
+			[format["[EVENT: Rioters] Rioters have spawned @ %1",_position]] call MAR_fnc_log;
+		};	
 	};
 };	

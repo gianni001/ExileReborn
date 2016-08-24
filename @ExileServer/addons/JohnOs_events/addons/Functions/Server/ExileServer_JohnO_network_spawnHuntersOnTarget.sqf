@@ -7,16 +7,24 @@ _target = (_this select 0) call ExileServer_system_session_getPlayerObject;
 
 if (isNull _target) exitWith 
 {
-	["_target isNull -- exiting"] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{	
+		["_target isNull -- exiting"] call MAR_fnc_log;
+	};	
 	diag_log "_target isNull -- exiting";
 };
 
-[format["Select 1 -- %1",_target]] call MAR_fnc_log;
+if (useMarmaLoging) then
+{
+	[format["Select 1 -- %1",_target]] call MAR_fnc_log;
+};	
 		
 _position = getPos _target;
 _debug = Event_DEBUG_Location;
-
-[format["Player was detected by bandits during hack -- %1", _target]] call MAR_fnc_log;
+if (useMarmaLoging) then
+{
+	[format["Player was detected by bandits during hack -- %1", _target]] call MAR_fnc_log;
+};	
 
 if (!(surfaceIsWater _position) && (_position distance _debug > 600)) then // Check the player is not in water
 {	

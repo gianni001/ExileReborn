@@ -19,12 +19,18 @@ while {true} do
 {
 	if ((count units _hunters) <= 0) exitWith 
 	{
-		[format ["[Hunters] All hunters have been killed exiting script"]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{
+			[format ["[Hunters] All hunters have been killed exiting script"]] call MAR_fnc_log;
+		};	
 		_target setVariable ["JohnO_isBeingHunted",false,true];
 	};
 	if (!(alive _target) || (_timer >= Event_RoamingAI_despawnTime)) exitWith
 	{
-		[format ["[Hunters] The target has been killed or timer has been reached, exiting script with remaining units on patrol | Timer %1 |",_timer]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{
+			[format ["[Hunters] The target has been killed or timer has been reached, exiting script with remaining units on patrol | Timer %1 |",_timer]] call MAR_fnc_log;
+		};	
 		HuntingPartyWayPoint = true;
 		_target setVariable ["JohnO_isBeingHunted",false,true];
 		if ((count units _hunters) > 0) then

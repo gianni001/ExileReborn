@@ -23,7 +23,10 @@ if (random 1 > 0.3) then
 
 	if (([_randomPosition, 600] call ExileClient_util_world_isTraderZoneInRange) || (_safeToDebug < 1000)) exitWith
 	{
-		[format["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{
+			[format["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition]] call MAR_fnc_log;
+		};	
 		diag_log format ["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition];
 	};
 
@@ -138,11 +141,16 @@ if (random 1 > 0.3) then
 	//Event_Cleanup_objectArray pushBack [_marker,time + Event_SupplyDrop_MarkerDuration,true];
 	Event_HeliCrash_Positions pushBack [position _drop, time + Event_SupplyDrop_MarkerDuration];
 	publicVariable "Event_HeliCrash_Positions";
-
-	[format["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition]] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{
+		[format["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition]] call MAR_fnc_log;
+	};	
 	Event_SupplyDrop_monitorCount = Event_SupplyDrop_monitorCount + 1;
 }
 else
 {
-	[format["[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful"]] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{	
+		[format["[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful"]] call MAR_fnc_log;
+	};	
 };	
