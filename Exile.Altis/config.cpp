@@ -3198,11 +3198,26 @@ class CfgInteractionMenus
 			};
 
 			// Repairs a vehicle to 100%. Requires Duckttape
+			/*
 			class Repair: ExileAbstractAction
 			{
 				title = "Repair";
 				condition = "true";
 				action = "['RepairVehicle', _this select 0] call ExileClient_action_execute";
+			};
+			*/
+			// Advanced repair
+			class RepairWheels: ExileAbstractAction
+			{
+				title = "Repair wheel";
+				condition = "true";
+				action = "_this call JohnO_fnc_repairWheels";
+			};
+			class RepairBody: ExileAbstractAction
+			{
+				title = "Repair body";
+				condition = "true";
+				action = "_this call JohnO_fnc_vehicleRepairCar";
 			};
 
 			// Hot-wires a vehicle
@@ -3287,13 +3302,27 @@ class CfgInteractionMenus
 			};
 
 			// Repairs a vehicle to 100%. Requires Duckttape
+			/*
 			class Repair: ExileAbstractAction
 			{
 				title = "Repair";
 				condition = "true";
 				action = "['RepairVehicle', _this select 0] call ExileClient_action_execute";
 			};
-
+			*/
+			// Advanced repair
+			class RepairMinor: ExileAbstractAction
+			{
+				title = "Minor repair";
+				condition = "true";
+				action = "_this call JohnO_fnc_repairchopperhalf";
+			};
+			class RepairFull: ExileAbstractAction
+			{
+				title = "Full repair";
+				condition = "true";
+				action = "_this call JohnO_fnc_repairchopper";
+			};
 			// Flips a vehicle so the player doesnt have to call an admin
 			// Check if vector up is fucked
 			class Flip: ExileAbstractAction

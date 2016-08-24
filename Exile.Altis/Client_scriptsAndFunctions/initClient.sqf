@@ -42,6 +42,13 @@ JohnO_fnc_applyInstaDocToPlayer = compileFinal preprocessFileLineNumbers "Client
 
 JohnO_fnc_handleInfection = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleInfection.sqf";
 
+// Vehicle repair
+
+JohnO_fnc_vehicleRepairCar = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_vehicleRepairCar.sqf";
+JohnO_fnc_repairWheels = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairWheels.sqf";
+JohnO_fnc_repairchopperhalf = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopperhalf.sqf";
+JohnO_fnc_repairchopper = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopper.sqf";
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
