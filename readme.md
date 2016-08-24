@@ -2,7 +2,11 @@
 
 Replace the contents of your ExileServer\addons\ with the pbo'd files inside this repos ExileServer\addons
 Repalce your Exile.Altis pbo, with the pbo'd Exile.Altis folder in this repo
-Install marma - marma.io
+Install marma - marma.io OR if you are against using marma -
+
+Navigate to @ExileServer\addons\JohnOs_events\addons\Events\events_config.sqf
+
+disable marma logging on line 7.
 
 Navigate to @ExileServer\addons\JohnOs_events\addons\Events\Persistent_vehicles
 
