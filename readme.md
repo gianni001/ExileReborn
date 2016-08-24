@@ -12,5 +12,7 @@ If you are using infiStar, dont embarrass your self and use these settings insde
 	/* ObjectViewDistance   */ VOV = 1300;
 	/* ShadowViewDistance   */ SVD = 100; 
 
+Note: Your servers persistent world will begin at the time defined inside your exile_server_config\config.cpp
+
 You are allowed to use these files un-altered. 
 
