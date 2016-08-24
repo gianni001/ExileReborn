@@ -67,8 +67,6 @@ showHUD[] =
 #include "config.cpp"
 //#include "infiSTAR_AdminMenu.hpp"                                         // If you are using infistar
 #include "ExAdClient\ExAd.cpp"
-#include "scarCODE\ServerInfoMenu\hpp\CfgServerInfoMenu.hpp"
-#include "scarCODE\ServerInfoMenu\hpp\RscDisplayServerInfoMenu.hpp"
 #include "sounds.hpp"
 
 class CfgRemoteExec
