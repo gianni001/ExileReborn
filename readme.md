@@ -4,6 +4,11 @@ Replace the contents of your ExileServer\addons\ with the pbo'd files inside thi
 Repalce your Exile.Altis pbo, with the pbo'd Exile.Altis folder in this repo
 Install marma - marma.io
 
+Navigate to @ExileServer\addons\JohnOs_events\addons\Events\Persistent_vehicles
+
+Open the spawn_vehicles.sqf
+On line 22, change the UID to your UID -- This needs to be a valid UID that exists in the account table of your data base. If you are using a fresh database, fire the server up, join the server and this will create an account entry. Then use the UID from there.
+
 If you are using infiStar, dont embarrass your self and use these settings insde your EXILE_AHAT_CONFIG.hpp
 
 	/* The following 4 options can be disabled by putting the value to -1. For example "TGV = -1;" */
