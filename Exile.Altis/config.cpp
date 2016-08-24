@@ -65,7 +65,7 @@ class CfgClans
 
 class CfgXM8
 {
-    extraApps[] = {"ExAd_SB","ExAd_Journal","ExAd_AttachChem","scanTower","scarCode","treatWounds"};
+    extraApps[] = {"ExAd_SB","ExAd_Journal","ExAd_AttachChem","scanTower","treatWounds"};
 
     class ExAd_SB
     {
