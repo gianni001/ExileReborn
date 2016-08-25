@@ -124,7 +124,7 @@ else
 							player removeItem "Exile_Item_CarWheel";
 							[
 								"InfoTitleAndText", 
-								["Repair Info", "You have repaired a wheel"]
+								["Repair Info", "You have replaced a wheel"]
 							] call ExileClient_gui_toaster_addTemplateToast;
 						};
 						case 1: 	
@@ -175,4 +175,6 @@ else
 	};
 	
 };
+ExileClientActionDelayShown = false;
+ExileClientActionDelayAbort = false;
 true

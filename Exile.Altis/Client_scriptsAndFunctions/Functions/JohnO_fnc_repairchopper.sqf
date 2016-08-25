@@ -22,7 +22,7 @@ if (vehicle player isEqualTo _vehicle) exitWith
 	[
 	"InfoTitleAndText", 
 	["No..", "Are you serious?"]
-] call ExileClient_gui_toaster_addTemplateToast;
+	] call ExileClient_gui_toaster_addTemplateToast;
 };
 _availableHitpoints = (getAllHitPointsDamage _vehicle) select 0;
 {
@@ -226,4 +226,6 @@ else
 	};
 	
 };
+ExileClientActionDelayShown = false;
+ExileClientActionDelayAbort = false;
 true

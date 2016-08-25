@@ -3207,11 +3207,23 @@ class CfgInteractionMenus
 			};
 			*/
 			// Advanced repair
+			class ReplaceWheels: ExileAbstractAction
+			{
+				title = "Replace wheel";
+				condition = "true";
+				action = "_this call JohnO_fnc_repairWheels";
+			};
 			class RepairWheels: ExileAbstractAction
 			{
 				title = "Repair wheel";
 				condition = "true";
-				action = "_this call JohnO_fnc_repairWheels";
+				action = "_this call JohnO_fnc_repairSingleWheel";
+			};
+			class ScavengeWheels: ExileAbstractAction
+			{
+				title = "Scavenge wheel";
+				condition = "true";
+				action = "_this call JohnO_fnc_scavengeWheel";
 			};
 			class RepairBody: ExileAbstractAction
 			{
