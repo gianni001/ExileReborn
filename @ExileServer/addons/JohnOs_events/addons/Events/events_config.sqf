@@ -4,7 +4,7 @@
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [14482.4,5879.49,0];
-useMarmaLoging = false;
+Persistent_UID = "76561197972232595";
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
 /*
@@ -82,6 +82,8 @@ Event_SupplyDrop_PotentialSupplyDropVehicles =
 	"Exile_Car_HEMMT",
 	"Exile_Car_Strider"
 ];
+
+Event_SupplyDrop_maxPersistentArmoured = 2; 										// The server will only para drop new persistent armoured vehicles upto this amount each
 
 /** Supply drop Safe Pos settings **/
 
