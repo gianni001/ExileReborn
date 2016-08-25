@@ -18,7 +18,7 @@ _goodWheels = [];
 if !(_goodWheels isEqualTo []) then
 {
 	_equippedMagazines = magazines player;
-	if ("Exile_Item_FoolBox" in _equippedMagazines) then
+	if ("Exile_Item_Foolbox" in _equippedMagazines) then
 	{	
 		_wheelToRemove = (_goodWheels select 0) select 0;
 
