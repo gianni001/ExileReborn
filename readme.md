@@ -6,12 +6,9 @@ Install marma - marma.io OR if you are against using marma -
 
 Navigate to @ExileServer\addons\JohnOs_events\addons\Events\events_config.sqf
 
-disable marma logging on line 7.
+Configure marma logging - True if you use MARMA false if you dont
 
-Navigate to @ExileServer\addons\JohnOs_events\addons\Events\Persistent_vehicles
-
-Open the spawn_vehicles.sqf
-On line 22, change the UID to your UID -- This needs to be a valid UID that exists in the account table of your data base. If you are using a fresh database, fire the server up, join the server and this will create an account entry. Then use the UID from there.
+Change the Persistent_UID to your UID, or if you do not play on your server, a valid UID in the account table (another admin or someone you know, its not important whos it is)
 
 Set your automatic server restarts to 4 hours - THIS IS IMPORTANT
 
