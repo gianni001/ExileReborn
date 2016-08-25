@@ -20,7 +20,7 @@ if !(_goodWheels isEqualTo []) then
 	_equippedMagazines = magazines player;
 	if ("Exile_Item_Foolbox" in _equippedMagazines) then
 	{	
-		_wheelToRemove = (_goodWheels select 0) select 0;
+		_wheelToRemove = _goodWheels select 0;
 
 		_animation = "Exile_Acts_RepairVehicle01_Animation01";
 		disableSerialization;
