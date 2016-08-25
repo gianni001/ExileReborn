@@ -27,3 +27,16 @@ Note: Your servers persistent world will begin at the time defined inside your e
 
 You are allowed to use these files un-altered. 
 
+#Changelog
+
+26/08/16
+
+Supply drop vehicles are now persistent and spawn only 2 of each class, if there server already has these vehicles the event will not occur.
+
+You now need to define a valid UID inside @ExileServer\addons\JohnOs_events\addons\Events\events_config.sqf
+
+	Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
+	Event_DEBUG_Location = [14482.4,5879.49,0];
+	Persistent_UID = "76561197972232595";												// Change me..
+	useMarmaLoging = false; 
+
