@@ -163,16 +163,24 @@ if (random 1 > 0.3) then
 		//Event_Cleanup_objectArray pushBack [_marker,time + Event_SupplyDrop_MarkerDuration,true];
 		Event_HeliCrash_Positions pushBack [position _drop, time + Event_SupplyDrop_MarkerDuration];
 		publicVariable "Event_HeliCrash_Positions";
-
-		[format["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{	
+			[format["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition]] call MAR_fnc_log;
+		};	
 		Event_SupplyDrop_monitorCount = Event_SupplyDrop_monitorCount + 1;
 	}
 	else
 	{
-		[format ["[EVENT: SupplyDrop] Did not spawn a supply drop vehicle - Vehicle selected max count on server reached"]] call MAR_fnc_log;
+		if (useMarmaLoging) then
+		{	
+			[format ["[EVENT: SupplyDrop] Did not spawn a supply drop vehicle - Vehicle selected max count on server reached"]] call MAR_fnc_log;
+		};	
 	};	
 }
 else
 {
-	[format["[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful"]] call MAR_fnc_log;
+	if (useMarmaLoging) then
+	{	
+		[format["[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful"]] call MAR_fnc_log;
+	};	
 };	

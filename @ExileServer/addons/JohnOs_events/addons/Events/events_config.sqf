@@ -4,7 +4,8 @@
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [14482.4,5879.49,0];
-Persistent_UID = "76561197972232595";
+Persistent_UID = "76561197972232595";												// Change me..
+useMarmaLoging = false; 															
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
 /*
