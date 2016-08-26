@@ -5,7 +5,9 @@
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [14482.4,5879.49,0];
 Persistent_UID = "76561197972232595";												// Change me..
-useMarmaLoging = false; 															
+useMarmaLoging = true; 															
+
+Event_lightningSpawnInterval = 1000;
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
 /*
@@ -238,6 +240,9 @@ JohnO_fnc_heliCrash_new = compileFinal preprocessFileLineNumbers "JohnOs_events\
 JohnO_fnc_supplyDropObject_new = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDropObject_new.sqf";
 JohnO_fnc_supplyDrop_spawnEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDrop_spawnEvent.sqf";
 
+JohnO_fnc_spawnStormEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_spawnStormEvent.sqf";
+JohnO_fnc_createStorm = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_createStorm.sqf";
+
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";
@@ -256,6 +261,8 @@ if !(Event_SINGLEPLAYER_debug) then
 
 	[900, JohnO_fnc_supplyDrop_spawnEvent, [], true] call ExileServer_system_thread_addtask;
 	[Event_HeadHunterAI_Interval_Actual, JohnO_fnc_spawnHeadHunters, [], true] call ExileServer_system_thread_addtask;
+
+	[Event_lightningSpawnInterval, JohnO_fnc_spawnStormEvent, [], true] call ExileServer_system_thread_addtask;
 
 	[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
 };	
