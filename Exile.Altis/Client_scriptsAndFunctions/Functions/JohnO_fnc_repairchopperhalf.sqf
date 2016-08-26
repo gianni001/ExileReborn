@@ -20,9 +20,11 @@ _vehicle = _this select 0;
 if (vehicle player isEqualTo _vehicle) exitWith 
 {
 	[
-	"InfoTitleAndText", 
-	["No..", "Are you serious?"]
-] call ExileClient_gui_toaster_addTemplateToast;
+		"InfoTitleAndText", 
+		["No..", "Are you serious?"]
+	] call ExileClient_gui_toaster_addTemplateToast;
+	ExileClientActionDelayShown = false;
+	ExileClientActionDelayAbort = false;
 };
 _availableHitpoints = (getAllHitPointsDamage _vehicle) select 0;
 {
@@ -39,6 +41,9 @@ if (isNil "_fixable") exitWith
 		"InfoTitleAndText", 
 		["Repair Info", "This vehicle is already fully repaired"]
 	] call ExileClient_gui_toaster_addTemplateToast;
+
+	ExileClientActionDelayShown = false;
+	ExileClientActionDelayAbort = false;
 }; 
 if (!local _vehicle) then
 {
