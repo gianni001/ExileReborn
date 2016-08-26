@@ -42,10 +42,14 @@ JohnO_fnc_applyInstaDocToPlayer = compileFinal preprocessFileLineNumbers "Client
 
 JohnO_fnc_handleInfection = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleInfection.sqf";
 
+JohnO_fnc_handleChemlightActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleChemlightActions.sqf";
+
 // Vehicle repair
 
 JohnO_fnc_vehicleRepairCar = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_vehicleRepairCar.sqf";
 JohnO_fnc_repairWheels = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairWheels.sqf";
+JohnO_fnc_repairSingleWheel = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairSingleWheel.sqf";
+JohnO_fnc_scavengeWheel = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_scavengeWheel.sqf";
 JohnO_fnc_repairchopperhalf = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopperhalf.sqf";
 JohnO_fnc_repairchopper = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopper.sqf";
 

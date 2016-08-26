@@ -33,8 +33,11 @@ else
 	
 	_extinguish = player addAction ["Extinguish Chemlight","ExAdClient\XM8\Apps\Chem\extinguishLight.sqf",_chemLight,0,false];
 
+	[905, JohnO_fnc_handleChemLightActions, [_extinguish], false] call ExileClient_system_thread_addtask;
+
 	[
 		"InfoTitleAndText", 
 		["Chemlight attached", "Use your scroll wheel to remove the chemlight at any time"]
 	] call ExileClient_gui_toaster_addTemplateToast;	
 };
+
