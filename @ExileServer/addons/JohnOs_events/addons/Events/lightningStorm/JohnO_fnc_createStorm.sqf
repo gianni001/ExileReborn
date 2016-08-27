@@ -9,64 +9,67 @@ diag_log "STORM CYCLE BEGUN";
 
 if (overcast > 0.5) then
 {
-	_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-	_min = 1;
-	_max = 30000;
-	_mindist = 2;
-	_water = 0;
-	_shoremode = 0;
-
-	for "_i" from 1 to 400 do
-	{
+	for "_n" from 1 to 200 do
+	{	
+		_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+		_min = 1;
+		_max = 30000;
+		_mindist = 2;
+		_water = 0;
+		_shoremode = 0;
 
 		_strikeCenter = [_spawnCenter,_min,_max,_mindist,_water,1,_shoremode] call BIS_fnc_findSafePos;
-		_pos = [(_strikeCenter select 0), (_strikeCenter select 1) , 0];
-		_nearPlayers = _pos nearEntities ["Exile_Unit_player",20];
 
-		if (count _nearPlayers > 0) then 
+		for "_i" from 1 to 10 do
 		{
-			uiSleep 10;
+			_pos = [(_strikeCenter select 0) + floor (random 300) - floor (random 300), (_strikeCenter select 1) +floor (random 300)- floor (random 300), 0];
+			_nearPlayers = _pos nearEntities ["Exile_Unit_player",20];
 
-			if (useMarmaLoging) then
+			if (count _nearPlayers > 0) then 
 			{
-				["STORMS - Position of strike is within 10m of a player.. he has 10 seconds to move or .. Thor..."] call MAR_fnc_log;
+				uiSleep 10;
+
+				if (useMarmaLoging) then
+				{
+					["STORMS - Position of strike is within 10m of a player.. he has 10 seconds to move or .. Thor..."] call MAR_fnc_log;
+				};	
 			};	
-		};	
 
-		diag_log format ["Lightning strike created:%1",_pos];
+			diag_log format ["Lightning strike created:%1",_pos];
 
-		_dir =random 360;
+			_dir =random 360;
 
-		_bolt = createvehicle ["LightningBolt",_pos,[],0,"can collide"];
-		_bolt setposatl _pos;
-		_bolt setdamage 1;
+			_bolt = createvehicle ["LightningBolt",_pos,[],0,"can collide"];
+			_bolt setposatl _pos;
+			_bolt setdamage 1;
 
-		_light = "#lightpoint" createvehicle _pos;
-		_light setposatl [_pos select 0,_pos select 1,(_pos select 2) + 10];
-		_light setLightDayLight true;
-		_light setLightBrightness 300;
-		_light setLightAmbient [0.05, 0.05, 0.1];
-		_light setlightcolor [1, 1, 2];
+			_light = "#lightpoint" createvehicle _pos;
+			_light setposatl [_pos select 0,_pos select 1,(_pos select 2) + 10];
+			_light setLightDayLight true;
+			_light setLightBrightness 300;
+			_light setLightAmbient [0.05, 0.05, 0.1];
+			_light setlightcolor [1, 1, 2];
 
-		_light setLightBrightness 0;
+			_light setLightBrightness 0;
 
 
-		_class = ["lightning1_F","lightning2_F"] call bis_Fnc_selectrandom;
-		_lightning = _class createvehicle [100,100,100];
-		_lightning setdir _dir;
-		_lightning setpos _pos;
+			_class = ["lightning1_F","lightning2_F"] call bis_Fnc_selectrandom;
+			_lightning = _class createvehicle [100,100,100];
+			_lightning setdir _dir;
+			_lightning setpos _pos;
 
-		_duration = random 2;
-		for "_i" from 0 to _duration do
-		{
-			_time = time + 0.1;
-			_light setLightBrightness (100 + random 100);
-			waituntil {time > _time};
+			_duration = random 2;
+			for "_i" from 0 to _duration do
+			{
+				_time = time + 0.1;
+				_light setLightBrightness (100 + random 100);
+				waituntil {time > _time};
+			};
+			deletevehicle _lightning;
+			deletevehicle _light;
+			uiSleep 0.5 + floor (random 2);
 		};
-		deletevehicle _lightning;
-		deletevehicle _light;
-		uiSleep 0.5 + floor (random 2);
-	};
+	};	
 };
 
 Event_lightningSpawnInterval = (Event_lightningSpawnInterval + floor (random 500)) - floor (random 500);
