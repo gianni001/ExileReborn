@@ -50,12 +50,12 @@ try
 	};
 	if (_vehicleClass isKindOf "Ship") then 
 	{
-		_position = [(getPosATL _playerObject), 80, 10] call ExileClient_util_world_findWaterPosition;
+		_position = [(getPosATL _playerObject), 100, 20] call ExileClient_util_world_findWaterPosition;
 		_vehicleObject = [_vehicleClass, _position, (random 360), false, _pinCode] call ExileServer_object_vehicle_createPersistentVehicle;
 	}
 	else 
 	{
-		_position = (getPos _playerObject) findEmptyPosition [10, 300, _vehicleClass];
+		_position = (getPos _playerObject) findEmptyPosition [10, 250, _vehicleClass];
 		if (_position isEqualTo []) then 
 		{
 			throw 13;

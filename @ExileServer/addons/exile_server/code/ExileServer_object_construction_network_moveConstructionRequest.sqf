@@ -94,12 +94,12 @@ try
 		};
 		_object call ExileServer_object_construction_database_delete;
 	};
-	[_sessionID, "constructionMoveResponse", [true, typeOf _object]] call ExileServer_system_network_send_to;
 	deleteVehicle _object;
 	if !(isNull _flag) then 
 	{
 		_flag call ExileServer_system_territory_updateNumberOfConstructions;
 	};
+	[_sessionID, "constructionMoveResponse", [true, typeOf _object]] call ExileServer_system_network_send_to;
 }
 catch 
 {

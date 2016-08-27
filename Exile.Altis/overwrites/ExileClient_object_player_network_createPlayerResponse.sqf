@@ -77,11 +77,6 @@ if!((_this select 9) isEqualTo [])then
 if !(ExileClientPartyID isEqualTo -1) then
 {
 	[player] joinSilent (groupFromNetId ExileClientPartyID);
-	3 enableChannel true;
-}
-else 
-{
-	3 enableChannel false;
 };
 if !(isNull ExileClientLastDiedPlayerObject) then
 {	

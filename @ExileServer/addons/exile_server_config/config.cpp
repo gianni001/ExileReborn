@@ -2889,7 +2889,16 @@ class CfgSettings
 		/*
 			A list of events that are active
 		*/
-		enabledEvents[] = {}; 
+		enabledEvents[] = {"SupplyBox", "AbandonedSafe", "AmbientFlyOver", "EarthQuake"}; 
+
+		class EarthQuake 
+		{
+			type = "spawn";
+			function = "ExileServer_system_event_earthQuake_start";
+			minTime = 60;
+			maxTime = 180;
+			minimumPlayersOnline = 1;
+		};
 
 		class SupplyBox 
 		{

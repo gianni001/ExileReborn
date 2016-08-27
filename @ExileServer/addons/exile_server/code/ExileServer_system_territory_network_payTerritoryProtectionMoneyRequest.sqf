@@ -48,13 +48,14 @@ try
 	_flagObject setVariable ["ExileTerritoryLastPayed", _currentTimestamp];
 	_flagObject call ExileServer_system_territory_maintenance_recalculateDueDate;
 	format["maintainTerritory:%1", _territoryDatabaseID] call ExileServer_system_database_query_fireAndForget;
-	[_sessionID,"ProtectionMoneyPaidInformation"] call ExileServer_system_network_send_to;
+	[_sessionID, "toastRequest", ["SuccessTitleOnly", ["Protection money paid!"]]] call ExileServer_system_network_send_to;
 	_logging = getNumber(configFile >> "CfgSettings" >> "Logging" >> "territoryLogging");
 	if (_logging isEqualTo 1) then
 	{
 		_territoryLog = format ["PLAYER ( %1 ) %2 PAID %3 POP TABS TO PROTECT TERRITORY #%4 | PLAYER TOTAL POP TABS: %5",getPlayerUID _playerObject,_playerObject,_totalPopTabAmount,_territoryDatabaseID,_playerPopTabs];
 		"extDB2" callExtension format["1:TERRITORY:%1",_territoryLog];
 	};
+	_flagObject call ExileServer_system_xm8_sendProtectionMoneyPaid;
 }
 catch
 {

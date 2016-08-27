@@ -15,7 +15,6 @@ call ExileServer_system_rcon_initialize;
 finishMissionInit;
 ExileSessionIDs = [];
 ExileServerGraveyardGroup = grpNull;
-ExileServerLoneWolfGroup = grpNull;
 ExileServerBreachingCharges = [];
 independent setFriend [sideEnemy, 1];
 call ExileServer_system_process_noobFilter;

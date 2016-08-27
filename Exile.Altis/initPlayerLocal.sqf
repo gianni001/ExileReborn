@@ -62,6 +62,8 @@ private _npcs = [
 }
 forEach _npcs;
 
+[] execVM "logo.sqf";    
+
 /**/
 
 [] execVM "Client_scriptsAndFunctions\initClient.sqf";

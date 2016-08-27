@@ -13,7 +13,7 @@ private["_methodName","_recipients","_text","_allowedMethods","_escapedText","_m
 _methodName = _this select 0;
 _recipients = _this select 1;
 _text = _this select 2;
-_allowedMethods = ["base-raid", "flag-stolen", "protection-money-due"];
+_allowedMethods = ["base-raid", "flag-stolen", "flag-restored", "protection-money-due", "protection-money-paid"];
 try 
 {
 	if !(_methodName in _allowedMethods) then 

@@ -713,12 +713,12 @@ class CraftRepairKitConcrete: Exile_AbstractCraftingRecipe
 class CraftRepairKitMetal: Exile_AbstractCraftingRecipe
 {
 	name = "Craft Metal Repair Kit";
-	pictureItem = "Exile_Item_MetalBoard";
+	pictureItem = "Exile_Item_RepairKitMetal";
 	requiresFire = 0;
 	requiredInteractionModelGroup = "WorkBench";
 	returnedItems[] = 
 	{
-		{1, "Exile_Item_RepairKitWood"}
+		{1, "Exile_Item_RepairKitMetal"}
 	};
 	components[] = 
 	{
@@ -733,7 +733,7 @@ class CraftRepairKitMetal: Exile_AbstractCraftingRecipe
 class CraftRepairKitWood: Exile_AbstractCraftingRecipe
 {
 	name = "Craft Wood Repair Kit";
-	pictureItem = "Exile_Item_WoodPlank";
+	pictureItem = "Exile_Item_RepairKitWood";
 	requiresFire = 0;
 	requiredInteractionModelGroup = "WorkBench";
 	returnedItems[] = 
@@ -809,7 +809,7 @@ class CraftWaterBarrel: Exile_AbstractCraftingRecipe
 class CraftWireFenceKit: Exile_AbstractCraftingRecipe
 {
 	name = "Craft Wire Fence Kit";
-	pictureItem = "Exile_Item_WireFenceKit_Long";
+	pictureItem = "Exile_Item_WireFenceKit";
 	requiredInteractionModelGroup = "WorkBench";
 	tools[] = 
 	{
@@ -819,7 +819,7 @@ class CraftWireFenceKit: Exile_AbstractCraftingRecipe
 	};
 	returnedItems[] = 
 	{
-		{1, "Exile_Item_RazorWireKit_Long"}
+		{1, "Exile_Item_WireFenceKit"}
 	};
 	components[] = 
 	{
@@ -3867,9 +3867,9 @@ class CfgInteractionModels
 			"misc_cargo1ao.p3d",
 			
 			//Tanoa
-			"containerline_01_f",
-			"containerline_02_f",
-			"containerline_03_f",
+			"Land_ContainerLine_01_F",
+			"Land_ContainerLine_02_F",
+			"Land_ContainerLine_03_F",
 
 			// Also allow wrecks
 			"wreck_"
@@ -6520,51 +6520,5 @@ class CfgVehicleTransport
 			cargoIndizes[] = {1, 6, 7, 9}; 
 			detachPosition[] = {0.08, -6};
 		};
-	};
-};
-class CfgVon
-{
-	// self explanitory isnt it
-	class global
-	{
-		id = 0;
-		text = 0;
-		von = 0;
-	};
-
-	class side
-	{
-		id = 1;
-		text = 1;
-		von = 0;
-	};
-
-	class command
-	{
-		id = 2;
-		text = 0;
-		von = 0;
-	};
-
-	class group
-
-	{
-		id = 3;
-		text = 1;
-		von = 1;
-	};
-
-	class vehicle
-	{
-		id = 4;
-		text = 1;
-		von = 1;
-	};
-
-	class direct
-	{
-		id = 5;
-		text = 1;
-		von = 1;
 	};
 };

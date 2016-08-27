@@ -65,7 +65,7 @@ showHUD[] =
 };
 
 #include "config.cpp"
-//#include "infiSTAR_AdminMenu.hpp"                                         // If you are using infistar
+#include "infiSTAR_AdminMenu.hpp"
 #include "ExAdClient\ExAd.cpp"
 #include "sounds.hpp"
 
@@ -87,6 +87,7 @@ class CfgRemoteExec
 };
 class RscTitles
 {
+	#include "logo.hpp"
     #include "ExAdClient\RscTitles.cpp"
 };
 class CfgNetworkMessages

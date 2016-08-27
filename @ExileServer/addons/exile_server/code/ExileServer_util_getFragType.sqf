@@ -38,10 +38,7 @@ try
 	};
 	if ((group _victim) isEqualTo (group _killingPlayer)) then 
 	{
-		if !((group _victim) isEqualTo ExileServerLoneWolfGroup) then 
-		{
-			throw 5;
-		};
+		throw 5;
 	};
 	_victimClanId = _victim getVariable ["ExileClanID", -2];
 	_killerClanId = _killer getVariable ["ExileClanID", -3];

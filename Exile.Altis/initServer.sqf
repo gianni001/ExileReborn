@@ -3,10 +3,6 @@
  * www.exilemod.com
  */
 
-fnc_skip_devblog = compileFinal "uiNameSpace setVariable ['ExileClientHasSeenDevblog', true];uiNameSpace setVariable ['ExileClientDevBlogOkayClicked', true];";
-publicVariable "fnc_skip_devblog";
-"" remoteExec ["fnc_skip_devblog",-2,"skip_devblog_JIPID"];
-
 ExileRouletteChairs = [];
 ExileRouletteChairPositions = [];
 
