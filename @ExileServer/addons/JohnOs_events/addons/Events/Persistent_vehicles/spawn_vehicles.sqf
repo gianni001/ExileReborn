@@ -7,7 +7,7 @@
 uiSleep 30;
 
 diag_log ["ExileServer - Spawning persistent vehicle spawns"];
-if (useMarmaLogging) then
+if (useMarmaLoging) then
 {	
 	["ExileServer - Spawning world persistent vehicles"] call MAR_fnc_log;
 };	
@@ -159,7 +159,7 @@ _vehicleArray =
 					_vehicleObject call ExileServer_object_vehicle_database_update;
 
 					diag_log format ["[Event: Persistent Spawns] -- Spawned a %1 at location: %2 -- Max allowed: %3",_x select 0,_position, _x select 1];
-					if (useMarmaLogging) then
+					if (useMarmaLoging) then
 					{	
 						[format["[Event: Persistent Spawns] -- Spawned a %1 at location: %2 -- Max allowed: %3",_x select 0,_position, _x select 1]] call MAR_fnc_log;
 					};	
@@ -185,7 +185,7 @@ _vehicleArray =
 			{
 				if !(_debugForSP) then
 				{
-					if (useMarmaLogging) then
+					if (useMarmaLoging) then
 					{	
 						[format["[Event: Persistent Spawns] -- Could not find valid spawn position for %1 at position %2 -- exiting try for this vehicle",_x select 0,_position]] call MAR_fnc_log;
 					};	
@@ -206,7 +206,7 @@ _scriptComplete = true;
 waitUntil 
 {
 	diag_log format ["ExileServer - Finished spawning world vehicles"];
-	if (useMarmaLogging) then
+	if (useMarmaLoging) then
 	{	
 		["ExileServer - Finished spawning world vehicles"] call MAR_fnc_log;
 	};	

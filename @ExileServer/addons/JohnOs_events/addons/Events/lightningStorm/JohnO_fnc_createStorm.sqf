@@ -11,6 +11,7 @@ if (overcast > 0.5) then
 {
 	for "_n" from 1 to 200 do
 	{	
+		/*
 		_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 		_min = 1;
 		_max = 30000;
@@ -19,7 +20,10 @@ if (overcast > 0.5) then
 		_shoremode = 0;
 
 		_strikeCenter = [_spawnCenter,_min,_max,_mindist,_water,1,_shoremode] call BIS_fnc_findSafePos;
-
+		*/
+		_player = selectRandom allPlayers;
+		_strikeCenter = getPos _player;
+		
 		for "_i" from 1 to 10 do
 		{
 			_pos = [(_strikeCenter select 0) + floor (random 300) - floor (random 300), (_strikeCenter select 1) +floor (random 300)- floor (random 300), 0];

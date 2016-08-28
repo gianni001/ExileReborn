@@ -108,6 +108,7 @@ if (count AllPlayers > 0) then
 						_vest = _gear select 3;
 						_backPack = _gear select 4;
 						_item = _gear select 5;
+						_headGear = _gear select 6;
 
 						_magazines = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");							
 
@@ -116,6 +117,10 @@ if (count AllPlayers > 0) then
 						_unit addVest _vest;
 						[_unit,_weapon, 5] call BIS_fnc_addWeapon;
 						_unit addItem _item;
+						if (random 1 . 0.6) then
+						{	
+							_unit addHeadgear _headGear;
+						};	
 
 						_unit setVariable ["JohnO_RoaminAI",time + Event_RoamingAI_despawnTime];
 						_unit setVariable ["ExileMoney",_money,true];
