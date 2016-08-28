@@ -2787,14 +2787,7 @@ class CfgSettings
 		// time in ARMA FORMAT << CONFIG
 		// https://community.bistudio.com/wiki/setDate
 
-		staticTime[] = 
-		{
-			{2039,01,01,4,00}
-			//{2039,01,01,5,00},
-			//{2039,01,01,11,00},
-			//{2039,01,01,15,00},
-			//{2039,01,01,16,00}
-		};
+		staticTime[] = {2039,01,01,4,00};	
 	};
 
 
