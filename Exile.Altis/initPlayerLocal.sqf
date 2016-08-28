@@ -60,9 +60,7 @@ private _npcs = [
     _trader switchMove (_animations select 0);
     _trader addEventHandler ["AnimDone", {_this call ExileClient_object_trader_event_onAnimationDone}];
 }
-forEach _npcs;
-
-[] execVM "logo.sqf";    
+forEach _npcs;    
 
 /**/
 

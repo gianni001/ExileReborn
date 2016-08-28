@@ -87,7 +87,7 @@ class CfgRemoteExec
 };
 class RscTitles
 {
-	#include "logo.hpp"
+	//#include "logo.hpp"
     #include "ExAdClient\RscTitles.cpp"
 };
 class CfgNetworkMessages
