@@ -7,7 +7,7 @@ if (useMarmaLoging) then
 
 diag_log "STORM CYCLE BEGUN";
 
-if (overcast > 0.5) then
+if ((overcast > 0.5) && ((count allPlayers) > 0)) then
 {
 	for "_n" from 1 to 50 do
 	{	
@@ -23,8 +23,8 @@ if (overcast > 0.5) then
 		*/
 		_player = selectRandom allPlayers;
 		_strikeCenter = getPos _player;
-		
-		for "_i" from 1 to 10 do
+		_amount = 1 + floor (random 10);
+		for "_i" from 1 to _amount do
 		{
 			_pos = [(_strikeCenter select 0) + floor (random 300) - floor (random 300), (_strikeCenter select 1) +floor (random 300)- floor (random 300), 0];
 			_nearPlayers = _pos nearEntities ["Exile_Unit_player",20];
