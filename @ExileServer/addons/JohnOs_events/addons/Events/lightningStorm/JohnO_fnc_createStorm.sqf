@@ -9,7 +9,7 @@ diag_log "STORM CYCLE BEGUN";
 
 if (overcast > 0.5) then
 {
-	for "_n" from 1 to 200 do
+	for "_n" from 1 to 50 do
 	{	
 		/*
 		_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
