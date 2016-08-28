@@ -117,7 +117,7 @@ if (count AllPlayers > 0) then
 						_unit addVest _vest;
 						[_unit,_weapon, 5] call BIS_fnc_addWeapon;
 						_unit addItem _item;
-						if (random 1 . 0.6) then
+						if (random 1 > 0.6) then
 						{	
 							_unit addHeadgear _headGear;
 						};	
