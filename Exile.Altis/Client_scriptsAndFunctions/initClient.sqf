@@ -45,7 +45,7 @@ JohnO_fnc_handleInfection = compileFinal preprocessFileLineNumbers "Client_scrip
 JohnO_fnc_handleChemlightActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleChemlightActions.sqf";
 
 // Vehicle repair
-
+JohnO_fnc_displayVehicleRepairInfo = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_displayVehicleRepairInfo.sqf";
 JohnO_fnc_vehicleRepairCar = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_vehicleRepairCar.sqf";
 JohnO_fnc_repairWheels = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairWheels.sqf";
 JohnO_fnc_repairSingleWheel = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairSingleWheel.sqf";

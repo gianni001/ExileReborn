@@ -137,7 +137,6 @@ else
 												player removeItem "Exile_Item_DuctTape";
 												player removeItem "Exile_Item_MetalScrews";
 												player removeItem "Exile_Item_MetalWire";
-												player removeItem "Exile_Item_OilCanister";
 												[
 													"InfoTitleAndText", 
 													["Repair Info", "You have fully repaired the hull of this vehicle"]

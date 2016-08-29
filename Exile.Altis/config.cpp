@@ -3207,6 +3207,12 @@ class CfgInteractionMenus
 			};
 			*/
 			// Advanced repair
+			class RepairInfoLand: ExileAbstractAction
+			{
+				title = "REPAIR INFO";
+				condition = "true";
+				action = "_this call JohnO_fnc_displayVehicleRepairInfo";
+			};
 			class ReplaceWheels: ExileAbstractAction
 			{
 				title = "Replace wheel";
@@ -3323,6 +3329,12 @@ class CfgInteractionMenus
 			};
 			*/
 			// Advanced repair
+			class RepairInfoChopper: ExileAbstractAction
+			{
+				title = "REPAIR INFO";
+				condition = "true";
+				action = "_this call JohnO_fnc_displayVehicleRepairInfo";
+			};
 			class RepairMinor: ExileAbstractAction
 			{
 				title = "Minor repair";
