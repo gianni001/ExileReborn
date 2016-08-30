@@ -15,7 +15,10 @@ _messageArray =
 	"I hear someone nearby...",
 	"What was that noise?...",
 	"Were they soldiers I just saw?..",
-	"Shit, I think they saw me.. I should hide.."
+	"Shit, I think they saw me.. I should hide..",
+	"I thought the mafia had control of this island..",
+	"I should keep moving..",
+	"Maybe they are friendly?.."
 ];
 
 if (_isBeingHunted) then

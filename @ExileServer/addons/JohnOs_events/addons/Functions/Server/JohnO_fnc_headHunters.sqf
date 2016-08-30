@@ -43,7 +43,7 @@ while {true} do
 	};
 
 	_targetPos = position _target;
-	_wp setWaypointPosition [_targetPos,15];
+	_wp setWaypointPosition [_targetPos,50];
 
 	uiSleep 10;
 	_timer = _timer + 10;

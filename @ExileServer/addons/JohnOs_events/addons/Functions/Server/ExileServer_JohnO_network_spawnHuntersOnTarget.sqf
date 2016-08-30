@@ -21,12 +21,15 @@ if (useMarmaLoging) then
 		
 _position = getPos _target;
 _debug = Event_DEBUG_Location;
+
+if (_position distance _debug > 600) exitWith {};
+
 if (useMarmaLoging) then
 {
 	[format["Player was detected by bandits during hack -- %1", _target]] call MAR_fnc_log;
 };	
 
-if (!(surfaceIsWater _position) && (_position distance _debug > 600)) then // Check the player is not in water
+if !(surfaceIsWater _position) then // Check the player is not in water
 {	
 	_safePosFound = false;
 	
@@ -34,14 +37,14 @@ if (!(surfaceIsWater _position) && (_position distance _debug > 600)) then // Ch
 	{
 		_aiSpawnPos = [_position,1000] call ExileClient_util_math_getRandomPositionInCircle;
 
-		if (!(surfaceIsWater _aiSpawnPos) && (_aiSpawnPos distance _target > 400) && (_aiSpawnPos distance _debug > 300)) then
+		if (!(surfaceIsWater _aiSpawnPos) && (_aiSpawnPos distance _target > 400)) then
 		{
 			_safePosFound = true;
 		};	
 		_safePosFound
 	};
 
-	if (!([_aiSpawnPos, 800] call ExileClient_util_world_isTraderZoneInRange) && (_aiSpawnPos distance _debug > 800)) then
+	if (!([_aiSpawnPos, 800] call ExileClient_util_world_isTraderZoneInRange)) then
 	{		
 		_group = createGroup EAST;
 		_group setCombatMode "RED";
