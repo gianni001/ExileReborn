@@ -7,7 +7,7 @@ Event_DEBUG_Location = [14482.4,5879.49,0];
 Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
 
-Event_lightningSpawnInterval = 1000;
+Event_lightningSpawnInterval = 1800;
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
 /*
