@@ -124,7 +124,13 @@ Event_HeliCrash_timeStamp = diag_tickTime;
 
 /** Island AI **/
 
-Event_RadAI_SpawnLocations = [[22150.9,21125,0],[21793,20884.1,0],[21781.4,21084.1,0],[22055.8,20882.1,0]];
+Event_RadAI_SpawnLocations = 
+[
+	// Ghost hotel
+	[22150.9,21125,0],[21793,20884.1,0],[21781.4,21084.1,0],[22055.8,20882.1,0],
+	// Cap strigla
+	[28336.5,25675,0],[28271.4,25748.3,0],[28150.5,25658,0],[28332.1,25802.2,0]
+];
 
 Event_RadAI_MaxAllowedAI = 30;
 Event_RadAI_GroupAmountMin = 1;
