@@ -7,7 +7,7 @@ if (useMarmaLoging) then
 
 diag_log "STORM CYCLE BEGUN";
 
-if ((overcast > 0.5) && ((count allPlayers) > 0) (rain > 0.6)) then
+if ((overcast > 0.5) && ((count allPlayers) > 0) && (rain > 0.6)) then
 {
 	for "_n" from 1 to 25 do
 	{	
