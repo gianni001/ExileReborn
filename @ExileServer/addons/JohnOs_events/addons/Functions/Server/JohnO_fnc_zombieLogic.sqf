@@ -146,7 +146,10 @@ while {true} do
 					if (_zombie distance _target < Ryanzombiesattackdistance && (alive _target) && (alive _zombie)) then
 					{
 						if (_class == "Ryanzombiescrawler") then {_CrawlerHit = selectRandom _CrawlerHitArray; playsound3d [format ["%1",_CrawlerHit], _target, false, getPosASL _target, 1, _soundpitch]} else {playsound3d ["ryanzombies\sounds\zombie_bite.ogg", _target, false, getPosASL _target, 1, _soundpitch]};
-
+						if (random 1 > 0.6) then
+						{	
+							_target setVariable ["ExileReborn_playerIsInfected",true,true];
+						};	
 						if (isnil "ryanzombiesdisablebleeding") then {[_target, 10] remoteExecCall ["fnc_RyanZombies_Bleeding"];};
 						if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then {[_target,'manNormal'] execVM "\ryanzombies\acedamage.sqf"} else {_target setdamage (damage _target + Ryanzombiesdamage)};
 						if (!(alive _target) && !(isnil "Ryanzombiesinfection")) then {[_target, side _group] execVM "\ryanzombies\infection.sqf"};

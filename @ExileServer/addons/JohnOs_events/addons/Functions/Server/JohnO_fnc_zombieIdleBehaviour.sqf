@@ -3,14 +3,16 @@ private ["_zombie","_timer","_nearPlayers","_nearPlayersCount","_unit","_huntedT
 _zombie = _this select 0;
 _MoanArray = ["ryanzombiesmoan1","ryanzombiesmoan2","ryanzombiesmoan3","ryanzombiesmoan4","ryanzombiesmoan5","ryanzombiesmoan6","ryanzombiesmoan7"];
 
-_timer = 0;
+//_timer = 0;
 
 _lastMoan = time;
 _moanCD = 15;
+_playerFound = false;
 
-while {_timer < 300} do
+while {!_playerFound} do
 {	
-	_nearPlayers = getPos _zombie nearEntities [['Exile_Unit_Player'],15];
+	_stance = [];
+	_nearPlayers = getPos _zombie nearEntities [['Exile_Unit_Player'],25];
 	_nearPlayersCount = count _nearPlayers;
 	if (time - _moanCD >= _lastMoan) then
 	{	
@@ -19,25 +21,19 @@ while {_timer < 300} do
 			_Moan = selectRandom _MoanArray; [_zombie, format ["%1",_Moan]] remoteExecCall ["say3d"];
 		};
 		_lastMoan = time;
-	};	
-	if (_nearPlayersCount > 0) exitWith {};
-	_timer = _timer + 1;
-	uiSleep 1;
-};
-
-if !(_nearPlayers isEqualTo []) then
-{
-	_unit = _nearPlayers select 0;
-	
-	if !(local _zombie) then 
-	{
-		[_zombie, [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
-	} 
-	else 
-	{
-		_zombie domove [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15];
 	};
-};		
+	if !(_nearPlayersCount < 0) then
+	{	
+		{
+			_stance pushBack (stance _x);
+			if ((_zombie distance _x > 0) && (_zombie distance _x <= 5) && ((_stance find "PRONE") isEqualTo -1)) then {_playerFound = true;};
+		} forEach _nearPlayers;
+	};		
+	_isStanding = _stance find "STAND";
+	if ((_nearPlayersCount > 0) && !(_isStanding isEqualTo -1)) then {_playerFound = true;};
+	
+	uiSleep 2;
+};	
 
 ryanzombiesdisablescript = nil;
 
