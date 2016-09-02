@@ -151,8 +151,6 @@ while {true} do
 	_a = 0;
 	_b = 5 + random 3;
 
-
-
 	while {true} do
 	{
 		scopename "findtarget";
@@ -167,7 +165,7 @@ while {true} do
 				if (!(isnull _target) AND ((_target distance _zombie) < (_civiliantarget distance _zombie))) exitwith {};
 				if (_zombie knowsabout _civiliantarget > 0.5) then {_target = _civiliantarget};
 			};
-			if !(isnull _target) then
+			if !(_target isEqualTo []) then
 			{
 				if (((getPosATL _target select 2) > 20) AND (_target iskindof "AIR")) exitwith {sleep 2};
 				if (animationState _zombie == "UNCONSCIOUS") exitwith {sleep 2};
