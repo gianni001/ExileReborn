@@ -46,7 +46,7 @@ _group = createGroup WEST;
 		
 		_unit setVariable ["JohnO_RoaminAI",time + 1200];
 		_unit setVariable ["ExileMoney",_money,true];
-		//Event_ALLAI_SimulatedUnits pushBack _unit;
+		Event_ALLAI_SimulatedUnits pushBack _unit;
 		
 		_unit addMPEventHandler 
 		["MPKilled",
