@@ -1,4 +1,4 @@
-scriptName "Zombie Brains";
+private ["_target"];
 
 _zombie = _this select 0;
 
@@ -78,7 +78,7 @@ while {true} do
 		};
 		_newgroup = creategroup civilian;
 		[_zombie] join _newgroup;
-		if !(isnull _target) then {if ((!(vehicle _target iskindof "man") && (speed _target > 20)) && (_zombie distance _target < 12.5)) then {_VehicleSplatArray = ["ryanzombies\sounds\vehicle_splat1.ogg", "ryanzombies\sounds\vehicle_splat2.ogg", "ryanzombies\sounds\vehicle_splat3.ogg"]; _VehicleSplat = selectRandom _VehicleSplatArray; playsound3d [format ["%1",_VehicleSplat], _zombie, false, getPosASL _zombie, 1, _soundpitch];};};
+		if (!(isNil "_target")) then {if ((!(vehicle _target iskindof "man") && (speed _target > 20)) && (_zombie distance _target < 12.5)) then {_VehicleSplatArray = ["ryanzombies\sounds\vehicle_splat1.ogg", "ryanzombies\sounds\vehicle_splat2.ogg", "ryanzombies\sounds\vehicle_splat3.ogg"]; _VehicleSplat = selectRandom _VehicleSplatArray; playsound3d [format ["%1",_VehicleSplat], _zombie, false, getPosASL _zombie, 1, _soundpitch];};};
 		_face = face _zombie;
 		if (_face find "Glowing" != 0) then 
 		{
@@ -111,8 +111,8 @@ while {true} do
 			if !(alive _zombie) then {breakTo "loop"};
 			
 			_target = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]) select 0;
-			
-			if !(_target isEqualTo []) then
+			//hint str _target;
+			if !(isNil "_target") then
 			{
 				if (((getPosATL _target select 2) > 20) AND (_target iskindof "AIR")) exitwith {sleep 2};
 				if (animationState _zombie == "UNCONSCIOUS") exitwith {sleep 2};
