@@ -14,7 +14,7 @@ class spawnHuntersOnTarget
     parameters[] = {"OBJECT","STRING"};
 };
 
-class spawnZombiesNearTarget
+class spawnZombieNearTarget
 {
     module = "JohnO";
     parameters[] = {"ARRAY"};
