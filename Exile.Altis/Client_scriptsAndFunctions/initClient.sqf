@@ -64,4 +64,5 @@ JohnO_fnc_handlePlayerZombieDetection = compileFinal preprocessFileLineNumbers "
 [180, JohnO_fnc_headHunterWarning, [], true] call ExileClient_system_thread_addtask;
 [240, JohnO_fnc_temperatureStatsUpdate, [], true] call ExileClient_system_thread_addtask;
 [1, JohnO_fnc_handleInfection, [], true] call ExileClient_system_thread_addtask;
+[300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
 //[2, JohnO_handleCustomActions, [], true] call ExileClient_system_thread_addtask;
