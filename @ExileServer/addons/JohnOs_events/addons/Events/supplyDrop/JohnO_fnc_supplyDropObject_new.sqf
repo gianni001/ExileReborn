@@ -43,7 +43,7 @@ if (random 1 > 0.3) then
 		_drop = [_supply, [0,0,0], (random 360), true,_pinCode] call ExileServer_object_vehicle_createPersistentVehicle;
 		_drop setDamage 0.8;
 		_drop setFuel 0;
-		if !((_x select 0) isKindOf "AIR") then
+		if !(_drop isKindOf "AIR") then
 		{
 			_wheels = ["HitLF2Wheel","HitLFWheel","HitRFWheel","HitRF2Wheel"];
 			{
