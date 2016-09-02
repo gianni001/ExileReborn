@@ -18,20 +18,13 @@ if !(_nearPlayers isEqualTo []) then
 {
 	_unit = _nearPlayers select 0;
 	
-	_huntedTimer = 0;
-
-	while {_huntedTimer < 30} do
-	{	
-		if !(local _zombie) then 
-		{
-			[_zombie, [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
-		} 
-		else 
-		{
-			_zombie domove [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15];
-		};
-		_huntedTimer = _huntedTimer + 1;
-		uiSleep 2;
+	if !(local _zombie) then 
+	{
+		[_zombie, [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
+	} 
+	else 
+	{
+		_zombie domove [(getposATL _unit select 0) + random 15 - random 15, (getposATL _unit select 1) + random 15 - random 15];
 	};
 };		
 
