@@ -249,6 +249,11 @@ JohnO_fnc_supplyDrop_spawnEvent = compileFinal preprocessFileLineNumbers "JohnOs
 JohnO_fnc_spawnStormEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_spawnStormEvent.sqf";
 JohnO_fnc_createStorm = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_createStorm.sqf";
 
+// Zombies
+ExileServer_JohnO_network_spawnZombieNearTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_spawnZombieNearTarget.sqf";
+JohnO_fnc_zombieIdleBehaviour = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieIdleBehaviour.sqf";
+JohnO_fnc_zombieLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
+
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";

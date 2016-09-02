@@ -53,6 +53,10 @@ JohnO_fnc_scavengeWheel = compileFinal preprocessFileLineNumbers "Client_scripts
 JohnO_fnc_repairchopperhalf = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopperhalf.sqf";
 JohnO_fnc_repairchopper = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_repairchopper.sqf";
 
+// Zombies
+JohnO_fnc_handlePlayerZombieDetection = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handlePlayerZombieDetection.sqf";
+
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";

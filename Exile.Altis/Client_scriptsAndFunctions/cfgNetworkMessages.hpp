@@ -11,5 +11,11 @@ class spawnAIrequest
 class spawnHuntersOnTarget
 {
     module = "JohnO";
-    parameters[] = {"OBJECT"};
+    parameters[] = {"OBJECT","STRING"};
+};
+
+class spawnZombiesNearTarget
+{
+    module = "JohnO";
+    parameters[] = {"ARRAY"};
 };
