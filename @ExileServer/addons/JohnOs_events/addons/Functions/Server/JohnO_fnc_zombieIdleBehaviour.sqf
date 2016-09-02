@@ -11,6 +11,7 @@ _playerFound = false;
 
 while {!_playerFound} do
 {	
+	if !(alive _zombie) exitWith {};
 	_stance = [];
 	_nearPlayers = getPos _zombie nearEntities [['Exile_Unit_Player'],25];
 	_nearPlayersCount = count _nearPlayers;
@@ -35,6 +36,8 @@ while {!_playerFound} do
 	uiSleep 2;
 };	
 
-ryanzombiesdisablescript = nil;
-
-[_zombie] execVM "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
+if (alive _zombie) then
+{	
+	ryanzombiesdisablescript = nil;
+	[_zombie] execVM "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
+};	
