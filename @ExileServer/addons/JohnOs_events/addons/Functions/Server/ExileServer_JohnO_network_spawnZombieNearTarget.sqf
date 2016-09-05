@@ -1,4 +1,4 @@
-private ["_target","_position","_civSlow","_civMed","_walker","_position","_positions","_maxSpawn","_count"]; //[_id[_thing,_stuff]]
+private ["_target","_position","_civSlow","_civMed","_walker","_position","_positions","_maxSpawn","_count","_activeScripts"]; //[_id[_thing,_stuff]]
 
 _target = (_this select 0) call ExileServer_system_session_getPlayerObject;
 _positions = (_this select 1 select 0);
@@ -32,13 +32,14 @@ else
 
 _maxSpawn = 35;					// Define a max spawn
 _count = 0; 					// Begin a count
+_activeScripts = count diag_activeSQFScripts;
 		
 _group = createGroup WEST;
 
 {	
 	if !(_count >= _maxSpawn) then
 	{	
-		if (random 1 > 0.5) then
+		if ((random 1 > 0.98) && (_activeScripts < 130)) then
 		{	
 			_count = _count + 1;
 
