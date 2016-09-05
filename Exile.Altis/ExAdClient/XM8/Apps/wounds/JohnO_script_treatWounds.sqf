@@ -1,4 +1,4 @@
-if (ExileReborn_playerIsWounded) then
+if ((ExileReborn_playerIsWounded) || (ExileReborn_playerIsInfected)) then
 {	
 	if (("Exile_Item_PlasticBottleFreshWater" in (magazines player)) && ("Exile_Item_Vishpirin" in (magazines player))) then
 	{	
