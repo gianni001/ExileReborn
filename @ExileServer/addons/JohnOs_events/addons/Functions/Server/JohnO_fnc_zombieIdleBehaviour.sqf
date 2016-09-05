@@ -23,7 +23,7 @@ while {!_playerFound} do
 		};
 		_lastMoan = time;
 	};
-	if !(_nearPlayersCount < 0) then
+	if !(_nearPlayersCount isEqualTo 0) then
 	{	
 		{
 			_stance pushBack (stance _x);
