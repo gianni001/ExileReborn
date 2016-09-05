@@ -27,13 +27,14 @@ addons[]=
 {
 	"exile_client",
 	"A3_Ui_F",
+	"Ryanzombies",
 	"ryanzombiesfunctions"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			className="exile_client";
@@ -47,6 +48,12 @@ class AddonsMetaData
 			url="http://www.arma3.com";
 		};
 		class Item2
+		{
+			className="Ryanzombies";
+			name="Ryanzombies";
+			author="Ryan";
+		};
+		class Item3
 		{
 			className="ryanzombiesfunctions";
 			name="ryanzombiesfunctions";
