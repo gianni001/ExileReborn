@@ -53,7 +53,7 @@ _sound = random 5;
 _soundpitch = 0.925 + random 0.15;
 
 _civilian = [];
-_target = objnull;
+_target = [];
 _class = getText (configFile >> "CfgVehicles" >> (typeof _zombie) >> "vehicleClass");
 if (_class == "Ryanzombiesspider") then {_AggressiveArray = ["ryanzombies\sounds\aggressive_spider1.ogg", "ryanzombies\sounds\aggressive_spider2.ogg", "ryanzombies\sounds\aggressive_spider3.ogg", "ryanzombies\sounds\aggressive_spider4.ogg", "ryanzombies\sounds\aggressive_spider5.ogg", "ryanzombies\sounds\aggressive_spider6.ogg", "ryanzombies\sounds\aggressive_spider7.ogg", "ryanzombies\sounds\aggressive_spider8.ogg", "ryanzombies\sounds\aggressive_spider9.ogg", "ryanzombies\sounds\aggressive_spider10.ogg", "ryanzombies\sounds\aggressive_spider11.ogg", "ryanzombies\sounds\aggressive_spider12.ogg", "ryanzombies\sounds\aggressive_spider13.ogg", "ryanzombies\sounds\aggressive_spider14.ogg", "ryanzombies\sounds\aggressive_spider15.ogg", "ryanzombies\sounds\aggressive_spider16.ogg", "ryanzombies\sounds\aggressive_spider17.ogg", "ryanzombies\sounds\aggressive_spider18.ogg", "ryanzombies\sounds\aggressive_spider19.ogg", "ryanzombies\sounds\aggressive_spider20.ogg", "ryanzombies\sounds\aggressive_spider21.ogg", "ryanzombies\sounds\aggressive_spider22.ogg", "ryanzombies\sounds\aggressive_spider23.ogg", "ryanzombies\sounds\aggressive_spider24.ogg", "ryanzombies\sounds\aggressive_spider25.ogg", "ryanzombies\sounds\aggressive_spider26.ogg", "ryanzombies\sounds\aggressive_spider27.ogg", "ryanzombies\sounds\aggressive_spider28.ogg", "ryanzombies\sounds\aggressive_spider29.ogg", "ryanzombies\sounds\aggressive_spider30.ogg", "ryanzombies\sounds\aggressive_spider31.ogg", "ryanzombies\sounds\aggressive_spider32.ogg", "ryanzombies\sounds\aggressive_spider33.ogg", "ryanzombies\sounds\aggressive_spider34.ogg", "ryanzombies\sounds\aggressive_spider35.ogg", "ryanzombies\sounds\aggressive_spider36.ogg", "ryanzombies\sounds\aggressive_spider37.ogg", "ryanzombies\sounds\aggressive_spider38.ogg", "ryanzombies\sounds\aggressive_spider39.ogg", "ryanzombies\sounds\aggressive_spider40.ogg"];};
 if (_class == "Ryanzombiescrawler") then {_AggressiveArray = ["ryanzombies\sounds\aggressive_crawler1.ogg", "ryanzombies\sounds\aggressive_crawler2.ogg", "ryanzombies\sounds\aggressive_crawler3.ogg", "ryanzombies\sounds\aggressive_crawler4.ogg", "ryanzombies\sounds\aggressive_crawler5.ogg", "ryanzombies\sounds\aggressive_crawler6.ogg", "ryanzombies\sounds\aggressive_crawler7.ogg", "ryanzombies\sounds\aggressive_crawler8.ogg", "ryanzombies\sounds\aggressive_crawler9.ogg", "ryanzombies\sounds\aggressive_crawler10.ogg", "ryanzombies\sounds\aggressive_crawler11.ogg", "ryanzombies\sounds\aggressive_crawler12.ogg", "ryanzombies\sounds\aggressive_crawler13.ogg", "ryanzombies\sounds\aggressive_crawler14.ogg", "ryanzombies\sounds\aggressive_crawler15.ogg", "ryanzombies\sounds\aggressive_crawler16.ogg", "ryanzombies\sounds\aggressive_crawler17.ogg", "ryanzombies\sounds\aggressive_crawler18.ogg", "ryanzombies\sounds\aggressive_crawler19.ogg", "ryanzombies\sounds\aggressive_crawler20.ogg", "ryanzombies\sounds\aggressive_crawler21.ogg", "ryanzombies\sounds\aggressive_crawler22.ogg", "ryanzombies\sounds\aggressive_crawler23.ogg", "ryanzombies\sounds\aggressive_crawler24.ogg"]; _AttackArray = ["ryanzombies\sounds\attack_crawler1.ogg", "ryanzombies\sounds\attack_crawler2.ogg"]};
@@ -78,7 +78,7 @@ while {true} do
 		};
 		_newgroup = creategroup civilian;
 		[_zombie] join _newgroup;
-		if (!(isNil "_target")) then {if ((!(vehicle _target iskindof "man") && (speed _target > 20)) && (_zombie distance _target < 12.5)) then {_VehicleSplatArray = ["ryanzombies\sounds\vehicle_splat1.ogg", "ryanzombies\sounds\vehicle_splat2.ogg", "ryanzombies\sounds\vehicle_splat3.ogg"]; _VehicleSplat = selectRandom _VehicleSplatArray; playsound3d [format ["%1",_VehicleSplat], _zombie, false, getPosASL _zombie, 1, _soundpitch];};};
+		//if (!(isNil "_target")) then {if ((!(vehicle _target iskindof "man") && (speed _target > 20)) && (_zombie distance _target < 12.5)) then {_VehicleSplatArray = ["ryanzombies\sounds\vehicle_splat1.ogg", "ryanzombies\sounds\vehicle_splat2.ogg", "ryanzombies\sounds\vehicle_splat3.ogg"]; _VehicleSplat = selectRandom _VehicleSplatArray; playsound3d [format ["%1",_VehicleSplat], _zombie, false, getPosASL _zombie, 1, _soundpitch];};};
 		_face = face _zombie;
 		if (_face find "Glowing" != 0) then 
 		{
@@ -88,12 +88,14 @@ while {true} do
 		
 		sleep 60;
 		remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
+		/*
 		if !(isnil "Ryanzombiesdelete") then {deletevehicle _zombie};
 		if !(isnil "_l") then
 		{
 			sleep 3600;
 			deletevehicle _l;
 		};
+		*/
 	};
 
 	_zombie setFormDir random 360;
@@ -109,14 +111,20 @@ while {true} do
 		while {true} do
 		{
 			if !(alive _zombie) then {breakTo "loop"};
-			
+			/*
 			_target = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]) select 0;
-			//hint str _target;
-			if !(isNil "_target") then
+			if ((count _target) <= 0) then
+			{
+				_target = [];
+			};
+			*/	
+			_target = [_zombie] call JohnO_fnc_findZombieTarget; // New function not in use.
+			if !(_target isEqualTo []) then
 			{
 				if (((getPosATL _target select 2) > 20) AND (_target iskindof "AIR")) exitwith {sleep 2};
 				if (animationState _zombie == "UNCONSCIOUS") exitwith {sleep 2};
 				if (_zombie distance _target > Ryanzombieslimit) exitwith {sleep 2};
+				/*	
 				if (!(vehicle _target iskindof "man") && (count crew _target == 0)) then
 				{
 					_grp = createGroup civilian;
@@ -128,6 +136,7 @@ while {true} do
 					deletevehicle _unit;
 					deletegroup _grp;
 				};
+				*/
 
 				if !(local _zombie) then {[_zombie, getposATL _target] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove getposATL _target};
 				if (surfaceIsWater getposATL _target) then {[_zombie, "AmovPercMwlkSnonWnonDf"] remoteExecCall ["fnc_RyanZombies_PlayMoveNow"]};
@@ -151,9 +160,9 @@ while {true} do
 							_target setVariable ["ExileReborn_playerIsInfected",true,true];
 						};	
 						if (isnil "ryanzombiesdisablebleeding") then {[_target, 10] remoteExecCall ["fnc_RyanZombies_Bleeding"];};
-						if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then {[_target,'manNormal'] execVM "\ryanzombies\acedamage.sqf"} else {_target setdamage (damage _target + Ryanzombiesdamage)};
-						if (!(alive _target) && !(isnil "Ryanzombiesinfection")) then {[_target, side _group] execVM "\ryanzombies\infection.sqf"};
-						if ((alive _target) && !(isnil "ryanzombiesinfectedchance") && (_target getvariable ["ryanzombiesinfected",0] == 0)) then {[_target, side _group] execVM "\ryanzombies\infected.sqf"};
+						_target setdamage (damage _target + Ryanzombiesdamage);
+						//if (!(alive _target) && !(isnil "Ryanzombiesinfection")) then {[_target, side _group] execVM "\ryanzombies\infection.sqf"};
+						//if ((alive _target) && !(isnil "ryanzombiesinfectedchance") && (_target getvariable ["ryanzombiesinfected",0] == 0)) then {[_target, side _group] execVM "\ryanzombies\infected.sqf"};
 
 						_Scream = selectRandom _ScreamArray;
 						[_target, format ["%1",_Scream]] remoteExecCall ["say3d"];
@@ -172,7 +181,7 @@ while {true} do
 					_sound = _sound + 1;
 					if (_sound >= 5) then {_sound = 0};
 				}
-					else
+				else
 				{
 					if (speed _zombie != 0) then
 					{
@@ -184,7 +193,7 @@ while {true} do
 
 				_x = (0.5 + ((_zombie distance _target)/50)) min 4;
 				sleep _x;
-
+				/*
 				if (!(alive _target) && !(isnil "Ryanzombiesfeed") && (vehicle _target iskindof "man")) then
 				{
 					_c = 0;
@@ -224,6 +233,7 @@ while {true} do
 						};
 					};
 				};
+				*/
 				breakTo "findtarget";
 			};
 
