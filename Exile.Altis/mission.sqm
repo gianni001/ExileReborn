@@ -26,13 +26,14 @@ binarizationWanted=0;
 addons[]=
 {
 	"exile_client",
-	"A3_Ui_F"
+	"A3_Ui_F",
+	"ryanzombiesfunctions"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			className="exile_client";
@@ -44,6 +45,12 @@ class AddonsMetaData
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
+		};
+		class Item2
+		{
+			className="ryanzombiesfunctions";
+			name="ryanzombiesfunctions";
+			author="Ryan";
 		};
 	};
 };
