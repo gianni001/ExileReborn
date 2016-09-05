@@ -21,7 +21,7 @@ if (_chance >= random 100) then
 			if ((count _nearZombies) > 0) exitWith {};
 			_positionsToSpawn = _x buildingPos -1;
 
-			["spawnZombiesNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
+			["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
 		};
 	} forEach _buildings;	
 };	
