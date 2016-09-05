@@ -13,15 +13,17 @@ if (ExileReborn_playerIsInfected) then {_chance = _chance + 40;};
 
 if (_chance >= random 100) then
 {
-	_buildings = player nearObjects ["Building", 600];
+	_buildings = player nearObjects ["Building", 300];
 	{
 		if !(_buildings isEqualTo []) then 
 		{
 			_nearZombies = getPos _x nearEntities [_zombies,50];
 			if ((count _nearZombies) > 0) exitWith {};
 			_positionsToSpawn = _x buildingPos -1;
-
-			["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
+			if (random 1 > 0.8) then
+			{	
+				["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
+			};	
 		};
-	} forEach _buildings;	
+	} forEach _buildings;
 };	
