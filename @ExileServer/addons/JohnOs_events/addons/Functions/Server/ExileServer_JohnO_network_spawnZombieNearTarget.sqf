@@ -83,7 +83,12 @@ _group = createGroup WEST;
 					_killingPlayer call ExileServer_object_player_sendStatsUpdate;	
 				}
 			];
-
+			_unit addEventHandler
+			["FiredNear",
+				{
+					_this spawn JohnO_zombie_eventOnFiredNear;
+				}
+			];
 			[_unit] spawn JohnO_fnc_zombieIdleBehaviour;
 		};
 	};	

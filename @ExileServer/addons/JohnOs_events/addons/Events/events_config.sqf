@@ -254,6 +254,7 @@ ExileServer_JohnO_network_spawnZombieNearTarget = compileFinal preprocessFileLin
 JohnO_fnc_zombieIdleBehaviour = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieIdleBehaviour.sqf";
 JohnO_fnc_zombieLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
 JohnO_fnc_findZombieTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_findZombieTarget.sqf";
+JohnO_zombie_eventOnFiredNear = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_zombie_eventOnFiredNear.sqf";
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";

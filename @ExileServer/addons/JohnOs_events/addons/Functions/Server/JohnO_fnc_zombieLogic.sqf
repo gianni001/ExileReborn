@@ -24,7 +24,6 @@ _x = 0.5 + random 1;
 sleep _x;
 if !(isnil "ryanzombiesglow") then {_zombie setface format ["%1_glowing",face _zombie];};
 
-if !(isnil "ryanzombiesdisablescript") exitwith {};
 if (isnil "Ryanzombieslimit") then {Ryanzombieslimit = 10000};
 if (isnil "Ryanzombieshealth") then {Ryanzombieshealth = 0.7};
 if !(isnil "Ryanzombiesinvincible") then {_zombie allowdammage false};
@@ -65,11 +64,11 @@ if ((_class == "Ryanzombiesspider") && !(isnil "ryanzombiesmovementspeedspider")
 if ((_class == "Ryanzombiescrawler") && !(isnil "ryanzombiesmovementspeedcrawler")) then {_zombie setAnimSpeedCoef ryanzombiesmovementspeedcrawler;};
 if ((_class == "Ryanzombieswalker") && !(isnil "ryanzombiesmovementspeedwalker")) then {_zombie setAnimSpeedCoef ryanzombiesmovementspeedwalker;};
 
-
 scopename "start";
 while {true} do
 {
 	scopename "loop";
+	if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) exitWith {};
 	if !(alive _zombie) exitwith
 	{
 		if (isnull _zombie) exitwith
@@ -110,14 +109,15 @@ while {true} do
 		scopename "findtarget";
 		while {true} do
 		{
-			if !(alive _zombie) then {breakTo "loop"};
+			if !(alive _zombie) then {breakTo "loop"};	
+			if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) then {breakTo "loop"};	
 			/*
 			_target = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]) select 0;
 			if ((count _target) <= 0) then
 			{
 				_target = [];
 			};
-			*/	
+			*/
 			_target = [_zombie] call JohnO_fnc_findZombieTarget; // New function not in use.
 			if !(_target isEqualTo []) then
 			{
