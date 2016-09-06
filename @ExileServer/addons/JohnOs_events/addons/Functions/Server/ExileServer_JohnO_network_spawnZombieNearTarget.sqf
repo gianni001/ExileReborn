@@ -69,6 +69,7 @@ _group = createGroup WEST;
 					_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
 					Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; 
+					Event_IdleZombieArray = Event_IdleZombieArray - [_killed]; 
 
 					_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
 					_amountEarned = 25;
@@ -89,7 +90,8 @@ _group = createGroup WEST;
 					_this spawn JohnO_zombie_eventOnFiredNear;
 				}
 			];
-			[_unit] spawn JohnO_fnc_zombieIdleBehaviour;
+			//[_unit] spawn JohnO_fnc_zombieIdleBehaviour;
+			Event_IdleZombieArray pushBack _unit;
 		};
 	};	
 } forEach _positions;

@@ -7,6 +7,14 @@ Event_DEBUG_Location = [14482.4,5879.49,0];
 Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
 
+/** Zombie stuff **/
+
+Event_IdleZombieArray = [];
+Event_lastMoan = time;
+Event_moanCD = 15;
+
+/** Storm stuff**/
+
 Event_lightningSpawnInterval = 1800;
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
@@ -276,6 +284,8 @@ if !(Event_SINGLEPLAYER_debug) then
 	[Event_HeadHunterAI_Interval_Actual, JohnO_fnc_spawnHeadHunters, [], true] call ExileServer_system_thread_addtask;
 
 	[Event_lightningSpawnInterval, JohnO_fnc_spawnStormEvent, [], true] call ExileServer_system_thread_addtask;
+
+	[2, JohnO_fnc_zombieIdleBehaviour, [], true] call ExileServer_system_thread_addtask;
 
 	[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
 };	

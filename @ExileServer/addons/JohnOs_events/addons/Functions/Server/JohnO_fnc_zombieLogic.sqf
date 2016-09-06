@@ -64,11 +64,17 @@ if ((_class == "Ryanzombiesspider") && !(isnil "ryanzombiesmovementspeedspider")
 if ((_class == "Ryanzombiescrawler") && !(isnil "ryanzombiesmovementspeedcrawler")) then {_zombie setAnimSpeedCoef ryanzombiesmovementspeedcrawler;};
 if ((_class == "Ryanzombieswalker") && !(isnil "ryanzombiesmovementspeedwalker")) then {_zombie setAnimSpeedCoef ryanzombiesmovementspeedwalker;};
 
+_timeToDormant = 60;
+_lastTargetCheck = time;
+_returnHome = false;
+_isHome = false;
+
 scopename "start";
 while {true} do
 {
 	scopename "loop";
 	if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) exitWith {};
+	if (_isHome) exitWith {Event_IdleZombieArray pushBack _zombie;};	
 	if !(alive _zombie) exitwith
 	{
 		if (isnull _zombie) exitwith
@@ -99,10 +105,55 @@ while {true} do
 
 	_zombie setFormDir random 360;
 	if (isnil "ryanzombiesdisablemoaning") then {_Moan = selectRandom _MoanArray; [_zombie, format ["%1",_Moan]] remoteExecCall ["say3d"];};
-	if !(isnil "Ryanzombieslogicroam") then {if !(local _zombie) then {[_zombie, [(getposATL _zombie select 0) + random 15 - random 15, (getposATL _zombie select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove [(getposATL _zombie select 0) + random 15 - random 15, (getposATL _zombie select 1) + random 15 - random 15]};};
+	if !(isnil "Ryanzombieslogicroam") then 
+	{
+		if !(local _zombie) then 
+		{
+			[_zombie, [(getposATL _zombie select 0) + random 15 - random 15, (getposATL _zombie select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]
+		} 
+		else 
+		{
+			_zombie domove [(getposATL _zombie select 0) + random 15 - random 15, (getposATL _zombie select 1) + random 15 - random 15]
+		};
+	};
 	if !(isnil "ryanzombieswaypoint") then {if !(local _zombie) then {[_zombie, [(getposATL ryanzombieslogicwaypoint select 0) + random 15 - random 15, (getposATL ryanzombieslogicwaypoint select 1) + random 15 - random 15]] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove [(getposATL ryanzombieslogicwaypoint select 0) + random 15 - random 15, (getposATL ryanzombieslogicwaypoint select 1) + random 15 - random 15]};};
 	_a = 0;
 	_b = 5 + random 3;
+
+	if (_returnHome) then
+	{	
+		while {_returnHome} do
+		{
+			_target = [_zombie] call JohnO_fnc_findZombieTarget;
+			if ((_target isEqualTo []) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && (alive _zombie)) then
+			{	
+				if !(local _zombie) then 
+				{
+					[_zombie, (_zombie getVariable ["ExileReborn_zombie_originalPos",-1])] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
+					//hint "Zombie is returning home";
+				} 
+				else 
+				{
+					_zombie domove (_zombie getVariable ["ExileReborn_zombie_originalPos",-1]);
+					//hint "Zombie is returning home";
+				};
+				if (_zombie distance (_zombie getVariable ["ExileReborn_zombie_originalPos",-1]) < 2) then
+				{
+					_returnHome = false;
+					_isHome = true;
+					//hint "Zombie has made it home";
+					breakTo "loop";
+				};	
+			}
+			else
+			{
+				//hint "Zombie has found a target on his way home";
+				_returnHome = false;
+				_lastTargetCheck = time;
+			};
+			uiSleep 1;	
+		};
+	};		
 
 	while {true} do
 	{
@@ -110,7 +161,9 @@ while {true} do
 		while {true} do
 		{
 			if !(alive _zombie) then {breakTo "loop"};	
-			if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) then {breakTo "loop"};	
+			if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) then {breakTo "loop"};
+
+			if (time - _timeToDormant >= _lastTargetCheck) then	{_returnHome = true; /*hint "Breaking to loop";*/ breakTo "loop";};
 			/*
 			_target = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]) select 0;
 			if ((count _target) <= 0) then
@@ -121,6 +174,8 @@ while {true} do
 			_target = [_zombie] call JohnO_fnc_findZombieTarget; // New function not in use.
 			if !(_target isEqualTo []) then
 			{
+				_lastTargetCheck = time;
+
 				if (((getPosATL _target select 2) > 20) AND (_target iskindof "AIR")) exitwith {sleep 2};
 				if (animationState _zombie == "UNCONSCIOUS") exitwith {sleep 2};
 				if (_zombie distance _target > Ryanzombieslimit) exitwith {sleep 2};

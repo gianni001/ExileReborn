@@ -7,14 +7,14 @@ if ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) the
 {	
 	_zombie setVariable ["ExileReborn_zombie_hardTarget",1];
 	_timer = 0;
+	Event_IdleZombieArray = Event_IdleZombieArray - [_zombie];
 	while {true} do
 	{	
 		if !(alive _zombie) exitWith {};
 		if (((_zombie distance _firer) < 10) || (_timer > 30)) exitWith
 		{
 			_zombie setVariable ["ExileReborn_zombie_hardTarget",-1];
-			sleep 1;
-			[_zombie] spawn JohnO_fnc_zombieLogic.sqf;
+			[_zombie] spawn JohnO_fnc_zombieLogic;
 		};	
 		if !(local _zombie) then {[_zombie, getposATL _firer] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove getposATL _firer};
 		if (surfaceIsWater getposATL _firer) then {[_zombie, "AmovPercMwlkSnonWnonDf"] remoteExecCall ["fnc_RyanZombies_PlayMoveNow"]};
