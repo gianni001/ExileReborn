@@ -53,6 +53,7 @@ _group = createGroup WEST;
 			
 			_unit setVariable ["JohnO_RoaminAI",time + 1200];
 			_unit setVariable ["ExileMoney",_money,true];
+			_unit setVariable ["ExileReborn_zombie_originalPos",_x];
 			Event_ALLAI_SimulatedUnits pushBack _unit;
 			
 			_unit addMPEventHandler 
