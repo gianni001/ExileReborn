@@ -2,7 +2,7 @@ private ["_spawnCenter","_min","_max","_mindist","_water","_shoremode","_landPos
 
 if ((Event_HeliCrash_Count < Event_HeliCrash_MaxEvents) && (random 1 > 0.3)) then
 {
-	_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+	_spawnCenter = Event_world_centerPosition;
 	_min = Event_HeliCrash_Min;
 	_max = Event_HeliCrash_MaxDist;
 	_mindist = Event_HeliCrash_MinDist;

@@ -1,4 +1,4 @@
-private ["_text","_introText","_introTextToDisplay1","_introTextToDisplay2","_introTextToDisplay3"];
+private ["_text","_introText","_introTextToDisplay1","_introTextToDisplay2","_introTextToDisplay3","_worldName"];
 
 waitUntil{!isNull (findDisplay 46)}; 
 
@@ -15,10 +15,26 @@ uiSleep 15;
 uiSleep 10;
 
 _text = format ["%1/%2/%3 - %4",date select 0, date select 1, date select 2,[daytime] call BIS_fnc_timeToString];
+_worldName = "";
+switch (toLower worldName) do
+{
+	case "altis":
+	{
+		_worldName = "ALTIS";
+	};
+	case "esseker":
+	{
+		_worldName = "ESSEKER";
+	};
+	case "tanoa":
+	{
+		_worldName = "TANOA";
+	};
+};
 
 [
 	[
-		["ALTIS","<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>", 20], 
+		[_worldName,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>", 20], 
 		[_text, "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>",20], 
 		["Winter..", "<t align = 'center' shadow = '1' size = '1.0'>%1</t>",20]
 	] , 0, 0.5, "<t align = 'center' shadow = '1' size = '1.0'>%1</t>"

@@ -108,7 +108,7 @@ _vehicleArray =
 				_foundSafePos = false;
 				waitUntil //Loop the script until _foundRoad = true;
 				{
-					_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition"); //Center of your map 
+					_spawnCenter = Event_world_centerPosition; 
 					_min = 15; // minimum distance from the center position (Number) in meters
 					_max = 30000; // maximum distance from the center position (Number) in meters
 					_mindist = 5; // minimum distance from the nearest object (Number) in meters, ie. spawn at least this distance away from anything within x meters..

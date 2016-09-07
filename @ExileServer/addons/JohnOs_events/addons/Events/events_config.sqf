@@ -3,9 +3,44 @@
 /////////////////////
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
-Event_DEBUG_Location = [14482.4,5879.49,0];
+Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
+Event_world_size = 0;
+
+switch (toLower worldName) do
+{
+	case "altis":
+	{
+		Event_DEBUG_Location = [14482.4,5879.49,0];
+		Event_world_size = 30000;
+		Event_world_centerPosition = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+
+		Event_RadAI_SpawnLocations = 
+		[
+			// Ghost hotel
+			[22150.9,21125,0],[21793,20884.1,0],[21781.4,21084.1,0],[22055.8,20882.1,0],
+			// Cap strigla
+			[28336.5,25675,0],[28271.4,25748.3,0],[28150.5,25658,0],[28332.1,25802.2,0]
+		];
+	};
+	case "esseker":
+    {
+        Event_DEBUG_Location = [196.887,354.436,0];
+        Event_world_size = 4000;
+        Event_world_centerPosition = [6049.26,6239.63,0];
+
+        Event_RadAI_SpawnLocations = 
+        [
+            // Novi Grad
+            [11854.8,7837.71,0],[11928.2,7939.78,0],[11813.9,8023.99,0]
+        ];
+    };
+	case "tanoa":
+	{
+		//Todo
+	};
+};
 
 /** Zombie stuff **/
 
@@ -67,7 +102,7 @@ Event_AirPatrol_EnableDebug = false;
 /** Air Patrol safe pos settings **/
 
 Event_AirPatrol_Min = 5; 															// Minimum distance from center position in meters
-Event_AirPatrol_MaxDist = 25000; 													// Maximum position from center position in meters	
+Event_AirPatrol_MaxDist = Event_world_size; 										// Maximum position from center position in meters	
 Event_AirPatrol_MinDist = 10; 														// Minimum distance from objects		
 Event_AirPatrol_WaterMode = 0; 														// 1 - Pos will be on water 0 - Pos will be on land
 Event_AirPatrol_ShoreMode = 0; 														// 1 - Pos will be on a shoreline 0 - Pos will not be on a shoreline 
@@ -99,7 +134,7 @@ Event_SupplyDrop_maxPersistentArmoured = 2; 										// The server will only pa
 /** Supply drop Safe Pos settings **/
 
 Event_SupplyDrop_Min = 5; 															// Minimum distance from center position in meters
-Event_SupplyDrop_MaxDist = 25000;													// Maximum position from center position in meters	
+Event_SupplyDrop_MaxDist = Event_world_size;										// Maximum position from center position in meters	
 Event_SupplyDrop_MinDist = 10; 														// Minimum distance from objects		
 Event_SupplyDrop_WaterMode = 0; 													// 1 - Pos will be on water 0 - Pos will be on land
 Event_SupplyDrop_ShoreMode = 0; 													// 1 - Pos will be on a shoreline 0 - Pos will not be on a shoreline 
@@ -120,7 +155,7 @@ Event_HeliCrash_Positions = [];
 /** HeliCrash safe pos settings **/
 
 Event_HeliCrash_Min = 5; 															// Minimum distance from center position in meters
-Event_HeliCrash_MaxDist = 25000;													// Maximum position from center position in meters	
+Event_HeliCrash_MaxDist = Event_world_size;											// Maximum position from center position in meters	
 Event_HeliCrash_MinDist = 10; 														// Minimum distance from objects		
 Event_HeliCrash_WaterMode = 0; 														// 1 - Pos will be on water 0 - Pos will be on land
 Event_HeliCrash_ShoreMode = 0; 														// 1 - Pos will be on a shoreline 0 - Pos will not be on a shoreline 
@@ -130,15 +165,7 @@ Event_HeliCrash_MarkerText = "Crash Site";											// Marker text at crash sit
 Event_HeliCrash_MarkerDuration = 1800; 											    // Time the event will last
 Event_HeliCrash_timeStamp = diag_tickTime;
 
-/** Island AI **/
-
-Event_RadAI_SpawnLocations = 
-[
-	// Ghost hotel
-	[22150.9,21125,0],[21793,20884.1,0],[21781.4,21084.1,0],[22055.8,20882.1,0],
-	// Cap strigla
-	[28336.5,25675,0],[28271.4,25748.3,0],[28150.5,25658,0],[28332.1,25802.2,0]
-];
+/** AI stuff **/
 
 Event_RadAI_MaxAllowedAI = 30;
 Event_RadAI_GroupAmountMin = 1;

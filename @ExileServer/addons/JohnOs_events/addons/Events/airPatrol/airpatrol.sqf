@@ -11,7 +11,7 @@ private ["_debugLocation","_startPos","_possiblePosStart","_fixedStart","_fixedS
 /** Random location settings ********************************************************************/
 /************************************************************************************************/
 
-_spawnCenter = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition"); //Center of your map -- this is Altis 
+_spawnCenter = Event_world_centerPosition; //Center of your map -- this is Altis 
 _min = Event_AirPatrol_Min; // minimum distance from the center position (Number) in meters
 _max = Event_AirPatrol_MaxDist; // maximum distance from the center position (Number) in meters
 _mindist = Event_AirPatrol_MinDist; // minimum distance from the nearest object (Number) in meters, ie. create waypoint this distance away from anything within x meters..

@@ -65,8 +65,8 @@ class CfgClans
 
 class CfgXM8
 {
-    extraApps[] = {"ExAd_SB","ExAd_Journal","ExAd_AttachChem","scanTower","treatWounds"};
-
+    extraApps[] = {/*"ExAd_SB",*/"ExAd_Journal","ExAd_AttachChem","scanTower","treatWounds"};
+    /*
     class ExAd_SB
     {
         title = "Statsbar Settings";
@@ -74,10 +74,11 @@ class CfgXM8
         logo = "exile_assets\texture\ui\xm8_app_settings_ca.paa";
         onLoad = "ExAdClient\XM8\Apps\SB_Settings\onLoad.sqf";
     };
+    */
     class ExAd_Journal 
 	{
 		title = "Journal";
-		controlID = 50300;					//IDC:50300 -> 50305 || These need to be unique and out of range from each other
+		controlID = 50400;					//IDC:50300 -> 50305 || These need to be unique and out of range from each other
 		config = "ExadClient\XM8\Apps\Journal\config.sqf";
 		logo = "ExadClient\XM8\Apps\Journal\Icon_Journal.paa";
 		onLoad = "ExAdClient\XM8\Apps\Journal\onLoad.sqf";
@@ -2976,6 +2977,65 @@ class CfgExileEnvironment
 		class Temperature: Temperature
 		{
 			daytimeTemperature[] = {15.93,16.89,18.42,20.40,22.68,25.10,27.48,29.63,31.40,32.66,33.32,33.80,33.80,33.32,32.66,31.40,29.63,27.48,25.10,22.68,20.40,18.42,16.89,15.93,15.93};
+		};
+	};
+	class Esseker: Altis
+	{
+		class FireFlies: FireFlies
+		{
+			enable = 1;
+		};
+
+		class Anomalies: Anomalies
+		{
+			enable = 0;
+		};
+
+		class Breathing: Breathing
+		{
+			enable = 1;
+		};
+
+		class Snow: Snow
+		{
+			enable = 1;
+		};
+
+		class Radiation: Radiation
+		{
+			enable = 1;
+		};
+
+		class Temperature: Temperature
+		{
+			daytimeTemperature[] = 
+			{
+				-6.93, 	//0
+				-5.89,	//1
+				-4.42,	//2
+				-3.40, 	//3
+				-2.68,	//4
+				-1.10,	//5
+				1.48,	//6
+				2.63,	//7
+				3.40,	//8
+				4.66,	//9
+				5.32,	//10
+				6.80,	//11
+				6.80,	//12
+				5.32,	//13
+				4.66,	//14
+				3.40, 	//15
+				2.63,	//16
+				1.48,	//17
+				-1.10,	//18
+				-2.68,	//19
+				-3.40,	//20
+				-4.42,	//21
+				-5.89,	//22
+				-6.93, 	//23
+				-7.93 	//24
+			};
 		};
 	};
 };
