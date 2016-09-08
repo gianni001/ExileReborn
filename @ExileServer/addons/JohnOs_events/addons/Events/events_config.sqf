@@ -290,6 +290,8 @@ JohnO_fnc_zombieIdleBehaviour = compileFinal preprocessFileLineNumbers "JohnOs_e
 JohnO_fnc_zombieLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
 JohnO_fnc_findZombieTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_findZombieTarget.sqf";
 JohnO_zombie_eventOnFiredNear = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_zombie_eventOnFiredNear.sqf";
+JohnO_fnc_createZombieHoard = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_createZombieHoard.sqf";
+JohnO_fnc_hoardLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_hoardLogic.sqf";
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
