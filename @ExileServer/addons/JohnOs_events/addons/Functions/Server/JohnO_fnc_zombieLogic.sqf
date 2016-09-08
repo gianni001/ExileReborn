@@ -112,19 +112,34 @@ while {true} do
 		while {_returnHome} do
 		{
 			_target = [_zombie] call JohnO_fnc_findZombieTarget;
+			_originalPos = _zombie getVariable ["ExileReborn_zombie_originalPos",-1];
+			if (_originalPos isEqualTo- 1) then
+			{
+				_nearBuildings = _zombie nearObjects ["House", 150];
+				if (_nearBuildings isEqualTo []) then
+				{
+					_originalPos = position _zombie;
+				}
+				else
+				{	
+					_building = selectRandom _nearBuildings;
+					_positions = _building buildingPos -1;
+					_originalPos = selectRandom _positions;
+				};	
+			};	
 			if ((_target isEqualTo []) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && (alive _zombie)) then
 			{	
 				if !(local _zombie) then 
 				{
-					[_zombie, (_zombie getVariable ["ExileReborn_zombie_originalPos",-1])] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
+					[_zombie, _originalPos] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"];
 					//hint "Zombie is returning home";
 				} 
 				else 
 				{
-					_zombie domove (_zombie getVariable ["ExileReborn_zombie_originalPos",-1]);
+					_zombie domove _originalPos;
 					//hint "Zombie is returning home";
 				};
-				if (_zombie distance (_zombie getVariable ["ExileReborn_zombie_originalPos",-1]) < 2) then
+				if (_zombie distance _originalPos < 2) then
 				{
 					_returnHome = false;
 					_isHome = true;
