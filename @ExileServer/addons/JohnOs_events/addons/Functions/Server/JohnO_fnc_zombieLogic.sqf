@@ -2,19 +2,6 @@ private ["_target"];
 
 _zombie = _this select 0;
 
-
-_zombie setdammage 0.7;
-_zombie setspeaker "NoVoice";
-_zombie enableFatigue false;
-_zombie setbehaviour "CARELESS";
-_zombie setunitpos "UP";
-_zombie setmimic "safe";
-
-_facearray = ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5", "RyanZombieFace6"];
-_face = selectRandom _facearray;
-_zombie setface _face;
-removegoggles _zombie;
-
 _group = group _zombie;
 _group setCombatMode "BLUE";
 _group allowFleeing 0;

@@ -50,6 +50,18 @@ _group = createGroup WEST;
 			_money = 10 + floor (random 30);
 
 			_unit = _group createUnit [_unitType,_x,[],0,"NONE"];
+
+			_unit setdammage 0.7;
+			_unit setspeaker "NoVoice";
+			_unit enableFatigue false;
+			_unit setbehaviour "CARELESS";
+			_unit setunitpos "UP";
+			_unit setmimic "safe";
+
+			_facearray = ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5", "RyanZombieFace6"];
+			_face = selectRandom _facearray;
+			_unit setface _face;
+			removegoggles _unit;
 			
 			_unit setVariable ["JohnO_RoaminAI",time + 1200];
 			_unit setVariable ["ExileMoney",_money,true];
