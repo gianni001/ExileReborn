@@ -27,5 +27,5 @@ class ExAd
 	#include "Grinding\CfgFunctions.cpp"
 	//#include "HaloParachute\CfgFunctions.cpp"	
 	#include "XM8\CfgFunctions.cpp"	
-	#include "StatsBar\CfgFunctions.cpp"	
+	//#include "StatsBar\CfgFunctions.cpp"	
 };

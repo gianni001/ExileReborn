@@ -343,3 +343,6 @@ switch (toLower worldName) do
 
 setTerrainGrid 3.125;
 setViewDistance 1500;
+
+_bul = [] execVM "addons\blowout\module\blowout_server.sqf";
+diag_log "BLOWOUT SERVER - Loading";

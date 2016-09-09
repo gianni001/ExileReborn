@@ -85,10 +85,24 @@ class CfgRemoteExec
 		jip=0;
 	};
 };
+class RscTextNS
+{
+    idc = -1;
+    type = 0;
+    style = 2;
+    LineSpacing = 1.0;
+    h = 0.04;
+    ColorBackground[] = {1,1,1,0.2};
+    ColorText[] = {0.1,0.1,0.1,1};
+    font = "BitStream";
+    SizeEx = 0.025;
+
+};
 class RscTitles
 {
-	//#include "logo.hpp"
+	#include "logo.hpp"
     #include "ExAdClient\RscTitles.cpp"
+    #include "blowout_rsc.cpp"
 };
 class CfgNetworkMessages
 {

@@ -31,7 +31,7 @@ else
 			{	
 				["<t color='#4d4dff' font='OrbitronLight' size ='.6'>I am starting to freeze</t>",(safezoneX + safezoneW) - 520 * pixelW - 60 * pixelW,(safezoneY + safezoneH) - 128 * pixelH - 60 * pixelH,10,1,0,789] spawn BIS_fnc_dynamicText;
 				enableCamShake true;
-				addCamShake [5, 2, 30];
+				addCamShake [1, 2, 30];
 			}
 			else
 			{
@@ -39,7 +39,7 @@ else
 				{
 					["<t color='#1a1aff' font='OrbitronLight' size ='.6'>I am freezing</t>",(safezoneX + safezoneW) - 520 * pixelW - 60 * pixelW,(safezoneY + safezoneH) - 128 * pixelH - 60 * pixelH,10,1,0,789] spawn BIS_fnc_dynamicText;
 					enableCamShake true;
-					addCamShake [5, 4, 30];
+					addCamShake [3, 4, 30];
 				};	
 			};	
 		};	

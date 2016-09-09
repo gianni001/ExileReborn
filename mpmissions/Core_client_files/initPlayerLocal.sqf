@@ -126,9 +126,10 @@ switch (toLower worldName) do
         //Todo
     };
 };
- 
-   
- 
+
+[] execVM "logo.sqf";    
+
 /**/
- 
+
 [] execVM "Client_scriptsAndFunctions\initClient.sqf";
+_bul = [] execVM "addons\blowout\module\blowout_client.sqf";
