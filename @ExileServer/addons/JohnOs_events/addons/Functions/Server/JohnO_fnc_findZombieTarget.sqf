@@ -1,11 +1,23 @@
-private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget"];
+private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget","_validTargets"];
 
 _zombie = _this select 0;
+
+_validTargets =
+[
+	"Exile_Unit_Player",
+	"O_G_Soldier_F",
+	"O_recon_medic_F",
+	"O_Soldier_lite_F",
+	"O_Soldier_GL_F",
+	"O_Soldier_A_F",
+	"O_Soldier_lite_F"
+];
 
 _potentialTargets_crouched = [];
 _potentialTargets_standing = [];
 
-_targets = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]);
+//_targets = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]);
+_targets = (getPos _zombie nearEntities [_validTargets,50]);
 
 // Populate the array
 

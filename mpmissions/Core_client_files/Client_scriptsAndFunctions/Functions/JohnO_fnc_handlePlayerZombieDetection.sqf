@@ -13,7 +13,7 @@ if (ExileReborn_playerIsInfected) then {_chance = _chance + 40;};
 
 if (_chance >= random 100) then
 {
-	_buildings = player nearObjects ["Building", 300];
+	_buildings = player nearObjects ["House", 300];
 	{
 		if !(_buildings isEqualTo []) then 
 		{

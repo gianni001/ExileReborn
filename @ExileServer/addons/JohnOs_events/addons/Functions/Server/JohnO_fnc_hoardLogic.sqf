@@ -3,6 +3,11 @@ private ["_target"];
 _zombie = _this select 0;
 _positionEnd = _zombie getVariable ["ExileReborn_hoardEnd",-1];
 
+if (_positionEnd isEqualTo -1) then
+{
+	_positionEnd = [] call JohnO_fnc_findSafeTownPosition;
+};	
+
 _group = group _zombie;
 _group setCombatMode "BLUE";
 _group allowFleeing 0;

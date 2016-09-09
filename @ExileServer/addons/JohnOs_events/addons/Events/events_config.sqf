@@ -8,6 +8,11 @@ Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
 Event_world_size = 0;
 
+_trg = createTrigger ["EmptyDetector", [0,0,0]];
+_trg setTriggerArea [5, 5, 0, true];
+_trg setTriggerActivation ["ANY", "NOT PRESENT", true];
+_trg setTriggerStatements ["this", "{_x enableSimulation False} forEach nearestObjects [thistrigger,['land_fs_feed_f','Land_FuelStation_Feed_F'],100000]",""];
+
 switch (toLower worldName) do
 {
 	case "altis":
@@ -47,6 +52,8 @@ switch (toLower worldName) do
 Event_IdleZombieArray = [];
 Event_lastMoan = time;
 Event_moanCD = 15;
+Event_zombieHoard_lastActivated = time;
+Event_zombieHoard_coolDown = 900;
 
 /** Storm stuff**/
 
@@ -292,6 +299,7 @@ JohnO_fnc_findZombieTarget = compileFinal preprocessFileLineNumbers "JohnOs_even
 JohnO_zombie_eventOnFiredNear = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_zombie_eventOnFiredNear.sqf";
 JohnO_fnc_createZombieHoard = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_createZombieHoard.sqf";
 JohnO_fnc_hoardLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_hoardLogic.sqf";
+JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_spawnZombieHoardEvent.sqf";
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
@@ -315,6 +323,7 @@ if !(Event_SINGLEPLAYER_debug) then
 	[Event_lightningSpawnInterval, JohnO_fnc_spawnStormEvent, [], true] call ExileServer_system_thread_addtask;
 
 	[2, JohnO_fnc_zombieIdleBehaviour, [], true] call ExileServer_system_thread_addtask;
+	[30, JohnO_fnc_spawnZombieHoardEvent, [], true] call ExileServer_system_thread_addtask;
 
 	[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
 };	
