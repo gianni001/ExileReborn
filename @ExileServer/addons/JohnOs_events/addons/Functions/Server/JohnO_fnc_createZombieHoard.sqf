@@ -24,7 +24,7 @@ _positionArray = [];
 _validObjects = ["land_fs_feed_f","Land_FuelStation_Feed_F"];
 _validPlayerArray = [];
 {
-	_buildings = nearestObjects [_x,_validObjects, 20];
+	_buildings = nearestObjects [_x,_validObjects, 75];
 
 	if !(_buildings isEqualTo []) then
 	{
