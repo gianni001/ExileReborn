@@ -100,7 +100,6 @@ class RscTextNS
 };
 class RscTitles
 {
-	#include "logo.hpp"
     #include "ExAdClient\RscTitles.cpp"
     #include "blowout_rsc.cpp"
 };

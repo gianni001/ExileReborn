@@ -127,8 +127,6 @@ switch (toLower worldName) do
     };
 };
 
-[] execVM "logo.sqf";    
-
 /**/
 
 [] execVM "Client_scriptsAndFunctions\initClient.sqf";
