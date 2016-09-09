@@ -2750,14 +2750,14 @@ class CfgSettings
 
 		class Cloudy
 		{
-			fogValue = 0.2;
-			fogDecay = 0.1;
-			fogBase = 5;
+			fogValue = 0.5;
+			fogDecay = 0.2;
+			fogBase = 20;
 			overcast = 0.6;
 			waves = 0.4;
 			wind = 0.25;
 			gusts = 0.5;
-			rain = 0.1;
+			rain = 0.5;
 			lightnings = 0.1;
 			rainbows = 1;
 		};
@@ -2766,12 +2766,12 @@ class CfgSettings
 		{
 			fogValue = 0.7;
 			fogDecay = 0.2;
-			fogBase = 5;
+			fogBase = 20;
 			overcast = 1;
 			waves = 1;
 			wind = 0.25;
 			gusts = 0.5;
-			rain = 0.4;
+			rain = 1;
 			lightnings = 1;
 			rainbows = 0.5;
 		};
@@ -2883,7 +2883,7 @@ class CfgSettings
 		/*
 			A list of events that are active
 		*/
-		enabledEvents[] = {"AmbientFlyOver", "EarthQuake"}; 
+		enabledEvents[] = {"EarthQuake"}; 
 
 		class EarthQuake 
 		{
