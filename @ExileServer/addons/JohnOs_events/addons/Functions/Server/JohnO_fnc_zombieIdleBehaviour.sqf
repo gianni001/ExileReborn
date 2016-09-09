@@ -36,7 +36,6 @@
 	};	
 	if ((alive _zombie) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && (_playerFound)) then
 	{	
-		ryanzombiesdisablescript = nil;
 		if ((_zombie getVariable ["ExileReborn_hoardMember",-1]) isEqualTo -1) then
 		{	
 			[_zombie] spawn JohnO_fnc_zombieLogic;

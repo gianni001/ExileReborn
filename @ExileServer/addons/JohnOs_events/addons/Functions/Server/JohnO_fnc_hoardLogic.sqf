@@ -15,6 +15,7 @@ _group enableAttack false;
 
 _x = 0.5 + random 1;
 sleep _x;
+ryanzombiesglow = 1;
 if !(isnil "ryanzombiesglow") then {_zombie setface format ["%1_glowing",face _zombie];};
 
 if (isnil "Ryanzombieslimit") then {Ryanzombieslimit = 10000};

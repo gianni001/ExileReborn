@@ -14,7 +14,15 @@ if ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) the
 		if (((_zombie distance _firer) < 10) || (_timer > 30)) exitWith
 		{
 			_zombie setVariable ["ExileReborn_zombie_hardTarget",-1];
-			[_zombie] spawn JohnO_fnc_zombieLogic;
+			
+			if ((_zombie getVariable ["ExileReborn_hoardMember",-1]) isEqualTo -1) then
+			{	
+				[_zombie] spawn JohnO_fnc_zombieLogic;
+			}
+			else
+			{
+				[_zombie] spawn JohnO_fnc_hoardLogic;
+			};
 		};	
 		if !(local _zombie) then {[_zombie, getposATL _firer] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove getposATL _firer};
 		if (surfaceIsWater getposATL _firer) then {[_zombie, "AmovPercMwlkSnonWnonDf"] remoteExecCall ["fnc_RyanZombies_PlayMoveNow"]};
