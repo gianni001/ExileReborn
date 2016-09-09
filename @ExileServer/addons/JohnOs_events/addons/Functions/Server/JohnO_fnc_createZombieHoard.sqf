@@ -50,7 +50,7 @@ if !(_validPlayerArray isEqualTo []) then
 	{	
 		_dir = (direction _selectedPlayer) + _x;
 		_pos = getPos player;  
-		_dist = 30; 
+		_dist = 120; 
 		 
 		_pos = (_pos getPos [_dist, _dir] select [0, 2]) + ([[],[_pos select 2]] select (count _pos > 2)); 
 
