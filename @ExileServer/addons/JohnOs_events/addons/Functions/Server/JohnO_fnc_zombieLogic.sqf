@@ -1,6 +1,22 @@
-private ["_target"];
+private ["_target","_originalPos"];
 
 _zombie = _this select 0;
+
+_originalPos = _zombie getVariable ["ExileReborn_zombie_originalPos",-1];
+if (_originalPos isEqualTo -1) then
+{
+	_nearBuildings = _zombie nearObjects ["House", 25];
+	if (_nearBuildings isEqualTo []) then
+	{
+		_originalPos = position _zombie;
+	}
+	else
+	{	
+		_building = selectRandom _nearBuildings;
+		_positions = _building buildingPos -1;
+		_originalPos = (selectRandom _positions);
+	};	
+};
 
 _group = group _zombie;
 _group setCombatMode "BLUE";
@@ -112,21 +128,7 @@ while {true} do
 		while {_returnHome} do
 		{
 			_target = [_zombie] call JohnO_fnc_findZombieTarget;
-			_originalPos = _zombie getVariable ["ExileReborn_zombie_originalPos",-1];
-			if (_originalPos isEqualTo- 1) then
-			{
-				_nearBuildings = _zombie nearObjects ["House", 150];
-				if (_nearBuildings isEqualTo []) then
-				{
-					_originalPos = position _zombie;
-				}
-				else
-				{	
-					_building = selectRandom _nearBuildings;
-					_positions = _building buildingPos -1;
-					_originalPos = selectRandom _positions;
-				};	
-			};	
+			//hint format ["Zombie is moving to %1",_originalPos];
 			if ((_target isEqualTo []) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && (alive _zombie)) then
 			{	
 				if !(local _zombie) then 
@@ -143,6 +145,7 @@ while {true} do
 				{
 					_returnHome = false;
 					_isHome = true;
+					doStop _zombie;
 					//hint "Zombie has made it home";
 					breakTo "loop";
 				};	
