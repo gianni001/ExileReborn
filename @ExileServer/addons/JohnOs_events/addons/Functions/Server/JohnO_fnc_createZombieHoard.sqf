@@ -2,21 +2,6 @@ private ["_positionStart","_positionEnd","_group"];
 
 _civSlow = ["RyanZombieC_man_1slow","RyanZombieC_man_polo_1_Fslow","RyanZombieC_man_polo_2_Fslow","RyanZombieC_man_polo_4_Fslow","RyanZombieC_man_polo_5_Fslow","RyanZombieC_man_polo_6_Fslow","RyanZombieC_man_p_fugitive_Fslow","RyanZombieC_man_w_worker_Fslow","RyanZombieC_man_hunter_1_Fslow"];
 
-/*
-_positionStart = [] call JohnO_fnc_findSafeTownPosition;
-_positionEnd = [] call JohnO_fnc_findSafeTownPosition;
-ryanzombiesdisablescript = true;
-if (_positionStart isEqualTo _positionEnd) then
-{
-	waitUntil 
-	{
-		_positionStart = [] call JohnO_fnc_findSafeTownPosition;
-		_positionEnd = [] call JohnO_fnc_findSafeTownPosition;
-
-	 	!_positionStart isEqualTo _positionEnd
-	};
-};	
-*/
 
 ryanzombiesdisablescript = true;
 
@@ -51,7 +36,7 @@ if !(_validPlayerArray isEqualTo []) then
 		
 	{	
 		_dir = (direction _selectedPlayer) + _x;
-		_pos = getPos player;  
+		_pos = getPos _selectedPlayer;  
 		_dist = 120; 
 		 
 		_pos = (_pos getPos [_dist, _dir] select [0, 2]) + ([[],[_pos select 2]] select (count _pos > 2)); 
