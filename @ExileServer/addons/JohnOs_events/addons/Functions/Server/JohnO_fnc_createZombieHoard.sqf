@@ -20,6 +20,8 @@ if (_positionStart isEqualTo _positionEnd) then
 
 ryanzombiesdisablescript = true;
 
+_endPosition = [] call JohnO_fnc_findSafeTownPosition;
+
 _positionArray = [];
 _validObjects = ["land_fs_feed_f","Land_FuelStation_Feed_F"];
 _validPlayerArray = [];
@@ -66,7 +68,7 @@ if !(_validPlayerArray isEqualTo []) then
 			_unit = _group createUnit [_unitType,_x,[],0,"NONE"];
 			_unit setVariable ["JohnO_RoaminAI",time + 1200];
 			_unit setVariable ["ExileReborn_hoardMember",1];
-			_unit setVariable ["ExileReborn_hoardEnd",[] call JohnO_fnc_findSafeTownPosition];
+			_unit setVariable ["ExileReborn_hoardEnd",_endPosition];
 
 
 			_unit setdammage 0.7;
