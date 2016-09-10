@@ -3632,7 +3632,21 @@ class CfgInteractionMenus
 	        };
 		};
 	};
-
+	class Sleeping
+	{
+		targetType = 2;
+		target = "Exile_Construction_CampFire_Static";
+		class Actions
+		{
+			// Sleeping mat
+	        class sleep : ExileAbstractAction
+	        {
+	            title = "Set up sleeping mat";
+	            condition = "('Exile_Item_SleepingMat' in (magazines player))";
+	            action = "hint 'Coming soon'";
+	        };
+	    };    
+    };    
 	/*
 		Tent, Storage crate etc.
 	*/
