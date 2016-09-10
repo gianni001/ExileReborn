@@ -1043,7 +1043,7 @@ class Mission
 	};
 class Markers
 	{
-		items=16;
+		items=17;
 		class Item0
 		{
 			position[]={8071.92,0,6415.11};
@@ -1182,7 +1182,14 @@ class Markers
 			name="ConcreteMixerZoneDanilovIcon";
 			text="";
 			type="ExileConcreteMixerZoneIcon";
-		};		
+		};	
+		class Item16
+		{
+			position[]={5729.82,0,5437.14};
+			name="TraderBoat";
+			text="Esseker Marina";
+			type="ExileTraderZoneIcon";
+		};			
 	};
 };
 class Intro
