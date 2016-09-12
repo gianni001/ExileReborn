@@ -1,10 +1,12 @@
-private ["_text","_introText","_introTextToDisplay1","_introTextToDisplay2","_introTextToDisplay3","_worldName"];
+private ["_text","_introText","_introTextToDisplay1","_introTextToDisplay2","_introTextToDisplay3","_worldName","_season","_seasonInfo"];
 
 waitUntil{!isNull (findDisplay 46)}; 
 
 uiSleep 15;
 
 _level = [ExileClientPlayerScore] call JohnO_fnc_getRespectTier;
+_seasonInfo = [(date select 1)] call JohnO_fnc_getCurrentSeason;
+_season = (_seasonInfo select 1);
 
 [parseText format["<t size='0.6'font='OrbitronLight' color='#ffffff'>Welcome %1</t><br/><t size='0.6'font='OrbitronLight' color='#908EAA'>Your respect level is %2</t><br/><t size='0.5'font='OrbitronLight' color='#ffffff'>The more respect you have, the higher your wage income, the stronger your character</t>",name player,_level],0,1,10,0] spawn bis_fnc_dynamictext;
 
@@ -36,7 +38,7 @@ switch (toLower worldName) do
 	[
 		[_worldName,"<t align = 'center' shadow = '1' size = '1' font='PuristaBold'>%1</t><br/>", 20], 
 		[_text, "<t align = 'center' shadow = '1' size = '1.0'>%1</t><br/>",20], 
-		["Winter..", "<t align = 'center' shadow = '1' size = '1.0'>%1</t>",20]
+		[_season, "<t align = 'center' shadow = '1' size = '1.0'>%1</t>",20]
 	] , 0, 0.5, "<t align = 'center' shadow = '1' size = '1.0'>%1</t>"
 ] spawn BIS_fnc_typeText;
 

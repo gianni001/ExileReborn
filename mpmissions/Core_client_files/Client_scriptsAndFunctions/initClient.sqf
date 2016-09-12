@@ -56,6 +56,12 @@ JohnO_fnc_repairchopper = compileFinal preprocessFileLineNumbers "Client_scripts
 // Zombies
 JohnO_fnc_handlePlayerZombieDetection = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handlePlayerZombieDetection.sqf";
 
+// Season
+JohnO_fnc_getCurrentSeason = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getCurrentSeason.sqf";
+
+// Rest at fire
+
+JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_restAtFire.sqf";
 
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";

@@ -3636,18 +3636,18 @@ class CfgInteractionMenus
 	        };
 		};
 	};
-	class Sleeping
+	class Resting
 	{
 		targetType = 2;
 		target = "Exile_Construction_CampFire_Static";
 		class Actions
 		{
 			// Sleeping mat
-	        class sleep : ExileAbstractAction
+	        class rest : ExileAbstractAction
 	        {
-	            title = "Set up sleeping mat";
-	            condition = "('Exile_Item_SleepingMat' in (magazines player))";
-	            action = "hint 'Coming soon'";
+	            title = "Rest by fire";
+	            condition = "true";
+	            action = "[] spawn JohnO_fnc_restAtFire";
 	        };
 	    };    
     };    

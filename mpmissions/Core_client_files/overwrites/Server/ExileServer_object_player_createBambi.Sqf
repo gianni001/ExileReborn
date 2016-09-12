@@ -26,11 +26,11 @@ if ((count ExileSpawnZoneMarkerPositions) isEqualTo 0) then
 			_position = call ExileClient_util_world_findCoastPosition;
 		};
 	};
-	if ((toLower worldName) isEqualTo "namalsk") then
+	if ((toLower worldName) isEqualTo "esseker") then
 	{
 		_spawnCenter = [6049.26,6239.63,0];	
-		_min = 4000; 								
-		_max = 12000; 							
+		_min = 2000; 								
+		_max = 6000; 							
 		_mindist = 5; 																
 		_water = 0; 							
 		_shoremode = 0; 						

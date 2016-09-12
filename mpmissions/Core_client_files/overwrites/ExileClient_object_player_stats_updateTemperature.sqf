@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_playerIsInVehicle","_playerVehicle","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence"];
+private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_playerIsInVehicle","_playerVehicle","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence","_season"];
 _timeElapsed = _this;
 _forcedBodyTemperatureChangePerMinute = 0;
 _wetnessChangePerMinute = -0.1;
@@ -25,6 +25,12 @@ _environmentTemperature = _environmentTemperature + overcast * (getNumber (_temp
 _environmentTemperature = _environmentTemperature + rain * (getNumber (_temperatureConfig >> "rain"));
 _environmentTemperature = _environmentTemperature + windStr * (getNumber (_temperatureConfig >> "wind"));
 _environmentTemperature = _environmentTemperature + _altitude / 100 * (getNumber (_temperatureConfig >> "altitude"));
+
+_season = [(date select 1)] call JohnO_fnc_getCurrentSeason;
+
+_fromDayTimeTemperature = _fromDayTimeTemperature + (_season select 0);
+_toDayTimeTemperature = _fromDayTimeTemperature + 1;
+
 if (_isSwimming) then 
 {
 	_environmentTemperature = _environmentTemperature + (getNumber (_temperatureConfig >> "water"));
