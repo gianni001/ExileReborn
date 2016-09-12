@@ -1,14 +1,15 @@
-private ["_timeToClearInfection","_healthPerTick","_sitting","_isSitting","_timer","_failSafe","_fireNearby"];
+private ["_timeToClearInfection","_healthPerTick","_sitting","_isSitting","_timer","_failSafe","_fireNearby","_sittingAnims"];
 
-if !(isNil "ExileReborn_playerIsResting") then
+if (isNil "ExileReborn_playerIsResting") then
 {
 	ExileReborn_playerIsResting = false;
 };	
 
+_sittingAnims = ["amovpsitmstpslowwrfldnon","amovpsitmstpsnonwnondnon_ground","amovpsitmstpsnonwnondnon_ground"];
+
 _timeToClearInfection = 30;
 _healthPerTick = 0.01;
 
-player playActionNow "SitDown";
 _sitting = false;
 _isSitting = false;
 _fireNearby = [player, 4] call ExileClient_util_world_isFireInRange;
@@ -18,9 +19,10 @@ _timer = 0;
 
 if (_fireNearby) then
 {
+	player playActionNow "SitDown";
 	waitUntil 
 	{	
-		if (animationState player isEqualTo "amovpsitmstpslowwrfldnon")	then
+		if (animationState player in _sittingAnims)	then
 		{
 			_isSitting = true;
 			_sitting = true;
@@ -33,7 +35,7 @@ if (_fireNearby) then
 		_isSitting	
 	};
 
-	if ((animationState player isEqualTo "amovpsitmstpslowwrfldnon") && !(ExileReborn_playerIsResting)) then
+	if ((animationState player in _sittingAnims) && !(ExileReborn_playerIsResting)) then
 	{	
 		ExileReborn_playerIsResting = true;
 
@@ -56,7 +58,7 @@ if (_fireNearby) then
 
 			player setDamage (damage player - _healthPerTick);
 
-			if (animationState player isEqualTo "amovpsitmstpslowwrfldnon") then
+			if (animationState player in _sittingAnims) then
 			{
 				_sitting = true;
 			}
