@@ -2806,6 +2806,10 @@ class CfgExileCustomCode
     //ExileClient_object_player_network_createPlayerResponse = "overwrites\ExileClient_object_player_network_createPlayerResponse.sqf";
     // Make toasts last longer
     ExileClient_gui_toaster_addToast = "overwrites\ExileClient_gui_toaster_addToast.sqf"; 
+    // EM
+    ExileClient_system_thread_initialize = "overwrites\ExileClient_system_thread_initialize.sqf";
+    // Esseker spawn fix
+    ExileServer_object_player_createBambi = "overwrites\server\ExileServer_object_player_createBambi.sqf";
 
 };
 class CfgExileEnvironment
