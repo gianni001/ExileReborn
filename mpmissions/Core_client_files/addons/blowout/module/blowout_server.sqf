@@ -26,7 +26,10 @@ while {true} do
   _chanceOfStorm = random 1;
 
     diag_log format["[NAC BLOWOUT SERVER] :: Next blowout in _delay (_delay = %1), delay modifier is %2 (ns_blow_delaymod)", _prodleva, ns_blow_delaymod];
-    [format["[NAC BLOWOUT SERVER] :: Next blowout in _delay (_delay = %1), delay modifier is %2 (ns_blow_delaymod)", _prodleva, ns_blow_delaymod]] call MAR_fnc_log;
+    if (useMarmaLoging) then
+    {  
+      [format["[NAC BLOWOUT SERVER] :: Next blowout in _delay (_delay = %1), delay modifier is %2 (ns_blow_delaymod)", _prodleva, ns_blow_delaymod]] call MAR_fnc_log;
+    };  
     sleep _prodleva;
 
   if (_chanceOfStorm > 0.6) then {diag_log format ["NAC: EVR Will procede chance greater then 0.6"];} else {diag_log format ["NAC: EVR Will not occur chance less than 0.6"];}; 
@@ -50,25 +53,37 @@ while {true} do
     ns_blow_prep = true;
     publicVariable "ns_blow_prep";
     diag_log format["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep];
-    [format["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
+    if (useMarmaLoging) then
+    {  
+      [format["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
+    };  
     sleep 290;
     ns_blow_prep = false;
     publicVariable "ns_blow_prep";
     diag_log format["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep];
-    [format["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
+    if (useMarmaLoging) then
+    {  
+      [format["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
+    };  
 
     // main blowout variable - 1 == blowout in progress, 0 == no current blowout
     ns_blow_status = true;
     publicVariable "ns_blow_status";
     diag_log format["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status];
-    [format["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status]] call MAR_fnc_log;
+    if (useMarmaLoging) then
+    {  
+      [format["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status]] call MAR_fnc_log;
+    };  
     sleep 2;
     if (ns_blow_status) then 
     {
       ns_blow_action = true;
       publicVariable "ns_blow_action";
       diag_log format["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action];
-      [format["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action]] call MAR_fnc_log;
+      if (useMarmaLoging) then
+      { 
+        [format["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action]] call MAR_fnc_log;
+      };  
       sleep 10;
 
       _zombieArray =

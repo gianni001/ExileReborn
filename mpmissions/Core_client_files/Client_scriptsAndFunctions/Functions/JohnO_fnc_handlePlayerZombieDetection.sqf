@@ -18,12 +18,11 @@ if (_chance >= random 100) then
 		if !(_buildings isEqualTo []) then 
 		{
 			_nearZombies = getPos _x nearEntities [_zombies,150];
-			if ((count _nearZombies) > 0) exitWith {};
+			_nearPlayers = getPos _x nearEntities ["Exile_Unit_Player",25];
+			if (((count _nearZombies) > 0) || ((count _nearPlayers) > 0)) exitWith {};
 			_positionsToSpawn = _x buildingPos -1;
-			//if (random 1 > 0.8) then
-			//{	
-				["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
-			//};	
+			
+			["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
 		};
 	} forEach _buildings;
 };	

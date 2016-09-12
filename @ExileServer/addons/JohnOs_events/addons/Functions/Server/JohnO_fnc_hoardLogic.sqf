@@ -15,7 +15,6 @@ _group enableAttack false;
 
 _x = 0.5 + random 1;
 sleep _x;
-ryanzombiesglow = 1;
 if !(isnil "ryanzombiesglow") then {_zombie setface format ["%1_glowing",face _zombie];};
 
 if (isnil "Ryanzombieslimit") then {Ryanzombieslimit = 10000};
@@ -108,6 +107,10 @@ while {true} do
 			if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) then {breakTo "loop"};
 			if (time - _timeToDormant >= _lastTargetCheck) then	{_zombieIsDormant = true; /*hint "Breaking to loop";*/ breakTo "loop";};
 			_target = [_zombie] call JohnO_fnc_findZombieTarget; // New function not in use.
+			if (isNil "_target") then
+			{
+				_target = [];
+			};	
 			if !(_target isEqualTo []) then
 			{
 				_lastTargetCheck = time;
@@ -164,6 +167,44 @@ while {true} do
 						_sound = _sound + 1;
 						if (_sound >= 2) then {_sound = 0};
 					};
+				};
+
+				if ((_target iskindof "car") && _zombie distance _target < 7) then
+				{
+					_zombie setdir (_zombie getDir _target);
+					[_zombie, "AwopPercMstpSgthWnonDnon_throw"] remoteExecCall ["fnc_RyanZombies_SwitchMove"];
+
+					_pos = getposATL _target;
+					_dir = ((_pos select 0) - (getpos _zombie select 0)) atan2 ((_pos select 1) - (getpos _zombie select 1));
+					if (speed _target < 5) then {_zombie setpos [(_pos select 0) - 4*sin _dir, (_pos select 1) - 4*cos _dir]};
+
+					_Attack = selectRandom _AttackArray;
+					playsound3d [format ["%1",_Attack], _zombie, false, getPosASL _zombie, 1, _soundpitch];
+
+					_target allowfleeing 1;
+					sleep 0.3;
+					if (_zombie distance _target < 7 && (alive _zombie)) then
+					{
+						_count = count (getAllHitPointsDamage _target select 0);
+						_index = 0;
+						_damage = random Ryanzombiesdamagecar;
+
+						while {_count > _index} do
+						{
+							if ((getAllHitPointsDamage _target select 0) select _index != "HitFuel") then {[_target, [_index,(_target getHitIndex _index)+_damage]] remoteExecCall ["fnc_RyanZombies_SetHitIndex"]};
+							_index = _index + 1;
+						};
+
+						if ((getnumber (configfile >> "CfgVehicles" >> typeof _target >> "armor")) < 90) then {if !(canmove _target) then {{if (random 10 < 1) then {_Scream = selectRandom _ScreamArray; [_x, format ["%1",_Scream]] remoteExecCall ["say3d"]}} foreach crew _target; if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then {{[_x,'vehNormal'] execVM "\ryanzombies\acedamage.sqf"} foreach crew _target} else {{_x setdamage (damage _x + Ryanzombiesdamage/25)} foreach crew _target};};};
+
+						_VehicleHit = selectRandom _VehicleHitArray;
+						playsound3d [format ["%1",_VehicleHit], _target, false, getPosASL _target, 1, _soundpitch];
+
+						_vel = velocity _target;
+						_dir = direction _zombie;
+						[_target, [(_vel select 0) + (sin _dir * Ryanzombiesdamagecarstrenth), (_vel select 1) + (cos _dir * Ryanzombiesdamagecarstrenth), (_vel select 2) + random 1]] remoteExecCall ["fnc_RyanZombies_Velocity"];
+					};
+					sleep Ryanzombiesattackspeed;
 				};
 
 				_x = (0.5 + ((_zombie distance _target)/50)) min 4;

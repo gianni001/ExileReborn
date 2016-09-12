@@ -1,6 +1,7 @@
-private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget","_validTargets"];
+private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget","_validTargets","_potentialTargets_isVehicle","_potentialTargets_prone"];
 
 _zombie = _this select 0;
+_zombieTarget = [];
 
 _validTargets =
 [
@@ -15,49 +16,86 @@ _validTargets =
 
 _potentialTargets_crouched = [];
 _potentialTargets_standing = [];
+_potentialTargets_prone = [];
 
-//_targets = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]);
+_potentialTargets_isVehicle = [];
+
 _targets = (getPos _zombie nearEntities [_validTargets,50]);
 
 // Populate the array
 
+if ((count _targets) > 0) then
 {
-	if ((count _targets) > 0) then
-	{	
-		if !((stance _x) isEqualTo "PRONE") then
-		{	
-			if ((stance _x) isEqualTo "CROUCH") then
-			{
-				_potentialTargets_crouched pushBack [(_zombie distance _x),_x];
-			};
-			if ((stance _x) isEqualTo "STAND") then
-			{
-				_potentialTargets_standing pushBack [(_zombie distance _x),_x];
-			};	
+	{
+		
+		if (((stance _x) isEqualTo "PRONE") && (_zombie distance _x < 5)) then
+		{
+			_potentialTargets_prone pushBack [(_zombie distance _x),_x];
 		};
-	};	
-} forEach _targets;
+		if ((stance _x) isEqualTo "CROUCH") then
+		{
+			_potentialTargets_crouched pushBack [(_zombie distance _x),_x];
+		};
+		if ((stance _x) isEqualTo "STAND") then
+		{
+			_potentialTargets_standing pushBack [(_zombie distance _x),_x];
+		};	
 
-// Exampple array [[33,player entitie],[44,player entitie]]
+	} forEach _targets;
 
-if !(_potentialTargets_standing isEqualTo []) then
-{
-	_potentialTargets_standing sort true;
-	_zombieTarget = (_potentialTargets_standing select 0) select 1;
+	// Exampple array [[33,player entitie],[44,player entitie]]
+
+	if !(_potentialTargets_standing isEqualTo []) then
+	{
+		_potentialTargets_standing sort true;
+		_zombieTarget = (_potentialTargets_standing select 0) select 1;
+	}
+	else
+	{
+		if !(_potentialTargets_crouched isEqualTo []) then
+		{
+			_potentialTargets_crouched sort true;
+			_zombieTarget = (_potentialTargets_crouched select 0) select 1;
+		}
+		else
+		{
+			if !(_potentialTargets_prone isEqualTo []) then
+			{
+				_zombieTarget = (_potentialTargets_prone select 0) select 1;
+			}
+			else
+			{	
+				_zombieTarget = [];
+			};	
+		};	
+	};
 }
 else
 {
-	if !(_potentialTargets_crouched isEqualTo []) then
+	_targets = nearestObjects [(getPos _zombie), ["Car","Air"],50];
+	if ((count _targets) > 0) then
 	{
-		_potentialTargets_crouched sort true;
-		_zombieTarget = (_potentialTargets_crouched select 0) select 1;
+		{
+			_crew = crew _x;
+			if ((count _crew) > 0) then
+			{	
+				_potentialTargets_isVehicle pushBack [(_zombie distance _x),_x];
+			};	
+		} forEach _targets;
+
+		_potentialTargets_isVehicle sort true;
+		_zombieTarget = (_potentialTargets_isVehicle select 0) select 1;
+		//_zombieTarget = selectRandom (crew _vehicle);
 	}
 	else
 	{
 		_zombieTarget = [];
-	};	
-};
-
+	};
+};	
+if (isNil "_zombieTarget") then
+{
+	_zombieTarget = [];
+};	
 _zombieTarget
 
 
