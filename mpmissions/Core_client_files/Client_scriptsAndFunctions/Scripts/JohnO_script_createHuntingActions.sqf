@@ -93,8 +93,7 @@ ExileReborn_consumeAction =
 	{	
 		if !(_amountLeft <= 0) then
 		{	
-			player addItem "Exile_Item_BeefParts";
-			["Exile_Item_BeefParts"] execVM "JohnO_script_consumeAnimal.sqf"; 
+			["Exile_Item_BeefParts"] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_consumeAnimal.sqf"; 
 			_amountLeft = _amountLeft - 1;
 			_animal setVariable ["AmountLeft",_amountLeft,true];
 		}
@@ -131,6 +130,11 @@ ExileReborn_cookingAction =
 		{	
 			ExileReborn_hasCookingAction = false;
 			_animal setVariable ["AmountLeft",10,true];
+
+			[
+				"InfoTitleAndText", 
+				["Cooking info", "You have started cooking the animal, it will take 1 - 2 minutes to cook"]
+			] call ExileClient_gui_toaster_addTemplateToast;
 
 			[_animal] spawn
 			{
