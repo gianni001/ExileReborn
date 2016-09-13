@@ -91,7 +91,7 @@ ExileReborn_consumeAction =
 	_isCooked =  _animal getVariable ["animalIsCooked",-1];
 	if (_isCooked isEqualTo 1) then
 	{	
-		if !(_amountLeft <= 0) then
+		if (_amountLeft > 0) then
 		{	
 			["Exile_Item_BeefParts"] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_consumeAnimal.sqf"; 
 			_amountLeft = _amountLeft - 1;
@@ -99,6 +99,7 @@ ExileReborn_consumeAction =
 		}
 		else
 		{
+			_animal setVariable ["AmountLeft",-1,true];
 			[
 				"ErrorTitleAndText", 
 				["Consume info", "There is no edible meat left on this animal"]
@@ -123,8 +124,9 @@ ExileReborn_cookingAction =
 	_caller removeAction _action;
 
 	_animal = cursorObject;
+	_alreadyCooked = _animal getVariable ["animalIsCooked",-1];
 
-	if ((_animal getVariable ["AmountLeft",-1]) isEqualTo -1) then
+	if (_alreadyCooked isEqualTo -1) then
 	{	
 		if ([(getPos _animal),3] call ExileClient_util_world_isFireInRange) then
 		{	
