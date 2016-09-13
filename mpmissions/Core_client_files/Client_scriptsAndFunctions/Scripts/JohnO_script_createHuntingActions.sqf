@@ -130,7 +130,6 @@ ExileReborn_cookingAction =
 	{	
 		if ([(getPos _animal),3] call ExileClient_util_world_isFireInRange) then
 		{	
-			ExileReborn_hasCookingAction = false;
 			_animal setVariable ["AmountLeft",10,true];
 
 			[
@@ -152,6 +151,7 @@ ExileReborn_cookingAction =
 					uiSleep 1;
 				};
 				_deadAnimal setVariable ["animalIsCooked",1,true];
+				ExileReborn_hasCookingAction = false;
 			};
 		}
 		else
