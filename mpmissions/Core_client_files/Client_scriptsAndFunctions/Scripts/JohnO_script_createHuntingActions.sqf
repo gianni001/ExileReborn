@@ -27,7 +27,7 @@ ExileReborn_pickUpAction =
 		_caller removeAction _action;
 		ExileReborn_hasPickUpAction = false;
 		player setVariable ["hasAnimal",_animal];
-		_animal attachTo [player, [0, 0, 1] ]; 
+		_animal attachTo [player, [0, -1.5, 0] ];
 		_animalID = netID _animal;
 		//_animal hideObjectGlobal true;
 		["hideObjectGlobal", [_animalID,true]] call ExileClient_system_network_send;
