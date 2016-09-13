@@ -301,6 +301,9 @@ JohnO_fnc_createZombieHoard = compileFinal preprocessFileLineNumbers "JohnOs_eve
 JohnO_fnc_hoardLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_hoardLogic.sqf";
 JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_spawnZombieHoardEvent.sqf";
 
+// hide object function
+ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf";
+
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";

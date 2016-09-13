@@ -19,3 +19,8 @@ class spawnZombieNearTarget
     module = "JohnO";
     parameters[] = {"ARRAY"};
 };
+class hideObjectGlobal
+{
+    module = "JohnO";
+    parameters[] = {"ARRAY","BOOL"};
+};

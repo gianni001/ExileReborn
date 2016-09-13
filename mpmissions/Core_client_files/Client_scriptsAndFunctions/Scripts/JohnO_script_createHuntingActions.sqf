@@ -1,4 +1,4 @@
-private ["_pickUpAction","_consumeAction","_hasPickUpAction","_playerhasCookingAction"];
+private ["_pickUpAction","_consumeAction","_hasPickUpAction","_playerhasCookingAction","_animalID","_deadAnimalID"];
 
 ExileReborn_hasPickUpAction = false;
 ExileReborn_hasConsumeAction = false;
@@ -28,7 +28,9 @@ ExileReborn_pickUpAction =
 		ExileReborn_hasPickUpAction = false;
 		player setVariable ["hasAnimal",_animal];
 		_animal attachTo [player, [0, 0, 1] ]; 
-		_animal hideObjectGlobal true;
+		_animalID = netID _animal;
+		//_animal hideObjectGlobal true;
+		["hideObjectGlobal", [_animalID,true]] call ExileClient_system_network_send;
 		_animal setVariable ["ExileReborn_garbageCollectionIgnore",1,true];
 
 		player addAction ["Drop animal",
@@ -42,7 +44,9 @@ ExileReborn_pickUpAction =
 			if !(_deadAnimal isEqualTo -1) then
 			{
 				detach _deadAnimal;
-				_deadAnimal hideObjectGlobal false;
+				_deadAnimalID = netID _deadAnimal;
+				//_deadAnimal hideObjectGlobal false;
+				["hideObjectGlobal", [_deadAnimalID,false]] call ExileClient_system_network_send;
 				if (_position distance player < 3) then
 				{	
 					_deadAnimal setPos _position;
@@ -74,13 +78,17 @@ ExileReborn_pickUpAction =
 ExileReborn_consumeAction =
 ["Consume",
 {
+
+	private["_animal"];
 	_caller = _this select 0;
 	_action = _this select 2;
 	_caller removeAction _action;
-	ExileReborn_hasConsumeAction = false;
 
-	_amountLeft = cursorObject getVariable ["AmountLeft",-1];
-	_isCooked =  cursorObject getVariable ["animalIsCooked",-1];
+	ExileReborn_hasConsumeAction = false;
+	_animal = cursorObject;
+
+	_amountLeft = _animal getVariable ["AmountLeft",-1];
+	_isCooked =  _animal getVariable ["animalIsCooked",-1];
 	if (_isCooked isEqualTo 1) then
 	{	
 		if !(_amountLeft <= 0) then
@@ -88,7 +96,7 @@ ExileReborn_consumeAction =
 			player addItem "Exile_Item_BeefParts";
 			["Exile_Item_BeefParts"] execVM "JohnO_script_consumeAnimal.sqf"; 
 			_amountLeft = _amountLeft - 1;
-			cursorObject setVariable ["AmountLeft",_amountLeft,true];
+			_animal setVariable ["AmountLeft",_amountLeft,true];
 		}
 		else
 		{
@@ -110,19 +118,21 @@ ExileReborn_consumeAction =
 ExileReborn_cookingAction = 
 ["Start cooking",
 {
-
+	private ["_animal"];
 	_caller = _this select 0;
 	_action = _this select 2;
 	_caller removeAction _action;
 
-	if ((cursorObject getVariable ["AmountLeft",-1]) isEqualTo -1) then
+	_animal = cursorObject;
+
+	if ((_animal getVariable ["AmountLeft",-1]) isEqualTo -1) then
 	{	
-		if ([(getPos cursorObject),3] call ExileClient_util_world_isFireInRange) then
+		if ([(getPos _animal),3] call ExileClient_util_world_isFireInRange) then
 		{	
 			ExileReborn_hasCookingAction = false;
-			cursorObject setVariable ["AmountLeft",10,true];
+			_animal setVariable ["AmountLeft",10,true];
 
-			[cursorObject] spawn
+			[_animal] spawn
 			{
 				private ["_deadAnimal","_timer","_timeToCook","_caller","_action"];
 				_deadAnimal = _this select 0;
