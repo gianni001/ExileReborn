@@ -63,6 +63,10 @@ JohnO_fnc_getCurrentSeason = compileFinal preprocessFileLineNumbers "Client_scri
 
 JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_restAtFire.sqf";
 
+// Cooking / hunting
+
+JohnO_fnc_handleHuntingActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleHuntingActions.sqf";
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
@@ -71,4 +75,6 @@ JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAnd
 [240, JohnO_fnc_temperatureStatsUpdate, [], true] call ExileClient_system_thread_addtask;
 [1, JohnO_fnc_handleInfection, [], true] call ExileClient_system_thread_addtask;
 [300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
+[2, JohnO_fnc_handleHuntingActions, [], true] call ExileClient_system_thread_addtask;
+
 //[2, JohnO_handleCustomActions, [], true] call ExileClient_system_thread_addtask;

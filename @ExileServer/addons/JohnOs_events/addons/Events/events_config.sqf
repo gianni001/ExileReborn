@@ -57,7 +57,7 @@ Event_zombieHoard_coolDown = 900;
 
 /** Storm stuff**/
 
-Event_lightningSpawnInterval = 1800;
+Event_lightningSpawnInterval = 2400;
 
 /** Convoy Settings -- DO NOT USE CONVOY **/
 /*
@@ -305,6 +305,7 @@ JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";
 [] execVM "JohnOs_events\addons\Events\Persistent_vehicles\spawn_vehicles.sqf";
+[] execVM "JohnOs_events\addons\Events\spawnAnimals\ExileClient_object_animal_spawn.sqf";
 
 if !(Event_SINGLEPLAYER_debug) then
 {	
