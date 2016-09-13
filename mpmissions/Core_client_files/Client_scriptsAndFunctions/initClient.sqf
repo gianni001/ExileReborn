@@ -70,6 +70,7 @@ JohnO_fnc_handleHuntingActions = compileFinal preprocessFileLineNumbers "Client_
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
+[] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_createHuntingActions.sqf";
 
 [180, JohnO_fnc_headHunterWarning, [], true] call ExileClient_system_thread_addtask;
 [240, JohnO_fnc_temperatureStatsUpdate, [], true] call ExileClient_system_thread_addtask;
