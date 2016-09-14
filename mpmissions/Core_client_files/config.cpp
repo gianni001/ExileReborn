@@ -3858,7 +3858,7 @@ class CfgInteractionMenus
 			class StudyCorpse: ExileAbstractAction
 			{
 				title = "Study and hide corpse";
-				condition = "(!(alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_disableInventory',0]) isEqualTo -1))";
+				condition = "(!(alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_disableInventory',-1]) isEqualTo -1))";
 				action = "_this call JohnO_fnc_studyCorpse";
 			};	
 		};
