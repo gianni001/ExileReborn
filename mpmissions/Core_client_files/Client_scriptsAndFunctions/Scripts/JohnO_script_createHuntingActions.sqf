@@ -140,7 +140,7 @@ ExileReborn_cookingAction =
                 private ["_deadAnimal","_timer","_timeToCook","_caller","_action"];
                 _deadAnimal = _this select 0;
                
-                _timeToCook = 5;
+                _timeToCook = 60;
                 _timer = 0;
                 while {_timer < _timeToCook} do
                 {
