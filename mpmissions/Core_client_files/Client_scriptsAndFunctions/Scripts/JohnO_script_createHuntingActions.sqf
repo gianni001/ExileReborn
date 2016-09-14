@@ -3,6 +3,7 @@ private ["_pickUpAction","_consumeAction","_hasPickUpAction","_playerhasCookingA
 ExileReborn_hasPickUpAction = false;
 ExileReborn_hasConsumeAction = false;
 ExileReborn_hasCookingAction = false;
+ExileReborn_hasdropAnimalAction = false;
  
 ExileReborn_pickUpAction =
 ["Tie animal to belt",
@@ -32,37 +33,6 @@ ExileReborn_pickUpAction =
         //_animal hideObjectGlobal true;
         ["hideObjectGlobal", [_animalID,true]] call ExileClient_system_network_send;
         _animal setVariable ["ExileReborn_garbageCollectionIgnore",1,true];
- 
-        player addAction ["Drop animal",
-        {
-            private ["_hiddenObject","_deadAnimal"];
-            _intersectingObjectArray = lineIntersectsSurfaces [AGLToASL positionCameraToWorld [0, 0, 0], AGLToASL positionCameraToWorld [0, 0, 1600], vehicle player, objNull, true, 1, "VIEW", "FIRE"];
-            _position = ASLtoAGL ((_intersectingObjectArray select 0) select 0);   
- 
-            _deadAnimal = player getVariable ['hasAnimal',-1];
- 
-            if !(_deadAnimal isEqualTo -1) then
-            {
-                detach _deadAnimal;
-                _deadAnimalID = netID _deadAnimal;
-                //_deadAnimal hideObjectGlobal false;
-                ["hideObjectGlobal", [_deadAnimalID,false]] call ExileClient_system_network_send;
-                if (_position distance player < 3) then
-                {  
-                    _deadAnimal setPos _position;
-                }
-                else
-                {
-                    _deadAnimal setPos position player;
-                }; 
-                player setVariable ["hasAnimal",-1];
- 
-                _caller = _this select 0;
-                _action = _this select 2;
-                _caller removeAction _action;
-            };
- 
-        },"",0,false,true,"","!(player getVariable ['hasAnimal',-1] isEqualTo -1)"];
     }
     else
     {
@@ -72,7 +42,7 @@ ExileReborn_pickUpAction =
         ] call ExileClient_gui_toaster_addTemplateToast;
     }; 
  
-},"",0,false,true,"","cursorObject isKindOf 'Animal' && _target distance cursorObject < 2 && !alive cursorObject"];
+},"",0,false,true,"",""];
  
  
 ExileReborn_consumeAction =
@@ -103,6 +73,7 @@ ExileReborn_consumeAction =
                 "ErrorTitleAndText",
                 ["Consume info", "There is no edible meat left on this animal"]
             ] call ExileClient_gui_toaster_addTemplateToast;
+            deleteVehicle _animal;
         };
     }
     else
@@ -112,7 +83,7 @@ ExileReborn_consumeAction =
             ["Consume info", "This animal is not cooked yet"]
         ] call ExileClient_gui_toaster_addTemplateToast;
     };     
-},"",0,false,true,"","!(cursorObject getVariable ['AmountLeft',-1] isEqualTo -1) && _target distance cursorObject <2"];
+},"",0,false,true,"",""];
  
 ExileReborn_cookingAction =
 ["Start cooking",
@@ -140,7 +111,7 @@ ExileReborn_cookingAction =
                 private ["_deadAnimal","_timer","_timeToCook","_caller","_action"];
                 _deadAnimal = _this select 0;
                
-                _timeToCook = 60;
+                _timeToCook = 5;
                 _timer = 0;
                 while {_timer < _timeToCook} do
                 {
@@ -169,4 +140,37 @@ ExileReborn_cookingAction =
             ["Cooking info", "This animal is cooked already"]
         ] call ExileClient_gui_toaster_addTemplateToast;
     };         
+},"",0,false,true,"",""];
+
+ExileReborn_dropAnimalAction =
+["Drop animal",
+{
+    private ["_hiddenObject","_deadAnimal"];
+    _intersectingObjectArray = lineIntersectsSurfaces [AGLToASL positionCameraToWorld [0, 0, 0], AGLToASL positionCameraToWorld [0, 0, 1600], vehicle player, objNull, true, 1, "VIEW", "FIRE"];
+    _position = ASLtoAGL ((_intersectingObjectArray select 0) select 0);   
+
+    _deadAnimal = player getVariable ['hasAnimal',-1];
+
+    if !(_deadAnimal isEqualTo -1) then
+    {
+        detach _deadAnimal;
+        _deadAnimalID = netID _deadAnimal;
+        //_deadAnimal hideObjectGlobal false;
+        ["hideObjectGlobal", [_deadAnimalID,false]] call ExileClient_system_network_send;
+        if (_position distance player < 3) then
+        {  
+            _deadAnimal setPos _position;
+        }
+        else
+        {
+            _deadAnimal setPos position player;
+        }; 
+        player setVariable ["hasAnimal",-1];
+
+        _caller = _this select 0;
+        _action = _this select 2;
+        _caller removeAction _action;
+        ExileReborn_hasdropAnimalAction = false;
+    };
+
 },"",0,false,true,"",""];

@@ -13,6 +13,12 @@ if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasCoo
 	ExileReborn_cookingAction_current = player addAction ExileReborn_cookingAction;
 	ExileReborn_hasCookingAction = true;
 };
+if (!((player getVariable ['hasAnimal',-1]) isEqualTo -1) && !(ExileReborn_hasdropAnimalAction)) then
+{
+	ExileReborn_dropAnimalAction_current = player addAction ExileReborn_dropAnimalAction;
+	ExileReborn_hasdropAnimalAction = true;
+};	
+
 
 // Handle action removal.
 
@@ -33,7 +39,7 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 	ExileReborn_hasCookingAction = false;
 };	
 
-if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player)) then
+if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player))then
 {
 	removeAllActions player;
 	ExileReborn_userActionTimeout_lastCheck = time;
@@ -41,8 +47,10 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_hasPickupAction_Current = nil;
 	ExileReborn_hasConsumeAction_Current = nil;
 	ExileReborn_cookingAction_current = nil;
+	ExileReborn_dropAnimalAction_current = nil;
 
 	ExileReborn_hasPickUpAction = false;
 	ExileReborn_hasConsumeAction = false;
 	ExileReborn_hasCookingAction = false;
+	ExileReborn_hasdropAnimalAction = false;
 };	

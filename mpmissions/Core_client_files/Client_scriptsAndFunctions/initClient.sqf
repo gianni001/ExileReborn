@@ -3,7 +3,7 @@ player setVariable ["JohnO_isBeingHunted",false];
 lastCommsHack = time;
 lastCommsHack_coolDown = 600;
 ExileReborn_playerIsKnockedOut = false;
-ExileReborn_userActionTimeout = 20;
+ExileReborn_userActionTimeout = 30;
 ExileReborn_userActionTimeout_lastCheck = time;
 
 ExileReborn_lastWoundUpdate = time;
