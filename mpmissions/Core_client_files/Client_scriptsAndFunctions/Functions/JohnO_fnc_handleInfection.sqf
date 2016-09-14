@@ -30,6 +30,8 @@ if !(alive player) then
 	profileNamespace setVariable ["ExileReborn_playerIsInfected",ExileReborn_playerIsInfected];
 	player enableStamina false;
 	player allowSprint true;
+	// EVR
+	profileNamespace setVariable ["ExileReborn_resistanceToEVR",0];
 };	
 
 if (time - ExileReborn_woundCheckInterval >= ExileReborn_lastWoundUpdate) then

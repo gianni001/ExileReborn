@@ -4,10 +4,10 @@
  *   http://www.nightstalkers.cz
  *   sumrak<at>nightstalkers.cz
  *   PBO edition
- *   CLIENT-SIDE script 
+ *   CLIENT-SIDE script
 */
 
-bl_detection = 
+bl_detection =
 {
     playSound "bl_detect";
     sleep 0.2;
@@ -16,14 +16,14 @@ bl_detection =
     cutRsc ["RscAPSI_h1","PLAIN"];
     playSound "bl_detect";
     sleep 0.1;
-    playSound "bl_detect";    
+    playSound "bl_detect";
     sleep 1;
     cutRsc ["RscAPSI_h2","PLAIN"];
     sleep 1;
-    playSound "bl_detect";        
+    playSound "bl_detect";
     cutRsc ["RscAPSI_h3","PLAIN"];
     playSound "apsi_on";
-    "filmGrain" ppEffectEnable true; 
+    "filmGrain" ppEffectEnable true;
     "filmGrain" ppEffectAdjust [0.15, 1, 1, 0.1, 1, false];
     "filmGrain" ppEffectCommit 0;
     sleep 1;
@@ -38,38 +38,38 @@ bl_detection =
     sleep 0.2;
     playSound "bl_detect";
     cutRsc ["RscAPSI_h5","PLAIN"];
-    
+
 };
 
 bl_flash =
 {
-    titleText["","WHITE OUT",1];  
-    titleText["","WHITE IN",1]; 
+    titleText["","WHITE OUT",1];
+    titleText["","WHITE IN",1];
     sleep 0.25;
 };
 
-bl_local_anims = 
+bl_local_anims =
 {
 //undefined fix
 
         if (!([player] call fnc_hasAPSI) && (Alive player)) then
         {
-            if ((vehicle player) == player) then 
+            if ((vehicle player) == player) then
             {
                 if !(ExileReborn_playerIsKnockedOut) then
-                {    
+                {
                     player switchMove "AcinPercMrunSnonWnonDf_agony";
-                };    
+                };
             };
         };
 };
 
-bl_local_def_anim = 
+bl_local_def_anim =
 {
 //undefined fix
-        if (!([player] call fnc_hasAPSI)&& (Alive player)) then 
+        if (!([player] call fnc_hasAPSI)&& (Alive player)) then
         {
-            if ((vehicle player) == player) then 
+            if ((vehicle player) == player) then
             {
                 player switchMove "";
             };
@@ -81,7 +81,7 @@ bl_preparations = {
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -90,20 +90,20 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 4;
 
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -112,9 +112,9 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     //-------------------------------------------------
     sleep 34;
 
@@ -126,13 +126,13 @@ bl_preparations = {
 
     sleep 24;
     //-------------------------------------------------
-    
+
     playSound "ns_fx_misc4";
 
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     //-------------------------------------------------
     sleep 13.5;
     //-------------------------------------------------
@@ -140,12 +140,12 @@ bl_preparations = {
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     playSound "ns_fx_drone2";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -154,20 +154,20 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 10;
 
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -176,9 +176,9 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     //-------------------------------------------------
     sleep 47;
 
@@ -196,7 +196,7 @@ bl_preparations = {
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -205,22 +205,22 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 10;
 
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     systemChat "I should get to cover....";
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -229,9 +229,9 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     //-------------------------------------------------
     sleep 30;
     ExileClientPlayerIsInCombat = true;
@@ -239,7 +239,7 @@ bl_preparations = {
     true call ExileClient_gui_hud_toggleCombatIcon;
     sleep 20;
     //-------------------------------------------------
-    
+
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
@@ -248,7 +248,7 @@ bl_preparations = {
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -257,19 +257,19 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 7;
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -278,9 +278,9 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     //-------------------------------------------------
     sleep 33;
     //-------------------------------------------------
@@ -292,7 +292,7 @@ bl_preparations = {
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -301,16 +301,16 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 5;
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -319,9 +319,9 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     //-------------------------------------------------
     sleep 25;
     //-------------------------------------------------
@@ -334,7 +334,7 @@ bl_preparations = {
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -343,16 +343,16 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
-    
+
     sleep 3;
-    
+
     playSound "ns_fx_drone1";
     "chromAberration" ppEffectAdjust [0.25,0,true];
     "chromAberration" ppEffectEnable true;
     "chromAberration" ppEffectCommit 0.5;
-    sleep 0.2; 
+    sleep 0.2;
     "chromAberration" ppEffectAdjust [-0.15,0,true];
     "chromAberration" ppEffectCommit 0.35;
     sleep 0.1;
@@ -361,11 +361,11 @@ bl_preparations = {
     sleep 0.1;
     "chromAberration" ppEffectAdjust [0,0,true];
     "chromAberration" ppEffectCommit 0.20;
-    sleep 0.25; 
+    sleep 0.25;
     "chromAberration" ppEffectEnable false;
 };
 
-while {true} do 
+while {true} do
 {
     if (isNil("ns_blowout_exile")) then { ns_blowout_exile = false; };
     if (isNil("ns_blow_prep")) then { ns_blow_prep = false; };
@@ -379,7 +379,7 @@ while {true} do
 
     diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_prep = %1 Blowout is preparing, take a cover!", ns_blow_prep];
 
-    if ([player] call fnc_hasAPSI) then 
+    if ([player] call fnc_hasAPSI) then
     {
         _bul = [] spawn bl_detection;
     };
@@ -389,15 +389,15 @@ while {true} do
     waitUntil{ns_blow_status};
 
     diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_status = %1 Blowout confirmation received.", ns_blow_status];
-    
+
     ExileClientPlayerIsInCombat = true;
     ExileClientPlayerLastCombatAt = diag_tickTime;
     true call ExileClient_gui_hud_toggleCombatIcon;
-    
+
    if (isNil("ns_blow_action")) then { ns_blow_action = false; };
    waitUntil{ns_blow_action};
-   
-   diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_action = %1 Blowout action received.", ns_blow_status];  
+
+   diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_action = %1 Blowout action received.", ns_blow_status];
 
    playSound "bl_begin";
    "dynamicBlur" ppEffectAdjust [8];
@@ -408,7 +408,7 @@ while {true} do
    "chromAberration" ppEffectAdjust [0.25,0,true];
    "chromAberration" ppEffectEnable true;
    "chromAberration" ppEffectCommit 0.5;
-   sleep 0.5; 
+   sleep 0.5;
    "chromAberration" ppEffectAdjust [-0.15,0,true];
    "chromAberration" ppEffectCommit 0.35;
    sleep 0.5;
@@ -417,15 +417,15 @@ while {true} do
    sleep 0.20;
    "chromAberration" ppEffectAdjust [0,0,true];
    "chromAberration" ppEffectCommit 0.20;
-   sleep 1; 
+   sleep 1;
    "chromAberration" ppEffectEnable false;
    "dynamicBlur" ppEffectAdjust [3];
    "dynamicBlur" ppEffectCommit 2.75;
    sleep 5;
-   
+
     _bul = [] call bl_flash;
-    _s = round (random 3); 
-    switch (_s) do 
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_hit1";};
         case 1: {playSound "bl_hit2";};
@@ -436,38 +436,38 @@ while {true} do
     "dynamicBlur" ppEffectCommit 5;
     sleep 1;
     _bul = [] call bl_flash;
-    _s = round (random 3); 
-    switch (_s) do 
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_hit1";};
         case 1: {playSound "bl_hit2";};
         case 2: {playSound "bl_hit3";};
         case 3: {playSound "bl_hit1";};
-    }; 
+    };
     "dynamicBlur" ppEffectAdjust [2.4];
     "dynamicBlur" ppEffectCommit 6;
     sleep 4;
-    _s = round (random 3); 
-    switch (_s) do 
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_wave1";};
         case 1: {playSound "bl_wave2";};
         case 2: {playSound "bl_wave3";};
         case 3: {playSound "bl_wave1";};
     };
-    sleep 0.3;       
-    _bul = [] call bl_flash; 
-    _s = round (random 3); 
-    switch (_s) do 
+    sleep 0.3;
+    _bul = [] call bl_flash;
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_hit1";};
         case 1: {playSound "bl_hit2";};
         case 2: {playSound "bl_hit3";};
         case 3: {playSound "bl_hit1";};
     };
-    sleep 1;    
-    _s = round (random 3); 
-    switch (_s) do 
+    sleep 1;
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_wave1";};
         case 1: {playSound "bl_wave2";};
@@ -475,39 +475,39 @@ while {true} do
         case 3: {playSound "bl_wave1";};
     };
     sleep 2;
-    _bul = [] call bl_flash; 
-    _s = round (random 3); 
-    switch (_s) do 
+    _bul = [] call bl_flash;
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_hit1";};
         case 1: {playSound "bl_hit2";};
         case 2: {playSound "bl_hit3";};
         case 3: {playSound "bl_hit1";};
     };
-    _nonapsi_ef = ppEffectCreate ["colorCorrections", 1555]; 
+    _nonapsi_ef = ppEffectCreate ["colorCorrections", 1555];
     _nonapsi_ef ppEffectEnable true;
     _nonapsi_ef ppEffectAdjust [1.0, 1.0, -0.1, [1.0, 0.2, 0.2, 0.0], [1.0, 0.4, 0.0, 0.1],[1.0,0.3,0.3, 0.5]];
     _nonapsi_ef ppEffectCommit 2;
     sleep 1;
-    _bul = [] call bl_flash; 
-    _s = round (random 3); 
-    switch (_s) do 
+    _bul = [] call bl_flash;
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_wave1";};
         case 1: {playSound "bl_wave2";};
         case 2: {playSound "bl_wave3";};
         case 3: {playSound "bl_wave1";};
     };
-    _bul = [] call bl_flash; 
+    _bul = [] call bl_flash;
 
     if (!([player] call fnc_hasAPSI)) then {
         playSound "bl_psi";
     };
 
-    sleep 4;   
-    _bul = [] call bl_flash; 
-    _s = round (random 3); 
-    switch (_s) do 
+    sleep 4;
+    _bul = [] call bl_flash;
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_wave1";};
         case 1: {playSound "bl_wave2";};
@@ -517,8 +517,8 @@ while {true} do
     _nonapsi_ef ppEffectAdjust [1.0, 1.0, -0.1, [1.0, 0.1, 0.1, 0.0], [1.0, 0.1, 0.0, 0.1],[1.0,0.1,0.0, 0.5]];
     _nonapsi_ef ppEffectCommit 6;
     sleep 1;
-    _s = round (random 3); 
-    switch (_s) do 
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_hit1";};
         case 1: {playSound "bl_hit2";};
@@ -527,8 +527,8 @@ while {true} do
     };
     sleep 3;
     _bul = [] call bl_flash;
-    _s = round (random 3); 
-    switch (_s) do 
+    _s = round (random 3);
+    switch (_s) do
     {
         case 0: {playSound "bl_wave1";};
         case 1: {playSound "bl_wave2";};
@@ -546,44 +546,46 @@ while {true} do
     titleText["","BLACK OUT",1];
     disableUserInput true;
 
-    if(ns_blowout_exile) then 
+    if(ns_blowout_exile) then
     {
-        private["_isinbuilding"];
+        private ["_isinbuilding","_resistance","_newResistanceLevel"];
         _isinbuilding = false;
-        if([player] call fnc_isInsideBuilding) then 
+        if([player] call fnc_isInsideBuilding) then
         {
             _isinbuilding = true;
         };
-        //if (!([player] call fnc_hasAPSI)) then 
-        //{
-            diag_log format["[NAC BLOWOUT CLIENT] :: Player does not have APSI"];
-            if (!_isinbuilding) then 
-            {
-                diag_log format["[NAC BLOWOUT CLIENT] :: and is not in a building, sorry."];
-                _randAmount = random 0.2;
 
-                player setDamage (damage player + ns_blow_damage_unprotected + _randAmount);
-                diag_log format["[NAC BLOWOUT CLIENT] :: player has been damaged by blowout by 0.15"];
-            } 
-            else 
-            {
-                             
-                player setDamage (damage player + ns_blow_damage_inbuilding);
-                diag_log format["[NAC BLOWOUT CLIENT] :: but is in some building, good for him."];
-            };
-       // } 
-      //  else 
-       // {
-       //     diag_log format["[NAC BLOWOUT CLIENT] :: Player does have APSI, I do not have problem with him."];
-      //  };
+        _resistance = profileNamespace getVariable ["ExileReborn_resistanceToEVR",0];
+
+        diag_log format["[NAC BLOWOUT CLIENT] :: Player does not have APSI"];
+        if (!_isinbuilding) then
+        {
+            diag_log format["[NAC BLOWOUT CLIENT] :: and is not in a building, sorry."];
+            _randAmount = random 0.2;
+
+            player setDamage (damage player + ns_blow_damage_unprotected + _randAmount) - _resistance;
+            _newResistanceLevel = _resistance + 0.01;
+            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_resistance];
+            saveProfileNamespace;
+            diag_log format["[NAC BLOWOUT CLIENT] :: player has been damaged by blowout by 0.15"];
+        }
+        else
+        {
+
+            player setDamage (damage player + ns_blow_damage_inbuilding) - _resistance;
+            _newResistanceLevel = _resistance + 0.01;
+            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_resistance];
+            saveProfileNamespace;
+            diag_log format["[NAC BLOWOUT CLIENT] :: but is in some building, good for him."];
+        };
     };
     /*
     if(ns_blow_itemtype == 3)then
-    { 
-        if ([player] call fnc_hasAPSI) then 
+    {
+        if ([player] call fnc_hasAPSI) then
         {
             if ("ItemRadio" in (items player)) then
-            {    
+            {
             player removeItem "itemRadio";
             }
             else
@@ -603,7 +605,7 @@ while {true} do
     if ([player] call fnc_hasAPSI) then {disableUserInput false;};
     sleep 6;
     6 fadeSound 1;
-    titleText["","BLACK IN",10]; 
+    titleText["","BLACK IN",10];
     ppEffectDestroy _nonapsi_ef;
     waitUntil {!ns_blow_action};
     diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_action = %1 Blowout actions end received.", ns_blow_action];
@@ -615,10 +617,10 @@ while {true} do
     };
 
     "dynamicBlur" ppEffectAdjust [0];
-    "dynamicBlur" ppEffectCommit 16; 
+    "dynamicBlur" ppEffectCommit 16;
 
     waitUntil {!ns_blow_status};
     disableUserInput false;
-    diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_status = %1 Blowout end received.", ns_blow_status];  
+    diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_status = %1 Blowout end received.", ns_blow_status];
     _bul = [] call bl_local_def_anim;
 };
