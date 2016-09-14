@@ -2808,6 +2808,8 @@ class CfgExileCustomCode
     ExileClient_gui_toaster_addToast = "overwrites\ExileClient_gui_toaster_addToast.sqf"; 
     // EM
     ExileClient_system_thread_initialize = "overwrites\ExileClient_system_thread_initialize.sqf";
+    // Add to inventory event handler 
+    ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
     // Esseker spawn fix
     ExileServer_object_player_createBambi = "overwrites\server\ExileServer_object_player_createBambi.sqf";
     // manipulate garbage collection
@@ -3856,7 +3858,7 @@ class CfgInteractionMenus
 			class StudyCorpse: ExileAbstractAction
 			{
 				title = "Study and hide corpse";
-				condition = "!(alive ExileClientInteractionObject)";
+				condition = "(!(alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_disableInventory',0]) isEqualTo -1))";
 				action = "_this call JohnO_fnc_studyCorpse";
 			};	
 		};

@@ -138,6 +138,48 @@ switch (toLower worldName) do
             forEach (selectionNames _simpleObject);
         }
         forEach _simpleObjects;
+
+        // Dead men
+        private _npcs = [
+        ["Exile_Guard_01", [], "", "WhiteHead_11", [[],[],[],["U_BG_Guerilla2_1",[]],["V_TacVest_khk",[]],[],"H_MilCap_dgtl","G_Combat",[],["","","","","",""]], [17471.3, 13172.8, 13.6535], [-0.997428, 0.0716693, 0], [0, 0, 1]],
+        ["Exile_Guard_01", [], "", "WhiteHead_01", [[],[],[],["U_BG_Guerrilla_6_1",[]],["V_TacVest_khk",[]],[],"H_ShemagOpen_tan","G_Combat",[],["","","","","",""]], [17483.5, 13170.1, 13.5601], [-0.826836, 0.562443, 0], [0, 0, 1]],
+        ["Exile_Guard_01", [], "", "WhiteHead_18", [[],[],[],["U_BG_Guerrilla_6_1",[]],["V_TacVest_khk",[]],[],"H_HelmetB_desert","",[],["","","","","",""]], [17481, 13186.4, 13.426], [0.51854, -0.855053, 0], [0, 0, 1]],
+        ["Exile_Guard_01", [], "", "WhiteHead_04", [[],[],[],["U_O_CombatUniform_ocamo",[]],["V_HarnessO_brn",[]],[],"H_HelmetIA","",[],["","","","","",""]], [17502.1, 13190.4, 13.3763], [0.997969, 0.0637046, 0], [0, 0, 1]]
+        ];
+
+        {
+            private _logic = "Logic" createVehicle [0, 0, 0];
+            private _trader = (_x select 0) createVehicle [0, 0, 0];
+            private _animations = _x select 1;
+            
+            _logic setPosWorld (_x select 5);
+            _logic setVectorDirAndUp [_x select 6, _x select 7];
+            
+            _trader setVariable ["BIS_enableRandomization", false];
+            _trader setVariable ["BIS_fnc_animalBehaviour_disable", true];
+            _trader setVariable ["ExileAnimations", _animations];
+            _trader setVariable ["ExileTraderType", _x select 2];
+            _trader disableAI "ANIM";
+            _trader disableAI "MOVE";
+            _trader disableAI "FSM";
+            _trader disableAI "AUTOTARGET";
+            _trader disableAI "TARGET";
+            _trader disableAI "CHECKVISIBLE";
+            _trader allowDamage false;
+            _trader setFace (_x select 3);
+            _trader setUnitLoadOut (_x select 4);
+            _trader setPosWorld (_x select 5);
+            _trader setVectorDirAndUp [_x select 6, _x select 7];
+            _trader reveal _logic;
+            _trader attachTo [_logic, [0, 0, 0]];
+            _trader setDamage 1;
+            _trader setVariable ["ExileReborn_garbageCollectionIgnore",1,true];
+            _trader setVariable ["ExileReborn_disableInventory",1,true];
+            _trader call ExileServer_object_flies_spawn;
+            //_trader switchMove (_animations select 0);
+            //_trader addEventHandler ["AnimDone", {_this call ExileClient_object_trader_event_onAnimationDone}];
+        }
+        forEach _npcs;
     }; 
     case "esseker":
     {
