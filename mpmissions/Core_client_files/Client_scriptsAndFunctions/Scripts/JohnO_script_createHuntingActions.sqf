@@ -128,7 +128,6 @@ ExileReborn_cookingAction =
     {  
         if ([(getPos _animal),3] call ExileClient_util_world_isFireInRange) then
         {  
-            ExileReborn_hasCookingAction = false;
             _animal setVariable ["AmountLeft",10,true];
  
             [
@@ -141,7 +140,7 @@ ExileReborn_cookingAction =
                 private ["_deadAnimal","_timer","_timeToCook","_caller","_action"];
                 _deadAnimal = _this select 0;
                
-                _timeToCook = 60;
+                _timeToCook = 5;
                 _timer = 0;
                 while {_timer < _timeToCook} do
                 {
@@ -150,6 +149,7 @@ ExileReborn_cookingAction =
                     uiSleep 1;
                 };
                 _deadAnimal setVariable ["animalIsCooked",1,true];
+                ExileReborn_hasCookingAction = false;
             };
         }
         else
