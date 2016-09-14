@@ -2810,6 +2810,8 @@ class CfgExileCustomCode
     ExileClient_system_thread_initialize = "overwrites\ExileClient_system_thread_initialize.sqf";
     // Esseker spawn fix
     ExileServer_object_player_createBambi = "overwrites\server\ExileServer_object_player_createBambi.sqf";
+    // manipulate garbage collection
+    ExileServer_system_garbageCollector_unscheduled_deleteAllDead = "overwrites\server\ExileServer_system_garbageCollector_unscheduled_deleteAllDead.sqf";
 
 };
 class CfgExileEnvironment
