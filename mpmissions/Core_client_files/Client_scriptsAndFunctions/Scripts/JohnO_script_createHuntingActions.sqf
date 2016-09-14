@@ -73,7 +73,7 @@ ExileReborn_consumeAction =
                 "ErrorTitleAndText",
                 ["Consume info", "There is no edible meat left on this animal"]
             ] call ExileClient_gui_toaster_addTemplateToast;
-            deleteVehicle _animal;
+            //deleteVehicle _animal;
         };
     }
     else
