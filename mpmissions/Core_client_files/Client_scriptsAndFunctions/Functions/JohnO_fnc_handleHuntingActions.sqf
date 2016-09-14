@@ -2,21 +2,25 @@ if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasPic
 {	
 	ExileReborn_hasPickupAction_Current = player addAction ExileReborn_pickUpAction;
 	ExileReborn_hasPickUpAction = true;
+	ExileReborn_userActionArray pushBack ExileReborn_hasPickupAction_Current;
 };
 if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasConsumeAction) then
 {
 	ExileReborn_hasConsumeAction_Current = player addAction ExileReborn_consumeAction;
 	ExileReborn_hasConsumeAction = true;
+	ExileReborn_userActionArray pushBack ExileReborn_hasConsumeAction_Current;
 };
 if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasCookingAction) then
 {
 	ExileReborn_cookingAction_current = player addAction ExileReborn_cookingAction;
 	ExileReborn_hasCookingAction = true;
+	ExileReborn_userActionArray pushBack ExileReborn_cookingAction_current;
 };
 if (!((player getVariable ['hasAnimal',-1]) isEqualTo -1) && !(ExileReborn_hasdropAnimalAction)) then
 {
 	ExileReborn_dropAnimalAction_current = player addAction ExileReborn_dropAnimalAction;
 	ExileReborn_hasdropAnimalAction = true;
+	ExileReborn_userActionArray pushBack ExileReborn_dropAnimalAction_current;
 };	
 
 
@@ -41,7 +45,8 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 
 if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player))then
 {
-	removeAllActions player;
+
+	ExileReborn_userActionTimeout_lastCheck = time;
 	if !(alive player) then
 	{	
 		if !((player getVariable ['hasAnimal',-1]) isEqualTo -1) then
@@ -51,8 +56,13 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 			["hideObjectGlobal", [_animal,false]] call ExileClient_system_network_send;
 			player setVariable ['hasAnimal',-1];
 		};
-	};		
-	ExileReborn_userActionTimeout_lastCheck = time;
+	};
+	
+	{
+		player removeAction _x;
+	} forEach ExileReborn_userActionArray;
+
+	ExileReborn_userActionArray = [];	
 
 	ExileReborn_hasPickupAction_Current = nil;
 	ExileReborn_hasConsumeAction_Current = nil;
@@ -63,4 +73,5 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_hasConsumeAction = false;
 	ExileReborn_hasCookingAction = false;
 	ExileReborn_hasdropAnimalAction = false;
+
 };	
