@@ -22,5 +22,5 @@ class spawnZombieNearTarget
 class hideObjectGlobal
 {
     module = "JohnO";
-    parameters[] = {"ARRAY","BOOL"};
+    parameters[] = {"STRING","BOOL"};
 };
