@@ -32,3 +32,17 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 	player removeAction ExileReborn_cookingAction_current;
 	ExileReborn_hasCookingAction = false;
 };	
+
+if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player)) then
+{
+	removeAllActions player;
+	ExileReborn_userActionTimeout_lastCheck = time;
+
+	ExileReborn_hasPickupAction_Current = nil;
+	ExileReborn_hasConsumeAction_Current = nil;
+	ExileReborn_cookingAction_current = nil;
+
+	ExileReborn_hasPickUpAction = false;
+	ExileReborn_hasConsumeAction = false;
+	ExileReborn_hasCookingAction = false;
+};	
