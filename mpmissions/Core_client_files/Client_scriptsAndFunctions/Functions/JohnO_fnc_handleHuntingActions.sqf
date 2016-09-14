@@ -42,6 +42,16 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player))then
 {
 	removeAllActions player;
+	if !(alive player) then
+	{	
+		if !((player getVariable ['hasAnimal',-1]) isEqualTo -1) then
+		{	
+			_animal = player getVariable ['hasAnimal',-1];
+			detach _animal;
+			["hideObjectGlobal", [_animal,false]] call ExileClient_system_network_send;
+			player setVariable ['hasAnimal',-1];
+		};
+	};		
 	ExileReborn_userActionTimeout_lastCheck = time;
 
 	ExileReborn_hasPickupAction_Current = nil;
