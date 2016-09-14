@@ -42,7 +42,7 @@ ExileReborn_pickUpAction =
         ] call ExileClient_gui_toaster_addTemplateToast;
     }; 
  
-},"",0,false,true,"",""];
+},"",0,false,true,"","_target distance cursorObject < 2"];
  
  
 ExileReborn_consumeAction =
@@ -83,7 +83,7 @@ ExileReborn_consumeAction =
             ["Consume info", "This animal is not cooked yet"]
         ] call ExileClient_gui_toaster_addTemplateToast;
     };     
-},"",0,false,true,"",""];
+},"",0,false,true,"","_target distance cursorObject < 2"];
  
 ExileReborn_cookingAction =
 ["Start cooking",
@@ -140,7 +140,7 @@ ExileReborn_cookingAction =
             ["Cooking info", "This animal is cooked already"]
         ] call ExileClient_gui_toaster_addTemplateToast;
     };         
-},"",0,false,true,"",""];
+},"",0,false,true,"","_target distance cursorObject < 2"];
 
 ExileReborn_dropAnimalAction =
 ["Drop animal",
