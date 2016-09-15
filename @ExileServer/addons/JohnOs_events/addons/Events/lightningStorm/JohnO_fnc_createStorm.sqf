@@ -26,7 +26,7 @@ if ((overcast > 0.5) && ((count allPlayers) > 0) && (rain > 0.6)) then
 		_amount = 1 + floor (random 10);
 		for "_i" from 1 to _amount do
 		{
-			_pos = [(_strikeCenter select 0) + floor (random 300) - floor (random 300), (_strikeCenter select 1) +floor (random 300)- floor (random 300), 0];
+			_pos = [(_strikeCenter select 0) + floor (random 1000) - floor (random 1000), (_strikeCenter select 1) +floor (random 1000)- floor (random 1000), 0];
 			_nearPlayers = _pos nearEntities ["Exile_Unit_player",20];
 
 			if (count _nearPlayers > 0) then 
