@@ -13,6 +13,11 @@ ExileReborn_pickUpAction =
     {  
  
         _animal = cursorObject;
+        if (_animal getVariable ["ExileReborn_animalIsWarm",-1] isEqualTo -1) then
+        {
+            _animal setVariable ["ExileReborn_animalIsWarm",1,true];
+            ["Exile_Item_Heatpack","The animal carcass has warmed you up"] call JohnO_fnc_consumeAnimal;
+        }; 
  
         if (typeOf cursorObject isEqualTo "Rabbit_F") then
         {
@@ -30,7 +35,6 @@ ExileReborn_pickUpAction =
         player setVariable ["hasAnimal",_animal];
         _animal attachTo [player, [0, -1.5, 0] ];
         _animalID = netID _animal;
-        //_animal hideObjectGlobal true;
         ["hideObjectGlobal", [_animalID,true]] call ExileClient_system_network_send;
         _animal setVariable ["ExileReborn_garbageCollectionIgnore",1,true];
     }
@@ -63,7 +67,7 @@ ExileReborn_consumeAction =
     {  
         if !(_amountLeft <= 0) then
         {  
-            ["Exile_Item_BeefParts"] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_consumeAnimal.sqf";
+            ["Exile_Item_BeefParts","Consumed animal meat"] call JohnO_fnc_consumeAnimal;            
             _amountLeft = _amountLeft - 1;
             _animal setVariable ["AmountLeft",_amountLeft,true];
         }
