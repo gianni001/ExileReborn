@@ -6,7 +6,7 @@ ExileClientActionDelayAbort = false;
 
 _vehicle = _this select 0;
 
-_wheels = ["HitLF2Wheel","HitLFWheel","HitRFWheel","HitRF2Wheel","HitRMWheel","HitLMWheel","HitLBWheel","HitRBWheel"]; 
+_wheels = [_vehicle] call JohnO_fnc_getVehicleType;
 _goodWheels = [];
 {
 	if ((_vehicle getHitPointDamage _x) <= 0) then

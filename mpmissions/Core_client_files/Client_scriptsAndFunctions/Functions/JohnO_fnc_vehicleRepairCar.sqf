@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_vehicle","_availableHitpoints","_fixable","_equippedMagazines"];
+private["_vehicle","_availableHitpoints","_fixable","_equippedMagazines","_wheels","_broken"];
 
 if (ExileClientActionDelayShown) exitWith { false };
 ExileClientActionDelayShown = true;
@@ -34,12 +34,16 @@ _availableHitpoints = (getAllHitPointsDamage _vehicle) select 0;
 	};
 }
 forEach _availableHitpoints;
-_repairable = [];
-if (_vehicle isKindOf "car") then
-{	
-	_wheels = ["HitLF2Wheel","HitLFWheel","HitRFWheel","HitRF2Wheel","HitRMWheel","HitLMWheel","HitLBWheel","HitRBWheel"]; 
-	_repairable = _availableHitpoints - _wheels;
-};
+
+_wheels = [_vehicle] call JohnO_fnc_getVehicleType;
+_broken = [];
+{
+	if ((_vehicle getHitPointDamage _x) > 0) then
+	{	
+		_damage = _vehicle getHitPointDamage _x;
+		_broken pushBack [_damage,_x]; 
+	};
+} forEach _wheels;
 
 if (isNil "_fixable") exitWith 
 {
@@ -120,9 +124,10 @@ else
 								_progressBarColor = [0.7, 0.93, 0, 1];
 								if (_vehicle isKindOf "car")  then
 								{	
+									_vehicle setDamage 0;
 									{
-										_vehicle setHitPointDamage [_x,0];
-									}	forEach _repairable;
+										_vehicle setHitPointDamage [(_x select 1),(_x select 0)];
+									} forEach _broken;
 									player removeItem "Exile_Item_DuctTape";
 									player removeItem "Exile_Item_JunkMetal";
 									[

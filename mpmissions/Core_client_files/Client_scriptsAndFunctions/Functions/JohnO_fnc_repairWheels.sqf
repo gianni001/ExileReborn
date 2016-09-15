@@ -34,7 +34,7 @@ _availableHitpoints = (getAllHitPointsDamage _vehicle) select 0;
 }
 forEach _availableHitpoints;
 
-_wheels = ["HitLF2Wheel","HitLFWheel","HitRFWheel","HitRF2Wheel","HitRMWheel","HitLMWheel","HitLBWheel","HitRBWheel"]; 
+_wheels = [_vehicle] call JohnO_fnc_getVehicleType;
 _broken = [];
 {
 	if ((_vehicle getHitPointDamage _x) > 0) then

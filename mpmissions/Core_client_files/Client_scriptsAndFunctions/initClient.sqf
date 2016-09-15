@@ -70,6 +70,10 @@ JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAnd
 
 JohnO_fnc_handleHuntingActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleHuntingActions.sqf";
 
+// Get amount of wheels on vehicles
+
+JohnO_fnc_getVehicleType = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getVehicleType.sqf";
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";

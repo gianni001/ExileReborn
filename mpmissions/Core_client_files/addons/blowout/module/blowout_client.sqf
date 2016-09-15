@@ -367,6 +367,7 @@ bl_preparations = {
 
 while {true} do
 {
+     private ["_isinbuilding","_resistance","_newResistanceLevel"];
     if (isNil("ns_blowout_exile")) then { ns_blowout_exile = false; };
     if (isNil("ns_blow_prep")) then { ns_blow_prep = false; };
     waitUntil{ns_blow_prep};
@@ -548,7 +549,6 @@ while {true} do
 
     if(ns_blowout_exile) then
     {
-        private ["_isinbuilding","_resistance","_newResistanceLevel"];
         _isinbuilding = false;
         if([player] call fnc_isInsideBuilding) then
         {
@@ -574,7 +574,7 @@ while {true} do
 
             player setDamage (damage player + ns_blow_damage_inbuilding) - _resistance;
             _newResistanceLevel = _resistance + 0.01;
-            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_resistance];
+            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_newResistanceLevel];
             saveProfileNamespace;
             diag_log format["[NAC BLOWOUT CLIENT] :: but is in some building, good for him."];
         };
@@ -623,4 +623,11 @@ while {true} do
     disableUserInput false;
     diag_log format["[NAC BLOWOUT CLIENT] :: ns_blow_status = %1 Blowout end received.", ns_blow_status];
     _bul = [] call bl_local_def_anim;
+    sleep 10;
+    ["InfoTitleAndText",
+        [
+            "Resistance gained",
+            format ["Surviving the EVR has increased your resistance to the storms - You will resist %1%2 damage - If you die you will loose your resistance",round (_newResistanceLevel * 10),"%"]
+        ]
+    ] call ExileClient_gui_toaster_addTemplateToast;
 };
