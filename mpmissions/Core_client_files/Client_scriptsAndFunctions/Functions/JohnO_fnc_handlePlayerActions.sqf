@@ -1,4 +1,6 @@
-if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasPickUpAction && (cursorObject getVariable ['AmountLeft',-1] isEqualTo -1)) then
+// ** Hunting ** //
+
+if (cursorObject isKindOf "Animal" && !alive cursorObject && !ExileReborn_hasPickUpAction) then
 {	
 	ExileReborn_hasPickupAction_Current = player addAction ExileReborn_pickUpAction;
 	ExileReborn_hasPickUpAction = true;
@@ -23,6 +25,14 @@ if (!((player getVariable ['hasAnimal',-1]) isEqualTo -1) && !(ExileReborn_hasdr
 	ExileReborn_userActionArray pushBack ExileReborn_dropAnimalAction_current;
 };	
 
+// ** Drying clothes ** //
+
+if ((ExileClientPlayerAttributes select 6 > 0) && !(ExileReborn_hasDryClothesAction)) then
+{
+	ExileReborn_dryClothesAction_current = player addAction ExileReborn_dryClothesAction;
+	ExileReborn_hasDryClothesAction = true;
+	ExileReborn_userActionArray pushBack ExileReborn_dryClothesAction_current;
+};	
 
 // Handle action removal.
 
@@ -41,6 +51,12 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 {
 	player removeAction ExileReborn_cookingAction_current;
 	ExileReborn_hasCookingAction = false;
+};	
+
+if (!(isNil "ExileReborn_dryClothesAction_current") && (ExileClientPlayerAttributes select 6 <= 0)) then
+{
+	player removeAction ExileReborn_dryClothesAction_current;
+	ExileReborn_hasDryClothesAction = false;
 };	
 
 if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player))then
@@ -68,10 +84,12 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_hasConsumeAction_Current = nil;
 	ExileReborn_cookingAction_current = nil;
 	ExileReborn_dropAnimalAction_current = nil;
+	ExileReborn_dryClothesAction_current = nil;
 
 	ExileReborn_hasPickUpAction = false;
 	ExileReborn_hasConsumeAction = false;
 	ExileReborn_hasCookingAction = false;
 	ExileReborn_hasdropAnimalAction = false;
+	ExileReborn_hasDryClothesAction = false;
 
 };	

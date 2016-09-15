@@ -68,7 +68,7 @@ JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAnd
 
 // Cooking / hunting
 
-JohnO_fnc_handleHuntingActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleHuntingActions.sqf";
+JohnO_fnc_handlePlayerActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handlePlayerActions.sqf";
 JohnO_fnc_consumeAnimal = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_consumeAnimal.sqf";
 JohnO_fnc_getAnimalType = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getAnimalType.sqf";
 
@@ -79,12 +79,12 @@ JohnO_fnc_getVehicleType = compileFinal preprocessFileLineNumbers "Client_script
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
-[] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_createHuntingActions.sqf";
+[] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_createPlayerActions.sqf";
 
 [180, JohnO_fnc_headHunterWarning, [], true] call ExileClient_system_thread_addtask;
 [240, JohnO_fnc_temperatureStatsUpdate, [], true] call ExileClient_system_thread_addtask;
 [1, JohnO_fnc_handleInfection, [], true] call ExileClient_system_thread_addtask;
 [300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
-[2, JohnO_fnc_handleHuntingActions, [], true] call ExileClient_system_thread_addtask;
+[2, JohnO_fnc_handlePlayerActions, [], true] call ExileClient_system_thread_addtask;
 
 //[2, JohnO_handleCustomActions, [], true] call ExileClient_system_thread_addtask;
