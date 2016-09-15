@@ -29,8 +29,8 @@ if ((count ExileSpawnZoneMarkerPositions) isEqualTo 0) then
 	if ((toLower worldName) isEqualTo "esseker") then
 	{
 		_spawnCenter = [6049.26,6239.63,0];	
-		_min = 500; 								
-		_max = 4000; 							
+		_min = 2000; 								
+		_max = 6000; 							
 		_mindist = 5; 																
 		_water = 0; 							
 		_shoremode = 0; 						

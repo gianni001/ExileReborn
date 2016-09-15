@@ -2806,8 +2806,6 @@ class CfgExileCustomCode
     //ExileClient_object_player_network_createPlayerResponse = "overwrites\ExileClient_object_player_network_createPlayerResponse.sqf";
     // Make toasts last longer
     ExileClient_gui_toaster_addToast = "overwrites\ExileClient_gui_toaster_addToast.sqf"; 
-    // EM
-    ExileClient_system_thread_initialize = "overwrites\ExileClient_system_thread_initialize.sqf";
     // Add to inventory event handler 
     ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
     // Esseker spawn fix
