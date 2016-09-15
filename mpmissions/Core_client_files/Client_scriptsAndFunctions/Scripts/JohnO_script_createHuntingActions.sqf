@@ -88,7 +88,7 @@ ExileReborn_consumeAction =
 ExileReborn_cookingAction =
 ["Start cooking",
 {
-    private ["_animal"];
+    private ["_animal","_amountOfMeat"];
     _caller = _this select 0;
     _action = _this select 2;
     _caller removeAction _action;
@@ -99,17 +99,20 @@ ExileReborn_cookingAction =
     {  
         if ([(getPos _animal),3] call ExileClient_util_world_isFireInRange) then
         {  
-            _animal setVariable ["AmountLeft",10,true];
+            _amountOfMeat = [_animal] call JohnO_fnc_getAnimalType;
+            
+            _animal setVariable ["AmountLeft",_amountOfMeat,true];
  
             [
                 "InfoTitleAndText",
                 ["Cooking info", "You have started cooking the animal, it will take 1 - 2 minutes to cook"]
             ] call ExileClient_gui_toaster_addTemplateToast;
  
-            [_animal] spawn
+            [_animal,_amountOfMeat] spawn
             {
                 private ["_deadAnimal","_timer","_timeToCook","_caller","_action"];
                 _deadAnimal = _this select 0;
+                _amountOfMeat = _this select 1;
                
                 _timeToCook = 60 + floor (random 60);
                 _timer = 0;
@@ -121,6 +124,12 @@ ExileReborn_cookingAction =
                 };
                 _deadAnimal setVariable ["animalIsCooked",1,true];
                 ExileReborn_hasCookingAction = false;
+                ["InfoTitleAndText",
+                    [
+                        "Cooking info",
+                        format ["The animal is cooked and has %1 meat on the carcass",_amountOfMeat]
+                    ]
+                ] call ExileClient_gui_toaster_addTemplateToast;
             };
         }
         else

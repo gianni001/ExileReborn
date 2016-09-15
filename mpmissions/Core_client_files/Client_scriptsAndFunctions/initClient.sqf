@@ -69,6 +69,7 @@ JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAnd
 // Cooking / hunting
 
 JohnO_fnc_handleHuntingActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleHuntingActions.sqf";
+JohnO_fnc_getAnimalType = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getAnimalType.sqf";
 
 // Get amount of wheels on vehicles
 
