@@ -79,7 +79,7 @@ if !(_validPlayerArray isEqualTo []) then
 					_killingPlayer = _killer call ExileServer_util_getFragKiller;
 					Event_IdleZombieArray = Event_IdleZombieArray - [_killed]; 
 					_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
-					_amountEarned = 25;
+					_amountEarned = 2;
 					_newRespect = _currentRespect + _amountEarned;
 					_killingPlayer setVariable ["ExileScore", _newRespect];
 					_killSummary = [];

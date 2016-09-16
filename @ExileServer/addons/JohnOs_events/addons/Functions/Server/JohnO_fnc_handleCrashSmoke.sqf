@@ -9,6 +9,7 @@
 	else
 	{
 		Event_HeliCrash_Positions deleteAt _forEachIndex;
+		publicVariable "Event_HeliCrash_Positions";
 	};	
 } forEach Event_HeliCrash_Positions;	
 
