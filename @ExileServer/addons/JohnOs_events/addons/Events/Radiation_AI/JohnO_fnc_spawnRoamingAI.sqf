@@ -91,7 +91,7 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 			}
 		];
 
-		_unit addEventHandler ["HandleDamage",
+		_radUnit addEventHandler ["HandleDamage",
 		{
 			_dmg = _this select 2;
 			_source = _this select 3;
