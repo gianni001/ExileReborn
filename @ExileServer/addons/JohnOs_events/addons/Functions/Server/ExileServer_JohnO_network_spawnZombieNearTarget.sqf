@@ -33,93 +33,86 @@ else
 	Ryanzombieslimit = 200;
 };	
 
-_maxSpawn = 35;					// Define a max spawn
-_count = 0; 					// Begin a count
 _activeScripts = count diag_activeSQFScripts;
 		
 _group = createGroup WEST;
 
-{	
-	if !(_count >= _maxSpawn) then
+{		
+	if ((random 1 > 0.98) && (_activeScripts < 130)) then
 	{	
-		if ((random 1 > 0.98) && (_activeScripts < 130)) then
-		{	
-			_count = _count + 1;
+		_slectionArray = [_civMed,_civSlow,_walker];
+		_selection = selectRandom _slectionArray;
+		_unitType = selectRandom _selection;
 
-			_slectionArray = [_civMed,_civSlow,_walker];
-			_selection = selectRandom _slectionArray;
-			_unitType = selectRandom _selection;
+		_money = 10 + floor (random 30);
 
-			_money = 10 + floor (random 30);
+		_unit = _group createUnit [_unitType,_x,[],0,"NONE"];
 
-			_unit = _group createUnit [_unitType,_x,[],0,"NONE"];
+		if (random 1 > 0.7) then
+		{
+			_unit addBackpack (selectRandom _bags);
+			for "_i" from 0 to 1 + floor (random 2) do
+			{	
+				_gear = [] call JohnO_fnc_AIgear;
+				_item = _gear select 5;
+				_unit addItem _item;
+			};
+		};	
 
-			if (random 1 > 0.7) then
+		_unit setdammage 0.7;
+		_unit setspeaker "NoVoice";
+		_unit enableFatigue false;
+		_unit setbehaviour "CARELESS";
+		_unit setunitpos "UP";
+		_unit setmimic "safe";
+
+		_facearray = ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5", "RyanZombieFace6"];
+		_face = selectRandom _facearray;
+		_unit setface _face;
+		removegoggles _unit;
+		
+		_unit setVariable ["JohnO_RoaminAI",time + 1200];
+		_unit setVariable ["ExileMoney",_money,true];
+		_unit setVariable ["ExileReborn_zombie_originalPos",_x];
+		Event_ALLAI_SimulatedUnits pushBack _unit;
+		
+		_unit addMPEventHandler 
+		["MPKilled",
 			{
-				_unit addBackpack (selectRandom _bags);
-				for "_i" from 0 to 1 + floor (random 2) do
-				{	
-					_gear = [] call JohnO_fnc_AIgear;
-					_item = _gear select 5;
-					_unit addItem _item;
-				};
-			};	
 
-			_unit setdammage 0.7;
-			_unit setspeaker "NoVoice";
-			_unit enableFatigue false;
-			_unit setbehaviour "CARELESS";
-			_unit setunitpos "UP";
-			_unit setmimic "safe";
+				private ["_killer","_currentRespect","_amountEarned","_newRespect","_killSummary"];
 
-			_facearray = ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5", "RyanZombieFace6"];
-			_face = selectRandom _facearray;
-			_unit setface _face;
-			removegoggles _unit;
-			
-			_unit setVariable ["JohnO_RoaminAI",time + 1200];
-			_unit setVariable ["ExileMoney",_money,true];
-			_unit setVariable ["ExileReborn_zombie_originalPos",_x];
-			Event_ALLAI_SimulatedUnits pushBack _unit;
-			
-			_unit addMPEventHandler 
-			["MPKilled",
-				{
+				_killed = _this select 0;
+				_killer = _this select 1;
 
-					private ["_killer","_currentRespect","_amountEarned","_newRespect","_killSummary"];
+				[_killed] joinSilent Event_RadAI_deadGroup;
 
-					_killed = _this select 0;
-					_killer = _this select 1;
+				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-					[_killed] joinSilent Event_RadAI_deadGroup;
+				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; 
+				Event_IdleZombieArray = Event_IdleZombieArray - [_killed]; 
 
-					_killingPlayer = _killer call ExileServer_util_getFragKiller;
+				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+				_amountEarned = 25;
+				_newRespect = _currentRespect + _amountEarned;
 
-					Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; 
-					Event_IdleZombieArray = Event_IdleZombieArray - [_killed]; 
+				_killingPlayer setVariable ["ExileScore", _newRespect];
+				_killSummary = [];
+				_killSummary pushBack ["ZOMBIE KILLED", _amountEarned];
+				[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
 
-					_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
-					_amountEarned = 25;
-					_newRespect = _currentRespect + _amountEarned;
-
-					_killingPlayer setVariable ["ExileScore", _newRespect];
-					_killSummary = [];
-					_killSummary pushBack ["ZOMBIE KILLED", _amountEarned];
-					[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
-
-					format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
-					_killingPlayer call ExileServer_object_player_sendStatsUpdate;	
-				}
-			];
-			_unit addEventHandler
-			["FiredNear",
-				{
-					_this spawn JohnO_zombie_eventOnFiredNear;
-				}
-			];
-			//[_unit] spawn JohnO_fnc_zombieIdleBehaviour;
-			Event_IdleZombieArray pushBack _unit;
-		};
-	};	
+				format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+				_killingPlayer call ExileServer_object_player_sendStatsUpdate;	
+			}
+		];
+		_unit addEventHandler
+		["FiredNear",
+			{
+				_this spawn JohnO_zombie_eventOnFiredNear;
+			}
+		];
+		//[_unit] spawn JohnO_fnc_zombieIdleBehaviour;
+		Event_IdleZombieArray pushBack _unit;
+	};
 } forEach _positions;
 
