@@ -3453,12 +3453,14 @@ class CfgInteractionMenus
 				condition = "call ExileClient_object_vehicle_interaction_show";
 				action = "[ExileClientInteractionObject,15] call ExileClient_object_vehicle_rotate";
 			};
+			/*
 			class ClaimVehicle: ExileAbstractAction
 			{
 			    title = "Claim Ownership";
 			    condition = "true";
 			    action = "call ExileClient_ClaimVehicles_network_claimRequestSend";
 			};
+			*/
 		};
 	};
 
