@@ -161,6 +161,20 @@ if (count AllPlayers > 0) then
 							}
 						];
 
+						_unit addEventHandler ["HandleDamage",
+						{
+							_dmg = _this select 2;
+							_source = _this select 3;
+							_projectile = _this select 4;
+
+							if ((_projectile isEqualTo "") && {isPlayer _source}) then
+							{
+								_dmg = 0;
+							};
+
+							_dmg
+						}];
+		
 						Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
 					};
