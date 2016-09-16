@@ -27,7 +27,7 @@ if (!((player getVariable ['hasAnimal',-1]) isEqualTo -1) && !(ExileReborn_hasdr
 
 // ** Drying clothes ** //
 
-if ((ExileClientPlayerAttributes select 6 > 0) && !(ExileReborn_hasDryClothesAction)) then
+if ((ExileClientPlayerAttributes select 6 > 0) && !(ExileReborn_hasDryClothesAction) && ((vehicle player) isEqualTo player)) then
 {
 	ExileReborn_dryClothesAction_current = player addAction ExileReborn_dryClothesAction;
 	ExileReborn_hasDryClothesAction = true;
@@ -53,7 +53,7 @@ if (!(isNil "ExileReborn_cookingAction_current") && !(cursorObject isKindOf "Ani
 	ExileReborn_hasCookingAction = false;
 };	
 
-if (!(isNil "ExileReborn_dryClothesAction_current") && (ExileClientPlayerAttributes select 6 <= 0)) then
+if (!(isNil "ExileReborn_dryClothesAction_current") && (ExileClientPlayerAttributes select 6 <= 0) && !((vehicle player) isEqualTo player)) then
 {
 	player removeAction ExileReborn_dryClothesAction_current;
 	ExileReborn_hasDryClothesAction = false;
