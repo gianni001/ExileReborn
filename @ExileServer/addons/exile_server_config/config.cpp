@@ -2750,9 +2750,9 @@ class CfgSettings
 
 		class Cloudy
 		{
-			fogValue = 0.5;
+			fogValue = 0.3;
 			fogDecay = 0.2;
-			fogBase = 20;
+			fogBase = 17;
 			overcast = 0.6;
 			waves = 0.4;
 			wind = 0.25;
@@ -2764,7 +2764,7 @@ class CfgSettings
 
 		class Thunderstorm
 		{
-			fogValue = 0.7;
+			fogValue = 0.6;
 			fogDecay = 0.2;
 			fogBase = 20;
 			overcast = 1;
@@ -2890,7 +2890,7 @@ class CfgSettings
 			type = "spawn";
 			function = "ExileServer_system_event_earthQuake_start";
 			minTime = 60;
-			maxTime = 180;
+			maxTime = 240;
 			minimumPlayersOnline = 1;
 		};
 

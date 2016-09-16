@@ -550,33 +550,35 @@ while {true} do
     if(ns_blowout_exile) then
     {
         _isinbuilding = false;
-        if([player] call fnc_isInsideBuilding) then
+        _startPosition = getPosASL player;
+        _endPosition = [_startPosition select 0, _startPosition select 1, (_startPosition select 2 ) + 10];
+        _intersections = lineIntersectsSurfaces [_startPosition, _endPosition, player, objNull, false, 1, "GEOM", "VIEW"];
+        _isBelowRoof = !(_intersections isEqualTo []);
+        _newResistanceLevel = 0;
+
+        if (_isBelowRoof) then
         {
             _isinbuilding = true;
-        };
+        };    
 
         _resistance = profileNamespace getVariable ["ExileReborn_resistanceToEVR",0];
 
-        diag_log format["[NAC BLOWOUT CLIENT] :: Player does not have APSI"];
         if (!_isinbuilding) then
         {
-            diag_log format["[NAC BLOWOUT CLIENT] :: and is not in a building, sorry."];
             _randAmount = random 0.2;
 
+            _newResistanceLevel = (_resistance + 0.01);
             player setDamage (damage player + ns_blow_damage_unprotected + _randAmount) - _resistance;
-            _newResistanceLevel = _resistance + 0.01;
-            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_resistance];
+            profileNamespace setVariable ["ExileReborn_resistanceToEVR",_newResistanceLevel];
             saveProfileNamespace;
-            diag_log format["[NAC BLOWOUT CLIENT] :: player has been damaged by blowout by 0.15"];
         }
         else
         {
 
-            player setDamage (damage player + ns_blow_damage_inbuilding) - _resistance;
-            _newResistanceLevel = _resistance + 0.01;
+            _newResistanceLevel = (_resistance + 0.01);
+            player setDamage (damage player + ns_blow_damage_unprotected + _randAmount) - _resistance;
             profileNamespace setVariable ["ExileReborn_resistanceToEVR",_newResistanceLevel];
             saveProfileNamespace;
-            diag_log format["[NAC BLOWOUT CLIENT] :: but is in some building, good for him."];
         };
     };
     /*
@@ -627,7 +629,7 @@ while {true} do
     ["InfoTitleAndText",
         [
             "Resistance gained",
-            format ["Surviving the EVR has increased your resistance to the storms - You will resist %1%2 damage - If you die you will loose your resistance",round (_newResistanceLevel * 10),"%"]
+            format ["Surviving the EVR has increased your resistance to the storms - You will resist %1%2 damage - If you die you will loose your resistance",_newResistanceLevel * 100,"%"]
         ]
     ] call ExileClient_gui_toaster_addTemplateToast;
 };
