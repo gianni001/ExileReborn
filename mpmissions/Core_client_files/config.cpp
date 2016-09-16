@@ -2808,6 +2808,8 @@ class CfgExileCustomCode
     ExileClient_gui_toaster_addToast = "overwrites\ExileClient_gui_toaster_addToast.sqf"; 
     // Add to inventory event handler 
     ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
+    // Change health scanner
+    ExileClient_gui_xm8_slide_healthScanner_onOpen = "overwrites\ExileClient_gui_xm8_slide_healthScanner_onOpen.sqf";
     // Esseker spawn fix
     ExileServer_object_player_createBambi = "overwrites\server\ExileServer_object_player_createBambi.sqf";
     // manipulate garbage collection
