@@ -89,5 +89,4 @@ if !(_introText) then
 	saveProfileNamespace;
 };	
 
-ExileRebornVersion = 0.0.1;
 systemChat format ["Client loaded - EXILE REBORN -- v %1",ExileRebornVersion];
