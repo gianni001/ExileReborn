@@ -32,7 +32,7 @@ if ((count _targets) > 0) then
 		{
 			_potentialTargets_prone pushBack [(_zombie distance _x),_x];
 		};
-		if ((stance _x) isEqualTo "CROUCH") then
+		if ((stance _x) isEqualTo "CROUCH") && (_zombie distance _x < 15)) then
 		{
 			_potentialTargets_crouched pushBack [(_zombie distance _x),_x];
 		};
@@ -85,7 +85,6 @@ else
 
 		_potentialTargets_isVehicle sort true;
 		_zombieTarget = (_potentialTargets_isVehicle select 0) select 1;
-		//_zombieTarget = selectRandom (crew _vehicle);
 	}
 	else
 	{

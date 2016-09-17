@@ -18,7 +18,7 @@ _animalArray =
 	"Exile_Animal_Sheep_Beige", "Exile_Animal_Sheep_White", "Exile_Animal_Sheep_Brown", "Exile_Animal_Sheep_Spotted", "Exile_Animal_Sheep_Tricolor"
 ];
 
-for "_i" from 0 to 100 do
+for "_i" from 0 to 200 do
 {
 	_spawnCenter = Event_world_centerPosition;
 	_min = 1;

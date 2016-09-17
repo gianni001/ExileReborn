@@ -560,7 +560,7 @@ while {true} do
         {
             _isinbuilding = true;
         };    
-
+        hint str _isinbuilding;
         _resistance = profileNamespace getVariable ["ExileReborn_resistanceToEVR",0];
 
         if (!_isinbuilding) then
@@ -576,7 +576,7 @@ while {true} do
         {
 
             _newResistanceLevel = (_resistance + 0.01);
-            player setDamage (damage player + ns_blow_damage_unprotected + _randAmount) - _resistance;
+            player setDamage (damage player + ns_blow_damage_inbuilding) - _resistance;
             profileNamespace setVariable ["ExileReborn_resistanceToEVR",_newResistanceLevel];
             saveProfileNamespace;
         };

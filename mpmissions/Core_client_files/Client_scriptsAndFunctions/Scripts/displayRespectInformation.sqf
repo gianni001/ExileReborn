@@ -88,9 +88,5 @@ if !(_introText) then
 	profileNamespace setVariable ["NZEC_PlayerShownIntroText",true];
 	saveProfileNamespace;
 };	
-waitUntil 
-{
-	!isNil "ExileRebornVersion"
-};
 
 systemChat format ["Client loaded - EXILE REBORN -- v %1",ExileRebornVersion];

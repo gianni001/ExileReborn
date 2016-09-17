@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.1;
+ExileRebornVersion = 0.1.1;
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -11,10 +11,10 @@ Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
 Event_world_size = 0;
 
-_trg = createTrigger ["EmptyDetector", [0,0,0]];
-_trg setTriggerArea [5, 5, 0, true];
-_trg setTriggerActivation ["ANY", "NOT PRESENT", true];
-_trg setTriggerStatements ["this", "{_x enableSimulation False} forEach nearestObjects [thistrigger,['land_fs_feed_f','Land_FuelStation_Feed_F'],100000]",""];
+_fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Feed_F'], 2000000];
+{
+	_x enableSimulationGlobal false;
+} forEach _fuelStations;
 
 switch (toLower worldName) do
 {
@@ -56,7 +56,7 @@ Event_IdleZombieArray = [];
 Event_lastMoan = time;
 Event_moanCD = 15;
 Event_zombieHoard_lastActivated = time;
-Event_zombieHoard_coolDown = 900;
+Event_zombieHoard_coolDown = 1800;
 
 /** Storm stuff**/
 

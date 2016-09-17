@@ -87,7 +87,6 @@ while {true} do
 		};
 		_newgroup = creategroup civilian;
 		[_zombie] join _newgroup;
-		//if (!(isNil "_target")) then {if ((!(vehicle _target iskindof "man") && (speed _target > 20)) && (_zombie distance _target < 12.5)) then {_VehicleSplatArray = ["ryanzombies\sounds\vehicle_splat1.ogg", "ryanzombies\sounds\vehicle_splat2.ogg", "ryanzombies\sounds\vehicle_splat3.ogg"]; _VehicleSplat = selectRandom _VehicleSplatArray; playsound3d [format ["%1",_VehicleSplat], _zombie, false, getPosASL _zombie, 1, _soundpitch];};};
 		_face = face _zombie;
 		if (_face find "Glowing" != 0) then 
 		{
@@ -97,14 +96,6 @@ while {true} do
 		
 		sleep 60;
 		remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
-		/*
-		if !(isnil "Ryanzombiesdelete") then {deletevehicle _zombie};
-		if !(isnil "_l") then
-		{
-			sleep 3600;
-			deletevehicle _l;
-		};
-		*/
 	};
 
 	_zombie setFormDir random 360;
@@ -170,13 +161,7 @@ while {true} do
 			if !((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) then {breakTo "loop"};
 
 			if (time - _timeToDormant >= _lastTargetCheck) then	{_returnHome = true; /*hint "Breaking to loop";*/ breakTo "loop";};
-			/*
-			_target = (getPos _zombie nearEntities [['Exile_Unit_Player'],50]) select 0;
-			if ((count _target) <= 0) then
-			{
-				_target = [];
-			};
-			*/
+			
 			_target = [_zombie] call JohnO_fnc_findZombieTarget; // New function not in use.
 			if (isNil "_target") then
 			{
@@ -189,20 +174,7 @@ while {true} do
 				if (((getPosATL _target select 2) > 20) AND (_target iskindof "AIR")) exitwith {sleep 2};
 				if (animationState _zombie == "UNCONSCIOUS") exitwith {sleep 2};
 				if (_zombie distance _target > Ryanzombieslimit) exitwith {sleep 2};
-				/*	
-				if (!(vehicle _target iskindof "man") && (count crew _target == 0)) then
-				{
-					_grp = createGroup civilian;
-					_unit = _grp createUnit ["C_Man_1", [0,0,0], [], 0, "CAN_COLLIDE"];
-					_unit hideObjectGlobal true;
-					_unit disableAI "ANIM";
-					_unit moveindriver _target;
-					sleep 0.5;
-					deletevehicle _unit;
-					deletegroup _grp;
-				};
-				*/
-
+				
 				if !(local _zombie) then {[_zombie, getposATL _target] remoteExecCall ["fnc_RyanZombies_DoMoveLocalized"]} else {_zombie domove getposATL _target};
 				if (surfaceIsWater getposATL _target) then {[_zombie, "AmovPercMwlkSnonWnonDf"] remoteExecCall ["fnc_RyanZombies_PlayMoveNow"]};
 				_zombie dowatch _target;
@@ -226,8 +198,6 @@ while {true} do
 						};	
 						if (isnil "ryanzombiesdisablebleeding") then {[_target, 10] remoteExecCall ["fnc_RyanZombies_Bleeding"];};
 						_target setdamage (damage _target + Ryanzombiesdamage);
-						//if (!(alive _target) && !(isnil "Ryanzombiesinfection")) then {[_target, side _group] execVM "\ryanzombies\infection.sqf"};
-						//if ((alive _target) && !(isnil "ryanzombiesinfectedchance") && (_target getvariable ["ryanzombiesinfected",0] == 0)) then {[_target, side _group] execVM "\ryanzombies\infected.sqf"};
 
 						_Scream = selectRandom _ScreamArray;
 						[_target, format ["%1",_Scream]] remoteExecCall ["say3d"];
