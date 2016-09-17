@@ -2,6 +2,9 @@
 /// ALTIS ///////////
 /////////////////////
 
+ExileRebornVersion = 0.1;
+publicVariable "ExileRebornVersion";
+
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
