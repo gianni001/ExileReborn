@@ -39,6 +39,11 @@
 
 	_target = [_zombie] call JohnO_fnc_findZombieTarget;
 
+	if (isNil "_target") then
+	{
+		_target = [];
+	};	
+
 	if ((alive _zombie) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && !(_target isEqualTo [])) then
 	{	
 		if ((_zombie getVariable ["ExileReborn_hoardMember",-1]) isEqualTo -1) then
