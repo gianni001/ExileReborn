@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.1.1;
+ExileRebornVersion = 0.11;
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -10,11 +10,6 @@ Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
 useMarmaLoging = true; 															
 Event_world_size = 0;
-
-_fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Feed_F'], 2000000];
-{
-	_x enableSimulationGlobal false;
-} forEach _fuelStations;
 
 switch (toLower worldName) do
 {
@@ -335,6 +330,10 @@ if !(Event_SINGLEPLAYER_debug) then
 	[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
 };	
 
+_fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Feed_F'], 2000000];
+{
+	_x enableSimulationGlobal false;
+} forEach _fuelStations;
 
 
 /** For testing in SP **/

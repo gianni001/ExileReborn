@@ -560,7 +560,7 @@ while {true} do
         {
             _isinbuilding = true;
         };    
-        hint str _isinbuilding;
+        
         _resistance = profileNamespace getVariable ["ExileReborn_resistanceToEVR",0];
 
         if (!_isinbuilding) then
