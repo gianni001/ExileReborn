@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.11;
+ExileRebornVersion = 0.2;
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -41,7 +41,16 @@ switch (toLower worldName) do
     };
 	case "tanoa":
 	{
-		//Todo
+		Event_DEBUG_Location = [6709.97,6098.13,0];
+		Event_world_size = 30000;
+		Event_world_centerPosition = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+
+		Event_RadAI_SpawnLocations = 
+		[
+			[1858.75,11872.9,0],[1759.41,12091,0],[1847.33,12126.4,0],[2020.88,11825,0],
+			[3082.74,11145.6,0],[3046,11278.4,0],[3031.87,11119.4,0],
+			[2321.05,13168.1,0],[2496.01,12909.5,0],[2687.29,12310.9,0]
+		];
 	};
 };
 
