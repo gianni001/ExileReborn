@@ -106,19 +106,63 @@ if (_forcedBodyTemperatureChangePerMinute > 0) then
 }
 else 
 {
+	// JohnO custom
+	_veryWarmClothing = ["U_B_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_I_FullGhillie_ard","U_IG_Guerilla3_1","U_IG_Guerilla3_2","U_BG_Guerrilla_6_1","U_BG_Guerilla3_1","U_BG_leader","U_IG_leader","U_B_HeliPilotCoveralls","U_B_PilotCoveralls","U_I_HeliPilotCoveralls","U_I_pilotCoveralls","U_O_PilotCoveralls"];
+	_midlyWarmClothing = ["Exile_Uniform_Woodland","U_O_SpecopsUniform_ocamo","U_O_SpecopsUniform_blk","U_B_SpecopsUniform_sgg","U_O_OfficerUniform_ocamo","U_O_CombatUniform_oucamo","U_O_CombatUniform_ocamo","U_I_OfficerUniform","U_I_CombatUniform","U_B_CTRG_3","U_B_CTRG_1","U_B_CombatUniform_mcam_worn","U_B_CombatUniform_mcam_vest","U_B_CombatUniform_mcam"];
+
+	_veryWarmHeadGear = ["H_ShemagOpen_tan","H_ShemagOpen_khk","H_Shemag_tan","H_Shemag_olive_hs","H_Shemag_olive","H_Shemag_khk"];
+	_midlyWarmHeadGear = ["H_Watchcap_blk","H_Watchcap_camo","H_Watchcap_khk","H_Watchcap_sgg"];
+
+	// Original MAX clothing factor = 0.40
+	// New MAX clothing factor = 0.47 but to reach this is more in depth
+
 	_clothingColdProtection = 0;
 	if !((uniform player) isEqualTo "") then 
 	{
-		_clothingColdProtection = _clothingColdProtection + 0.25;
+		_clothingColdProtection = _clothingColdProtection + 0.05; //Original : 0.25
+		
+
+		if ((uniform player) in _midlyWarmClothing) then
+		{
+			_clothingColdProtection = _clothingColdProtection + 0.10; //15
+			
+		}
+		else
+		{
+			if ((uniform player) in _veryWarmClothing) then
+			{
+				_clothingColdProtection = _clothingColdProtection + 0.34; // 39
+				
+			};	
+		};	
+
 	};
 	if !((headgear player) isEqualTo "") then 
 	{
-		_clothingColdProtection = _clothingColdProtection + 0.05;
+		_clothingColdProtection = _clothingColdProtection + 0.01; //Original : 0.05
+		
+
+		if ((headgear player) in _midlyWarmHeadGear) then
+		{	
+			_clothingColdProtection = _clothingColdProtection + 0.07; //8
+			
+		}
+		else
+		{	
+			if ((headgear player) in _veryWarmHeadGear) then
+			{
+				_clothingColdProtection = _clothingColdProtection + 0.15; // 16
+				
+			};
+		};		
+
 	};
 	if !((vest player) isEqualTo "") then 
 	{
-		_clothingColdProtection = _clothingColdProtection + 0.10;
-	};
+		_clothingColdProtection = _clothingColdProtection + 0.10; //Original : 0.10
+		
+	};		
+
 	_clothingColdProtection = ((_clothingColdProtection * (1 - (_bodyWetness * 0.5))) max 0) min 1;
 	_movementInfluence = 0;
 	if ((getPos player) select 2 < 0.1) then 

@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.2;
+ExileRebornVersion = 0.21;
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
