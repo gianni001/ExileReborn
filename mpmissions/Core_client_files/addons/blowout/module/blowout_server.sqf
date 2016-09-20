@@ -7,7 +7,7 @@
 *   SERVER-SIDE script 
 */
 private["_emp_tg_namalsk"];
-diag_log "BLOWOUT SERVER - Loaded";
+"BLOWOUT SERVER - Loaded" call ExileServer_util_log;
 // init
 while {true} do 
 {
@@ -25,25 +25,20 @@ while {true} do
 
   _chanceOfStorm = random 1;
 
-    diag_log format["[NAC BLOWOUT SERVER] :: Next blowout in _delay (_delay = %1), delay modifier is %2 (ns_blow_delaymod)", _prodleva, ns_blow_delaymod];
-    if (useMarmaLoging) then
-    {  
-      [format["[NAC BLOWOUT SERVER] :: Next blowout in _delay (_delay = %1), delay modifier is %2 (ns_blow_delaymod)", _prodleva, ns_blow_delaymod]] call MAR_fnc_log;
-    };  
-    sleep _prodleva;
+  sleep _prodleva;
 
-  if (_chanceOfStorm > 0.6) then {diag_log format ["NAC: EVR Will procede chance greater then 0.6"];} else {diag_log format ["NAC: EVR Will not occur chance less than 0.6"];}; 
+  if (_chanceOfStorm > 0.6) then {format ["NAC: EVR Will procede chance greater then 0.6"] call ExileServer_util_log;} else {format ["NAC: EVR Will not occur chance less than 0.6"]call ExileServer_util_log;}; 
 
   if (_chanceOfStorm > 0.6) then
   {  
 
     if(!ns_blowout) then 
     {
-      diag_log format["[NAC BLOWOUT SERVER] :: Blowout module is temporarily OFF ns_blowout (ns_blowout = %1)", ns_blowout];
+      format["[NAC BLOWOUT SERVER] :: Blowout module is temporarily OFF ns_blowout (ns_blowout = %1)", ns_blowout] call ExileServer_util_log;
     } 
     else 
     {
-      diag_log format["[NAC BLOWOUT SERVER] :: Blowout module is ON ns_blowout (ns_blowout = %1)", ns_blowout];
+      format["[NAC BLOWOUT SERVER] :: Blowout module is ON ns_blowout (ns_blowout = %1)", ns_blowout] call ExileServer_util_log;
     };
 
     // Stop variable check
@@ -52,38 +47,33 @@ while {true} do
     // Preparations before blowout - APSI / players running to take a cover
     ns_blow_prep = true;
     publicVariable "ns_blow_prep";
-    diag_log format["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep];
-    if (useMarmaLoging) then
-    {  
-      [format["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
-    };  
+   
+    
+    format ["[NAC BLOWOUT SERVER] :: Preparations are under way (ns_blow_prep = %1)", ns_blow_prep] call ExileServer_util_log;
+    
     sleep 290;
     ns_blow_prep = false;
     publicVariable "ns_blow_prep";
-    diag_log format["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep];
-    if (useMarmaLoging) then
-    {  
-      [format["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep]] call MAR_fnc_log;
-    };  
+    
+    
+    format ["[NAC BLOWOUT SERVER] :: Preparations are finished (ns_blow_prep = %1)", ns_blow_prep] call ExileServer_util_log;
+   
 
     // main blowout variable - 1 == blowout in progress, 0 == no current blowout
     ns_blow_status = true;
     publicVariable "ns_blow_status";
-    diag_log format["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status];
-    if (useMarmaLoging) then
-    {  
-      [format["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status]] call MAR_fnc_log;
-    };  
+   
+   
+    format ["[NAC BLOWOUT SERVER] :: Blowout in progress (ns_blow_status = %1)", ns_blow_status] call ExileServer_util_log;
+    
     sleep 2;
     if (ns_blow_status) then 
     {
       ns_blow_action = true;
       publicVariable "ns_blow_action";
-      diag_log format["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action];
-      if (useMarmaLoging) then
-      { 
-        [format["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action]] call MAR_fnc_log;
-      };  
+    
+      format ["[NAC BLOWOUT SERVER] :: Blowout actions in progress (ns_blow_action = %1)", ns_blow_action] call ExileServer_util_log;
+      
       sleep 10;
 
       _zombieArray =
@@ -111,11 +101,9 @@ while {true} do
       
       ns_blow_action = false;
       publicVariable "ns_blow_action";
-      diag_log format["[NAC BLOWOUT SERVER] :: Blowout actions finished (ns_blow_action = %1)", ns_blow_action];
     };
     sleep 10;
     ns_blow_status = false; 
     publicVariable "ns_blow_status";
-    diag_log format["[NAC BLOWOUT SERVER] :: Blowout finished (ns_blow_status = %1)", ns_blow_status];
   };  
 };
