@@ -2810,10 +2810,14 @@ class CfgExileCustomCode
     ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
     // Change health scanner
     ExileClient_gui_xm8_slide_healthScanner_onOpen = "overwrites\ExileClient_gui_xm8_slide_healthScanner_onOpen.sqf";
+    /** Server overwrites **/
+
     // Esseker spawn fix
     ExileServer_object_player_createBambi = "overwrites\server\ExileServer_object_player_createBambi.sqf";
     // manipulate garbage collection
     ExileServer_system_garbageCollector_unscheduled_deleteAllDead = "overwrites\server\ExileServer_system_garbageCollector_unscheduled_deleteAllDead.sqf";
+    // Allow server to check season for key frames
+    ExileServer_system_weather_thread_weatherSimulation = "overwrites\server\ExileServer_system_weather_thread_weatherSimulation.sqf";
 
 };
 class CfgExileEnvironment

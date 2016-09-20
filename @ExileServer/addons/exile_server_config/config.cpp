@@ -2716,8 +2716,8 @@ class CfgSettings
 			Add the keyframes here. The server will pick one random, so if you want one 
 			weather type of be more dominant compared to others, add it multiple times
 		*/
-		keyframes[] = {"Sunny", "Cloudy", "Thunderstorm", "Cloudy", "Thunderstorm"}; 
-		//keyframes[] = {"Sunny"}; 
+		keyframes[] = {"Sunny", "Cloudy", "Thunderstorm", "Cloudy", "Thunderstorm","monsoon"}; 
+		keyframesSummer[] = {"Sunny","OvercastNoRain","sunnyNoOvercast","Sunny","OvercastNoRain","sunnyNoOvercast","monsoon"}; 
 
 		/*
 			This is a keyframe. Look up the BIKI to get more details about the parameters
@@ -2775,6 +2775,46 @@ class CfgSettings
 			lightnings = 1;
 			rainbows = 0.5;
 		};
+		class OvercastNoRain
+		{
+			fogValue = 0;
+			fogDecay = 0;
+			fogBase = 0;
+			overcast = 0.8;
+			waves = 0.2;
+			wind = 0.25;
+			gusts = 0.1;
+			rain = 0;
+			lightnings = 0;
+			rainbows = 0;
+		};
+		class sunnyNoOvercast
+		{
+			fogValue = 0;
+			fogDecay = 0;
+			fogBase = 0;
+			overcast = 0;
+			waves = 0.2;
+			wind = 0.25;
+			gusts = 0.1;
+			rain = 0;
+			lightnings = 0;
+			rainbows = 0;
+		};
+		class monsoon
+		{
+			fogValue = 0.2;
+			fogDecay = 0.1;
+			fogBase = 5;
+			overcast = 1;
+			waves = 1;
+			wind = 1;
+			gusts = 1;
+			rain = 1;
+			lightnings = 1;
+			rainbows = 0;
+		};
+
 	};
 
 	class Time

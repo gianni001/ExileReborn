@@ -274,7 +274,7 @@ Event_Convoy_monitorCount = 0;
 Event_SupplyDrop_monitorCount = 0;
 Event_RadAI_CurrentAlive = 0;
 Event_RoamingAI_CurrentAlive = 0;
-
+/*
 JohnO_fnc_handleCrashSmoke = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_handleCrashSmoke.sqf";
 JohnO_fnc_headHunters = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_headHunters.sqf";
 JohnO_fnc_taskPatrol = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_taskPatrol.sqf";
@@ -310,6 +310,12 @@ JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs
 
 // hide object function
 ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf";
+
+// Weather season check
+JohnO_fnc_getCurrentSeason_server = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf";
+*/
+
+uiSleep 30;
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
