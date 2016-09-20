@@ -11,6 +11,8 @@
  
 private["_animalType","_animalConfig","_animalClass","_position","_animal","_animalArray"];
 
+"ExileReborn - Spawning world animals" call ExileServer_util_log;
+
 _animalArray =
 [
 	"Exile_Animal_Goat_Black", "Exile_Animal_Goat_Dirty", "Exile_Animal_Goat_White", "Exile_Animal_Goat_Old", "Exile_Animal_Goat_Spotted",
@@ -42,3 +44,5 @@ for "_i" from 0 to 200 do
 	_animal addEventHandler ["Hit", 		{ _this call ExileClient_object_animal_event_onHit; 		}];
 	_animal addEventHandler ["Killed", 		{ _this call ExileClient_object_animal_event_onKilled; 		}];
 };	
+
+"ExileReborn - World animals spawned and ready to be eaten..." call ExileServer_util_log;

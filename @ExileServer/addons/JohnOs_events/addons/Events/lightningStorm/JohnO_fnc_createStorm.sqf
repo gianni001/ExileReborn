@@ -1,11 +1,6 @@
 private ["_strikeCenter"];
 
-if (useMarmaLoging) then
-{
-	["STORM CYCLE BEGUN"] call MAR_fnc_log;
-};
-
-diag_log "STORM CYCLE BEGUN";
+"STORM CYCLE BEGUN" call ExileServer_util_log;
 
 if ((overcast > 0.5) && ((count allPlayers) > 0) && (rain > 0.6)) then
 {
@@ -31,15 +26,10 @@ if ((overcast > 0.5) && ((count allPlayers) > 0) && (rain > 0.6)) then
 
 			if (count _nearPlayers > 0) then 
 			{
+				"STORMS - Position of strike is within 10m of a player.. he has 10 seconds to move or .. Thor..." call ExileServer_util_log;
+
 				uiSleep 10;
-
-				if (useMarmaLoging) then
-				{
-					["STORMS - Position of strike is within 10m of a player.. he has 10 seconds to move or .. Thor..."] call MAR_fnc_log;
-				};	
 			};	
-
-			diag_log format ["Lightning strike created:%1",_pos];
 
 			_dir =random 360;
 
@@ -78,8 +68,4 @@ if ((overcast > 0.5) && ((count allPlayers) > 0) && (rain > 0.6)) then
 
 Event_lightningSpawnInterval = (Event_lightningSpawnInterval + floor (random 500)) - floor (random 500);
 
-if (useMarmaLoging) then
-{
-	[format["[STORM CYCLE COMPLETE] -- Next storm in - %1",Event_lightningSpawnInterval]] call MAR_fnc_log;
-};
-diag_log "STORM CYCLE COMPLETE";
+format ["[STORM CYCLE COMPLETE] -- Next storm in - %1",Event_lightningSpawnInterval] call ExileServer_util_log;

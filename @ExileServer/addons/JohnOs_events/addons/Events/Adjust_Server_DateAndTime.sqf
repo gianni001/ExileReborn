@@ -21,10 +21,8 @@ if (isNil "_lastSessionDateAndTime") then
 
 	_lastSessionDateAndTime = date;
 };	
-if (useMarmaLoging) then
-{
-	[format["[Last Session Date and Time] Retrieved last session date and time :: %1",_lastSessionDateAndTime]] call MAR_fnc_log;
-};	
+
+format ["[Last Session Date and Time] Retrieved last session date and time :: %1",_lastSessionDateAndTime] call ExileServer_util_log;
 
 _newYear = _lastSessionDateAndTime select 0;
 _newMonth = _lastSessionDateAndTime select 1;
@@ -57,9 +55,6 @@ forceWeatherChange;
 
 profileNamespace setVariable ["NZEC_DateAndTime",_currentSessionDateAndTime];
 saveProfileNamespace;
-if (useMarmaLoging) then
-{
-	[format["[Current Session Date and Time] Set current session date and time :: %1",_currentSessionDateAndTime]] call MAR_fnc_log;
-};	
-
+	
+format ["[Current Session Date and Time] Set current session date and time :: %1",_currentSessionDateAndTime] call ExileServer_util_log;
 

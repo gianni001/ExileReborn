@@ -12,13 +12,8 @@ _bags = ["B_AssaultPack_khk","B_AssaultPack_dgtl","B_AssaultPack_rgr","B_Assault
 
 if (isNull _target) exitWith 
 {
-	if (useMarmaLoging) then
-	{	
-		["_target isNull -- exiting"] call MAR_fnc_log;
-	};	
-	diag_log "_target isNull -- exiting";
+	"Zombie spawn near target failed, null object - Exiting call" call ExileServer_util_log;
 };
-
 
 ryanzombiesdisablescript = true;
 Ryanzombieslogicroam = true;

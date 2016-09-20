@@ -1,6 +1,6 @@
 /** DYNAMIC AIR PATROL EVENT by JohnO **/
 
-diag_log "[EVENT: AirPatrol] Ambient air patrol initalized";
+"[EVENT: AirPatrol] Ambient air patrol initalized" call ExileServer_util_log;
 
 if (!isServer) exitWith{};
 
@@ -264,7 +264,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
         };  
     };
 
-    diag_log "[EVENT: AirPatrol] Ambient air patrol event started";
+    "[EVENT: AirPatrol] Ambient air patrol event started" call ExileServer_util_log;
 
     _airCraft setCombatMode "BLUE";
 
@@ -315,7 +315,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
 
     if (intercept) then
     {
-        diag_log "[EVENT: AirPatrol] Interceptor aircraft has been despatched";
+        "[EVENT: AirPatrol] Interceptor aircraft has been despatched" call ExileServer_util_log;
 
         //["toastRequest", ["InfoTitleAndText", ["WARNING", "The MAFIA has scrambled a jet to take down the fighter"]]] call ExileServer_system_network_send_broadcast;
 
@@ -393,7 +393,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
 
     if (!(_isWater) && (_safeDistance > 1000)) then
     { 
-        diag_log "[EVENT: AirPatrol] Crash sequence initiated";
+        "[EVENT: AirPatrol] Crash sequence initiated" call ExileServer_util_log;
 
         //["toastRequest", ["InfoTitleAndText", ["WARNING", "An aircraft has been seen going down, A quick reaction force has been despatched to secure the crash site"]]] call ExileServer_system_network_send_broadcast;
 
@@ -426,7 +426,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
                 deleteWaypoint ((waypoints _interceptor) select 0);
             };
 
-            diag_log "[EVENT: AirPatrol] Remaining offensive waypoints for interceptor deleted";
+            "[EVENT: AirPatrol] Remaining offensive waypoints for interceptor deleted" call ExileServer_util_log;
 
             _interceptorExitPos = _rescueStartPos call BIS_fnc_selectRandom;
             
@@ -444,7 +444,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
             
             } forEach units _interceptor;
             
-            diag_log "[EVENT: AirPatrol] Interceptor retreat order given";
+            "[EVENT: AirPatrol] Interceptor retreat order given" call ExileServer_util_log;
         };
             
         _rescueCrew = createGroup EAST;
@@ -472,7 +472,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
             };  
         };
 
-        diag_log "[EVENT: AirPatrol] Rescue QRF Helo despatched";
+        "[EVENT: AirPatrol] Rescue QRF Helo despatched" call ExileServer_util_log;
 
         _rescueCrew setCombatMode "BLUE";
       
@@ -489,20 +489,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
         _rescueAltWP2 = _rescueCrew addWaypoint [_landPos, 0];
         _rescueAltWP2 setWaypointType "GETOUT";
         _rescueAltWP2 setWaypointBehaviour "CARELESS";
-        _rescueAltWP2 setWaypointspeed "NORMAL";
-
-        if (_debug) then
-        { 
-
-            _waypointCount = waypoints _rescueCrew;
-            diag_log format ["Current Waypoints:%1",_waypointCount];
-            uiSleep 5;
-            _checkWaypoint = currentWaypoint _rescueCrew;
-            diag_log format ["Waypoint Index:%1",_checkWaypoint];
-            uiSleep 5;
-            _currentWaypointAmount = count _waypointCount; 
-            diag_log format ["Waypoints Remaining:%1",_currentWaypointAmount];
-        };    
+        _rescueAltWP2 setWaypointspeed "NORMAL";      
 
         // Add weapons to the chopper
 
@@ -547,7 +534,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
 
         _chopper setFuel 0.1;
 
-       diag_log "[EVENT: AirPatrol] Rescue QRF Helo reached destination";
+       "[EVENT: AirPatrol] Rescue QRF Helo reached destination" call ExileServer_util_log;
 
         _rescueCrew setCombatMode "RED";
         _rescueCrew allowFleeing 0;
@@ -619,7 +606,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
     }
     else
     {
-        diag_log "[EVENT: AirPatrol] Aircraft crashed in water -- Terminating script";
+       "[EVENT: AirPatrol] Aircraft crashed in water -- Terminating script" call ExileServer_util_log;
         
         if (intercept) then
         {
@@ -629,7 +616,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
                 deleteWaypoint ((waypoints _interceptor) select 0);
             };
 
-            diag_log "[EVENT: AirPatrol] Remaining offensive interceptor waypoints deleted";
+            "[EVENT: AirPatrol] Remaining offensive interceptor waypoints deleted" call ExileServer_util_log;
 
             _interceptorExitPos = _rescueStartPos call BIS_fnc_selectRandom;
             
@@ -647,7 +634,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
             
             } forEach units _interceptor;
             
-            diag_log "[EVENT: AirPatrol] Interceptor aircraft dismiss order given";
+           "[EVENT: AirPatrol] Interceptor aircraft dismiss order given" call ExileServer_util_log;
         };
     };
 
@@ -670,6 +657,6 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
 }
 else
 {
-    diag_log "[EVENT: AirPatrol] Script random chance failed -- Re trying event";
+    "[EVENT: AirPatrol] Script random chance failed -- Re trying event" call ExileServer_util_log;
     [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 };    

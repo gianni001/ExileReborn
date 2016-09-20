@@ -23,8 +23,7 @@ if (random 1 > 0.3) then
 
 	if (([_randomPosition, 600] call ExileClient_util_world_isTraderZoneInRange) || (_safeToDebug < 1000)) exitWith
 	{
-		[format["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition]] call MAR_fnc_log;
-		diag_log format ["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition];
+		format ["[EVENT: SupplyDrop] -- Supply spawned to close too trader zone OR debug island @ %1. Cancelling event",_randomPosition] call ExileServer_util_log;
 	};
 
 	_randomPosition set [2, Event_SupplyDrop_Height];
@@ -100,7 +99,7 @@ if (random 1 > 0.3) then
 
 		};
 
-		diag_log format ["[EVENT: SupplyDrop] -- Supply drop event has spawned its cargo and populated loot"];
+		"[EVENT: SupplyDrop] -- Supply drop event has spawned its cargo and populated loot" call ExileServer_util_log;
 
 		_smoke = "SmokeShellRed" createVehicle position _drop; 														
 		_smoke attachto [_drop,[0,0,0]];
@@ -162,25 +161,17 @@ if (random 1 > 0.3) then
 
 		//Event_Cleanup_objectArray pushBack [_marker,time + Event_SupplyDrop_MarkerDuration,true];
 		Event_HeliCrash_Positions pushBack [position _drop, time + Event_SupplyDrop_MarkerDuration];
-		publicVariable "Event_HeliCrash_Positions";
-		if (useMarmaLoging) then
-		{	
-			[format["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition]] call MAR_fnc_log;
-		};	
+		publicVariable "Event_HeliCrash_Positions";	
+		format ["[EVENT: SupplyDrop] Spawned supply drop event @ %1",_randomPosition] call ExileServer_util_log;
 		Event_SupplyDrop_monitorCount = Event_SupplyDrop_monitorCount + 1;
 	}
 	else
 	{
-		if (useMarmaLoging) then
-		{	
-			[format ["[EVENT: SupplyDrop] Did not spawn a supply drop vehicle - Vehicle selected max count on server reached"]] call MAR_fnc_log;
-		};	
+		"[EVENT: SupplyDrop] Did not spawn a supply drop vehicle - Vehicle selected max count on server reached" call ExileServer_util_log;	
 	};	
 }
 else
 {
-	if (useMarmaLoging) then
-	{	
-		[format["[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful"]] call MAR_fnc_log;
-	};	
+	
+	"[EVENT: SupplyDrop] Supply drop did not spawn | Chance was not succesful" call ExileServer_util_log;
 };	

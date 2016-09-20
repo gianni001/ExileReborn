@@ -2,13 +2,13 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.3;
+ExileRebornVersion = 0.311;
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
-useMarmaLoging = true; 															
+
 Event_world_size = 0;
 
 switch (toLower worldName) do
@@ -315,7 +315,10 @@ ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumb
 JohnO_fnc_getCurrentSeason_server = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf";
 */
 
-uiSleep 30;
+waitUntil 
+{
+  !isNil "PublicServerIsLoaded";
+};
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";

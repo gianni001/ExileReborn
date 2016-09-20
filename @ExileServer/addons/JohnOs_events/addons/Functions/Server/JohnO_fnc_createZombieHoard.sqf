@@ -24,12 +24,7 @@ if !(_validPlayerArray isEqualTo []) then
 
 	_selectedPlayer = selectRandom _validPlayerArray;
 
-	if (useMarmaLoging) then
-	{
-		[format["[EVENT:: Zombie Hoard] -- Found valid player to spawn zombie hoard near -- %1",_selectedPlayer]] call MAR_fnc_log;
-	};
-
-	diag_log format ["[EVENT:: Zombie Hoard] -- Found valid player to spawn zombie hoard near -- %1",_selectedPlayer];
+	format["[EVENT:: Zombie Hoard] -- Found valid player to spawn zombie hoard near -- %1",_selectedPlayer] call ExileServer_util_log;
 
 	_endPoint = [position _selectedPlayer, 20] call ExileClient_util_math_getRandomPositionInCircle;
 	_dirAdjustment = [0,90,180,270];

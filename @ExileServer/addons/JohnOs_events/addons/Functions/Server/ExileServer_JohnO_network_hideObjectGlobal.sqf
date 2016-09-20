@@ -12,8 +12,3 @@ else
 {
 	_object hideObjectGlobal false;
 };	
-/*
-if (useMarmaLoging) then
-{
-	[format["%1 has hidden an object"]] call MAR_fnc_log;
-};	

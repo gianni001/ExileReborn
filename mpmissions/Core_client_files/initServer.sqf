@@ -233,6 +233,61 @@ switch (toLower worldName) do
             };
         }
         forEach _vehicles;
+        
+        _objectNew =
+        [
+            //Hardware
+            ["Land_PortableLight_double_F",[3965.14,9272.26,150.437],[[-0.349193,-0.937051,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3944.35,9269.91,150.433],[[0,1,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3955.87,9262.89,150.429],[[0.98938,-0.145354,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3957.12,9285.54,150.273],[[-0.729967,0.683482,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3932.25,9248,150.253],[[0.932758,0.360503,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3927.15,9260,153.153],[[0,1,0],[0,0,1]],false,true],
+            //Dump yard
+            ["Land_PortableLight_double_F",[11154.6,9100.81,65.0642],[[-0.670845,-0.741598,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[11162.1,9117.97,64.8971],[[0.774894,-0.632092,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[11151.9,9109.29,64.9188],[[-0.977491,-0.210977,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[11165.5,9096.06,65.0371],[[0.774894,-0.632092,0],[0,0,1]],false,true],
+            //Armory
+            ["Land_PortableLight_double_F",[2737.52,11288.3,135.131],[[0.774894,-0.632092,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[2729.89,11285.9,134.691],[[0.207816,-0.978168,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[2733,11268.4,135.595],[[-0.895437,0.445189,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[2755.21,11256,137.124],[[0.62975,-0.776798,0],[0,0,1]],false,true],
+            //Vehicle
+            ["Land_PortableLight_double_F",[3112.41,4485.39,114.018],[[0.207816,-0.978168,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3128.56,4486.91,114.079],[[0.981938,-0.189202,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[3136.77,4506.04,113.763],[[-0.193578,-0.981085,0],[0,0,1]],false,true],
+            //Boat
+            ["Land_PortableLight_double_F",[5717.47,5429.94,1.32746],[[-0.918538,-0.395333,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[5710.67,5414.46,3.96071],[[0.917134,-0.398579,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[5747.52,5435.26,0.880503],[[-0.657295,-0.753634,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[5727.66,5428.84,1.28007],[[-0.749932,-0.661515,0],[0,0,1]],false,true],
+            //Spec Ops
+            ["Land_PortableLight_double_F",[6632.05,3697.65,239.054],[[-0.157023,0.987595,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[6628.81,3714.74,237.122],[[-0.973785,0.22747,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[6648.22,3713.07,241.173],[[-0.998223,-0.0595836,0],[0,0,1]],false,true],
+            //Office
+            ["Land_PortableLight_double_F",[7585.44,4511.75,114.238],[[-0.012135,0.999926,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[7590.36,4512.02,114.101],[[-0.012135,0.999926,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[7586.32,4534.06,117.065],[[-0.988137,0.153573,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[7581.43,4531.58,117.068],[[-0.0273569,-0.999626,0],[0,0,1]],false,true],
+            //Equipment
+            ["Land_PortableLight_double_F",[8090.87,6427.72,116.514],[[0.911509,0.411281,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[8082.35,6415.47,116.194],[[-0.591621,-0.806216,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[8078.42,6439.17,116.556],[[-0.420098,-0.907479,0],[0,0,1]],false,true],
+            ["Land_PortableLight_double_F",[8074.33,6426.1,116.201],[[-0.0339127,0.999425,0],[0,0,1]],false,true]
+        ];
+
+        {
+            private ["_objectNew"];
+
+            _object = (_x select 0) createVehicle [0,0,0];
+            _object setPosASL (_x select 1);
+            _object setVectorDirAndUp (_x select 2);
+            _object allowDamage (_x select 3);
+            _object enableSimulationGlobal (_x select 4);
+        }
+        forEach _objectNew;     
  
         // 50 Simple Objects
         private _invisibleSelections = ["zasleh", "zasleh2", "box_nato_grenades_sign_f", "box_nato_ammoord_sign_f", "box_nato_support_sign_f"];
@@ -271,9 +326,6 @@ switch (toLower worldName) do
         ["a3\structures_f\wrecks\wreck_skodovka_f.p3d", [8038.29, 6424.76, 116.313], [-0.9885, -0.150469, -0.015086], [-0.0155327, 0.00179384, 0.999878]],
         ["a3\structures_f\wrecks\wreck_truck_dropside_f.p3d", [8045.46, 6416.57, 117.33], [-0.998125, -0.061198, -0.00133668], [-0.00129187, -0.000771824, 0.999999]],
         ["a3\structures_f\civ\camping\sun_chair_green_f.p3d", [8071.64, 6414.55, 116.33], [0.0570301, -0.998372, -0.000696893], [-0.00129187, -0.000771824, 0.999999]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [8090.99, 6417.55, 117.481], [0.68975, -0.724047, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [8082.74, 6416.17, 117.289], [-0.400485, -0.916303, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [8076.26, 6426.42, 117.287], [-0.258821, 0.965925, 0], [0, 0, 1]],
         ["a3\structures_f_exp\walls\slum\slumwall_01_s_4m_f.p3d", [8070.92, 6415.02, 116.566], [-0.997887, -0.0649709, 0], [0, 0, 1]],
         ["a3\structures_f_exp\walls\slum\slumwall_01_s_4m_f.p3d", [8072.81, 6417.27, 116.571], [-0.066519, 0.997785, 0], [0, 0, 1]],
         ["a3\structures_f\civ\camping\campingtable_small_f.p3d", [8071.85, 6416.42, 116.596], [0, 1, 0.000771824], [-0.00129187, -0.000771824, 0.999999]],
@@ -290,7 +342,6 @@ switch (toLower worldName) do
         ["ca\weapons\ammoboxes\usspecialweapons.p3d", [2748.77, 11264.7, 137.906], [-0.959487, 0.281621, -0.00859421], [-0.0053265, 0.0123667, 0.999909]],
         ["ca\misc\ural_wrecked.p3d", [2737.81, 11280.8, 136.467], [-0.441742, 0.895672, -0.051331], [-0.051676, 0.0317181, 0.99816]],
         //Hardware Trader
-        ["a3\structures_f\civ\lamps\lampsolar_f.p3d", [3976.22, 9278.99, 154.336], [-0.781222, 0.624253, 0], [0, 0, 1]],
         ["a3\structures_f\civ\constructions\cinderblocks_f.p3d", [3968, 9288.34, 150.586], [-0.704579, 0.709626, 0.000595886], [0.000845734, 0, 1]],
         ["a3\structures_f\civ\camping\fieldtoilet_f.p3d", [3964.95, 9287.18, 151.647], [0.63655, 0.771227, -0.00356429], [0.00559929, 0, 0.999984]],
         ["a3\structures_f_heli\civ\constructions\gastank_02_f.p3d", [3976.52, 9283.94, 151.451], [0, 1, 0], [0.000845734, 0, 1]],
@@ -362,15 +413,10 @@ switch (toLower worldName) do
         ["a3\structures_f\civ\camping\campingchair_v1_folded_f.p3d", [11166, 9101.5, 110.075], [0.780819, -0.624651, 0.011516], [-0.0110477, 0.00462482, 0.999928]],
         ["a3\structures_f\civ\camping\campingchair_v1_folded_f.p3d", [11165.9, 9100.91, 65.0782], [0, 0.999989, -0.00463223], [0.00310737, 0.00463221, 0.999984]],
         ["a3\structures_f\civ\camping\sun_chair_green_f.p3d", [11174.8, 9100.81, 65.4706], [-0.98387, 0.178885, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [11165, 9107.99, 66.0443], [0, 1, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [11152.6, 9099.64, 66.8302], [-0.896986, -0.442059, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [11167.3, 9118.81, 68.7109], [0.139961, -0.990157, 0], [0, 0, 1]],
         //Vehicles
         ["a3\structures_f\civ\camping\tentdome_f.p3d", [3107.19, 4496.12, 114.382], [0, 1, 0], [0, 0, 1]],
         ["a3\structures_f\civ\accessories\woodpile_f.p3d", [3106.42, 4490.59, 114.023], [0, 1, 0], [0, 0, 1]],
         ["a3\structures_f\civ\camping\campfire_f.p3d", [3102.45, 4494.31, 113.982], [0, 1, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [3113.23, 4487.27, 115.101], [0.382124, -0.924111, 0], [0, 0, 1]],
-        ["a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d", [3128.74, 4488.47, 115.163], [0.996471, 0.0839377, 0], [0, 0, 1]],
         ["ca\structures\misc\misc_deerstand\misc_deerstand.p3d", [3132.58, 4471.73, 115.908], [0.89107, 0.453865, 0], [0, 0, 1]],
         ["ca\structures\misc\misc_deerstand\misc_deerstand.p3d", [3139.11, 4503.71, 115.909], [-0.140665, -0.990057, 0], [0, 0, 1]],
         //Aircraft

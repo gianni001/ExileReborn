@@ -7,27 +7,15 @@ _target = (_this select 0) call ExileServer_system_session_getPlayerObject;
 
 if (isNull _target) exitWith 
 {
-	if (useMarmaLoging) then
-	{	
-		["_target isNull -- exiting"] call MAR_fnc_log;
-	};	
-	diag_log "_target isNull -- exiting";
+	"Head hunter target isNull exiting script" call ExileServer_util_log;
 };
-
-if (useMarmaLoging) then
-{
-	[format["Select 1 -- %1",_target]] call MAR_fnc_log;
-};	
 		
 _position = getPos _target;
 _debug = Event_DEBUG_Location;
 
 if (_position distance _debug > 600) exitWith {};
 
-if (useMarmaLoging) then
-{
-	[format["Player was detected by bandits during hack -- %1", _target]] call MAR_fnc_log;
-};	
+format["Player was detected by bandits during hack -- %1", _target] call ExileServer_util_log;
 
 if !(surfaceIsWater _position) then // Check the player is not in water
 {	
