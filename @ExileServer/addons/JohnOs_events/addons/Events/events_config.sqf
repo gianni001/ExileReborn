@@ -315,10 +315,7 @@ ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumb
 JohnO_fnc_getCurrentSeason_server = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf";
 */
 
-waitUntil 
-{
-  !isNil "PublicServerIsLoaded";
-};
+uiSleep 20;
 
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
