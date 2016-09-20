@@ -311,9 +311,6 @@ JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs
 // hide object function
 ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf";
 
-// Weather season check
-JohnO_fnc_getCurrentSeason_server = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf";
-
 [] execVM "JohnOs_events\addons\Events\airPatrol\airPatrol.sqf";
 //[] execVM "JohnOs_events\addons\Events\Convoy\JohnO_fnc_Convoy.sqf";
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";

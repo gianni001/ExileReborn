@@ -1,3 +1,4 @@
+//Heli crashes modded for Exile by Darth_Rogue
 class CfgPatches 
 {
 	class JohnOs_events
@@ -9,16 +10,15 @@ class CfgPatches
 	};
 };
 
-class CfgFunctions
+class CfgFunctions 
 {
 	class JohnOs_events
 	{
-		class Bootstrap
+		class A3CCustom 
 		{
-			file="JohnOs_events\bootstrap";
-			class preInit
-			{
-				preInit = 1;
+			file = "JohnOs_events\addons";
+			class init {
+				postInit = 1;
 			};
 		};
 	};
