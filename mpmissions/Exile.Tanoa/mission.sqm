@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6559.4448,1096.8723,5407.6069};
+		pos[]={5572.6689,4761.9116,2205.4951};
 		dir[]={0.062479097,-0.66681474,0.74266881};
 		up[]={0.055900801,0.74520469,0.66447324};
 		aside[]={0.99652618,-6.8335794e-008,-0.083835565};
@@ -76,7 +76,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=53;
+		items=48;
 		class Item0
 		{
 			dataType="Group";
@@ -1710,6 +1710,11 @@ class Mission
 			name="ExileMarker1";
 			markerType="ELLIPSE";
 			type="ExileTraderZone";
+			colorName="ColorBlack";
+			fillName="Border";
+			a=200;
+			b=200;
+			drawBorder=1;
 			id=101;
 			atlOffset=-1.6056763;
 		};
@@ -1892,8 +1897,8 @@ class Mission
 			type="ExileTraderZone";
 			colorName="ColorBlack";
 			fillName="Border";
-			a=200;
-			b=200;
+			a=600;
+			b=600;
 			drawBorder=1;
 			id=115;
 			atlOffset=-162.97455;
@@ -1910,74 +1915,6 @@ class Mission
 		class Item17
 		{
 			dataType="Marker";
-			position[]={10806.4,0,6388.1001};
-			name="ExileMarker17";
-			text="Kotomo";
-			markerType="ELLIPSE";
-			type="ExileSpawnZone";
-			colorName="ColorBlack";
-			alpha=0;
-			fillName="Border";
-			a=472.32999;
-			b=472.32999;
-			drawBorder=1;
-			id=117;
-			atlOffset=-3.456516;
-		};
-		class Item18
-		{
-			dataType="Marker";
-			position[]={14356.3,0,8870.7197};
-			name="ExileMarker19";
-			text="Nandai";
-			markerType="ELLIPSE";
-			type="ExileSpawnZone";
-			colorName="ColorBlack";
-			alpha=0;
-			fillName="Border";
-			a=472.32999;
-			b=472.32999;
-			drawBorder=1;
-			id=119;
-			atlOffset=-8.7623243;
-		};
-		class Item19
-		{
-			dataType="Marker";
-			position[]={12543,0,12623.9};
-			name="ExileMarker21";
-			text="Ovau";
-			markerType="ELLIPSE";
-			type="ExileSpawnZone";
-			colorName="ColorBlack";
-			alpha=0;
-			fillName="Border";
-			a=472.32999;
-			b=472.32999;
-			drawBorder=1;
-			id=121;
-			atlOffset=-13.458803;
-		};
-		class Item20
-		{
-			dataType="Marker";
-			position[]={6530.2002,0,13106.1};
-			name="ExileMarker23";
-			text="Nicolet";
-			markerType="ELLIPSE";
-			type="ExileSpawnZone";
-			colorName="ColorBlack";
-			alpha=0;
-			fillName="Border";
-			a=472.32999;
-			b=472.32999;
-			drawBorder=1;
-			id=123;
-			atlOffset=-17.434483;
-		};
-		class Item21
-		{
-			dataType="Marker";
 			position[]={8911.6797,0,8520.4902};
 			name="ExileMarker25";
 			text="Non-Construction Zone";
@@ -1992,7 +1929,7 @@ class Mission
 			id=125;
 			atlOffset=-228.87505;
 		};
-		class Item22
+		class Item18
 		{
 			dataType="Marker";
 			position[]={8911.6797,0,8520.4902};
@@ -2001,7 +1938,7 @@ class Mission
 			id=126;
 			atlOffset=-228.87505;
 		};
-		class Item23
+		class Item19
 		{
 			dataType="Marker";
 			position[]={11579.8,0,13156};
@@ -2018,7 +1955,7 @@ class Mission
 			id=127;
 			atlOffset=-6.9499998;
 		};
-		class Item24
+		class Item20
 		{
 			dataType="Marker";
 			position[]={11579.8,0,13156};
@@ -2027,7 +1964,7 @@ class Mission
 			id=128;
 			atlOffset=-6.9499998;
 		};
-		class Item25
+		class Item21
 		{
 			dataType="Marker";
 			position[]={8430.1602,0,10246.8};
@@ -2044,7 +1981,7 @@ class Mission
 			id=129;
 			atlOffset=-19.43;
 		};
-		class Item26
+		class Item22
 		{
 			dataType="Marker";
 			position[]={8430.1602,0,10246.8};
@@ -2053,7 +1990,7 @@ class Mission
 			id=130;
 			atlOffset=-19.43;
 		};
-		class Item27
+		class Item23
 		{
 			dataType="Marker";
 			position[]={11912.8,0,10322.6};
@@ -2070,7 +2007,7 @@ class Mission
 			id=131;
 			atlOffset=-149.84441;
 		};
-		class Item28
+		class Item24
 		{
 			dataType="Marker";
 			position[]={11912.8,0,10322.6};
@@ -2079,7 +2016,7 @@ class Mission
 			id=132;
 			atlOffset=-149.84441;
 		};
-		class Item29
+		class Item25
 		{
 			dataType="Marker";
 			position[]={11139.4,0,11546.9};
@@ -2096,7 +2033,7 @@ class Mission
 			id=133;
 			atlOffset=-350.38;
 		};
-		class Item30
+		class Item26
 		{
 			dataType="Marker";
 			position[]={11139.4,0,11546.9};
@@ -2105,7 +2042,7 @@ class Mission
 			id=134;
 			atlOffset=-350.38;
 		};
-		class Item31
+		class Item27
 		{
 			dataType="Marker";
 			position[]={12190.4,0,8167.0298};
@@ -2114,13 +2051,13 @@ class Mission
 			type="ExileTraderZone";
 			colorName="ColorBlack";
 			fillName="Border";
-			a=200;
-			b=200;
+			a=600;
+			b=600;
 			drawBorder=1;
 			id=135;
 			atlOffset=-49.674259;
 		};
-		class Item32
+		class Item28
 		{
 			dataType="Marker";
 			position[]={12190.4,0,8167.0298};
@@ -2129,7 +2066,7 @@ class Mission
 			id=136;
 			atlOffset=-49.674259;
 		};
-		class Item33
+		class Item29
 		{
 			dataType="Marker";
 			position[]={12303.2,0,6572.2998};
@@ -2146,7 +2083,7 @@ class Mission
 			id=137;
 			atlOffset=1.2041442;
 		};
-		class Item34
+		class Item30
 		{
 			dataType="Marker";
 			position[]={12303.2,0,6572.2998};
@@ -2155,7 +2092,7 @@ class Mission
 			id=138;
 			atlOffset=1.2041442;
 		};
-		class Item35
+		class Item31
 		{
 			dataType="Marker";
 			position[]={13589.1,0,12163.3};
@@ -2172,7 +2109,7 @@ class Mission
 			id=139;
 			atlOffset=14.80134;
 		};
-		class Item36
+		class Item32
 		{
 			dataType="Marker";
 			position[]={5579.3398,0,10579.6};
@@ -2189,7 +2126,7 @@ class Mission
 			id=140;
 			atlOffset=9.4741564;
 		};
-		class Item37
+		class Item33
 		{
 			dataType="Marker";
 			position[]={2901.51,0,12333.8};
@@ -2204,7 +2141,7 @@ class Mission
 			id=141;
 			atlOffset=-127.87136;
 		};
-		class Item38
+		class Item34
 		{
 			dataType="Marker";
 			position[]={2901.51,-8.3962882e-016,12333.8};
@@ -2215,7 +2152,7 @@ class Mission
 			id=142;
 			atlOffset=-127.87136;
 		};
-		class Item39
+		class Item35
 		{
 			dataType="Marker";
 			position[]={7199.9902,0,6961.1001};
@@ -2232,7 +2169,7 @@ class Mission
 			id=143;
 			atlOffset=-2.6600001;
 		};
-		class Item40
+		class Item36
 		{
 			dataType="Marker";
 			position[]={7199.9902,0,6961.1001};
@@ -2241,7 +2178,7 @@ class Mission
 			id=144;
 			atlOffset=-2.6600001;
 		};
-		class Item41
+		class Item37
 		{
 			dataType="Marker";
 			position[]={2161.1799,0,3481.5};
@@ -2257,7 +2194,7 @@ class Mission
 			id=145;
 			atlOffset=-12.95;
 		};
-		class Item42
+		class Item38
 		{
 			dataType="Marker";
 			position[]={2161.1799,0,3481.5};
@@ -2266,7 +2203,7 @@ class Mission
 			id=146;
 			atlOffset=-12.95;
 		};
-		class Item43
+		class Item39
 		{
 			dataType="Marker";
 			position[]={9668.96,0,13569.2};
@@ -2283,24 +2220,7 @@ class Mission
 			id=147;
 			atlOffset=-2.5664208;
 		};
-		class Item44
-		{
-			dataType="Marker";
-			position[]={5010.6401,0,8724.1201};
-			name="ExileMarker48";
-			text="Regina";
-			markerType="ELLIPSE";
-			type="ExileSpawnZone";
-			colorName="ColorBlack";
-			alpha=0;
-			fillName="Border";
-			a=472.32999;
-			b=472.32999;
-			drawBorder=1;
-			id=148;
-			atlOffset=-2.6700001;
-		};
-		class Item45
+		class Item40
 		{
 			dataType="Marker";
 			position[]={8904.0996,0,13795.4};
@@ -2317,17 +2237,22 @@ class Mission
 			id=150;
 			atlOffset=3.2108765;
 		};
-		class Item46
+		class Item41
 		{
 			dataType="Marker";
 			position[]={7991.1001,0,12411.6};
 			name="ExileMarker51";
 			markerType="ELLIPSE";
 			type="ExileTraderZone";
+			colorName="ColorBlack";
+			fillName="Border";
+			a=600;
+			b=600;
+			drawBorder=1;
 			id=151;
 			atlOffset=-123.48886;
 		};
-		class Item47
+		class Item42
 		{
 			dataType="Marker";
 			position[]={7991.1001,0,12411.6};
@@ -2336,7 +2261,7 @@ class Mission
 			id=152;
 			atlOffset=-123.48886;
 		};
-		class Item48
+		class Item43
 		{
 			dataType="Marker";
 			position[]={5409.8799,0,10940.7};
@@ -2345,7 +2270,7 @@ class Mission
 			id=153;
 			atlOffset=-0.80830812;
 		};
-		class Item49
+		class Item44
 		{
 			dataType="Marker";
 			position[]={11707.9,0,3032.6599};
@@ -2362,7 +2287,7 @@ class Mission
 			id=154;
 			atlOffset=-4.6900001;
 		};
-		class Item50
+		class Item45
 		{
 			dataType="Marker";
 			position[]={11707.9,0,3032.6599};
@@ -2371,7 +2296,7 @@ class Mission
 			id=155;
 			atlOffset=-4.6900001;
 		};
-		class Item51
+		class Item46
 		{
 			dataType="Marker";
 			position[]={11074.7,0,13391.8};
@@ -2388,7 +2313,7 @@ class Mission
 			id=156;
 			atlOffset=8.3048506;
 		};
-		class Item52
+		class Item47
 		{
 			dataType="Marker";
 			position[]={11074.7,0,13391.8};
