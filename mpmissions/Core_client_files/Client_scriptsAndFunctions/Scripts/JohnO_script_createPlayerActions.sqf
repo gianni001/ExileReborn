@@ -6,6 +6,7 @@ ExileReborn_hasCookingAction = false;
 ExileReborn_hasdropAnimalAction = false;
 ExileReborn_hasDryClothesAction = false;
 ExileReborn_hasFillSandBagAction = false;
+ExileReborn_hasscavengeAction = false;
  
 ExileReborn_pickUpAction =
 ["Tie animal to belt",
@@ -389,5 +390,81 @@ ExileReborn_filLSandBagAction =
     ExileClientActionDelayAbort = false;
     ExileReborn_hasFillSandBagAction = false;
     ExileReborn_digSandAction_current = nil;
+
+},"",0,false,true,"",""];
+
+ExileReborn_scavengeAction =
+["Scavenge",
+{
+    
+    ExileReborn_hasscavengeAction = true;
+
+    _caller = _this select 0;
+    _action = _this select 2;
+    _caller removeAction _action;
+
+    if !([] call JohnO_fnc_canScavenge) then
+    {
+        [
+            "ErrorTitleAndText", 
+            ["Invalid Object", "You cannot scavenge this object, try another"]
+        ] call ExileClient_gui_toaster_addTemplateToast;
+    }
+    else
+    {
+        player playActionNow "Medic";
+        sleep 4;
+        if (random 1 > 0.5) then
+        {        
+            _item = [] call JohnO_fnc_randomItem;
+            if ([player,_item] call ExileClient_util_playerCargo_canAdd) then
+            {
+                player addItem _item;
+                [
+                    "InfoTitleAndText", 
+                    ["Item found", "I have found something, I should check my gear"]
+                ] call ExileClient_gui_toaster_addTemplateToast;
+                if (random 1 > 0.3) then
+                {
+                    if ([] call JohnO_fnc_canScavenge) then
+                    {
+                        cursorObject setDamage 1;
+                    };    
+                };    
+            } 
+            else
+            {   
+                _holder = createVehicle ["GroundWeaponHolder",position player,[],0,"CAN COLLIDE"];
+                [_holder, _item] call ExileClient_util_containerCargo_add;
+                [
+                    "InfoTitleAndText", 
+                    ["Item found", "I have found something but it could not fit in my pack I should check the ground"]
+                ] call ExileClient_gui_toaster_addTemplateToast;
+                if (random 1 > 0.3) then
+                {
+                    if ([] call JohnO_fnc_canScavenge) then
+                    {
+                        cursorObject setDamage 1;
+                    };    
+                }; 
+            };
+        }
+        else
+        {
+             [
+                "ErrorTitleAndText", 
+                ["Nothing found", "I have found nothing.."]
+            ] call ExileClient_gui_toaster_addTemplateToast;
+            if (random 1 > 0.3) then
+            {
+                if ([] call JohnO_fnc_canScavenge) then
+                {
+                    cursorObject setDamage 1;
+                };    
+            }; 
+        };     
+    };  
+
+    ExileReborn_hasscavengeAction = false;
 
 },"",0,false,true,"",""];

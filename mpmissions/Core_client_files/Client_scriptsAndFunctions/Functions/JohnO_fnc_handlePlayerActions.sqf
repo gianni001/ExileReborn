@@ -51,13 +51,27 @@ if ((ExileClientPlayerAttributes select 6 > 0) && !(ExileReborn_hasDryClothesAct
 
 // ** Fill sandbag ** //
 
-if (((surfaceType (getPos player)) isEqualTo "#GdtBeach") && !(ExileReborn_hasFillSandBagAction) && ('Exile_Melee_Shovel' isEqualTo (currentWeapon player))) then
+_types = ["#GdtBeach","#GdtBeach"];
+
+if (((surfaceType (getPos player)) in _types) && !(ExileReborn_hasFillSandBagAction) && ('Exile_Melee_Shovel' isEqualTo (currentWeapon player))) then
 {
 	if (isNil "ExileReborn_digSandAction_current") then
 	{	
 		ExileReborn_digSandAction_current = player addAction ExileReborn_filLSandBagAction;
 		ExileReborn_hasFillSandBagAction = true;
 		ExileReborn_userActionArray pushBack ExileReborn_digSandAction_current;
+	};	
+};	
+
+// ** Scavenge rubbish ** //
+
+if ([] call JohnO_fnc_canScavenge) then
+{
+	if (isNil "ExileReborn_scavengAction_current") then
+	{	
+		ExileReborn_scavengAction_current = player addAction ExileReborn_scavengeAction;
+		ExileReborn_hasscavengeAction = true;
+		ExileReborn_userActionArray pushBack ExileReborn_scavengAction_current;
 	};	
 };	
 
@@ -101,6 +115,13 @@ if !(isNil "ExileReborn_digSandAction_current") then
 		ExileReborn_hasFillSandBagAction = false;
 		ExileReborn_digSandAction_current = nil;
 	};
+};
+
+if (!(isNil "ExileReborn_scavengAction_current") && !([] call JohnO_fnc_canScavenge)) then
+{
+	player removeAction ExileReborn_scavengAction_current;
+	ExileReborn_hasscavengeAction = false;
+	ExileReborn_scavengAction_current = nil;
 };		
 
 // ** Action cleanup ** //
@@ -132,6 +153,7 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_dropAnimalAction_current = nil;
 	ExileReborn_dryClothesAction_current = nil;
 	ExileReborn_digSandAction_current = nil;
+	ExileReborn_scavengAction_current = nil;
 
 	ExileReborn_hasPickUpAction = false;
 	ExileReborn_hasConsumeAction = false;
@@ -139,4 +161,5 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_hasdropAnimalAction = false;
 	ExileReborn_hasDryClothesAction = false;
 	ExileReborn_hasFillSandBagAction = false;
+	ExileReborn_hasscavengeAction = false;
 };	

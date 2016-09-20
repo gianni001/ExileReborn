@@ -77,6 +77,12 @@ JohnO_fnc_getAnimalType = compileFinal preprocessFileLineNumbers "Client_scripts
 
 JohnO_fnc_getVehicleType = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getVehicleType.sqf";
 
+// Scavenge
+
+JohnO_fnc_canScavenge = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_canScavenge.sqf";
+JohnO_fnc_randomItem = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_randomItem.sqf";
+
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
