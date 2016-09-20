@@ -11,7 +11,7 @@ private ['_code', '_function', '_file'];
 }
 forEach 
 [
-	['JohnO_events_initialize','JohnOs_events\addons\Events\events_config.sqf']
+	['JohnO_events_initialize ', 'JohnOs_events\addons\Events\events_config.sqf'],
 ];
 
 call JohnO_events_initialize;
