@@ -65,6 +65,7 @@ JohnO_fnc_getCurrentSeason = compileFinal preprocessFileLineNumbers "Client_scri
 // Rest at fire
 
 JohnO_fnc_restAtFire = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_restAtFire.sqf";
+JohnO_fnc_crudeLightFire = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_crudeLightFire.sqf";
 
 // Cooking / hunting
 

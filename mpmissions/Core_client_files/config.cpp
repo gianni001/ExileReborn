@@ -3682,6 +3682,13 @@ class CfgInteractionMenus
 	            condition = "true";
 	            action = "[] spawn JohnO_fnc_restAtFire";
 	        };
+	        // Light crude fre
+	         class attemptLight : ExileAbstractAction
+	        {
+	            title = "Attempt to light";
+	            condition = "true";
+	            action = "_this spawn JohnO_fnc_crudeLightFire";
+	        };
 	    };    
     };    
 	/*
@@ -5796,7 +5803,7 @@ class CfgTrading
 	*/
 	sellPriceFactor = 0.1;
 	
-	rekeyPriceFactor = 0.1;
+	rekeyPriceFactor = 0.5;
 
 	class requiredRespect 
 	{
