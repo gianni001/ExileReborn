@@ -412,19 +412,23 @@ ExileReborn_scavengeAction =
     }
     else
     {
-        player playActionNow "Medic";
-        sleep 4;
+        player playActionNow "PutDown";
+        sleep 2;
         if (random 1 > 0.5) then
         {        
             _item = [] call JohnO_fnc_randomItem;
+            _itemConfig = configFile >> "cfgMagazines" >> _item;
+            _itemDisplayName = getText(_itemConfig >> "displayName");
             if ([player,_item] call ExileClient_util_playerCargo_canAdd) then
             {
                 player addItem _item;
-                [
-                    "InfoTitleAndText", 
-                    ["Item found", "I have found something, I should check my gear"]
+                ["InfoTitleAndText",
+                    [
+                        "Item found",
+                        format ["I have found a %1 .. it is in my gear",_itemDisplayName]
+                    ]
                 ] call ExileClient_gui_toaster_addTemplateToast;
-                if (random 1 > 0.3) then
+                if (random 1 > 0) then
                 {
                     if ([] call JohnO_fnc_canScavenge) then
                     {
@@ -434,13 +438,32 @@ ExileReborn_scavengeAction =
             } 
             else
             {   
-                _holder = createVehicle ["GroundWeaponHolder",position player,[],0,"CAN COLLIDE"];
-                [_holder, _item] call ExileClient_util_containerCargo_add;
-                [
-                    "InfoTitleAndText", 
-                    ["Item found", "I have found something but it could not fit in my pack I should check the ground"]
+                _dir = direction player + 180;
+                _pos = getPos player;  
+                _dist = 0.7; 
+                 
+                _pos = (_pos getPos [_dist, _dir] select [0, 2]) + ([[],[_pos select 2]] select (count _pos > 2));
+
+                _nearHolders = position player nearObjects ["GroundWeaponHolder", 2];
+
+                if (count _nearHolders > 0) then
+                {
+                    _holder = _nearHolders select 0;
+                    [_holder, _item] call ExileClient_util_containerCargo_add;
+                }
+                else
+                {
+                    _holder = createVehicle ["GroundWeaponHolder",[(_pos select 0),(_pos select 1),0],[], 0, "CAN_COLLIDE"];  
+                    [_holder, _item] call ExileClient_util_containerCargo_add;
+                };             
+                
+                ["InfoTitleAndText",
+                    [
+                        "Item found",
+                        format ["I have found a %1, there was no room in my gear. I should check around me",_itemDisplayName]
+                    ]
                 ] call ExileClient_gui_toaster_addTemplateToast;
-                if (random 1 > 0.3) then
+                if (random 1 > 0.5) then
                 {
                     if ([] call JohnO_fnc_canScavenge) then
                     {

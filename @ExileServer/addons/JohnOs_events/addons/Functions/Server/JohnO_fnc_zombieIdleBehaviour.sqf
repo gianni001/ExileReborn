@@ -4,9 +4,7 @@
 	_playerFound = false;
 	_MoanArray = ["ryanzombiesmoan1","ryanzombiesmoan2","ryanzombiesmoan3","ryanzombiesmoan4","ryanzombiesmoan5","ryanzombiesmoan6","ryanzombiesmoan7"];
 	_target = [];
-	//_stance = [];
-	//_nearPlayers = getPos _zombie nearEntities [['Exile_Unit_Player'],25];
-	//_nearPlayersCount = count _nearPlayers;
+	
 	if (time - Event_moanCD >= Event_lastMoan) then
 	{	
 		if (random 1 > 0.6) then 
@@ -15,28 +13,7 @@
 		};
 		Event_lastMoan = time;
 	};
-	/*
-	if !(_nearPlayersCount < 0) then
-	{	
-		{
-			_stance pushBack (stance _x);
-			if ((_zombie distance _x > 0) && (_zombie distance _x <= 5) && ((_stance find "PRONE") isEqualTo -1)) then 
-			{
-				_playerFound = true;
-			};
-		} forEach _nearPlayers;
-	};		
-	_isStanding = _stance find "STAND";
-	if ((_nearPlayersCount > 0) && !(_isStanding isEqualTo -1)) then 
-	{
-		_playerFound = true;
-	};
-	if (isNull _zombie) then 
-	{
-		Event_IdleZombieArray deleteAt _forEachIndex;
-	};
-	*/
-
+	
 	_target = [_zombie] call JohnO_fnc_findZombieTarget;
 
 	if (isNil "_target") then
