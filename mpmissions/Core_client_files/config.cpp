@@ -2810,6 +2810,8 @@ class CfgExileCustomCode
     ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
     // Change health scanner
     ExileClient_gui_xm8_slide_healthScanner_onOpen = "overwrites\ExileClient_gui_xm8_slide_healthScanner_onOpen.sqf";
+    // Stats panel
+    ExileClient_gui_hud_renderStatsPanel = "overwrites\ExileClient_gui_hud_renderStatsPanel.sqf";
     /** Server overwrites **/
 
     // Esseker spawn fix
