@@ -19,17 +19,20 @@ _bodyTemperature = ExileClientPlayerAttributes select 5;
 _bodyWetness = ExileClientPlayerAttributes select 6;
 _temperatureConfig = missionConfigFile >> "CfgExileEnvironment" >> worldName >> "Temperature";
 _fromDayTimeTemperature = (getArray (_temperatureConfig >> "daytimeTemperature")) select (date select 3);
-_toDayTimeTemperature = (getArray (_temperatureConfig >> "daytimeTemperature")) select ((date select 3) + 1); 
+_toDayTimeTemperature = (getArray (_temperatureConfig >> "daytimeTemperature")) select ((date select 3) + 1);
+
+// Custom
+_season = [(date select 1)] call JohnO_fnc_getCurrentSeason;
+
+_fromDayTimeTemperature = _fromDayTimeTemperature + (_season select 0);
+_toDayTimeTemperature = _fromDayTimeTemperature + 1;
+// Custom
+
 _environmentTemperature = [_fromDayTimeTemperature, _toDayTimeTemperature, (date select 4) / 60] call ExileClient_util_math_lerp;
 _environmentTemperature = _environmentTemperature + overcast * (getNumber (_temperatureConfig >> "overcast"));
 _environmentTemperature = _environmentTemperature + rain * (getNumber (_temperatureConfig >> "rain"));
 _environmentTemperature = _environmentTemperature + windStr * (getNumber (_temperatureConfig >> "wind"));
 _environmentTemperature = _environmentTemperature + _altitude / 100 * (getNumber (_temperatureConfig >> "altitude"));
-
-_season = [(date select 1)] call JohnO_fnc_getCurrentSeason;
-
-_fromDayTimeTemperature = _fromDayTimeTemperature + (_season select 0);
-_toDayTimeTemperature = _fromDayTimeTemperature + 1;
 
 if (_isSwimming) then 
 {
