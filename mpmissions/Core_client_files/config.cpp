@@ -1877,6 +1877,12 @@ class CfgExileArsenal
 	class 7Rnd_408_Mag 								{ quality = 1; price = 150; };
 	class 9Rnd_45ACP_Mag 							{ quality = 1; price = 6; };
 
+	// Price for bullet cam magazines is normal magazine price + 20 pop tabs per bullet
+	class Exile_Magazine_5Rnd_127x108_Bullet_Cam_Mag		{ quality = 6; price = 40 +  5 * 20; };
+	class Exile_Magazine_10Rnd_93x64_DMR_05_Bullet_Cam_Mag	{ quality = 6; price = 40 + 10 * 20; };
+	class Exile_Magazine_7Rnd_408_Bullet_Cam_Mag			{ quality = 6; price = 10 +  7 * 20; };
+	class Exile_Magazine_10Rnd_338_Bullet_Cam_Mag			{ quality = 6; price = 30 + 10 * 20; };
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Flares
 	///////////////////////////////////////////////////////////////////////////////
