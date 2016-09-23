@@ -25,6 +25,7 @@ class CfgPatches
 
 class CfgBuildings
 {
+	#include "esseker.hpp"
 	
 	///////////////////////////////////////////////////////////////////////////
 	// Castles & Lighthouses & Life Guard Towers
