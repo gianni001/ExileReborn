@@ -17,12 +17,13 @@ ExileReborn_pickUpAction =
     {  
  
         _animal = cursorObject;
+        /*
         if (_animal getVariable ["ExileReborn_animalIsWarm",-1] isEqualTo -1) then
         {
             _animal setVariable ["ExileReborn_animalIsWarm",1,true];
             [[5,5,30],"The animal carcass has warmed you up"] call JohnO_fnc_customConsume;
         }; 
- 
+        */
         if (typeOf cursorObject isEqualTo "Rabbit_F") then
         {
             deleteVehicle cursorObject;

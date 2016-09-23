@@ -61,6 +61,8 @@ Event_lastMoan = time;
 Event_moanCD = 15;
 Event_zombieHoard_lastActivated = time;
 Event_zombieHoard_coolDown = 1800;
+Event_animalWarth_Duration = 900;
+Event_warmAnimals = [];
 
 /** Storm stuff**/
 

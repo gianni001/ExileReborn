@@ -35,9 +35,10 @@ forEach
 	['JohnO_fnc_hoardLogic','JohnOs_events\addons\functions\Server\JohnO_fnc_hoardLogic.sqf'],
 	['JohnO_fnc_spawnZombieHoardEvent','JohnOs_events\addons\functions\Server\JohnO_fnc_spawnZombieHoardEvent.sqf'],
 	['ExileServer_JohnO_network_hideObjectGlobal','JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf'],
-	['JohnO_fnc_getCurrentSeason_server','JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf'],	
+	['JohnO_fnc_getCurrentSeason_server','JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf'],
+	['JohnO_fnc_animalEventOnKilled','JohnOs_events\addons\functions\Server\JohnO_fnc_animalEventOnKilled.sqf'],
+	// Events	
 	['JohnO_fnc_heliCrash_new','JohnOs_events\addons\Events\heliCrash\JohnO_fnc_heliCrash_new.sqf'],
-	// Events
 	['JohnO_fnc_supplyDropObject_new','JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDropObject_new.sqf'],
 	['JohnO_fnc_supplyDrop_spawnEvent','JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDrop_spawnEvent.sqf'],
 	['JohnO_fnc_spawnStormEvent','JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_spawnStormEvent.sqf'],

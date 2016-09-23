@@ -5,6 +5,7 @@ ExileReborn_highTemp_knockOutCooldown = 120;
 lastCommsHack = time;
 lastCommsHack_coolDown = 600;
 ExileReborn_playerIsKnockedOut = false;
+
 ExileReborn_userActionTimeout = 30;
 ExileReborn_userActionTimeout_lastCheck = time;
 ExileReborn_userActionArray = [];
@@ -88,6 +89,9 @@ JohnO_fnc_getClothingWarmthValue = compileFinal preprocessFileLineNumbers "Clien
 
 JohnO_fnc_displayHints = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_displayHints.sqf";
 
+// animal warmth
+
+JohnO_fnc_handleDeadAnimalWarmth = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleDeadAnimalWarmth.sqf";
 
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
@@ -101,3 +105,4 @@ JohnO_fnc_displayHints = compileFinal preprocessFileLineNumbers "Client_scriptsA
 [300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
 [2, JohnO_fnc_handlePlayerActions, [], true] call ExileClient_system_thread_addtask;
 [600, JohnO_fnc_displayHints, [], true] call ExileClient_system_thread_addtask;
+[60, JohnO_fnc_handleDeadAnimalWarmth, [], true] call ExileClient_system_thread_addtask;

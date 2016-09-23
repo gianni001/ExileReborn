@@ -42,7 +42,7 @@ for "_i" from 0 to 200 do
 	_animal playMoveNow (getText (_animalConfig >> "idleMove"));
 	_animal addEventHandler ["FiredNear", 	{ _this call ExileClient_object_animal_event_onFiredNear; 	}];
 	_animal addEventHandler ["Hit", 		{ _this call ExileClient_object_animal_event_onHit; 		}];
-	_animal addEventHandler ["Killed", 		{ _this call ExileClient_object_animal_event_onKilled; 		}];
+	_animal addEventHandler ["Killed", 		{ _this call ExileClient_object_animal_event_onKilled; _this call JohnO_fnc_animalEventOnKilled;}];
 };	
 
 "ExileReborn - World animals spawned and ready to be eaten..." call ExileServer_util_log;
