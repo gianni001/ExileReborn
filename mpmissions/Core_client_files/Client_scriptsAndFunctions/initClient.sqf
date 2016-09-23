@@ -77,6 +77,7 @@ JohnO_fnc_getVehicleType = compileFinal preprocessFileLineNumbers "Client_script
 // Scavenge
 
 JohnO_fnc_canScavenge = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_canScavenge.sqf";
+JohnO_fnc_canSearchForBerries = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_canSearchForBerries.sqf";
 JohnO_fnc_randomItem = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_randomItem.sqf";
 
 // Clothing value

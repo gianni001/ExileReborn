@@ -7,6 +7,7 @@ ExileReborn_hasdropAnimalAction = false;
 ExileReborn_hasDryClothesAction = false;
 ExileReborn_hasFillSandBagAction = false;
 ExileReborn_hasscavengeAction = false;
+ExileReborn_hasSearchBerriesAction = false;
  
 ExileReborn_pickUpAction =
 ["Tie animal to belt",
@@ -489,5 +490,45 @@ ExileReborn_scavengeAction =
     };  
 
     ExileReborn_hasscavengeAction = false;
+
+},"",0,false,true,"",""];
+
+// Search for berries
+
+ExileReborn_searchBerriesAction =
+["Search bush for berries",
+{
+    
+    ExileReborn_hasSearchBerriesAction = true;
+
+    _caller = _this select 0;
+    _action = _this select 2;
+    _caller removeAction _action;
+
+    if !([] call JohnO_fnc_canSearchForBerries) then
+    {
+        [
+            "ErrorTitleAndText", 
+            ["Invalid Object", "You cannot search this object"]
+        ] call ExileClient_gui_toaster_addTemplateToast;
+    }
+    else
+    {
+        player playActionNow "PutDown";
+        sleep 2;
+        if (random 1 > 0.6) then
+        {
+            [[2,15,60],"I have found and eaten some berries"] call JohnO_fnc_customConsume;
+        }
+        else
+        {
+            [
+                "ErrorTitleAndText", 
+                ["Nothing found", "I have found no berries.."]
+            ] call ExileClient_gui_toaster_addTemplateToast;
+        };    
+    };    
+
+    ExileReborn_hasSearchBerriesAction = false;
 
 },"",0,false,true,"",""];

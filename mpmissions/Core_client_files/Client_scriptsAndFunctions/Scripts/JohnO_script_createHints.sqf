@@ -22,7 +22,8 @@ ExileReborn_hintArray =
 	"Carrying a recently killed animal will keep you warm",
 	"You can study the corpses of dead bodies for intel",
 	"You can scan communications data near radio or satelite towers, this requires a laptop",
-	"You can use a tin can near a fire to boil dirty water"
+	"You can use a tin can near a fire to boil dirty water",
+	"You can search small bushes for berries - If you cant get the action try going first person and aiming at the bush nice and close"
 ];
 
 ExileReborn_hintArray call BIS_fnc_arrayShuffle;

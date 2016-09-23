@@ -85,7 +85,7 @@ else
 		_isFireNearby = [ASLtoAGL (getPosASL player), 5] call ExileClient_util_world_isFireInRange;
 		if (_isFireNearby) then 
 		{
-			_forcedBodyTemperatureChangePerMinute = 0.02; 
+			_forcedBodyTemperatureChangePerMinute = 0.1;
 			_wetnessChangePerMinute = -0.5; 
 		}
 		else 
