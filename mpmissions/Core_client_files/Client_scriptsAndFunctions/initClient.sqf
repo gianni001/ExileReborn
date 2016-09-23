@@ -83,6 +83,10 @@ JohnO_fnc_randomItem = compileFinal preprocessFileLineNumbers "Client_scriptsAnd
 
 JohnO_fnc_getClothingWarmthValue = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getClothingWarmthValue.sqf";
 
+// hints
+
+JohnO_fnc_displayHints = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_displayHints.sqf";
+
 
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
@@ -94,3 +98,4 @@ JohnO_fnc_getClothingWarmthValue = compileFinal preprocessFileLineNumbers "Clien
 [1, JohnO_fnc_handleInfection, [], true] call ExileClient_system_thread_addtask;
 [300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
 [2, JohnO_fnc_handlePlayerActions, [], true] call ExileClient_system_thread_addtask;
+[600, JohnO_fnc_displayHints, [], true] call ExileClient_system_thread_addtask;
