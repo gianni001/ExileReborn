@@ -92,6 +92,7 @@ JohnO_fnc_displayHints = compileFinal preprocessFileLineNumbers "Client_scriptsA
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_createPlayerActions.sqf";
+[] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_createHints.sqf";
 
 [180, JohnO_fnc_headHunterWarning, [], true] call ExileClient_system_thread_addtask;
 [240, JohnO_fnc_temperatureStatsUpdate, [], true] call ExileClient_system_thread_addtask;
