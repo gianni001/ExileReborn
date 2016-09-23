@@ -2,7 +2,7 @@ private ["_duration"];
 
 _duration = _this select 0;
 
-sleep 1;
+sleep 2;
 
 player switchMove "AcinPercMrunSnonWnonDf_agony";
 ExileReborn_playerIsKnockedOut = true;

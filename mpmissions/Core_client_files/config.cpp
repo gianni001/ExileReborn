@@ -123,7 +123,7 @@ class Exile_AbstractCraftingRecipe
 
 class CfgCraftingRecipes
 {
-	
+#include "custom_crafting\cooking.hpp"	
 class BreachingChargeBigMomma: Exile_AbstractCraftingRecipe
 {
 	name = "Breaching Charge (Big Momma)";
@@ -2826,6 +2826,8 @@ class CfgExileCustomCode
     ExileServer_system_garbageCollector_unscheduled_deleteAllDead = "overwrites\server\ExileServer_system_garbageCollector_unscheduled_deleteAllDead.sqf";
     // Allow server to check season for key frames
     ExileServer_system_weather_thread_weatherSimulation = "overwrites\server\ExileServer_system_weather_thread_weatherSimulation.sqf";
+    // MP killed
+    ExileServer_object_player_event_onMpKilled = "overwrites\server\ExileServer_object_player_event_onMpKilled.sqf";
 
 };
 class CfgExileEnvironment
@@ -3698,7 +3700,7 @@ class CfgInteractionMenus
 	         class attemptLight : ExileAbstractAction
 	        {
 	            title = "Attempt to light";
-	            condition = "true";
+	            condition = "!(inflamed this)";
 	            action = "_this spawn JohnO_fnc_crudeLightFire";
 	        };
 	    };    

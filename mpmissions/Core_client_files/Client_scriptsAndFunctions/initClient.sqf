@@ -1,5 +1,7 @@
 player setVariable ["JohnO_isBeingHunted",false];
 
+ExileReborn_highTemp_lastKnockoutCheck = time;
+ExileReborn_highTemp_knockOutCooldown = 120;
 lastCommsHack = time;
 lastCommsHack_coolDown = 600;
 ExileReborn_playerIsKnockedOut = false;
