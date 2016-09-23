@@ -75,6 +75,18 @@ if ([] call JohnO_fnc_canScavenge) then
 	};	
 };	
 
+// ** Search berries ** //
+
+if ([] call JohnO_fnc_canSearchForBerries) then
+{
+	if (isNil "ExileReborn_searchBerriesAction_current") then
+	{	
+		ExileReborn_searchBerriesAction_current = player addAction ExileReborn_searchBerriesAction;
+		ExileReborn_hasSearchBerriesAction = true;
+		ExileReborn_userActionArray pushBack ExileReborn_searchBerriesAction_current;
+	};	
+};	
+
 // Handle action removal.
 
 if (!(isNil "ExileReborn_hasPickupAction_Current") && !(cursorObject isKindOf "Animal")) then
@@ -124,6 +136,13 @@ if (!(isNil "ExileReborn_scavengAction_current") && !([] call JohnO_fnc_canScave
 	ExileReborn_scavengAction_current = nil;
 };		
 
+if (!(isNil "ExileReborn_searchBerriesAction_current") && !([] call JohnO_fnc_canSearchForBerries)) then
+{
+	player removeAction ExileReborn_searchBerriesAction_current;
+	ExileReborn_hasSearchBerriesAction = false;
+	ExileReborn_searchBerriesAction_current = nil;
+};	
+
 // ** Action cleanup ** //
 
 if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTimeout) || !(alive player))then
@@ -154,6 +173,7 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_dryClothesAction_current = nil;
 	ExileReborn_digSandAction_current = nil;
 	ExileReborn_scavengAction_current = nil;
+	ExileReborn_searchBerriesAction_current = nil;
 
 	ExileReborn_hasPickUpAction = false;
 	ExileReborn_hasConsumeAction = false;
@@ -162,4 +182,5 @@ if ((time - ExileReborn_userActionTimeout_lastCheck >= ExileReborn_userActionTim
 	ExileReborn_hasDryClothesAction = false;
 	ExileReborn_hasFillSandBagAction = false;
 	ExileReborn_hasscavengeAction = false;
+	ExileReborn_hasSearchBerriesAction = false;
 };	
