@@ -67,7 +67,7 @@ JohnO_fnc_crudeLightFire = compileFinal preprocessFileLineNumbers "Client_script
 // Cooking / hunting
 
 JohnO_fnc_handlePlayerActions = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handlePlayerActions.sqf";
-JohnO_fnc_consumeAnimal = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_consumeAnimal.sqf";
+JohnO_fnc_customConsume = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_customConsume.sqf";
 JohnO_fnc_getAnimalType = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getAnimalType.sqf";
 
 // Get amount of wheels on vehicles
@@ -78,6 +78,10 @@ JohnO_fnc_getVehicleType = compileFinal preprocessFileLineNumbers "Client_script
 
 JohnO_fnc_canScavenge = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_canScavenge.sqf";
 JohnO_fnc_randomItem = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_randomItem.sqf";
+
+// Clothing value
+
+JohnO_fnc_getClothingWarmthValue = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getClothingWarmthValue.sqf";
 
 
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";

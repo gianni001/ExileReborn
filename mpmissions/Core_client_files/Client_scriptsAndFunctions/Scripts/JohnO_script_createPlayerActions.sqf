@@ -19,7 +19,7 @@ ExileReborn_pickUpAction =
         if (_animal getVariable ["ExileReborn_animalIsWarm",-1] isEqualTo -1) then
         {
             _animal setVariable ["ExileReborn_animalIsWarm",1,true];
-            ["Exile_Item_Heatpack","The animal carcass has warmed you up"] call JohnO_fnc_consumeAnimal;
+            [[5,5,30],"The animal carcass has warmed you up"] call JohnO_fnc_customConsume;
         }; 
  
         if (typeOf cursorObject isEqualTo "Rabbit_F") then
@@ -72,7 +72,7 @@ ExileReborn_consumeAction =
     {  
         if !(_amountLeft <= 0) then
         {  
-            ["Exile_Item_BeefParts","Consumed animal meat"] call JohnO_fnc_consumeAnimal;            
+            [[2,50,200],"Consumed animal meat"] call JohnO_fnc_customConsume;            
             _amountLeft = _amountLeft - 1;
             _animal setVariable ["AmountLeft",_amountLeft,true];
         }
