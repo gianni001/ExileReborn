@@ -3700,7 +3700,7 @@ class CfgInteractionMenus
 	         class attemptLight : ExileAbstractAction
 	        {
 	            title = "Attempt to light";
-	            condition = "!(inflamed this)";
+	            condition = "!(inflamed _this)";
 	            action = "_this spawn JohnO_fnc_crudeLightFire";
 	        };
 	    };    

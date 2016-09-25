@@ -105,4 +105,4 @@ JohnO_fnc_handleDeadAnimalWarmth = compileFinal preprocessFileLineNumbers "Clien
 [300, JohnO_fnc_handlePlayerZombieDetection, [], true] call ExileClient_system_thread_addtask;
 [2, JohnO_fnc_handlePlayerActions, [], true] call ExileClient_system_thread_addtask;
 [600, JohnO_fnc_displayHints, [], true] call ExileClient_system_thread_addtask;
-[60, JohnO_fnc_handleDeadAnimalWarmth, [], true] call ExileClient_system_thread_addtask;
+[180, JohnO_fnc_handleDeadAnimalWarmth, [], true] call ExileClient_system_thread_addtask;
