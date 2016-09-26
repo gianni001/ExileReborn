@@ -20,21 +20,21 @@ switch (_month) do
 	};
 	case 2:
 	{
-		_tempAdjust = 2;
+		_tempAdjust = 5;
 		_season = "Fall";
 
 		_seasonDetail = [_tempAdjust,_season];
 	};
 	case 3:
 	{
-		_tempAdjust = 6;
+		_tempAdjust = 20;
 		_season = "Spring";
 
 		_seasonDetail = [_tempAdjust,_season];
 	};
 	case 4:
 	{
-		_tempAdjust = 9;
+		_tempAdjust = 25;
 		_season = "Summer";
 
 		_seasonDetail = [_tempAdjust,_season];

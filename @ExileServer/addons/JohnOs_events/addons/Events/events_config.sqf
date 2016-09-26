@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = 0.4;
+ExileRebornVersion = "0.6.0";
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -61,6 +61,8 @@ Event_lastMoan = time;
 Event_moanCD = 15;
 Event_zombieHoard_lastActivated = time;
 Event_zombieHoard_coolDown = 1800;
+Event_animalWarth_Duration = 900;
+Event_warmAnimals = [];
 
 /** Storm stuff**/
 

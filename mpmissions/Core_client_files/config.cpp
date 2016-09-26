@@ -123,7 +123,7 @@ class Exile_AbstractCraftingRecipe
 
 class CfgCraftingRecipes
 {
-	
+#include "custom_crafting\cooking.hpp"	
 class BreachingChargeBigMomma: Exile_AbstractCraftingRecipe
 {
 	name = "Breaching Charge (Big Momma)";
@@ -1877,6 +1877,12 @@ class CfgExileArsenal
 	class 7Rnd_408_Mag 								{ quality = 1; price = 150; };
 	class 9Rnd_45ACP_Mag 							{ quality = 1; price = 6; };
 
+	// Price for bullet cam magazines is normal magazine price + 20 pop tabs per bullet
+	class Exile_Magazine_5Rnd_127x108_Bullet_Cam_Mag		{ quality = 6; price = 40 +  5 * 20; };
+	class Exile_Magazine_10Rnd_93x64_DMR_05_Bullet_Cam_Mag	{ quality = 6; price = 40 + 10 * 20; };
+	class Exile_Magazine_7Rnd_408_Bullet_Cam_Mag			{ quality = 6; price = 10 +  7 * 20; };
+	class Exile_Magazine_10Rnd_338_Bullet_Cam_Mag			{ quality = 6; price = 30 + 10 * 20; };
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Flares
 	///////////////////////////////////////////////////////////////////////////////
@@ -2810,6 +2816,8 @@ class CfgExileCustomCode
     ExileClient_object_player_event_onInventoryOpened = "overwrites\ExileClient_object_player_event_onInventoryOpened.sqf";
     // Change health scanner
     ExileClient_gui_xm8_slide_healthScanner_onOpen = "overwrites\ExileClient_gui_xm8_slide_healthScanner_onOpen.sqf";
+    // Stats panel
+    ExileClient_gui_hud_renderStatsPanel = "overwrites\ExileClient_gui_hud_renderStatsPanel.sqf";
     /** Server overwrites **/
 
     // Esseker spawn fix
@@ -2818,6 +2826,8 @@ class CfgExileCustomCode
     ExileServer_system_garbageCollector_unscheduled_deleteAllDead = "overwrites\server\ExileServer_system_garbageCollector_unscheduled_deleteAllDead.sqf";
     // Allow server to check season for key frames
     ExileServer_system_weather_thread_weatherSimulation = "overwrites\server\ExileServer_system_weather_thread_weatherSimulation.sqf";
+    // MP killed
+    ExileServer_object_player_event_onMpKilled = "overwrites\server\ExileServer_object_player_event_onMpKilled.sqf";
 
 };
 class CfgExileEnvironment
@@ -3690,7 +3700,7 @@ class CfgInteractionMenus
 	         class attemptLight : ExileAbstractAction
 	        {
 	            title = "Attempt to light";
-	            condition = "true";
+	            condition = "!(inflamed _this)";
 	            action = "_this spawn JohnO_fnc_crudeLightFire";
 	        };
 	    };    

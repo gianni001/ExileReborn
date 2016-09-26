@@ -25,11 +25,11 @@ class CfgPatches
 
 class CfgBuildings
 {
+	#include "esseker.hpp"
 	
 	///////////////////////////////////////////////////////////////////////////
 	// Castles & Lighthouses & Life Guard Towers
 	///////////////////////////////////////////////////////////////////////////
-	#include "esseker.hpp"
 	class Land_LifeguardTower_01_F
 	{
 		table = "Tourist";
@@ -2636,6 +2636,26 @@ class CfgSettings
 		*/
 		damageChance = 20; // 20% chance for a vehicle HITPOINT to be damaged
 		maximumDamage = 0.9;
+
+		/**
+		 * If "randmizeFuel" is set to 1, vehicles will spawn with randomized
+		 * fuel. In this case, "fuel" controls the percentage of fuel that
+		 * can be in the vehicle at a maximum. For example, if you set this to
+		 * 0.5, then vehicles will spawn with something random between 0% and 50%.
+		 *
+		 * If "randomizeFuel" is set to 0, all vehicles will spawn exactly the 
+		 * fuel percentage defined in "fuel". For example, setting this to 0.5
+		 * will spawn all vehicles with 50% fuel. Setting it to 0 would spawn
+		 * all vehicles without fuel.
+		 */
+		randomizeFuel = 1;
+		fuel = 1;
+
+		/**
+		 * Works exactly the same as the fuel setting ^
+		 */
+		randomizeAmmo = 1;
+		ammo = 1;
 
 		// Stuff to spawn on water
 		water[] = 

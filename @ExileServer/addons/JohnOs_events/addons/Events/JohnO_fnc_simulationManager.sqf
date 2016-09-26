@@ -1,4 +1,4 @@
-private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp"];
+private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp","_diedAt"];
 
 _aliveUnits = Event_ALLAI_SimulatedUnits; 
 
@@ -71,3 +71,16 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 	//hint str Event_Cleanup_objectArray;
 	
 } forEach Event_Cleanup_objectArray;
+
+/************* Monitor animal warm *******************************/
+
+{
+	_diedAt = _x getVariable ["ExileReborn_animal_isWarm",-1];
+	if !(_diedAt isEqualTo -1) then
+	{	
+		if (time - Event_animalWarth_Duration >= _diedAt) then
+		{
+			_x setVariable ["ExileReborn_animal_isCold",1,true];
+		};
+	};		
+} forEach Event_warmAnimals;

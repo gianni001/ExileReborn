@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_mapsizeX","_mapsizeY","_gridSize","_gridVehicles","_gridSizeOffset","_vehicleCount","_debugMarkers","_vehicleClassNames","_maximumDamage","_damageChance","_xSize","_workingXSize","_ySize","_workingYSize","_position","_spawned","_spawnedPositions","_positionReal","_spawnControl","_vehicleClassName","_vehicle","_hitpointsData","_hitpoints","_debugMarker"];
+private["_mapsizeX","_mapsizeY","_gridSize","_gridVehicles","_gridSizeOffset","_vehicleCount","_debugMarkers","_vehicleClassNames","_maximumDamage","_damageChance","_randomizeFuel","_fuel","_randomizeAmmo","_ammo","_xSize","_workingXSize","_ySize","_workingYSize","_position","_spawned","_spawnedPositions","_positionReal","_spawnControl","_vehicleClassName","_vehicle","_hitpointsData","_hitpoints","_debugMarker"];
 _mapsizeX = worldSize; 
 _mapsizeY = worldSize; 
 _gridSize = getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "vehiclesGridSize");
@@ -21,6 +21,10 @@ _debugMarkers = ((getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "ve
 _vehicleClassNames = getArray (configFile >> "CfgSettings" >> "VehicleSpawn" >> "ground");
 _maximumDamage = getNumber (configFile >> "CfgSettings" >> "VehicleSpawn" >> "maximumDamage");
 _damageChance = getNumber (configFile >> "CfgSettings" >> "VehicleSpawn" >> "damageChance");
+_randomizeFuel = ((getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "randomizeFuel")) isEqualTo 1);
+_fuel = (getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "fuel"));
+_randomizeAmmo = ((getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "randomizeAmmo")) isEqualTo 1);
+_ammo = (getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "ammo"));
 for "_xSize" from 0 to _mapsizeX step _gridSize do
 {
 	_workingXSize = _xSize + _gridSizeOffset;
@@ -50,6 +54,22 @@ for "_xSize" from 0 to _mapsizeX step _gridSize do
 				    };
 				}
 				forEach _hitpoints;
+			};
+			if (_randomizeFuel) then 
+			{
+				_vehicle setFuel (random _fuel);
+			}
+			else 
+			{
+				_vehicle setFuel _fuel;
+			};
+			if (_randomizeAmmo) then 
+			{
+				_vehicle setVehicleAmmo (random _ammo);
+			}
+			else 
+			{
+				_vehicle setVehicleAmmo _ammo;
 			};
 			if (_debugMarkers) then
 			{

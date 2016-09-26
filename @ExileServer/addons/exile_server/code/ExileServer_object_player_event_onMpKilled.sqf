@@ -12,19 +12,6 @@
 private["_victim","_killer","_countDeath","_countKill","_killSummary","_killingPlayer","_killType","_oldVictimRespect","_newVictimRespect","_oldKillerRespect","_newKillerRespect","_systemChat","_modifyVictimRespect","_respectLoss","_perks","_minRespectTransfer","_respectTransfer","_perkNames","_killerStatsNeedUpdate","_newKillerFrags","_victimStatsNeedUpdate","_newVictimDeaths","_victimPosition"];
 _victim = _this select 0;
 _killer = _this select 1;
-
-if (_killer isEqualTo _victim) then
-{
-	_lastDamageSource = _victim getVariable ["JohnO_lastSourceOfDamage",objNull];
-
-	_killer = _lastDamageSource;
-
-	_victime setVariable ["JohnO_lastSourceOfDamage",objNull,true];
-};
-
-
-[format["_killer = %1 :: _victim = %2",_killer,_victim]] call MAR_fnc_log;
-
 if (!isServer || hasInterface || isNull _victim) exitWith {};
 _victim setVariable ["ExileDiedAt", time];
 if !(isPlayer _victim) exitWith {};
