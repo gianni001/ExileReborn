@@ -150,7 +150,7 @@ ExileReborn_cookingAction =
                 _deadAnimal = _this select 0;
                 _amountOfMeat = _this select 1;
 
-                _timeToCook = 1;
+                _timeToCook = 1 + floor (random 60);
                 _timer = 0;
                 while {_timer < _timeToCook} do
                 {
