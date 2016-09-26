@@ -1,6 +1,6 @@
 private ["_scavengeModels","_scavArray","_isValidObj","_find","_object"];
 
-_scavengeModels = ["b_ficus","b_ner"];
+_scavengeModels = ["b_ficus","b_ner","b_caloc","b_cest"];
 _scavArray = [];
 _isValidObj = false;
 
