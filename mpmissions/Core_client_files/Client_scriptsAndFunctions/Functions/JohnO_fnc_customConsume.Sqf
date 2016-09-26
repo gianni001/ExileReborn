@@ -120,6 +120,10 @@ switch (_soundToPlay) do
 	{
 		playSound selectRandom _drinking;
 	};
+	case 0:
+	{
+
+	};
 };
 
 if( _feedbackString != "") then

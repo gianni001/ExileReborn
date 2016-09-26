@@ -3,6 +3,8 @@
     Sanity..
     Params for custom consume:
 
+    ExileClientPlayerEffectNames = ["Health", "Stamina", "Hunger", "Thirst", "Blood Alcohol", "Temperature", "Wetness"];
+
     select 0 - Attribute - hunger, thirst, temp etc
     select 1 - Amount to increase / decrease
     select 2 - Duration 
@@ -560,6 +562,7 @@ ExileReborn_scavengeAction =
     };
 
     ExileReborn_hasscavengeAction = false;
+    ExileReborn_scavengAction_current = nil;
 
 },"",0,false,true,"","[] call JohnO_fnc_canScavenge"];
 
@@ -597,9 +600,10 @@ ExileReborn_searchBerriesAction =
     {
         player playActionNow "PutDown";
         sleep 2;
-        if (random 1 > 0.6) then
+        if (random 1 > 0) then
         {
             [[2,15,60],"I have found and eaten some berries",1] call JohnO_fnc_customConsume;
+            [[3,10,60],"I have found and eaten some berries",0] call JohnO_fnc_customConsume;
         }
         else
         {
@@ -611,6 +615,7 @@ ExileReborn_searchBerriesAction =
     };
 
     ExileReborn_hasSearchBerriesAction = false;
+    ExileReborn_searchBerriesAction_current = nil;
 
 },"",0,false,true,"","[] call JohnO_fnc_canSearchForBerries"];
 

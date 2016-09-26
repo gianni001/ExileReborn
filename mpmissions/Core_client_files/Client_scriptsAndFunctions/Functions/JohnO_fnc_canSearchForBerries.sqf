@@ -1,10 +1,10 @@
 private ["_scavengeModels","_scavArray","_isValidObj","_find","_object"];
 
-_scavengeModels = ["b_ficus"];
+_scavengeModels = ["b_ficus","b_ner"];
 _scavArray = [];
 _isValidObj = false;
 
-_object = ([getModelInfo cursorObject, typeOf cursorObject] select 0 select 0); 
+_object = ([getModelInfo cursorObject, typeOf cursorObject] select 0 select 0);
 if !(isNil "_object") then
 {	
 	{
