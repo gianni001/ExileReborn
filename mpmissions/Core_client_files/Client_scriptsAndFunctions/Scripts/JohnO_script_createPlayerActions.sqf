@@ -90,7 +90,7 @@ ExileReborn_consumeAction =
     {
         if !(_amountLeft <= 0) then
         {
-            [[2,50,200],"Consumed animal meat",1] call JohnO_fnc_customConsume;
+            [[2,50,200],"Consumed animal meat",1,false] call JohnO_fnc_customConsume;
             _amountLeft = _amountLeft - 1;
             _animal setVariable ["AmountLeft",_amountLeft,true];
         }
@@ -602,8 +602,8 @@ ExileReborn_searchBerriesAction =
         sleep 2;
         if (random 1 > 0.4) then
         {
-            [[2,15,60],"I have found and eaten some berries",1] call JohnO_fnc_customConsume;
-            [[3,10,60],"I have found and eaten some berries",0] call JohnO_fnc_customConsume;
+            [[2,15,60],"I have found and eaten some berries",1,true] call JohnO_fnc_customConsume;
+            [[3,10,60],"I have found and eaten some berries",0,false] call JohnO_fnc_customConsume;
         }
         else
         {

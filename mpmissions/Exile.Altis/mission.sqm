@@ -2030,7 +2030,9 @@ class Mission
 			dataType="Marker";
 			position[]={21835.9,0,20963.6};
 			name="ExileMarker19";
+			text="Bandit territory";
 			type="ExileContaminatedZoneIcon";
+			colorName="ColorBrown";
 			id=103;
 			atlOffset=-15.777356;
 		};
@@ -2054,7 +2056,9 @@ class Mission
 			dataType="Marker";
 			position[]={28211.1,0,25644.301};
 			name="ExileMarker21";
+			text="Bandit territory";
 			type="ExileContaminatedZoneIcon";
+			colorName="ColorBrown";
 			id=105;
 			atlOffset=-24.540119;
 		};

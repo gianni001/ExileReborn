@@ -17,6 +17,7 @@ _message = _this select 1;
 _soundToPlay = _this select 2;
 _eating = ["SndExileHeartbeatEating01", "SndExileHeartbeatEating02"];
 _drinking = ["SndExileHeartbeatDrinking01"];
+_isPoison = _this select 3;
 
 _feedbackString = "";
 {
@@ -41,44 +42,42 @@ _feedbackString = "";
 	{
 		_feedbackString = _feedbackString + format["%1: %2%3%4/%5s<br/>", (ExileClientPlayerEffectNames select _effectAttributeId), _addPlusCharacter, _effectValue, _effectUnit, _effectDuration];
 	};
-	if (_effectAttributeId isEqualTo 4) then
+	ExileClientPlayerEffects pushBack _effect;
+
+	if ((_isPoison) && (random 1 > 0.5)) then
 	{
 		_bloodAlcohol = (ExileClientPlayerAttributes select 4);
-		_bloodAlcohol = (_bloodAlcohol + _effectValue) max 0;
+		_bloodAlcohol = (_bloodAlcohol + 0.5) max 0;
 		ExileClientPlayerAttributes set [4, _bloodAlcohol];
 		if (_bloodAlcohol > 0) then 
 		{
-			_bloodAlcoholComment = "You feel tipsy.";
+			_bloodAlcoholComment = "These berries have an odd effect on me...";
 			if (_bloodAlcohol >= 3) then
 			{
-				_bloodAlcoholComment = "You are drunk as a skunk.";
+				_bloodAlcoholComment = "I feel.. funny..";
 			}
 			else 
 			{
 				if (_bloodAlcohol >= 2) then
 				{
-					_bloodAlcoholComment = "You are boozed-up.";
+					_bloodAlcoholComment = "I don't feel so good.. were the berries poisonous?";
 				}
 				else 
 				{
 					if (_bloodAlcohol >= 1) then
 					{
-						_bloodAlcoholComment = "You are drunk.";
+						_bloodAlcoholComment = "I need to sit down..";
 					};
 				};
 			};
-			systemChat format["Your blood alcohol level is now %1%2. %3", _bloodAlcohol, "‰", _bloodAlcoholComment];
+			systemChat format["%1",_bloodAlcoholComment];
 		};
 		if (ExileClientDeliriumThread isEqualTo -1) then
 		{
 			call ExileClient_object_player_thread_delirium;
 			ExileClientDeliriumThread = [20, ExileClient_object_player_thread_delirium, [], true] call ExileClient_system_thread_addtask;
 		};
-	}
-	else 
-	{
-		ExileClientPlayerEffects pushBack _effect;
-	};	
+	};
 } 
 foreach _configEffects;
 /*

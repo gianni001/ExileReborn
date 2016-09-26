@@ -6,7 +6,7 @@ _zombies =
 	"RyanZombieC_man_1walker","RyanZombieC_man_polo_1_Fwalker","RyanZombieC_man_polo_2_Fwalker","RyanZombieC_man_polo_4_Fwalker","RyanZombieC_man_polo_5_Fwalker","RyanZombieC_man_polo_6_Fwalker","RyanZombieC_man_p_fugitive_Fwalker","RyanZombieC_man_w_worker_Fwalker","RyanZombieC_scientist_Fwalker","RyanZombieC_man_hunter_1_Fwalker","RyanZombieC_man_pilot_Fwalker","RyanZombieC_journalist_Fwalker","RyanZombieC_Oresteswalker","RyanZombieC_Nikoswalker"
 ];
 
-_chance = 50;
+_chance = 75;
 
 if (ExileReborn_playerIsWounded) then {_chance = _chance + 25;};
 if (ExileReborn_playerIsInfected) then {_chance = _chance + 40;};
@@ -19,7 +19,7 @@ if (_chance >= random 100) then
 		{
 			_nearZombies = getPos _x nearEntities [_zombies,150];
 			_nearPlayers = getPos _x nearEntities ["Exile_Unit_Player",25];
-			if (((count _nearZombies) > 0) || ((count _nearPlayers) > 0)) exitWith {};
+			if (((count _nearZombies) > 25) || ((count _nearPlayers) > 0)) exitWith {};
 			_positionsToSpawn = _x buildingPos -1;
 			
 			["spawnZombieNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
