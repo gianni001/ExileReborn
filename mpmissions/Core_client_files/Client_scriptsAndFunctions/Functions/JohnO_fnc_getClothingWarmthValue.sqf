@@ -35,7 +35,9 @@ _veryWarmClothing =
 	"U_B_T_Sniper_F",
 	"U_B_T_FullGhillie_tna_F",
 	"U_O_T_Sniper_F",
-	"U_O_T_FullGhillie_tna_F"
+	"U_O_T_FullGhillie_tna_F",
+	// Bambi
+	"Exile_Uniform_BambiOverall"
 ];
 
 _midlyWarmClothing = 
@@ -106,7 +108,7 @@ _warmth = "None";
 	
 if !((uniform player) isEqualTo "") then 
 {
-	_clothingColdProtection = _clothingColdProtection + 0.15; //Original : 0.25
+	_clothingColdProtection = _clothingColdProtection + 0.05; //Original : 0.25
 	
 
 	if ((uniform player) in _midlyWarmClothing) then
@@ -118,7 +120,7 @@ if !((uniform player) isEqualTo "") then
 	{
 		if ((uniform player) in _veryWarmClothing) then
 		{
-			_clothingColdProtection = _clothingColdProtection + 0.24; // 49
+			_clothingColdProtection = _clothingColdProtection + 0.34; // 39
 			
 		};	
 	};	
@@ -126,7 +128,7 @@ if !((uniform player) isEqualTo "") then
 };
 if !((headgear player) isEqualTo "") then 
 {
-	_clothingColdProtection = _clothingColdProtection + 0.05; //Original : 0.05
+	_clothingColdProtection = _clothingColdProtection + 0.01; //Original : 0.05
 	
 
 	if ((headgear player) in _midlyWarmHeadGear) then
@@ -138,7 +140,7 @@ if !((headgear player) isEqualTo "") then
 	{	
 		if ((headgear player) in _veryWarmHeadGear) then
 		{
-			_clothingColdProtection = _clothingColdProtection + 0.11; // 20
+			_clothingColdProtection = _clothingColdProtection + 0.15; // 16
 			
 		};
 	};		

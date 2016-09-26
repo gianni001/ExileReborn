@@ -9,6 +9,7 @@ ExileReborn_playerIsKnockedOut = false;
 ExileReborn_userActionTimeout = 30;
 ExileReborn_userActionTimeout_lastCheck = time;
 ExileReborn_userActionArray = [];
+ExileReborn_userActions = [];
 
 ExileReborn_lastWoundUpdate = time;
 

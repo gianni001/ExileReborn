@@ -9,11 +9,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_message","_itemClassName","_consumingConfig","_configEffects","_feedbackString","_effectAttributeId","_effectValue","_effectDuration","_effectUnit","_effect","_addPlusCharacter","_bloodAlcohol","_bloodAlcoholComment","_animations","_animationIndex","_stopBleeding","_configSounds","_numberOfConfigSounds","_returnItemClass"];
+private["_message","_itemClassName","_consumingConfig","_configEffects","_feedbackString","_effectAttributeId","_effectValue","_effectDuration","_effectUnit","_effect","_addPlusCharacter","_bloodAlcohol","_bloodAlcoholComment","_animations","_animationIndex","_stopBleeding","_configSounds","_numberOfConfigSounds","_returnItemClass","_eating","_drinking","_soundToPlay"];
 
 _configEffects = [];
 _configEffects pushBack (_this select 0);
 _message = _this select 1;
+_soundToPlay = _this select 2;
+_eating = ["SndExileHeartbeatEating01", "SndExileHeartbeatEating02"];
+_drinking = ["SndExileHeartbeatDrinking01"];
 
 _feedbackString = "";
 {
@@ -106,6 +109,19 @@ if( _returnItemClass != "" ) then
 	player addItem _returnItemClass;
 };
 */
+
+switch (_soundToPlay) do
+{
+	case 1:
+	{
+		playSound selectRandom _eating;
+	};
+	case 2:
+	{
+		playSound selectRandom _drinking;
+	};
+};
+
 if( _feedbackString != "") then
 {
 	["SuccessTitleAndText", [_message, _feedbackString]] call ExileClient_gui_toaster_addTemplateToast;
