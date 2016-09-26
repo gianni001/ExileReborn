@@ -600,7 +600,7 @@ ExileReborn_searchBerriesAction =
     {
         player playActionNow "PutDown";
         sleep 2;
-        if (random 1 > 0) then
+        if (random 1 > 0.4) then
         {
             [[2,15,60],"I have found and eaten some berries",1] call JohnO_fnc_customConsume;
             [[3,10,60],"I have found and eaten some berries",0] call JohnO_fnc_customConsume;
