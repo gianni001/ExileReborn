@@ -67,7 +67,7 @@ if (_fireNearby) then
 				_sitting = false;
 				ExileReborn_playerIsResting = false;
 			};	
-			uiSleep 1;
+			uiSleep 2;
 
 			if !(alive player) exitWith {ExileReborn_playerIsResting = false;};
 		};
