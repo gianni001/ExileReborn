@@ -94,6 +94,10 @@ JohnO_fnc_displayHints = compileFinal preprocessFileLineNumbers "Client_scriptsA
 
 JohnO_fnc_handleDeadAnimalWarmth = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_handleDeadAnimalWarmth.sqf";
 
+// Quests
+
+JohnO_fnc_updateAndAddQuests = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_updateAndAddQuests.sqf";
+
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";

@@ -90,3 +90,7 @@ if !(_introText) then
 };	
 
 systemChat format ["Client loaded - EXILE REBORN -- v %1",ExileRebornVersion];
+
+uiSleep 30;
+
+[] call JohnO_fnc_updateAndAddQuests;
