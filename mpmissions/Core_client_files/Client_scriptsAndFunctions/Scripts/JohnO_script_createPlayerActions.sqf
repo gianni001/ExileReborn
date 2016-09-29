@@ -487,6 +487,18 @@ ExileReborn_scavengeAction =
     {
         player playActionNow "PutDown";
         sleep 2;
+
+        if (random 1 > 0.8) then
+        {
+            player setDamage (damage player + random 0.3);
+            [60] call BIS_fnc_bloodEffect;
+            if !(ExileReborn_playerIsWounded) then
+            {
+                ExileReborn_playerIsWounded = true;
+                profileNamespace setVariable ["ExileReborn_playerIsWounded",ExileReborn_playerIsWounded];
+            }; 
+        }; 
+
         if (random 1 > 0.5) then
         {
             _item = [] call JohnO_fnc_randomItem;
