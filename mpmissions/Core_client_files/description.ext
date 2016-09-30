@@ -72,18 +72,18 @@ showHUD[] =
 class CfgRemoteExec
 {
     class Functions
-	{
-		mode = 1;
-		jip = 0;
-		class fnc_AdminReq { allowedTargets=2; };
-		class ExileServer_system_network_dispatchIncomingMessage { allowedTargets=2; };
+    {
+        mode = 1;
+        jip = 0;
+        class fnc_AdminReq { allowedTargets=2; };
+        class ExileServer_system_network_dispatchIncomingMessage { allowedTargets=2; };
         class ExAdServer_fnc_clientRequest { allowedTargets=2; };
-	};
-	class Commands
-	{
-		mode=0;
-		jip=0;
-	};
+    };
+    class Commands
+    {
+        mode=0;
+        jip=0;
+    };
 };
 class RscTextNS
 {
@@ -94,7 +94,7 @@ class RscTextNS
     h = 0.04;
     ColorBackground[] = {1,1,1,0.2};
     ColorText[] = {0.1,0.1,0.1,1};
-    font = "BitStream";
+    font = "EtelkaMonospacePro";
     SizeEx = 0.025;
 
 };

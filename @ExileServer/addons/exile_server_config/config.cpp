@@ -25,11 +25,11 @@ class CfgPatches
 
 class CfgBuildings
 {
-	#include "esseker.hpp"
 	
 	///////////////////////////////////////////////////////////////////////////
 	// Castles & Lighthouses & Life Guard Towers
 	///////////////////////////////////////////////////////////////////////////
+	#include "esseker.hpp"
 	class Land_LifeguardTower_01_F
 	{
 		table = "Tourist";
@@ -2736,7 +2736,7 @@ class CfgSettings
 			Add the keyframes here. The server will pick one random, so if you want one 
 			weather type of be more dominant compared to others, add it multiple times
 		*/
-		keyframes[] = {"Sunny", "Cloudy", "Thunderstorm", "Cloudy", "Thunderstorm","monsoon"}; 
+		keyframes[] = {"Sunny", "Cloudy", "Thunderstorm", "Cloudy", "OvercastNoRain","monsoon"}; 
 		keyframesSummer[] = {"Sunny","OvercastNoRain","sunnyNoOvercast","Sunny","OvercastNoRain","sunnyNoOvercast","monsoon"}; 
 
 		/*
@@ -2777,7 +2777,7 @@ class CfgSettings
 			waves = 0.4;
 			wind = 0.25;
 			gusts = 0.5;
-			rain = 0.5;
+			rain = 0;
 			lightnings = 0.1;
 			rainbows = 1;
 		};
@@ -2791,7 +2791,7 @@ class CfgSettings
 			waves = 1;
 			wind = 0.25;
 			gusts = 0.5;
-			rain = 1;
+			rain = 0.5;
 			lightnings = 1;
 			rainbows = 0.5;
 		};
