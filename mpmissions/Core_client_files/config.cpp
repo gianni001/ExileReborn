@@ -2818,6 +2818,8 @@ class CfgExileCustomCode
     ExileClient_gui_xm8_slide_healthScanner_onOpen = "overwrites\ExileClient_gui_xm8_slide_healthScanner_onOpen.sqf";
     // Stats panel
     ExileClient_gui_hud_renderStatsPanel = "overwrites\ExileClient_gui_hud_renderStatsPanel.sqf";
+    // Disable territory announcment
+    ExileClient_util_world_getNearestLocationName = "overwrites\ExileClient_util_world_getNearestLocationName.sqf";
     /** Server overwrites **/
 
     // Esseker spawn fix

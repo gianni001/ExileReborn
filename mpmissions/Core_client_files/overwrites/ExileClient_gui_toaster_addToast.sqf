@@ -50,7 +50,7 @@ _toastControl ctrlSetPosition _toastPosition;
 _toastControl ctrlSetFade 1;
 _toastControl ctrlCommit 0;
 reverse ExileClientToasts;
-ExileClientToasts pushBack [_toastControl, 0, diag_tickTime + 8];
+ExileClientToasts pushBack [_toastControl, 0, diag_tickTime + 12];
 reverse ExileClientToasts;
 playsound "HintExpand";
 call ExileClient_gui_toaster_pushToBottom;
