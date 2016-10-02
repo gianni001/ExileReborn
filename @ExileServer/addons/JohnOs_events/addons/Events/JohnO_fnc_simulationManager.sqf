@@ -1,4 +1,4 @@
-private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp","_diedAt"];
+private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp","_diedAt","_nearPlayers_AI","_nearVehicles_AI"];
 
 _aliveUnits = Event_ALLAI_SimulatedUnits; 
 
@@ -15,7 +15,7 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 		}; 	
 	} forEach _nearVehicles;
 
-	if (_nearPlayers ) then
+	if (_nearPlayers) then
 	{
 		_x enableSimulationGlobal true;
 		_x hideObjectGlobal false;
@@ -33,10 +33,19 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 
 {
 	_timeStamp = _x getVariable "JohnO_RoaminAI";
+	_nearVehicles_AI = getpos _x nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+	_nearPlayers_AI = false;
+	{
+		private "_x";
+		if (isPlayer _x) then
+		{
+			_nearPlayers_AI = true;
+		}; 	
+	} forEach _nearVehicles_AI;
 
 	if !(isNil "_timeStamp") then
 	{
-		if (time >= _timeStamp) then
+		if ((time >= _timeStamp) && !(_nearPlayers_AI)) then
 		{
 			deleteVehicle _x;
 			Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
@@ -58,14 +67,39 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 	{
 		if (_isMarker) then
 		{	
-			deleteMarker _object;
+			_nearVehicles_object = getMarkerPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+			_nearPlayers_object = false;
+			{
+				private "_x";
+				if (isPlayer _x) then
+				{
+					_nearPlayers_object = true;
+				}; 	
+			} forEach _nearVehicles_object;
+			if !(_nearPlayers_object) then
+			{	
+				deleteMarker _object;
+				Event_Cleanup_objectArray deleteAt _forEachIndex;
+			};	
 		}
 		else
 		{
-			deleteVehicle _object;
-		};
+			_nearVehicles_object = getPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+			_nearPlayers_object = false;
+			{
+				private "_x";
+				if (isPlayer _x) then
+				{
+					_nearPlayers_object = true;
 
-		Event_Cleanup_objectArray deleteAt _forEachIndex;
+				}; 	
+			} forEach _nearVehicles_object;
+			if !(_nearPlayers_object) then
+			{	
+				deleteVehicle _object;
+				Event_Cleanup_objectArray deleteAt _forEachIndex;
+			};	
+		};
 	};	
 
 	//hint str Event_Cleanup_objectArray;
