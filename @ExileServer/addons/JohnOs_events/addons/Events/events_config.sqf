@@ -63,6 +63,7 @@ Event_zombieHoard_lastActivated = time;
 Event_zombieHoard_coolDown = 1800;
 Event_animalWarth_Duration = 900;
 Event_warmAnimals = [];
+//Event_ZombieGroup = createGroup WEST;
 
 /** Storm stuff**/
 

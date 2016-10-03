@@ -583,7 +583,7 @@ if (_randomChanceForEvent > Event_AirPatrol_ChanceForEvent) then
                     _killed = _this select 0;
                     _killer = _this select 1;
 
-                    [_killed] joinSilent Event_RadAI_deadGroup;
+                    //[_killed] joinSilent Event_RadAI_deadGroup;
 
                     _killingPlayer = _killer call ExileServer_util_getFragKiller;
 

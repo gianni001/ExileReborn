@@ -70,7 +70,7 @@ if !(_validPlayerArray isEqualTo []) then
 					private ["_killer","_currentRespect","_amountEarned","_newRespect","_killSummary"];
 					_killed = _this select 0;
 					_killer = _this select 1;
-					[_killed] joinSilent Event_RadAI_deadGroup;
+					//[_killed] joinSilent Event_RadAI_deadGroup;
 					_killingPlayer = _killer call ExileServer_util_getFragKiller;
 					Event_IdleZombieArray = Event_IdleZombieArray - [_killed]; 
 					_currentRespect = _killingPlayer getVariable ["ExileScore", 0];

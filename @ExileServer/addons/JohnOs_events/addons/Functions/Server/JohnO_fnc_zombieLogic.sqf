@@ -81,12 +81,14 @@ while {true} do
 	if (_isHome) exitWith {Event_IdleZombieArray pushBack _zombie;};	
 	if !(alive _zombie) exitwith
 	{
+		/*
 		if (isnull _zombie) exitwith
 		{
 			remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
 		};
 		_newgroup = creategroup civilian;
 		[_zombie] join _newgroup;
+		*/
 		_face = face _zombie;
 		if (_face find "Glowing" != 0) then 
 		{
@@ -95,7 +97,7 @@ while {true} do
 		};
 		
 		sleep 60;
-		remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
+		//remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
 	};
 
 	_zombie setFormDir random 360;
