@@ -80,14 +80,14 @@ while {true} do
 		};
 		_newgroup = creategroup civilian;
 		[_zombie] join _newgroup;
-		*/
+		
 		_face = face _zombie;
 		if (_face find "Glowing" != 0) then 
 		{
 			_ngface = (_face splitstring "_") select 0;
 			[_zombie, _ngface] remoteExecCall ["setFace"];
 		};
-		
+		*/
 		sleep 60;
 		//remoteExecCall ["fnc_RyanZombies_RemoveGroups", owner _zombie];
 		
