@@ -37,6 +37,7 @@ forEach
 	['ExileServer_JohnO_network_hideObjectGlobal','JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf'],
 	['JohnO_fnc_getCurrentSeason_server','JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf'],
 	['JohnO_fnc_animalEventOnKilled','JohnOs_events\addons\functions\Server\JohnO_fnc_animalEventOnKilled.sqf'],
+	['ExileServer_JohnO_network_spawnSurvivorNearTarget','JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_spawnSurvivorNearTarget.sqf'],
 	// Events	
 	['JohnO_fnc_heliCrash_new','JohnOs_events\addons\Events\heliCrash\JohnO_fnc_heliCrash_new.sqf'],
 	['JohnO_fnc_supplyDropObject_new','JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDropObject_new.sqf'],

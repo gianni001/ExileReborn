@@ -60,6 +60,7 @@ _group = createGroup WEST;
 		_unit setbehaviour "CARELESS";
 		_unit setunitpos "UP";
 		_unit setmimic "safe";
+		_unit addRating -20000;
 
 		_facearray = ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5", "RyanZombieFace6"];
 		_face = selectRandom _facearray;

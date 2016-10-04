@@ -11,7 +11,8 @@ _validTargets =
 	"O_Soldier_lite_F",
 	"O_Soldier_GL_F",
 	"O_Soldier_A_F",
-	"O_Soldier_lite_F"
+	"O_Soldier_lite_F",
+	"I_G_Soldier_F"
 ];
 
 _potentialTargets_crouched = [];

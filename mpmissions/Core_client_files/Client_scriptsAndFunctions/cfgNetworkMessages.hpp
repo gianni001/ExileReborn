@@ -24,3 +24,8 @@ class hideObjectGlobal
     module = "JohnO";
     parameters[] = {"STRING","BOOL"};
 };
+class spawnSurvivorNearTarget
+{
+    module = "JohnO";
+    parameters[] = {"ARRAY"};
+};

@@ -58,7 +58,9 @@ forEach
 	// animal warmth
 	["JohnO_fnc_handleDeadAnimalWarmth","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleDeadAnimalWarmth.sqf"],
 	// Quests
-	["JohnO_fnc_updateAndAddQuests","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateAndAddQuests.sqf"]
+	["JohnO_fnc_updateAndAddQuests","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateAndAddQuests.sqf"],
+	// AI Survivor spawn
+	["JohnO_fnc_handleSurvivorSpawns","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleSurvivorSpawns.sqf"]
 ];
 
 true

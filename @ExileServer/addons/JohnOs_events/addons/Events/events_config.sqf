@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = "0.7";
+ExileRebornVersion = "0.7.1";
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -221,9 +221,12 @@ Event_TownInvasion_DespawnTime = 2100;
 Event_RoamingAI_MoneyMin = 1;
 Event_RoamingAI_MoneyMax = 100;
 
-Event_RadAI_deadGroup = createGroup EAST;
+//Event_RadAI_deadGroup = createGroup EAST;
 Resistance setFriend [East, 0];
 East setFriend [Resistance, 0];
+Resistance setFriend [West, 0];
+West setFriend [Resistance, 0];
+
 
 {
 	_index = _forEachIndex;
@@ -277,46 +280,6 @@ Event_Convoy_monitorCount = 0;
 Event_SupplyDrop_monitorCount = 0;
 Event_RadAI_CurrentAlive = 0;
 Event_RoamingAI_CurrentAlive = 0;
-/*
-JohnO_fnc_handleCrashSmoke = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_handleCrashSmoke.sqf";
-JohnO_fnc_headHunters = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_headHunters.sqf";
-JohnO_fnc_taskPatrol = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_taskPatrol.sqf";
-JohnO_fnc_spawnAIGroup = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_spawnAIGroup.sqf";
-ExileServer_JohnO_network_spawnAIgroup = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_spawnAIgroup.sqf";
-ExileServer_JohnO_network_spawnHuntersOnTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_spawnHuntersOnTarget.sqf";
-JohnO_fnc_wages = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_wages.sqf";
-JohnO_fnc_findSafeTownPosition = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_findSafeTownPosition.sqf";
-JohnO_fnc_simulationManager = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\JohnO_fnc_simulationManager.sqf";
-JohnO_fnc_getRandomItems_new = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getRandomItems_new.sqf";
-JohnO_fnc_AIgear = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_AIgear.sqf";
-JohnO_fnc_eventMonitor = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_eventMonitor.sqf";
-JohnO_fnc_spawnRoamingAI = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\Radiation_AI\JohnO_fnc_spawnRoamingAI.sqf";
-JohnO_fnc_spawnDynamicAI = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\Radiation_AI\JohnO_fnc_spawnDynamicAI.sqf";
-JohnO_fnc_spawnHeadHunters = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\Radiation_AI\JohnO_fnc_spawnHeadHunters.sqf";
-
-JohnO_fnc_heliCrash_new = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\heliCrash\JohnO_fnc_heliCrash_new.sqf";
-JohnO_fnc_supplyDropObject_new = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDropObject_new.sqf";
-JohnO_fnc_supplyDrop_spawnEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDrop_spawnEvent.sqf";
-
-JohnO_fnc_spawnStormEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_spawnStormEvent.sqf";
-JohnO_fnc_createStorm = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\Events\lightningStorm\JohnO_fnc_createStorm.sqf";
-
-// Zombies
-ExileServer_JohnO_network_spawnZombieNearTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_spawnZombieNearTarget.sqf";
-JohnO_fnc_zombieIdleBehaviour = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieIdleBehaviour.sqf";
-JohnO_fnc_zombieLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_zombieLogic.sqf";
-JohnO_fnc_findZombieTarget = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_findZombieTarget.sqf";
-JohnO_zombie_eventOnFiredNear = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_zombie_eventOnFiredNear.sqf";
-JohnO_fnc_createZombieHoard = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_createZombieHoard.sqf";
-JohnO_fnc_hoardLogic = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_hoardLogic.sqf";
-JohnO_fnc_spawnZombieHoardEvent = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_spawnZombieHoardEvent.sqf";
-
-// hide object function
-ExileServer_JohnO_network_hideObjectGlobal = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_hideObjectGlobal.sqf";
-
-// Weather season check
-JohnO_fnc_getCurrentSeason_server = compileFinal preprocessFileLineNumbers "JohnOs_events\addons\functions\Server\JohnO_fnc_getCurrentSeason_server.sqf";
-*/
 
 uiSleep 20;
 

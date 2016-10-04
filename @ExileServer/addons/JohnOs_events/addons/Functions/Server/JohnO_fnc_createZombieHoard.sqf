@@ -36,7 +36,7 @@ if !(_validPlayerArray isEqualTo []) then
 		 
 		_pos = (_pos getPos [_dist, _dir] select [0, 2]) + ([[],[_pos select 2]] select (count _pos > 2)); 
 
-		_positionArray pushBack _pos;
+		_positionArray pushBack [(_pos select 0),(_pos select 1),0];
 	} forEach _dirAdjustment;	
 
 	_group = createGroup WEST;
