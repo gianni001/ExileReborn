@@ -19,6 +19,10 @@ _timer = 0;
 
 if (_fireNearby) then
 {
+	if ((stance player) isEqualTo "PRONE") then
+	{	
+		player switchMove "";
+	};	
 	player playActionNow "SitDown";
 	waitUntil 
 	{	
@@ -74,6 +78,7 @@ if (_fireNearby) then
 	}
 	else
 	{
+		ExileReborn_playerIsResting = false;
 		[
 			"InfoTitleAndText", 
 			["Already resting", "You are already resting"]
@@ -82,6 +87,7 @@ if (_fireNearby) then
 }
 else
 {
+	ExileReborn_playerIsResting = false;
 	[
 		"InfoTitleAndText", 
 		["You need fire!", "You require a lit fire nearby to do this"]
