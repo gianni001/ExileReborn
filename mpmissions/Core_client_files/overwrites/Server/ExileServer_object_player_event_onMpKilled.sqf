@@ -22,8 +22,7 @@ if (_killer isEqualTo _victim) then
 	_victime setVariable ["JohnO_lastSourceOfDamage",objNull,true];
 };
 
-
-[format["_killer = %1 :: _victim = %2",_killer,_victim]] call MAR_fnc_log;
+format ["_killer = %1 :: _victim = %2",_killer,_victim] call ExileServer_util_log;
 
 if (!isServer || hasInterface || isNull _victim) exitWith {};
 _victim setVariable ["ExileDiedAt", time];

@@ -112,6 +112,17 @@ class CfgNetworkMessages
 class CfgFunctions
 {
     #include "ExAdClient\CfgFunctions.cpp"
+    class Reborn
+    {
+        class Bootstrap
+        {
+            file="Client_scriptsAndFunctions";
+            class preInit
+            {
+                preInit = 1;
+            };
+        };
+    };
 };
 class CfgHints
 {

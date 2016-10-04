@@ -25,7 +25,7 @@ ExileReborn_playerIsWounded = profileNamespace getVariable ["ExileReborn_playerI
 ExileReborn_woundWasTreated = profileNamespace getVariable ["ExileReborn_woundWasTreated",false];
 ExileReborn_infectionAmount = profileNamespace getVariable ["ExileReborn_infectionAmount",0];
 ExileReborn_playerIsInfected = profileNamespace getVariable ["ExileReborn_playerIsInfected",false];
-
+/*
 JohnO_fnc_getRespectTier = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_getRespectTier.sqf";
 JohnO_fnc_displayCurrentRespectTier = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_displayCurrentRespectTier.sqf";
 JohnO_fnc_headHunterWarning = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_headHunterWarning.sqf";
@@ -97,7 +97,7 @@ JohnO_fnc_handleDeadAnimalWarmth = compileFinal preprocessFileLineNumbers "Clien
 // Quests
 
 JohnO_fnc_updateAndAddQuests = compileFinal preprocessFileLineNumbers "Client_scriptsAndFunctions\Functions\JohnO_fnc_updateAndAddQuests.sqf";
-
+*/
 [] execVM "Client_scriptsAndFunctions\Scripts\displayRespectInformation.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\JohnO_script_adjustPlayerStatsDecay.sqf";
 [] execVM "Client_scriptsAndFunctions\Scripts\displayTerritoryDueDate.sqf";
