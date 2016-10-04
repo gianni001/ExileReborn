@@ -5,10 +5,13 @@
 
     ExileClientPlayerEffectNames = ["Health", "Stamina", "Hunger", "Thirst", "Blood Alcohol", "Temperature", "Wetness"];
 
-    select 0 - Attribute - hunger, thirst, temp etc
-    select 1 - Amount to increase / decrease
-    select 2 - Duration 
+    [[2,50,200],"Consumed animal meat",1,false] call JohnO_fnc_customConsume;
 
+    select 0 - array - [Attribute - hunger, thirst, temp etc, Amount to change, Duration]
+    select 1 - string - Message to display
+    select 2 - number - Eating or drinking for sound - 1 is eating 2 is drinking 0 is no sound
+    select 2 - Boolean - True for poison false for not poison   
+    
 */
 
 private ["_pickUpAction","_consumeAction","_hasPickUpAction","_playerhasCookingAction","_animalID","_deadAnimalID"];
@@ -469,6 +472,7 @@ ExileReborn_userActions pushBack
 ExileReborn_scavengeAction =
 ["Scavenge",
 {
+    ExileReborn_client_completedScavengeTask = true;    
 
     ExileReborn_hasscavengeAction = true;
 
@@ -594,6 +598,8 @@ ExileReborn_userActions pushBack
 ExileReborn_searchBerriesAction =
 ["Search bush for berries",
 {
+
+    ExileReborn_client_completedBerryTask = true;
 
     ExileReborn_hasSearchBerriesAction = true;
 
