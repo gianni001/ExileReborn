@@ -18,7 +18,7 @@ if (_chance >= random 100) then
 		if !(_buildings isEqualTo []) then 
 		{
 			_nearZombies = getPos _x nearEntities [_zombies,150];
-			_nearPlayers = getPos _x nearEntities ["Exile_Unit_Player",10];
+			_nearPlayers = getPos _x nearEntities ["Exile_Unit_Player",25];
 			if (((count _nearZombies) > 25) || ((count _nearPlayers) > 0)) exitWith {};
 			_positionsToSpawn = _x buildingPos -1;
 			

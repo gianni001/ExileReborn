@@ -2807,7 +2807,7 @@ class CfgExileCustomCode
     // fix temp
     ExileClient_object_player_stats_updateTemperature = "overwrites\ExileClient_object_player_stats_updateTemperature.sqf";
     // WRECK loot
-    //ExileClient_system_lootManager_thread_spawn = "overwrites\ExileClient_system_lootManager_thread_spawn.sqf";
+    ExileClient_system_lootManager_thread_spawn = "overwrites\ExileClient_system_lootManager_thread_spawn.sqf";
     // Custom loadouts
     //ExileClient_object_player_network_createPlayerResponse = "overwrites\ExileClient_object_player_network_createPlayerResponse.sqf";
     // Make toasts last longer
@@ -2820,7 +2820,6 @@ class CfgExileCustomCode
     ExileClient_gui_hud_renderStatsPanel = "overwrites\ExileClient_gui_hud_renderStatsPanel.sqf";
     // Disable territory announcment
     ExileClient_util_world_getNearestLocationName = "overwrites\ExileClient_util_world_getNearestLocationName.sqf";
-    
     /** Server overwrites **/
 
     // Esseker spawn fix
