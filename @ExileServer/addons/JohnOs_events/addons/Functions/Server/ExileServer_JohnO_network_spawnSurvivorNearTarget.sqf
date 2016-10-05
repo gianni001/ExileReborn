@@ -91,8 +91,8 @@ _unit addMPEventHandler
 		else
 		{	
 			_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
-			_respectLoss = floor (random 7000);
-			_amountEarned = round ((abs _respectLoss) / 100 * 100);
+
+			_amountEarned = round ((abs _currentRespect) / 100 * (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Percentages" >> "bambiKill")));
 			_newRespect = _currentRespect - _amountEarned;
 
 			_killingPlayer setVariable ["ExileScore", _newRespect];
