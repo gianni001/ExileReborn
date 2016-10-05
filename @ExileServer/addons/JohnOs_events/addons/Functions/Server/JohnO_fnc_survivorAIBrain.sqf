@@ -59,6 +59,38 @@ while {true} do
 		_unit setVariable ["ExileReborn_survivor_switchHostile",2];
 		_unit setVariable ["ExileReborn_survivor",false,true];
 
+		_unit removeAllEventHandlers "MPKilled";
+
+		_unit addMPEventHandler 
+		["MPKilled",
+			{
+				private ["_killer","_currentRespect","_amountEarned","_newRespect","_killSummary"];
+
+				_killed = _this select 0;
+				_killer = _this select 1;
+
+				[_killed] joinSilent Event_RadAI_deadGroup;
+
+				_killingPlayer = _killer call ExileServer_util_getFragKiller;
+
+				Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
+				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; 
+
+				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+				_amountEarned = 50;
+				_newRespect = _currentRespect + 50;
+
+				_killingPlayer setVariable ["ExileScore", _newRespect];
+				_killSummary = [];
+				_killSummary pushBack ["BANDIT FRAGGED", _amountEarned];
+				[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
+
+				format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+				_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+
+			}
+		];
+
 		_newGroup = createGroup east;
 		[_unit] joinSilent _newGroup;
 

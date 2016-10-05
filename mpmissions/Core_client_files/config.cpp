@@ -3910,25 +3910,25 @@ class CfgInteractionMenus
 			class StudyCorpse: ExileAbstractAction
 			{
 				title = "Study and hide corpse";
-				condition = "(!(alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_disableInventory',-1]) isEqualTo -1))";
+				condition = "(!(alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_disableInventory',-1]) isEqualTo -1) && (player distance ExileClientInteractionObject < 2))";
 				action = "_this call JohnO_fnc_studyCorpse";
 			};
 			class Bribe: ExileAbstractAction
 			{
 				title = "Bribe survivor";
-				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true))";
+				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true) && (player distance ExileClientInteractionObject < 2))";
 				action = "_this call JohnO_fnc_bribeSurvivor";
 			};	
 			class Follow: ExileAbstractAction
 			{
 				title = "Come with me?";
-				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor_isFollowing',-1]) isEqualTo -1) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true))";
+				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor_isFollowing',-1]) isEqualTo -1) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true) && (player distance ExileClientInteractionObject < 2))";
 				action = "_this call JohnO_fnc_survivorFollowMe";
 			};	
 			class Leave: ExileAbstractAction
 			{
 				title = "Leave me alone!";
-				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor_isFollowing',-1]) isEqualTo 1) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true) && ((player getVariable ['ExileReborn_survivor_isFollowingMe',false]) isEqualTo true))";
+				condition = "((alive ExileClientInteractionObject) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor_isFollowing',-1]) isEqualTo 1) && ((ExileClientInteractionObject getVariable ['ExileReborn_survivor',false]) isEqualTo true) && ((player getVariable ['ExileReborn_survivor_isFollowingMe',false]) isEqualTo true) && (player distance ExileClientInteractionObject < 2))";
 				action = "_this call JohnO_fnc_survivorLeave";
 			};		
 		};

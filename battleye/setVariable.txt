@@ -1,5 +1,5 @@
 //new
-7 "" !="saved3deninventory" !="exilexm8isonline" !="bis_fnc_selectrespawntemplate_respawned" !="ExileCameraInUse" !="isrunning" !="bis_fnc_setunitinsignia_class" !="bis_accesscounter"!="johno_lastsourceofdamage"!="ExileReborn_clientBandaged"!="ExileReborn_adjustBleedingTrue"!="ExileReborn_adjustBleeding" !"amountleft" !"exilereborn_garbagecollectionignore" !"animaliscooked"!"exilereborn_animaliswarm"!"ExileReborn_survivor_isFollowing"!"ExileReborn_survivor_hasWaypoint"!"ExileReborn_survivor_chance"!"ExileReborn_survivor"!"ExileReborn_survivor_switchHostile"
+7 "" !="saved3deninventory" !="exilexm8isonline" !="bis_fnc_selectrespawntemplate_respawned" !="ExileCameraInUse" !="isrunning" !="bis_fnc_setunitinsignia_class" !="bis_accesscounter"!="johno_lastsourceofdamage"!="ExileReborn_clientBandaged"!="ExileReborn_adjustBleedingTrue"!="ExileReborn_adjustBleeding" !"amountleft" !"exilereborn_garbagecollectionignore" !"animaliscooked"!"exilereborn_animaliswarm"!"ExileReborn_survivor_isFollowing"!"ExileReborn_survivor_hasWaypoint"!"ExileReborn_survivor_chance"!"ExileReborn_survivor"!"ExileReborn_survivor_switchHostile"!"ExileMoney"
 7 "ExilePurse"
 7 "ExileBank"
 7 "ExileMoney"

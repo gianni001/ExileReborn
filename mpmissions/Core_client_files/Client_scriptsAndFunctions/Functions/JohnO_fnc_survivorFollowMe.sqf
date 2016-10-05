@@ -9,11 +9,18 @@ if (_chance > random 100) then
 	_survivor setVariable ["ExileReborn_survivor_isFollowing",(netID player),true];
 
 	player setVariable ["ExileReborn_survivor_isFollowingMe",true];
+
+	["ErrorTitleAndText",
+	    [
+	        "He agrees",
+	        format ["He says he will follow me soon and catch up.."]
+	    ]
+	] call ExileClient_gui_toaster_addTemplateToast;
 }
 else
 {
 
-	["InfoTitleAndText",
+	["ErrorTitleAndText",
 	    [
 	        "No deal",
 	        format ["It looks like the survivor does not want to follow me.."]
