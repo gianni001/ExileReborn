@@ -58,7 +58,8 @@ while {true} do
 		_unit setVariable ["ExileReborn_survivor",false,true];
 
 		_unit removeAllEventHandlers "MPKilled";
-
+		_unit removeEventHandler ["MPKilled",0];
+		
 		_unit addMPEventHandler 
 		["MPKilled",
 			{
