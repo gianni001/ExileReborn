@@ -3,8 +3,6 @@ private ["_group","_unit","_buildingPos","_buildings","_buildingPositions","_ran
 _group = _this select 0;
 _unit = (units _group) select 0;
 
-_buildingPos = [];
-
 _unit setVariable ["ExileReborn_survivor_hasWaypoint",-1];
 
 // Function to remove all waypoints on the AI
@@ -110,20 +108,20 @@ while {true} do
 
 		_direction = (getDir _objectToLookAt) - 180;
 
-		_unit lookAt _objectToLookAt;
-		_unit doWatch _objectToLookAt;
 		_unit setDir _direction;
 	}
 	else
 	{
 		_unit enableAI "MOVE";
-		_unit doWatch objNull;
 	};
 
 	if ((_unit getVariable ["ExileReborn_survivor_isFollowing",-1]) isEqualTo -1) then
 	{
 		if ((_unit getVariable ["ExileReborn_survivor_hasWaypoint",-1]) isEqualTo -1) then
 		{	
+
+			_buildingPos = [];
+
 			_buildings = _unit nearObjects ["House", 300];
 			{
 				if !(_buildings isEqualTo []) then 
@@ -135,7 +133,15 @@ while {true} do
 				};
 			} forEach _buildings;
 
-			_randomWaypoint = selectRandom _buildingPos;
+			if ((count _buildingPos) > 0) then
+			{	
+				_randomWaypoint = selectRandom _buildingPos;
+			}
+			else
+			{
+				_positionOfUnit = position _unit;
+				_randomWaypoint = [_positionOfUnit,1000] call ExileClient_util_math_getRandomPositionInCircle;
+			};	
 
 			_wp = _group addWaypoint [_randomWaypoint,0];
 			_wp setWaypointType "MOVE";

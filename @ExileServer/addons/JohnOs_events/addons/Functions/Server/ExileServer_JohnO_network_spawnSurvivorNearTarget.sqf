@@ -53,8 +53,6 @@ _unit addVest _vest;
 _unit addItem _item;
 _unit addHeadgear _headGear;
 
-
-_unit setVariable ["JohnO_RoaminAI",time + _cleanUpTime];
 Event_ALLAI_SimulatedUnits pushBack _unit;
 _unit setVariable ["ExileMoney",_money,true];
 _unit setVariable ["ExileReborn_survivor_isFollowing",-1,true];
@@ -77,7 +75,8 @@ _unit addMPEventHandler
 		Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
 		_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
-		_amountEarned = round ((abs 1600) / 100 * 100);
+		_respectLoss = floor (random 7000);
+		_amountEarned = round ((abs _respectLoss) / 100 * 100);
 		_newRespect = _currentRespect - _amountEarned;
 
 		_killingPlayer setVariable ["ExileScore", _newRespect];
