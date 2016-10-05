@@ -57,6 +57,10 @@ _unit addHeadgear _headGear;
 _unit setVariable ["JohnO_RoaminAI",time + _cleanUpTime];
 Event_ALLAI_SimulatedUnits pushBack _unit;
 _unit setVariable ["ExileMoney",_money,true];
+_unit setVariable ["ExileReborn_survivor_isFollowing",-1,true];
+_unit setVariable ["ExileReborn_survivor_hasWaypoint",-1,true];
+_unit setVariable ["ExileReborn_survivor_chance",30,true];
+_unit setVariable ["ExileReborn_survivor",true,true];
 
 _unit addMPEventHandler
 ["MPKilled",
@@ -102,19 +106,7 @@ _unit addEventHandler ["HandleDamage",
 
 Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
-if ((count _positions) > 10) then
-{	
-	{
-		_wp = _group addWaypoint [_x,10];
-		_wp setWaypointType "MOVE";
-		_wp setWaypointBehaviour "AWARE";
-		_wp setWaypointStatements ["true","deleteWaypoint [group this, currentWaypoint (group this)]; if ((count waypoints this) < 4) then { [group this,getPos (thisList select 0),500] call JohnO_fnc_taskPatrol;"];
-	} forEach _positions;
-}
-else
-{
-	[_group,_spawnPosition,500] call JohnO_fnc_taskPatrol;
-};	
+[_group] spawn JohnO_fnc_survivorBrain;
 
 _group setBehaviour "AWARE";
 _group setSpeedMode "FULL";

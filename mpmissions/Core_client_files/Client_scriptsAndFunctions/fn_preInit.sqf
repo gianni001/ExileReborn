@@ -60,7 +60,12 @@ forEach
 	// Quests
 	["JohnO_fnc_updateAndAddQuests","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateAndAddQuests.sqf"],
 	// AI Survivor spawn
-	["JohnO_fnc_handleSurvivorSpawns","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleSurvivorSpawns.sqf"]
+	["JohnO_fnc_handleSurvivorSpawns","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleSurvivorSpawns.sqf"],
+	// AI survivor behaviour
+	["JohnO_fnc_survivorFollowMe","Client_scriptsAndFunctions\Functions\JohnO_fnc_survivorFollowMe.sqf"],
+	["JohnO_fnc_survivorLeave","Client_scriptsAndFunctions\Functions\JohnO_fnc_survivorLeave.sqf"],
+	["JohnO_fnc_bribeSurvivor","Client_scriptsAndFunctions\Functions\JohnO_fnc_bribeSurvivor.sqf"]
 ];
 
 true
+

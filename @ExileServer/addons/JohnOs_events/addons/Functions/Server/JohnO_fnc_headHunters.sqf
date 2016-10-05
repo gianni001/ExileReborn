@@ -24,7 +24,7 @@ while {true} do
 	if (!(alive _target) || (_timer >= Event_RoamingAI_despawnTime)) exitWith
 	{
 		
-		format["[Hunters] The target has been killed or timer has been reached, exiting script with remaining units on patrol | Timer %1 |",_timer] call ExileServer_util_log'
+		format["[Hunters] The target has been killed or timer has been reached, exiting script with remaining units on patrol | Timer %1 |",_timer] call ExileServer_util_log;
 
 		HuntingPartyWayPoint = true;
 		_target setVariable ["JohnO_isBeingHunted",false,true];
