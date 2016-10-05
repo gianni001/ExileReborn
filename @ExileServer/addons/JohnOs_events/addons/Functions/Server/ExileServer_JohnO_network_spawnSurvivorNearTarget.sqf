@@ -74,18 +74,35 @@ _unit addMPEventHandler
 		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 		Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
-		_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
-		_respectLoss = floor (random 7000);
-		_amountEarned = round ((abs _respectLoss) / 100 * 100);
-		_newRespect = _currentRespect - _amountEarned;
+		if ((_killed getVariable ["ExileReborn_survivor_switchHostile",-1]) isEqualTo 2) then
+		{ 
+			_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+			_amountEarned = 50;
+			_newRespect = _currentRespect + 50;
 
-		_killingPlayer setVariable ["ExileScore", _newRespect];
-		_killSummary = [];
-		_killSummary pushBack ["SURVIVOR KILLED", -1 * _amountEarned];
-		[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
+			_killingPlayer setVariable ["ExileScore", _newRespect];
+			_killSummary = [];
+			_killSummary pushBack ["BANDIT FRAGGED", _amountEarned];
+			[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
 
-		format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
-		_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+			format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+			_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+		}
+		else
+		{	
+			_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+			_respectLoss = floor (random 7000);
+			_amountEarned = round ((abs _respectLoss) / 100 * 100);
+			_newRespect = _currentRespect - _amountEarned;
+
+			_killingPlayer setVariable ["ExileScore", _newRespect];
+			_killSummary = [];
+			_killSummary pushBack ["SURVIVOR KILLED", -1 * _amountEarned];
+			[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
+
+			format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+			_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+		};	
 	}
 ];
 
