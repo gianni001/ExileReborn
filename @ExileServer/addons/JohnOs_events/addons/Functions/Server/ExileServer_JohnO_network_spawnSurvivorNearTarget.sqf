@@ -2,7 +2,12 @@ private ["_target","_positions","_firstPos","_spawnPosition","_unit","_group","_
 
 _target = (_this select 0) call ExileServer_system_session_getPlayerObject;
 _positions = (_this select 1 select 0);
-
+/*
+if (isNull _positions) then
+{
+	_positions = [] call JohnO_fnc_findSafeTownPosition;
+};	
+*/
 _spawnPosition = selectRandom _positions;
 
 format["ExileReborn - Spawned a survivor near player -- %1 @ %2", _target,_spawnPosition] call ExileServer_util_log;

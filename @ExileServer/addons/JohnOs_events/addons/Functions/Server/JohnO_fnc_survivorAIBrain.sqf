@@ -52,7 +52,7 @@ while {true} do
 
 	if (!(alive _unit) || (isNull _unit)) exitWith {};
 
-	if ((_unit getVariable ["ExileReborn_survivor_switchHostile",-1] isEqualTo 1)) exitWith
+	if ((_unit getVariable ["ExileReborn_survivor_switchHostile",-1]) isEqualTo 1) exitWith
 	{
 		_unit setVariable ["ExileReborn_survivor_switchHostile",2];
 		_unit setVariable ["ExileReborn_survivor",false,true];

@@ -15,5 +15,8 @@ if (_chance >= random 100) then
 			} forEach _buildingPositions;	
 		};
 	} forEach _buildings;
-	["spawnSurvivorNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
+	if ((count _positionsToSpawn) > 0) then
+	{	
+		["spawnSurvivorNearTarget", [_positionsToSpawn]] call ExileClient_system_network_send;
+	};	
 };
