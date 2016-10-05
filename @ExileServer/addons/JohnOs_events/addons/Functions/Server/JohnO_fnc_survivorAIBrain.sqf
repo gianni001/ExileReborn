@@ -177,7 +177,26 @@ while {true} do
 				_wp setWaypointStatements ["true","[group this] spawn JohnO_fnc_deleteAIWaypoints"];
 
 				_unit setVariable ["ExileReborn_survivor_hasWaypoint",1];
-			};	
+			};
+				
+			_nearPlayers = getPos _unit nearEntities [['Exile_Unit_Player'],5]; 
+
+			if (count _nearPlayers > 0) then
+			{	
+				_unit setUnitPos "MIDDLE";
+				_unit disableAI "MOVE";
+
+				_objectToLookAt = selectRandom _nearPlayers;
+
+				_direction = (getDir _objectToLookAt);
+
+				_unit setDir _direction;
+			}
+			else
+			{
+				_unit setUnitPos "AUTO";
+				_unit enableAI "MOVE";
+			};
 		};	
 	};
 

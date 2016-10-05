@@ -10,7 +10,7 @@ if (_chance > random 100) then
 
 	player setVariable ["ExileReborn_survivor_isFollowingMe",true];
 
-	["ErrorTitleAndText",
+	["InfoTitleAndText",
 	    [
 	        "He agrees",
 	        format ["He says he will follow me soon and catch up.."]
