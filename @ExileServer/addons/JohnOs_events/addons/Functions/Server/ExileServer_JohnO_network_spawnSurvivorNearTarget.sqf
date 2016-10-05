@@ -106,7 +106,7 @@ _unit addEventHandler ["HandleDamage",
 
 Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
-[_group] spawn JohnO_fnc_survivorBrain;
+[_group] spawn JohnO_fnc_survivorAIBrain;
 
 _group setBehaviour "AWARE";
 _group setSpeedMode "FULL";
