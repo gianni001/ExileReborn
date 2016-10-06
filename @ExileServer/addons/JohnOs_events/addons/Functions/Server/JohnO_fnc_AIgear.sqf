@@ -12,15 +12,7 @@ _lootWeapons =
 	"Exile_Weapon_CZ550",
 	"Exile_Weapon_SVD",
 	"Exile_Weapon_RPK",
-	"Exile_Weapon_AK107",
-	//Pistols
-	"hgun_ACPC2_F",
-	"hgun_P07_F",
-	"hgun_Pistol_heavy_01_F",
-	"hgun_Pistol_heavy_02_F",
-	"hgun_Rook40_F",
-	"Exile_Weapon_Colt1911",
-	"Exile_Weapon_Makarov"
+	"Exile_Weapon_AK107"
 ];
 
 _weapon = selectRandom _lootWeapons;

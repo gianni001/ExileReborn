@@ -1,4 +1,4 @@
-private ["_target","_position","_civSlow","_civMed","_walker","_position","_positions","_maxSpawn","_count","_activeScripts","_bags","_gear","_item"]; //[_id[_thing,_stuff]]
+private ["_target","_position","_civSlow","_civMed","_walker","_position","_positions","_maxSpawn","_count","_activeScripts","_bags","_gear","_item","_currentZombieCount"]; //[_id[_thing,_stuff]]
 
 _target = (_this select 0) call ExileServer_system_session_getPlayerObject;
 _positions = (_this select 1 select 0);
@@ -29,11 +29,12 @@ else
 };	
 
 _activeScripts = count diag_activeSQFScripts;
+_currentZombieCount = count Event_IdleZombieArray;
 		
 _group = createGroup WEST;
 
 {		
-	if ((random 1 > 0.98) && (_activeScripts < 130)) then
+	if ((random 1 > 0.98) && (_activeScripts < 130) && (_currentZombieCount < 150)) then
 	{	
 		_slectionArray = [_civMed,_civSlow,_walker];
 		_selection = selectRandom _slectionArray;
@@ -67,7 +68,7 @@ _group = createGroup WEST;
 		_unit setface _face;
 		removegoggles _unit;
 		
-		_unit setVariable ["JohnO_RoaminAI",time + 1200];
+		_unit setVariable ["JohnO_RoaminAI",time + 600];
 		_unit setVariable ["ExileMoney",_money,true];
 		_unit setVariable ["ExileReborn_zombie_originalPos",_x];
 		Event_ALLAI_SimulatedUnits pushBack _unit;
@@ -80,8 +81,6 @@ _group = createGroup WEST;
 
 				_killed = _this select 0;
 				_killer = _this select 1;
-
-				//[_killed] joinSilent Event_RadAI_deadGroup;
 
 				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 

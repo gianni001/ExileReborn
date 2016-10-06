@@ -33,4 +33,8 @@
 		};	
 		Event_IdleZombieArray deleteAt _forEachIndex;
 	};
+	if (isNull _zombie) then
+	{
+		Event_IdleZombieArray deleteAt _forEachIndex;
+	};	
 } forEach Event_IdleZombieArray;

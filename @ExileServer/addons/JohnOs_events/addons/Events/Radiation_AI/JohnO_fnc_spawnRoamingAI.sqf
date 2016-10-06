@@ -65,11 +65,9 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 				_killed = _this select 0;
 				_killer = _this select 1;
 
-				//[_killed] joinSilent Event_RadAI_deadGroup;
-
 				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-				Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive - 1;
+				Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
 				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
@@ -83,11 +81,6 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 
 				format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
 				_killingPlayer call ExileServer_object_player_sendStatsUpdate;
-
-				if (Event_RadAI_DebugEvent) then
-				{
-					hint str Event_RadAI_CurrentAlive;
-				};	
 			}
 		];
 
@@ -105,16 +98,10 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 			_dmg
 		}];
 
-		Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive + 1;
-
+		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 	};
 
 	[_group,_position,150] call JohnO_fnc_taskPatrol;
-
-	if (Event_RadAI_DebugEvent) then
-	{
-		hint str Event_RadAI_CurrentAlive;
-	};
 };		
 
 

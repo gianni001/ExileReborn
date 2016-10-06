@@ -133,8 +133,6 @@ if (count AllPlayers > 0) then
 								_killed = _this select 0;
 								_killer = _this select 1;
 
-								//[_killed] joinSilent Event_RadAI_deadGroup;
-
 								_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
 								Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
