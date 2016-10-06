@@ -29,5 +29,7 @@ switch (_isIncrease) do
 	};
 };
 
-_player setVariable ["ExileScore",_newRespect,true];
+_player setVariable ["ExileScore",_newRespect];
 _player setVariable ["ExileMoney",_newMoney,true];
+
+_player call ExileServer_object_player_sendStatsUpdate; // Particular this, is this ok! , since ive got the player object above!
