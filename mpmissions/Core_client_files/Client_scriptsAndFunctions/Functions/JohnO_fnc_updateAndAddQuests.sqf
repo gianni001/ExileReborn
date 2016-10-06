@@ -23,11 +23,14 @@ switch (ExileReborn_quest_progress) do
 			if ((player getVariable ["ExileXM8IsOnline", false]) isEqualTo true) then
 			{
 				Quest_chapter1_turnOn8G setTaskState "SUCCEEDED";
-
+				/*
 				_addRespect = 300;	
 				_newScore = ExileClientPlayerScore + _addrespect;
 			    ENIGMA_UpdateStats = [player,_newScore];
 			    publicVariableServer "ENIGMA_UpdateStats";
+				*/
+			    _addRespect = 300;
+				[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
 
 				["InfoTitleAndText",
 					[
@@ -78,10 +81,14 @@ switch (ExileReborn_quest_progress) do
 			{
 				Quest_chapter2_userActions setTaskState "SUCCEEDED";
 
+				/*
 				_addRespect = 300;	
 				_newScore = ExileClientPlayerScore + _addrespect;
 			    ENIGMA_UpdateStats = [player,_newScore];
 			    publicVariableServer "ENIGMA_UpdateStats";
+				*/
+			    _addRespect = 300;
+				[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
 
 				["InfoTitleAndText",
 					[

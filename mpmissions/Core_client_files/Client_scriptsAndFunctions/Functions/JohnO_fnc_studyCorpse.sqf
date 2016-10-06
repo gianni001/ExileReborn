@@ -25,10 +25,15 @@ if !(alive _target) then
 
 	if (_actualChance >= random 1) then
 	{
+		/*
 		_addRespect = 175;	
 		_newScore = ExileClientPlayerScore + _addrespect;
 	    ENIGMA_UpdateStats = [player,_newScore];
 	    publicVariableServer "ENIGMA_UpdateStats";
+		*/
+		
+		_addRespect = 175;
+		[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
 
 	    if (_actualChance >= random 1) then
 	    {
