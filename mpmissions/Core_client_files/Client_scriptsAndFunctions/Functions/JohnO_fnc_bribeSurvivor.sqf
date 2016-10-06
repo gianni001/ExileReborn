@@ -13,6 +13,7 @@ if (_currentMoney > _bribeAmount) then
 	player setVariable ["ExileMoney",_newMoney,true];
 	*/
 
+	[0,_bribeAmount,false] call JohnO_fnc_updateRespectAndTabs;
 
 	_currentChance = _survivor getVariable ["ExileReborn_survivor_chance",0];
 	_newChance = _currentChance + 10;
