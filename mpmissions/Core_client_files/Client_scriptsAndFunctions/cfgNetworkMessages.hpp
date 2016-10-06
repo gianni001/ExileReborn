@@ -29,3 +29,8 @@ class spawnSurvivorNearTarget
     module = "JohnO";
     parameters[] = {"ARRAY"};
 };
+class updateRespectAndTabs
+{
+    module = "JohnO";
+    parameters[] = {"SCALAR","SCALAR","BOOL"};
+};

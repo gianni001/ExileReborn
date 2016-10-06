@@ -64,7 +64,9 @@ forEach
 	// AI survivor behaviour
 	["JohnO_fnc_survivorFollowMe","Client_scriptsAndFunctions\Functions\JohnO_fnc_survivorFollowMe.sqf"],
 	["JohnO_fnc_survivorLeave","Client_scriptsAndFunctions\Functions\JohnO_fnc_survivorLeave.sqf"],
-	["JohnO_fnc_bribeSurvivor","Client_scriptsAndFunctions\Functions\JohnO_fnc_bribeSurvivor.sqf"]
+	["JohnO_fnc_bribeSurvivor","Client_scriptsAndFunctions\Functions\JohnO_fnc_bribeSurvivor.sqf"],
+	// Update respect and tabs
+	["JohnO_fnc_updateRespectAndTabs","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateRespectAndTabs.sqf"]
 ];
 
 true

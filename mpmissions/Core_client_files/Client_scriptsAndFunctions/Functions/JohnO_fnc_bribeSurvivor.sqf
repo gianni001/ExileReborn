@@ -8,9 +8,11 @@ _bribeAmount = 200;
 
 if (_currentMoney > _bribeAmount) then
 {
+	/*
 	_newMoney = _currentMoney - _bribeAmount;
-
 	player setVariable ["ExileMoney",_newMoney,true];
+	*/
+
 
 	_currentChance = _survivor getVariable ["ExileReborn_survivor_chance",0];
 	_newChance = _currentChance + 10;
