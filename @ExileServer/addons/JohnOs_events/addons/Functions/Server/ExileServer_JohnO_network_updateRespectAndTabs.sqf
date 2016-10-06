@@ -4,6 +4,7 @@
 	
 */
 
+private ["_player","_respectChange","_popTabsChange","_isIncrease","_currentRespect","_currentPopTabs","_newRespect","_newMoney"];
 
 _player = (_this select 0) call ExileServer_system_session_getPlayerObject;
 

@@ -4,7 +4,7 @@
 
 */
 
-private ["_respectChange","_popTabsChange"];
+private ["_respectChange","_popTabsChange","_isIncrease"];
 
 _respectChange = _this select 0;
 _popTabsChange = _this select 1;
