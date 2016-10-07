@@ -69,6 +69,29 @@ if ((Event_HeliCrash_Count < Event_HeliCrash_MaxEvents) && (random 1 > 0.3)) the
 	
 	Event_Cleanup_objectArray pushBack [_marker,time + Event_HeliCrash_MarkerDuration,true];
 	*/
+
+	_holder = createVehicle ["Exile_Container_SupplyBox", _landPos, [], 10, "CAN COLLIDE"];
+	for "_i" from 0 to 5 + floor (random 5) do
+	{	
+		_item = [2] call JohnO_fnc_getRandomItems_new;
+				
+		[_holder, _item] call ExileClient_util_containerCargo_add;
+
+		_magazines = getArray (configFile >> "CfgWeapons" >> _item >> "magazines");	
+		_holder addMagazineCargoGlobal [(_magazines select 0), 1 + floor (random 3)];
+
+		if (random 1 > 0.5) then
+		{	
+			_item = [3] call JohnO_fnc_getRandomItems_new;
+			[_holder, _item] call ExileClient_util_containerCargo_add;
+		};
+		if (random 1 > 0.4) then
+		{	
+			_item = [4] call JohnO_fnc_getRandomItems_new;
+			[_holder, _item] call ExileClient_util_containerCargo_add;	
+		};		
+	};
+
 	Event_Cleanup_objectArray pushBack [_crash,time + Event_HeliCrash_MarkerDuration,false];
 	Event_HeliCrash_Positions pushBack [position _crash, time + Event_HeliCrash_MarkerDuration];
 	

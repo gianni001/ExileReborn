@@ -123,7 +123,8 @@ class Exile_AbstractCraftingRecipe
 
 class CfgCraftingRecipes
 {
-#include "custom_crafting\cooking.hpp"	
+#include "custom_crafting\cooking.hpp"
+#include "custom_crafting\bushkit.hpp"
 class BreachingChargeBigMomma: Exile_AbstractCraftingRecipe
 {
 	name = "Breaching Charge (Big Momma)";
@@ -2806,10 +2807,6 @@ class CfgExileCustomCode
     ExileClient_gui_xm8_show = "ExAdClient\XM8\CustomCode\ExileClient_gui_xm8_show.sqf";  
     // fix temp
     ExileClient_object_player_stats_updateTemperature = "overwrites\ExileClient_object_player_stats_updateTemperature.sqf";
-    // WRECK loot
-    //ExileClient_system_lootManager_thread_spawn = "overwrites\ExileClient_system_lootManager_thread_spawn.sqf";
-    // Custom loadouts
-    //ExileClient_object_player_network_createPlayerResponse = "overwrites\ExileClient_object_player_network_createPlayerResponse.sqf";
     // Make toasts last longer
     ExileClient_gui_toaster_addToast = "overwrites\ExileClient_gui_toaster_addToast.sqf"; 
     // Add to inventory event handler 
@@ -2820,6 +2817,8 @@ class CfgExileCustomCode
     ExileClient_gui_hud_renderStatsPanel = "overwrites\ExileClient_gui_hud_renderStatsPanel.sqf";
     // Disable territory announcment
     ExileClient_util_world_getNearestLocationName = "overwrites\ExileClient_util_world_getNearestLocationName.sqf";
+    // Implement bush kits -- Why hasnt exile done this? Probably broken, lets find out..
+    ExileClient_object_bush_attachGreenBush = "overwrites\ExileClient_object_bush_attachGreenBush.sqf";
     /** Server overwrites **/
 
     // Esseker spawn fix
@@ -2830,6 +2829,8 @@ class CfgExileCustomCode
     ExileServer_system_weather_thread_weatherSimulation = "overwrites\server\ExileServer_system_weather_thread_weatherSimulation.sqf";
     // MP killed
     ExileServer_object_player_event_onMpKilled = "overwrites\server\ExileServer_object_player_event_onMpKilled.sqf";
+    // Make sticks n leaves spawn when cutting trees
+    ExileServer_object_tree_network_chopTreeRequest = "overwrites\server\ExileServer_object_tree_network_chopTreeRequest.sqf";
 
 };
 class CfgExileEnvironment
