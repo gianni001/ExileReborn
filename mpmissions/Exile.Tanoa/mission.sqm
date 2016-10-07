@@ -23,16 +23,19 @@ class EditorData
 	};
 };
 binarizationWanted=0;
+binarizationWanted=0;
 addons[]=
 {
 	"exile_client",
-	"A3_Ui_F"
+	"A3_Ui_F",
+	"Ryanzombies",
+	"ryanzombiesfunctions"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=2;
+		items=4;
 		class Item0
 		{
 			className="exile_client";
@@ -44,6 +47,18 @@ class AddonsMetaData
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
+		};
+		class Item2
+		{
+			className="Ryanzombies";
+			name="Ryanzombies";
+			author="Ryan";
+		};
+		class Item3
+		{
+			className="ryanzombiesfunctions";
+			name="ryanzombiesfunctions";
+			author="Ryan";
 		};
 	};
 };
