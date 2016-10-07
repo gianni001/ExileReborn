@@ -1,9 +1,12 @@
-private ["_group","_unit","_buildingPos","_buildings","_buildingPositions","_randomWaypoint","_nearPlayers"];
+private ["_group","_unit","_buildingPos","_buildings","_buildingPositions","_randomWaypoint","_nearPlayers","_unitLastPosChange","_unitPosChangeCoolDown"];
 
 _group = _this select 0;
 _unit = (units _group) select 0;
 
 _unit setVariable ["ExileReborn_survivor_hasWaypoint",-1];
+
+_unitLastPosChange = time;
+_unitPosChangeCoolDown = 180;
 
 // Function to remove all waypoints on the AI
 
@@ -54,6 +57,14 @@ while {true} do
 
 	if ((_unit getVariable ["ExileReborn_survivor_switchHostile",-1]) isEqualTo 1) exitWith
 	{
+		_unit enableAI "MOVE";
+		_unit setUnitPos "AUTO";
+		[group _unit] spawn JohnO_fnc_deleteAIWaypoints;
+		_randPos = [position _unit,200] call ExileClient_util_math_getRandomPositionInCircle;
+		_unit doMove _randPos;
+
+		sleep 30;
+
 		_unit setVariable ["ExileReborn_survivor_switchHostile",2];
 		_unit setVariable ["ExileReborn_survivor",false,true];
 
@@ -61,7 +72,6 @@ while {true} do
 		[_unit] joinSilent _newGroup;
 
 		[_newGroup,getPos _unit,500] call JohnO_fnc_taskPatrol;
-		_unit enableAI "MOVE";
 
 		deleteGroup _group;
 	};
@@ -81,6 +91,12 @@ while {true} do
 	else
 	{
 		_unit enableAI "MOVE";
+		if (time - _unitPosChangeCoolDown >= _unitLastPosChange) then
+		{
+			_stances = ["UP","MIDDLE","AUTO"];
+			_unit setUnitPos (selectRandom _stances);
+			_unitLastPosChange = time;
+		};	
 	};
 
 	if ((_unit getVariable ["ExileReborn_survivor_isFollowing",-1]) isEqualTo -1) then

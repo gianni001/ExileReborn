@@ -59,11 +59,17 @@ _vehicleArray =
 	["Exile_Car_LandRover_Green",1,[],true],
 	["Exile_Car_LandRover_Sand",1,[],true],
 	["Exile_Car_LandRover_Desert",1,[],true],
-	// Choppers
-	["Exile_Chopper_Hellcat_Green",1,[[23483.9,21144.8,0],[25240.1,21828.6,0]],false],		
-	["Exile_Chopper_Hummingbird_Green",1,[[12834.2,16735.8,0],[23079.8,7299.1,0]],false],
-	["Exile_Chopper_Mohawk_FIA",1,[[17550.5,13240.5,0],[26783.6,24673,0]],false],						
-	["Exile_Chopper_Orca_CSAT",1,[[3732.07,12976.3,20]],false]											// Kavala hospital
+	// Apex stuff
+	["Exile_Car_ProwlerUnarmed",2,[],true],
+	["Exile_Car_QilinUnarmed",2,[],true],
+	["Exile_Car_MB4WD",2,[],true],
+	["Exile_Car_MB4WDOpen",2,[],true],
+	// Choppers	
+	["Exile_Chopper_Hellcat_Green",1,[[23483.9,21144.8,0],[25240.1,21828.6,0]],true],		
+	["Exile_Chopper_Hummingbird_Green",1,[[12834.2,16735.8,0],[23079.8,7299.1,0]],true],
+	["Exile_Chopper_Mohawk_FIA",1,[[17550.5,13240.5,0],[26783.6,24673,0]],true],						
+	["Exile_Chopper_Orca_CSAT",1,[[3732.07,12976.3,20]],true]											// Kavala hospital
+	
 ];
 
 {
