@@ -1122,7 +1122,7 @@ class Markers
 		};	
 		class Item10
 		{
-			position[]={7371.42,0,5318.19};
+			position[]={7405.93,0,5343.9};
 			name="ConcreteMixerZoneWeiss";
 			text="Concrete Mixer";
 			markerType="ELLIPSE";
@@ -1135,7 +1135,7 @@ class Markers
 		};
 		class Item11
 		{
-			position[]={7371.42,0,5318.19};
+			position[]={7405.93,0,5343.9};
 			name="ConcreteMixerZoneWeissIcon";
 			text="";
 			type="ExileConcreteMixerZoneIcon";
@@ -1144,7 +1144,7 @@ class Markers
 
 		class Item12
 		{
-			position[]={9000.82,0,7925.87};
+			position[]={8982.27,0,7873.28};
 			name="ConcreteMixerZonePilana";
 			text="Concrete Mixer";
 			markerType="ELLIPSE";
@@ -1157,7 +1157,7 @@ class Markers
 		};
 		class Item13
 		{
-			position[]={9000.82,0,7925.87};
+			position[]={8982.27,0,7873.28};
 			name="ConcreteMixerZonePilanaIcon";
 			text="";
 			type="ExileConcreteMixerZoneIcon";
@@ -1165,7 +1165,7 @@ class Markers
 
 		class Item14
 		{
-			position[]={3106.34,0,5991.98};
+			position[]={2680.3,0,6116.71};
 			name="ConcreteMixerZoneDanilov";
 			text="Concrete Mixer";
 			markerType="ELLIPSE";
@@ -1178,7 +1178,7 @@ class Markers
 		};
 		class Item15
 		{
-			position[]={3106.34,0,5991.98};
+			position[]={2680.3,0,6116.71};
 			name="ConcreteMixerZoneDanilovIcon";
 			text="";
 			type="ExileConcreteMixerZoneIcon";
