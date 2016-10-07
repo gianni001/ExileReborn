@@ -3895,7 +3895,7 @@ class CfgInteractionMenus
 			class InstaDoc: ExileAbstractAction
 			{
 				title = "Apply InstaDoc";
-				condition = "((alive ExileClientInteractionObject) && (isBleeding ExileClientInteractionObject) && ('Exile_Item_InstaDoc' in (magazines player)) && (ExileClientInteractionObject distance player < 3))";
+				condition = "((alive ExileClientInteractionObject) && ('Exile_Item_InstaDoc' in (magazines player)) && (ExileClientInteractionObject distance player < 3))";
 				action = "_this call JohnO_fnc_applyInstaDocToPlayer";
 			};
 		};

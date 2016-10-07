@@ -1,3 +1,5 @@
+private ["_addRespect"];
+
 _patient = _this select 0;
 call ExileClient_gui_interactionMenu_unhook;
 
