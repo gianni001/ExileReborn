@@ -1,6 +1,6 @@
 private ["_chance","_buildings","_positionsToSpawn","_buildingPositions"];
 
-_chance = 25;
+_chance = 10;
 _positionsToSpawn = [];
 
 if (_chance >= random 100) then

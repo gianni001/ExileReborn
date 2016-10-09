@@ -492,7 +492,7 @@ ExileReborn_scavengeAction =
         player playActionNow "PutDown";
         sleep 2;
 
-        if (random 1 > 0.8) then
+        if (random 1 > 0.95) then
         {
             player setDamage (damage player + random 0.3);
             [60] call BIS_fnc_bloodEffect;

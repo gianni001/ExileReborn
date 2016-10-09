@@ -105,10 +105,12 @@ else
 	};
 };
 _bodyWetness = ((_bodyWetness + _wetnessChangePerMinute / 60 * _timeElapsed) max 0) min 1;
+/*
 if (ExileClientEnvironmentTemperature > 25) then 
 {
 	_forcedBodyTemperatureChangePerMinute = 0.5; 
 };
+*/
 if (_forcedBodyTemperatureChangePerMinute > 0) then 
 {
 	_bodyTemperature = _bodyTemperature + _forcedBodyTemperatureChangePerMinute / 60 *_timeElapsed;
