@@ -68,6 +68,7 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
 				Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
+				Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive -1;
 				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
 				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
@@ -99,6 +100,7 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 		}];
 
 		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
+		Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive + 1;
 	};
 
 	[_group,_position,150] call JohnO_fnc_taskPatrol;
