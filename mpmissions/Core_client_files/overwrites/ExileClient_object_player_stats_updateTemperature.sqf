@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_playerIsInVehicle","_playerVehicle","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence","_season","_bodyTempMax"];
+private["_timeElapsed","_forcedBodyTemperatureChangePerMinute","_wetnessChangePerMinute","_altitude","_isSwimming","_bodyTemperature","_bodyWetness","_temperatureConfig","_fromDayTimeTemperature","_toDayTimeTemperature","_environmentTemperature","_playerIsInVehicle","_playerVehicle","_isFireNearby","_startPosition","_endPosition","_intersections","_isBelowRoof","_clothingColdProtection","_movementInfluence","_regulation","_environmentInfluence","_season"];
 _timeElapsed = _this;
 _forcedBodyTemperatureChangePerMinute = 0;
 _wetnessChangePerMinute = -0.1;
@@ -22,7 +22,6 @@ _fromDayTimeTemperature = (getArray (_temperatureConfig >> "daytimeTemperature")
 _toDayTimeTemperature = (getArray (_temperatureConfig >> "daytimeTemperature")) select ((date select 3) + 1);
 
 // Custom
-_bodyTempMax = 37;
 _season = [(date select 1)] call JohnO_fnc_getCurrentSeason;
 
 _fromDayTimeTemperature = _fromDayTimeTemperature + (_season select 0);
@@ -34,12 +33,6 @@ _environmentTemperature = _environmentTemperature + overcast * (getNumber (_temp
 _environmentTemperature = _environmentTemperature + rain * (getNumber (_temperatureConfig >> "rain"));
 _environmentTemperature = _environmentTemperature + windStr * (getNumber (_temperatureConfig >> "wind"));
 _environmentTemperature = _environmentTemperature + _altitude / 100 * (getNumber (_temperatureConfig >> "altitude"));
-
-if (_environmentTemperature > 27) then
-{
-	_bodyTempMax = 40;
-};	
-
 if (_isSwimming) then 
 {
 	_environmentTemperature = _environmentTemperature + (getNumber (_temperatureConfig >> "water"));
@@ -105,28 +98,36 @@ else
 	};
 };
 _bodyWetness = ((_bodyWetness + _wetnessChangePerMinute / 60 * _timeElapsed) max 0) min 1;
-/*
 if (ExileClientEnvironmentTemperature > 25) then 
 {
 	_forcedBodyTemperatureChangePerMinute = 0.5; 
 };
-*/
 if (_forcedBodyTemperatureChangePerMinute > 0) then 
 {
 	_bodyTemperature = _bodyTemperature + _forcedBodyTemperatureChangePerMinute / 60 *_timeElapsed;
 }
 else 
 {
-	
-	_clothingColdProtection = [] call JohnO_fnc_getClothingWarmthValue;
-
+	_clothingColdProtection = 0;
+	if !((uniform player) isEqualTo "") then 
+	{
+		_clothingColdProtection = _clothingColdProtection + 0.25;
+	};
+	if !((headgear player) isEqualTo "") then 
+	{
+		_clothingColdProtection = _clothingColdProtection + 0.05;
+	};
+	if !((vest player) isEqualTo "") then 
+	{
+		_clothingColdProtection = _clothingColdProtection + 0.10;
+	};
 	_clothingColdProtection = ((_clothingColdProtection * (1 - (_bodyWetness * 0.5))) max 0) min 1;
 	_movementInfluence = 0;
 	if ((getPos player) select 2 < 0.1) then 
 	{
-		_movementInfluence = (_bodyTempMax - _bodyTemperature) * (1 - (_bodyWetness * 0.5)) * 0.075 * (vectorMagnitude (velocity player))/6.4;
+		_movementInfluence = (37 - _bodyTemperature) * (1 - (_bodyWetness * 0.5)) * 0.075 * (vectorMagnitude (velocity player))/6.4;
 	};
-	if (_bodyTemperature < _bodyTempMax) then 
+	if (_bodyTemperature < 37) then 
 	{
 		_regulation = 0.1;
 	}
@@ -137,40 +138,10 @@ else
 	_environmentInfluence = (1 - _clothingColdProtection) * (-0.2 + 0.008 * ExileClientEnvironmentTemperature);
 	_bodyTemperature = _bodyTemperature + (_regulation + _movementInfluence + _environmentInfluence) / 60 *_timeElapsed;
 };
-_bodyTemperature = _bodyTemperature min _bodyTempMax;
+_bodyTemperature = _bodyTemperature min 37;
 if (_bodyTemperature < 35) then 
 {
 	player setDamage ((damage player) + 0.1/60*_timeElapsed); 
 };
-
-if ((_bodyTemperature > 38) && (_bodyTemperature < 39)) then
-{
-	player enableStamina true;
-
-	if ((_bodyTemperature > 39) && (time - ExileReborn_highTemp_knockOutCooldown >= ExileReborn_highTemp_lastKnockoutCheck)) then
-	{
-		if (random 1 > 0.8) then
-		{
-			if !(ExileReborn_playerIsKnockedOut) then
-			{	
-				if (ExileClientIsAutoRunning) then
-				{
-					call ExileClient_system_autoRun_stop;
-					_duration = floor (random 60);
-					[_duration] spawn JohnO_fnc_maintainKnockOut;
-				};
-			};	
-		};	
-	};	
-};	
-
-if (_bodyTemperature <= 38) then
-{
-	if (isStaminaEnabled player) then
-	{
-		player enableStamina false;
-	};	
-};	
-
 ExileClientPlayerAttributes set [6, _bodyWetness];
 ExileClientPlayerAttributes set [5, _bodyTemperature];
