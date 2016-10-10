@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = "0.7.6";
+ExileRebornVersion = "0.7.7";
 publicVariable "ExileRebornVersion";
 
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
@@ -188,6 +188,10 @@ Event_RadAI_MaxAllowedAI = 30;
 Event_RadAI_GroupAmountMin = 1;
 Event_RadAI_GroupAmountMax = 4;
 Event_RadAI_DebugEvent = false;
+
+/** Survivor AI **/
+ExileReborn_survivor_lootCoolDown = 20;
+ExileReborn_survivor_antiStick_check = 300;
 
 /** Head hunter AI **/
 

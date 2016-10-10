@@ -122,6 +122,10 @@ while {true} do
 		while {_returnHome} do
 		{
 			_target = [_zombie] call JohnO_fnc_findZombieTarget;
+			if (isNil "_target") then
+			{
+				_target = [];
+			};
 			//hint format ["Zombie is moving to %1",_originalPos];
 			if ((_target isEqualTo []) && ((_zombie getVariable ["ExileReborn_zombie_hardTarget",-1]) isEqualTo -1) && (alive _zombie)) then
 			{	

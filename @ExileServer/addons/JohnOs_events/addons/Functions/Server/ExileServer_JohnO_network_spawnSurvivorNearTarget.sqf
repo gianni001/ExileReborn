@@ -54,7 +54,10 @@ if (random 1 > 0.5) then
 	_unit addBackpack _backPack;
 };
 _unit addVest _vest;
-[_unit,_weapon, 5] call BIS_fnc_addWeapon;
+if (random 1 > 0.7) then
+{	
+	[_unit,_weapon, 5] call BIS_fnc_addWeapon;
+};	
 _unit addItem _item;
 _unit addHeadgear _headGear;
 
@@ -64,6 +67,12 @@ _unit setVariable ["ExileReborn_survivor_isFollowing",-1,true];
 _unit setVariable ["ExileReborn_survivor_hasWaypoint",-1,true];
 _unit setVariable ["ExileReborn_survivor_chance",30,true];
 _unit setVariable ["ExileReborn_survivor",true,true];
+
+_currentWeapon = primaryWeapon _unit;
+if !(_currentWeapon isEqualTo "") then
+{
+	_unit setVariable ["ExileReborn_survivor_isBambi",1,true];
+};	
 
 _unit addMPEventHandler
 ["MPKilled",
@@ -95,18 +104,35 @@ _unit addMPEventHandler
 		}
 		else
 		{	
-			_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+			if ((_killed getVariable ["ExileReborn_survivor_isBambi",-1]) isEqualTo -1) then
+			{
+				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
 
-			_amountEarned = round ((abs _currentRespect) / 100 * (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Percentages" >> "bambiKill")));
-			_newRespect = _currentRespect - _amountEarned;
+				_amountEarned = round ((abs _currentRespect) / 100 * (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Percentages" >> "bambiKill")));
+				_newRespect = _currentRespect - _amountEarned;
 
-			_killingPlayer setVariable ["ExileScore", _newRespect];
-			_killSummary = [];
-			_killSummary pushBack ["SURVIVOR KILLED", -1 * _amountEarned];
-			[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
+				_killingPlayer setVariable ["ExileScore", _newRespect];
+				_killSummary = [];
+				_killSummary pushBack ["SURVIVOR KILLED", -1 * _amountEarned];
+				[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
 
-			format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
-			_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+				format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+				_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+			}
+			else
+			{
+				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
+				_amountEarned = 25;
+				_newRespect = _currentRespect + 25;
+
+				_killingPlayer setVariable ["ExileScore", _newRespect];
+				_killSummary = [];
+				_killSummary pushBack ["BANDIT FRAGGED", _amountEarned];
+				[_killingPlayer, "showFragRequest", [_killSummary]] call ExileServer_system_network_send_to;
+
+				format["setAccountScore:%1:%2", _newRespect, getPlayerUID _killingPlayer] call ExileServer_system_database_query_fireAndForget;
+				_killingPlayer call ExileServer_object_player_sendStatsUpdate;
+			};	
 		};	
 	}
 ];
