@@ -630,6 +630,11 @@ ExileReborn_searchBerriesAction =
                 ["Nothing found", "I have found no berries.."]
             ] call ExileClient_gui_toaster_addTemplateToast;
         };
+
+        if (([] call JohnO_fnc_canSearchForBerries) && (random 1 > 0.8)) then
+        {
+            cursorObject setDamage 1;
+        };    
     };
 
     ExileReborn_hasSearchBerriesAction = false;
