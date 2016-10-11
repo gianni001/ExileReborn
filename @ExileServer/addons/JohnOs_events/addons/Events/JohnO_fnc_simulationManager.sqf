@@ -1,4 +1,4 @@
-private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp","_diedAt","_nearPlayers_AI","_nearVehicles_AI"];
+private ["_aliveUnits","_nearPlayers","_nearVehicles","_nearPlayers","_timeStamp","_diedAt","_nearPlayers_AI","_nearVehicles_AI","_cleanUpCount"];
 
 _aliveUnits = Event_ALLAI_SimulatedUnits; 
 
@@ -30,10 +30,10 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 } forEach _aliveUnits;
 
 /****************** Deletion of units added to the cleanup manager *************************/
-
+_cleanUpCount = 0;
 {
 	_timeStamp = _x getVariable "JohnO_RoaminAI";
-	_nearVehicles_AI = getpos _x nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+	_nearVehicles_AI = getpos _x nearEntities [["Air","Car",'Exile_Unit_Player'], 100];
 	_nearPlayers_AI = false;
 	{
 		private "_x";
@@ -50,6 +50,12 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 			deleteVehicle _x;
 			Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 			Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_x];
+			_cleanUpCount = _cleanUpCount + 1;
+
+			if ((_cleanUpCount > 0) && (Event_extraDebugLogging)) then
+			{	
+				format ["[CLEANUP MANAGER] Deleted %1 units",_cleanUpCount] call ExileServer_util_log;
+			};	
 		};
 	};		
 } forEach AllUnits;
@@ -67,7 +73,7 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 	{
 		if (_isMarker) then
 		{	
-			_nearVehicles_object = getMarkerPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+			_nearVehicles_object = getMarkerPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], 100];
 			_nearPlayers_object = false;
 			{
 				private "_x";
@@ -84,7 +90,7 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 		}
 		else
 		{
-			_nearVehicles_object = getPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], Event_SimulationManager_SimulateRange];
+			_nearVehicles_object = getPos _object nearEntities [["Air","Car",'Exile_Unit_Player'], 100];
 			_nearPlayers_object = false;
 			{
 				private "_x";

@@ -8,6 +8,7 @@ publicVariable "ExileRebornVersion";
 Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
+Event_extraDebugLogging = true;
 
 Event_world_size = 0;
 
@@ -61,9 +62,11 @@ Event_lastMoan = time;
 Event_moanCD = 15;
 Event_zombieHoard_lastActivated = time;
 Event_zombieHoard_coolDown = 1800;
+
+/** Animal Stuff **/
+
 Event_animalWarth_Duration = 900;
 Event_warmAnimals = [];
-//Event_ZombieGroup = createGroup WEST;
 
 /** Storm stuff**/
 
@@ -190,8 +193,9 @@ Event_RadAI_GroupAmountMax = 4;
 Event_RadAI_DebugEvent = false;
 
 /** Survivor AI **/
-ExileReborn_survivor_lootCoolDown = 20;
-ExileReborn_survivor_antiStick_check = 300;
+
+ExileReborn_survivor_lootCoolDown = 20;												// How often the AI will loot if in range of a loot pile
+ExileReborn_survivor_antiStick_check = 300;											// How often the AI's position is checked, if it is within 2m of eacher within this time frame anti Stuck occurs
 
 /** Head hunter AI **/
 

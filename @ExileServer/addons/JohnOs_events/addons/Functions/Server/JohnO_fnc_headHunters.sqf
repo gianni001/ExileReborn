@@ -19,7 +19,7 @@ while {true} do
 {
 	if ((count units _hunters) <= 0) exitWith 
 	{
-		"Hunters have been killed exiting scriot" call ExileServer_util_log;
+		"Hunters have been killed exiting script" call ExileServer_util_log;
 	};
 	if (!(alive _target) || (_timer >= Event_RoamingAI_despawnTime)) exitWith
 	{
