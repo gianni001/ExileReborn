@@ -85,7 +85,6 @@ _unit addMPEventHandler
 
 		_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 		Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
 		if ((_killed getVariable ["ExileReborn_survivor_switchHostile",-1]) isEqualTo 2) then
@@ -150,8 +149,6 @@ _unit addEventHandler ["HandleDamage",
 
 	_dmg
 }];
-
-Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
 [_group] spawn JohnO_fnc_survivorAIBrain;
 

@@ -92,7 +92,6 @@ for "_n" from 0 to _groupAmount do
 
 				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-				Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; 
 
 				_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
@@ -123,9 +122,6 @@ for "_n" from 0 to _groupAmount do
 
 			_dmg
 		}];
-
-
-		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
 	};
 

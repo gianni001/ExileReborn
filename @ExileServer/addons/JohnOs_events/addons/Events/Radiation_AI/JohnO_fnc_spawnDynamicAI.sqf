@@ -1,12 +1,14 @@
 
-private ["_unit","_group","_position","_amountMin","_amountMax","_holder","_marker","_roamingRadius"];
+private ["_unit","_group","_position","_amountMin","_amountMax","_holder","_marker","_roamingRadius","_currentAIcount"];
 
 /************************* ROAMING AI BASED OFF PLAYER COUNT ********************************/
+
+_currentAIcount = [] call JohnO_fnc_countAIUnits;
 
 TownInvasionEvent = false;
 _roamingRadius = 200;
 
-if (Event_RoamingAI_CurrentAlive < Event_RoamingAI_MaxAllowedAI) then
+if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 {
 
 	if (random 1 >= 0.7) then

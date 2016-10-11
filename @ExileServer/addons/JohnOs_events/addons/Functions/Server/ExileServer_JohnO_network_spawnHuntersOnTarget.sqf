@@ -103,7 +103,6 @@ if !(surfaceIsWater _position) then // Check the player is not in water
 
 					_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-					Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 					Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; //Remove unit from global array?
 
 					_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
@@ -124,8 +123,6 @@ if !(surfaceIsWater _position) then // Check the player is not in water
 					};	
 				}
 			];
-
-			Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 		};
 
 		[_group,_target] spawn JohnO_fnc_headHunters;

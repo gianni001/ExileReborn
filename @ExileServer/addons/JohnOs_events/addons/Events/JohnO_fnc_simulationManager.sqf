@@ -48,7 +48,6 @@ Event_simulationManager_cleanUpCount = 0;
 		if ((time >= _timeStamp) && !(_nearPlayers_AI)) then
 		{
 			deleteVehicle _x;
-			Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 			Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_x];
 			Event_simulationManager_cleanUpCount = Event_simulationManager_cleanUpCount + 1;
 		};

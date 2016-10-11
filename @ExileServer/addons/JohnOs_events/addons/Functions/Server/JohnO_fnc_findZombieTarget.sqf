@@ -1,4 +1,4 @@
-private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget","_validTargets","_potentialTargets_isVehicle","_potentialTargets_prone"];
+private ["_zombie","_potentialTargets_crouched","_potentialTargets_standing","_targets","_zombieTarget","_validTargets","_potentialTargets_isVehicle","_potentialTargets_prone","__validDistractions","_nearSmokes"];
 
 _zombie = _this select 0;
 _zombieTarget = [];
@@ -14,7 +14,18 @@ _validTargets =
 	"O_Soldier_lite_F",
 	"I_G_Soldier_F"
 ];
-
+/*
+_validDistractions =
+[
+	"SmokeShell",
+	"SmokeShellRed",
+	"SmokeShellGreen",
+	"SmokeShellYellow",
+	"SmokeShellPurple",
+	"SmokeShellBlue",
+	"SmokeShellOrange"
+];
+*/
 _potentialTargets_crouched = [];
 _potentialTargets_standing = [];
 _potentialTargets_prone = [];
@@ -22,6 +33,7 @@ _potentialTargets_prone = [];
 _potentialTargets_isVehicle = [];
 
 _targets = (getPos _zombie nearEntities [_validTargets,50]);
+//_nearSmokes = getPos _zombie nearObjects [_validDistractions,50];
 
 // Populate the array
 

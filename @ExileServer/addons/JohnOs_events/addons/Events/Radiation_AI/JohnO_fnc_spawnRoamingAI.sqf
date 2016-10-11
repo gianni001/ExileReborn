@@ -1,5 +1,7 @@
 
-private ["_unit","_radUnit","_positions","_position","_randPos","_inWater","_aiSpawnPos","_foundTarget","_target","_group","_safePosFound","_debug"];
+private ["_unit","_radUnit","_positions","_position","_randPos","_inWater","_aiSpawnPos","_foundTarget","_target","_group","_safePosFound","_debug","_currentAIcount"];
+
+_currentAIcount = [] call JohnO_fnc_countAIUnits;
 
 if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 {	
@@ -67,7 +69,6 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 
 				_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-				Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 				Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive -1;
 				Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed];
 
@@ -99,7 +100,6 @@ if (Event_RadAI_CurrentAlive < Event_RadAI_MaxAllowedAI) then
 			_dmg
 		}];
 
-		Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 		Event_RadAI_CurrentAlive = Event_RadAI_CurrentAlive + 1;
 	};
 

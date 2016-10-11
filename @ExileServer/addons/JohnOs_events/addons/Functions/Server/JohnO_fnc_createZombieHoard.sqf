@@ -49,7 +49,7 @@ if !(_validPlayerArray isEqualTo []) then
 			_unit setVariable ["JohnO_RoaminAI",time + 600];
 			_unit setVariable ["ExileReborn_hoardMember",1];
 			_unit setVariable ["ExileReborn_hoardEnd",_endPosition];
-
+			_unit setVariable ["ExileReborn_AI_isZombie",true];
 
 			_unit setdammage 0.7;
 			_unit setspeaker "NoVoice";

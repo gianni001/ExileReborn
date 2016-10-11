@@ -287,7 +287,6 @@ Event_AirPatrol_monitorCount = 0;
 Event_Convoy_monitorCount = 0;
 Event_SupplyDrop_monitorCount = 0;
 Event_RadAI_CurrentAlive = 0;
-Event_RoamingAI_CurrentAlive = 0;
 
 uiSleep 20;
 

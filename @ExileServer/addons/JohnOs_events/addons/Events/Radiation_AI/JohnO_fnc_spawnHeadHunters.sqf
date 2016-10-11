@@ -1,12 +1,14 @@
 /************************* ROAMING AI BASED OFF PLAYER COUNT ********************************/
 
-private ["_target","_foundTarget","_position","_debug","_aiSpawnPos","_safePosFound","_group","_unit","_money","_gear","_killSummary","_killer","_killed","_killingPlayer","_playerCount","_adjustment"];
+private ["_target","_foundTarget","_position","_debug","_aiSpawnPos","_safePosFound","_group","_unit","_money","_gear","_killSummary","_killer","_killed","_killingPlayer","_playerCount","_adjustment","_currentAIcount"];
+
+_currentAIcount = [] call JohnO_fnc_countAIUnits;
 
 if (count AllPlayers > 0) then
 {
 	if (count AllPlayers <= Event_HeadHunterAI_playerLimit) then
 	{	
-		if (Event_RoamingAI_CurrentAlive < Event_RoamingAI_MaxAllowedAI) then
+		if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 		{	
 			_target = selectRandom allPlayers;
 
@@ -135,7 +137,6 @@ if (count AllPlayers > 0) then
 
 								_killingPlayer = _killer call ExileServer_util_getFragKiller;
 
-								Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 								Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_killed]; //Remove unit from global array?
 
 								_currentRespect = _killingPlayer getVariable ["ExileScore", 0];
@@ -170,17 +171,10 @@ if (count AllPlayers > 0) then
 
 							_dmg
 						}];
-		
-						Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive + 1;
 
 					};
 
 					[_group,_target] spawn JohnO_fnc_headHunters;
-
-					if (Event_RoamingAI_DebugEvent) then
-					{
-						hint str Event_RoamingAI_CurrentAlive;
-					};
 				};
 			};		
 		};		
