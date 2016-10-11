@@ -30,7 +30,7 @@ _aliveUnits = Event_ALLAI_SimulatedUnits;
 } forEach _aliveUnits;
 
 /****************** Deletion of units added to the cleanup manager *************************/
-_cleanUpCount = 0;
+Event_simulationManager_cleanUpCount = 0;
 {
 	_timeStamp = _x getVariable "JohnO_RoaminAI";
 	_nearVehicles_AI = getpos _x nearEntities [["Air","Car",'Exile_Unit_Player'], 100];
@@ -50,16 +50,18 @@ _cleanUpCount = 0;
 			deleteVehicle _x;
 			Event_RoamingAI_CurrentAlive = Event_RoamingAI_CurrentAlive - 1;
 			Event_ALLAI_SimulatedUnits = Event_ALLAI_SimulatedUnits - [_x];
-			_cleanUpCount = _cleanUpCount + 1;
-
-			if ((_cleanUpCount > 0) && (Event_extraDebugLogging)) then
-			{	
-				format ["[CLEANUP MANAGER] Deleted %1 units",_cleanUpCount] call ExileServer_util_log;
-			};	
+			Event_simulationManager_cleanUpCount = Event_simulationManager_cleanUpCount + 1;
 		};
 	};		
 } forEach AllUnits;
 
+if (Event_extraDebugLogging) then
+{
+	if (Event_simulationManager_cleanUpCount > 0) then
+	{	
+		format ["[CLEANUP MANAGER] Deleted %1 units",Event_simulationManager_cleanUpCount] call ExileServer_util_log;
+	};
+};	
 /****************** Delete Objects and markers **************************/
 
 {
