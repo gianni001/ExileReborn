@@ -23,12 +23,7 @@ switch (ExileReborn_quest_progress) do
 			if ((player getVariable ["ExileXM8IsOnline", false]) isEqualTo true) then
 			{
 				Quest_chapter1_turnOn8G setTaskState "SUCCEEDED";
-				/*
-				_addRespect = 300;	
-				_newScore = ExileClientPlayerScore + _addrespect;
-			    ENIGMA_UpdateStats = [player,_newScore];
-			    publicVariableServer "ENIGMA_UpdateStats";
-				*/
+				
 			    _addRespect = 300;
 				[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
 
@@ -81,12 +76,6 @@ switch (ExileReborn_quest_progress) do
 			{
 				Quest_chapter2_userActions setTaskState "SUCCEEDED";
 
-				/*
-				_addRespect = 300;	
-				_newScore = ExileClientPlayerScore + _addrespect;
-			    ENIGMA_UpdateStats = [player,_newScore];
-			    publicVariableServer "ENIGMA_UpdateStats";
-				*/
 			    _addRespect = 300;
 				[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
 
@@ -112,6 +101,56 @@ switch (ExileReborn_quest_progress) do
 
 	case 2:
 	{
-		["InfoTitleAndText", ["Exile Reborn - Tutorial Three", "Coming soon!"]] call ExileClient_gui_toaster_addTemplateToast;
+		Quest_chapter3_survivorsAndBandits = player createSimpleTask ["Survivors and Bandits"];
+
+		Quest_chapter3_survivorsAndBandits setSimpleTaskDescription 
+		[
+		   "
+		   EXILE Reborn features different types of AI<br/>
+		   Survivors - These AI look and act just like players, they will loot and roam around. Treat them how you would any other Bambi player<br/>
+		   Bandits - These AI are enemies to you, and should be killed on sight.<br/>
+		   Survivor AI can be interacted with, you can attempt to get close them and bribe them to follow you. Succesfully get a survivor AI to follow you to complete this task!<br/>
+		   ",
+		   "Survivors and Bandits",
+		   ""
+		];
+		Quest_chapter3_survivorsAndBandits setTaskState "ASSIGNED";
+
+		["InfoTitleAndText", ["Exile Reborn - Tutorial Three - Survivors and Bandits", "You have a new task check your map 'Tasks' for more info"]] call ExileClient_gui_toaster_addTemplateToast;
+
+		ExileReborn_succesfullyBribed = false;
+
+		Check_survivorsAndBandits_completed =
+		{
+			if (ExileReborn_succesfullyBribed) then
+			{
+				Quest_chapter3_survivorsAndBandits setTaskState "SUCCEEDED";
+
+			    _addRespect = 500;
+				[_addRespect,0,true] call JohnO_fnc_updateRespectAndTabs;
+
+				["InfoTitleAndText",
+					[
+			            "Survivors and Bandits",
+			            format ["You should now have a better understanding of the AI entities in EXILE Reborn, respect them and survive - %1 respect", _addRespect]
+				    ]
+			    ] call ExileClient_gui_toaster_addTemplateToast;
+
+			    [Quest_chapter3_taskAdd] call ExileClient_system_thread_removeTask;
+			    profileNamespace setVariable ["ExileReborn_quest_chapterOneStatus",3];
+			    [] call JohnO_fnc_updateAndAddQuests;
+			};	
+		};
+
+		Quest_chapter3_taskAdd = [2, Check_survivorsAndBandits_completed, [], true] call ExileClient_system_thread_addtask;
+	};
+
+	/********************************************************************************************************************************************************************************************/
+	/** Chapter 4
+	/********************************************************************************************************************************************************************************************/
+
+	case 3:
+	{
+		["InfoTitleAndText", ["Exile Reborn - Tutorial Four", "Coming soon..."]] call ExileClient_gui_toaster_addTemplateToast;
 	};
 };

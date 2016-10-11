@@ -16,6 +16,8 @@ if (_chance > random 100) then
 	        format ["He says he will follow me soon and catch up.."]
 	    ]
 	] call ExileClient_gui_toaster_addTemplateToast;
+
+	ExileReborn_succesfullyBribed = true;
 }
 else
 {

@@ -32,4 +32,7 @@ switch (_isIncrease) do
 _player setVariable ["ExileScore",_newRespect];
 _player setVariable ["ExileMoney",_newMoney,true];
 
-_player call ExileServer_object_player_sendStatsUpdate; // Particular this, is this ok! , since ive got the player object above!
+format["setAccountScore:%1:%2", _newRespect, getPlayerUID _player] call ExileServer_system_database_query_fireAndForget;
+format["setPlayerMoney:%1:%2", _newMoney, _player getVariable ["ExileDatabaseID", 0]] call ExileServer_system_database_query_fireAndForget;
+
+_player call ExileServer_object_player_sendStatsUpdate;
