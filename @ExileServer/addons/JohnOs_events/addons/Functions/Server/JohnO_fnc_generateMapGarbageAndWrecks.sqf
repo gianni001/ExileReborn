@@ -17,7 +17,7 @@ for "_i" from 1 to 300 do
 		"a3\structures_f\wrecks\Wreck_Car2_F.p3d",
 		"a3\structures_f\wrecks\Wreck_Car3_F.p3d",
 		"a3\structures_f\wrecks\Wreck_Offroad2_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Slammer_F_F.p3d",
+		"a3\structures_f\wrecks\Wreck_Slammer_F.p3d",
 		"a3\structures_f\wrecks\Wreck_Slammer_hull_F.p3d"
 	];
 
@@ -40,7 +40,7 @@ for "_i" from 1 to 300 do
     _wreckVehicle setPosATL [position _wreckVehicle select 0,position _wreckVehicle select 1, 0];
     _wreckVehicle setVectorUp surfaceNormal position _wreckVehicle;
 
-    if (random 1 > 0.8) then
+    if (random 1 > 0.9) then
     {	
 	    _randomSmoke = "test_EmptyObjectForSmoke" createVehicle _position;  
 		_randomSmoke setPosATL (position _wreckVehicle);
