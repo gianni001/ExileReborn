@@ -29,7 +29,6 @@ class CfgBuildings
 	///////////////////////////////////////////////////////////////////////////
 	// Castles & Lighthouses & Life Guard Towers
 	///////////////////////////////////////////////////////////////////////////
-	#include "esseker.hpp"
 	class Land_LifeguardTower_01_F
 	{
 		table = "Tourist";
@@ -111,6 +110,11 @@ class CfgBuildings
 			{-0.869141, 8.74805, -6.73734},
 			{-2.34766, 1.8291, -1.73733}
 		};
+	};
+	class Land_Cargo_House_V2_F
+	{
+		table = "Military";
+		positions[] = {{-1.38281, 3.12109, 0.040287}, {1.24805, 2.54102, 0.0402873}};
 	};
 
 	class Land_TentHangar_V1_F
@@ -2472,13 +2476,13 @@ class CfgSettings
 
 		class Percentages 
 		{
-			unlucky = 1; // Dying for an unknown reason costs you 1% respect
-			crash = 1; // Crashing your car costs you 1% respect
+			unlucky = 2; // Dying for an unknown reason costs you 1% respect
+			crash = 2; // Crashing your car costs you 1% respect
 			suicide = 2; // Comitting suicide costs you 2% of your respect
 			friendyFire = 3; // Friendly fire costs you 3% 
 			npc = 4; // Being killed by an NPC costs you 4%
 			bambiKill = 5; // Killing a bambi costs you 5%
-			frag = 3; // Killing someone will get you 5% and remove 5% from the victim
+			frag = 5; // Killing someone will get you 5% and remove 5% from the victim
 		};
 
 		class Handcuffs 
