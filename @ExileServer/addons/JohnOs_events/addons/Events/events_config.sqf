@@ -296,27 +296,26 @@ uiSleep 20;
 [] execVM "JohnOs_events\addons\Events\spawnAnimals\ExileClient_object_animal_spawn.sqf";
 //[] spawn JohnO_fnc_generateMapGarbageAndWrecks;
 
-if !(Event_SINGLEPLAYER_debug) then
-{	
-	[360, JohnO_fnc_eventMonitor, [], true] call ExileServer_system_thread_addtask;
-	[Event_Wages_Interval, JohnO_fnc_wages, [], true] call ExileServer_system_thread_addtask;
-		
-	[700, JohnO_fnc_spawnRoamingAI, [], true] call ExileServer_system_thread_addtask;
-	[1000, JohnO_fnc_spawnDynamicAI, [], true] call ExileServer_system_thread_addtask;
+	
+[360, JohnO_fnc_eventMonitor, [], true] call ExileServer_system_thread_addtask;
+[Event_Wages_Interval, JohnO_fnc_wages, [], true] call ExileServer_system_thread_addtask;
+	
+[700, JohnO_fnc_spawnRoamingAI, [], true] call ExileServer_system_thread_addtask;
+[1000, JohnO_fnc_spawnDynamicAI, [], true] call ExileServer_system_thread_addtask;
 
-	[660, JohnO_fnc_heliCrash_new, [], true] call ExileServer_system_thread_addtask;
-	[60, JohnO_fnc_handleCrashSmoke, [], true] call ExileServer_system_thread_addtask;
+[660, JohnO_fnc_heliCrash_new, [], true] call ExileServer_system_thread_addtask;
+[60, JohnO_fnc_handleCrashSmoke, [], true] call ExileServer_system_thread_addtask;
 
-	[900, JohnO_fnc_supplyDrop_spawnEvent, [], true] call ExileServer_system_thread_addtask;
-	[Event_HeadHunterAI_Interval_Actual, JohnO_fnc_spawnHeadHunters, [], true] call ExileServer_system_thread_addtask;
+[900, JohnO_fnc_supplyDrop_spawnEvent, [], true] call ExileServer_system_thread_addtask;
+[Event_HeadHunterAI_Interval_Actual, JohnO_fnc_spawnHeadHunters, [], true] call ExileServer_system_thread_addtask;
 
-	[Event_lightningSpawnInterval, JohnO_fnc_spawnStormEvent, [], true] call ExileServer_system_thread_addtask;
+[Event_lightningSpawnInterval, JohnO_fnc_spawnStormEvent, [], true] call ExileServer_system_thread_addtask;
 
-	[2, JohnO_fnc_zombieIdleBehaviour, [], true] call ExileServer_system_thread_addtask;
-	[30, JohnO_fnc_spawnZombieHoardEvent, [], true] call ExileServer_system_thread_addtask;
+[2, JohnO_fnc_zombieIdleBehaviour, [], true] call ExileServer_system_thread_addtask;
+[30, JohnO_fnc_spawnZombieHoardEvent, [], true] call ExileServer_system_thread_addtask;
 
-	[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
-};	
+[15, JohnO_fnc_simulationManager, [], true] call ExileServer_system_thread_addtask;
+	
 
 _fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Feed_F'], 2000000];
 {
