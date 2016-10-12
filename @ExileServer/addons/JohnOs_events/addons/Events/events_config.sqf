@@ -294,7 +294,7 @@ uiSleep 20;
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";
 [] execVM "JohnOs_events\addons\Events\Persistent_vehicles\spawn_vehicles.sqf";
 [] execVM "JohnOs_events\addons\Events\spawnAnimals\ExileClient_object_animal_spawn.sqf";
-//[] spawn JohnO_fnc_generateMapGarbageAndWrecks;
+[] spawn JohnO_fnc_generateMapGarbageAndWrecks;
 
 	
 [360, JohnO_fnc_eventMonitor, [], true] call ExileServer_system_thread_addtask;
