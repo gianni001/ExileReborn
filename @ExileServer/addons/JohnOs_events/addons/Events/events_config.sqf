@@ -2,10 +2,9 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = "0.7.7";
+ExileRebornVersion = "0.7.8";
 publicVariable "ExileRebornVersion";
 
-Event_SINGLEPLAYER_debug = false; 													// For debugging in single player
 Event_DEBUG_Location = [0,0,0];
 Persistent_UID = "76561197972232595";												// Change me..
 Event_extraDebugLogging = true;
@@ -295,6 +294,7 @@ uiSleep 20;
 [] execVM "JohnOs_events\addons\Events\Adjust_Server_DateAndTime.sqf";
 [] execVM "JohnOs_events\addons\Events\Persistent_vehicles\spawn_vehicles.sqf";
 [] execVM "JohnOs_events\addons\Events\spawnAnimals\ExileClient_object_animal_spawn.sqf";
+//[] spawn JohnO_fnc_generateMapGarbageAndWrecks;
 
 if !(Event_SINGLEPLAYER_debug) then
 {	
@@ -324,57 +324,10 @@ _fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Fee
 } forEach _fuelStations;
 
 
-/** For testing in SP **/
+// Make the map look damaged
 
-if (Event_SINGLEPLAYER_debug) then
+ExileReborn_allMapBuildings = [0,0,0] nearObjects ["House", 100000];
 {
-	if (Event_SimulationManager_DebugEvent) then
-	{	
-		[] spawn
-		{
-			while {true} do
-			{
-				[] call JohnO_fnc_simulationManager;
-				uiSleep Event_SimulationManager_Interval;
-			};
-		};
-	};		
-
-	if (Event_RoamingAI_DebugEvent) then
-	{
-		[] spawn
-		{
-			while {true} do
-			{
-				[] call JohnO_fnc_spawnRoamingAI;
-				uiSleep 120;
-			};
-		};		
-	};
-
-	if (Event_HeliCrash_DebugEvent) then
-	{
-		[] spawn
-		{
-			while {true} do
-			{
-				//[] call JohnO_fnc_heliCrash_new;
-				[] call JohnO_fnc_handleCrashSmoke;
-				uiSleep 10;
-			};	
-		};
-	};
-
-	if (Event_SupplyDrop_DebugEvent) then
-	{
-		[] spawn 
-		{
-			while {true} do
-			{
-				[] call JohnO_fnc_supplyDrop_spawnEvent;
-				uiSleep 60;
-			};	
-		};
-	};	
-};		
+	_x setDamage (random 0.9);
+} forEach ExileReborn_allMapBuildings;	
 
