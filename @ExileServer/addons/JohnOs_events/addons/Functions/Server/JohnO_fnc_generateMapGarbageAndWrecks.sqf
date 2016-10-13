@@ -1,86 +1,133 @@
-private ["_wrecks","_randWreck","_roadPosition","_position","_wreckVehicle","_invisibleSelections","_randomSmoke","_holder","_holders","_randomSelection","_selection","_item"];
+private ["_wrecks","_randWreck","_roadPosition","_position","_wreckVehicle","_invisibleSelections","_randomSmoke","_holder","_holders","_randomSelection","_selection","_item","_smoke"];
 
-"Generating map wreckages, garbage and objects.." call ExileServer_util_log;
+ExileReborn_allWorldPersistantObjects = profileNamespace getVariable "ExileReborn_allWorldPersistantObjects";
 
-for "_i" from 1 to 300 do 
+if (isNil "ExileReborn_allWorldPersistantObjects") then
 {
-	_wrecks =
-	[
-		"a3\structures_f\wrecks\wreck_skodovka_f.p3d",
-		"a3\structures_f\wrecks\wreck_Car_f.p3d",
-		"a3\structures_f\wrecks\Wreck_Ural_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Truck_F.p3d",
-		"a3\structures_f\wrecks\Wreck_UAZ_F.p3d",
-		"a3\structures_f\wrecks\Wreck_BRDM2_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Hunter_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Offroad_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Car2_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Car3_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Offroad2_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Slammer_F.p3d",
-		"a3\structures_f\wrecks\Wreck_Slammer_hull_F.p3d"
-	];
+	ExileReborn_allWorldPersistantObjects = [];
+	format ["[EVENT: World Map Objects] No world map objects detected - Creating world map objects and saving.."] call ExileServer_util_log;
+}
+else
+{
+	format ["[EVENT: World Map Objects] World objects detected - Re creating them in their original positions"] call ExileServer_util_log;
+};	
 
-	_randWreck = selectRandom _wrecks;
-	_roadPosition = [Event_world_centerPosition,30000] call ExileClient_util_world_findRoadPosition;
-	_position = [_roadPosition,10] call ExileClient_util_math_getRandomPositionInCircle;
+//"Generating map wreckages, garbage and objects.." call ExileServer_util_log;
 
-	_wreckVehicle = createSimpleObject [_randWreck,_position];
-
-	_invisibleSelections = ["zasleh", "zasleh2", "box_nato_grenades_sign_f", "box_nato_ammoord_sign_f", "box_nato_support_sign_f"];
+if (ExileReborn_allWorldPersistantObjects isEqualTo []) then
+{
+	for "_i" from 1 to 300 do 
 	{
-        if ((toLower _x) in _invisibleSelections) then 
-        {
-            _wreckVehicle hideSelection [_x, true];
-        };
-    }
-    forEach (selectionNames _wreckVehicle);
+		_wrecks =
+		[
+			"a3\structures_f\wrecks\wreck_skodovka_f.p3d",
+			"a3\structures_f\wrecks\wreck_Car_f.p3d",
+			"a3\structures_f\wrecks\Wreck_Ural_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Truck_F.p3d",
+			"a3\structures_f\wrecks\Wreck_UAZ_F.p3d",
+			"a3\structures_f\wrecks\Wreck_BRDM2_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Hunter_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Offroad_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Car2_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Car3_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Offroad2_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Slammer_F.p3d",
+			"a3\structures_f\wrecks\Wreck_Slammer_hull_F.p3d"
+		];
 
-	_wreckVehicle setDir random 360;
-    _wreckVehicle setPosATL [position _wreckVehicle select 0,position _wreckVehicle select 1, 0];
-    _wreckVehicle setVectorUp surfaceNormal position _wreckVehicle;
+		_randWreck = selectRandom _wrecks;
+		_roadPosition = [Event_world_centerPosition,30000] call ExileClient_util_world_findRoadPosition;
+		_position = [_roadPosition,10] call ExileClient_util_math_getRandomPositionInCircle;
 
-    if (random 1 > 0.9) then
-    {	
-	    _randomSmoke = "test_EmptyObjectForSmoke" createVehicle _position;  
-		_randomSmoke setPosATL (position _wreckVehicle);
-	};
+		_wreckVehicle = createSimpleObject [_randWreck,_position];
 
-	for "_n" from 1 to 2 + floor (random 3) do
-	{
-		if (random 1 > 0.7) then
-		{	
+		_invisibleSelections = ["zasleh", "zasleh2", "box_nato_grenades_sign_f", "box_nato_ammoord_sign_f", "box_nato_support_sign_f"];
+		{
+	        if ((toLower _x) in _invisibleSelections) then 
+	        {
+	            _wreckVehicle hideSelection [_x, true];
+	        };
+	    }
+	    forEach (selectionNames _wreckVehicle);
 
-			_holders = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_NATO_Support_F","Box_NATO_WpsSpecial_F","Box_NATO_Wps_F","Land_Box_AmmoOld_F"];	
-			_holder = createVehicle [(selectRandom _holders),(position _wreckVehicle),[], 10, "NONE"];
-			_holder setDir floor (random 360);
-			_holder call ExileClient_util_containerCargo_clear;
+		_wreckVehicle setDir random 360;
+	    _wreckVehicle setPosATL [position _wreckVehicle select 0,position _wreckVehicle select 1, 0];
+	    _wreckVehicle setVectorUp surfaceNormal position _wreckVehicle;
+	    _smoke = false;
+	    if (random 1 > 0.95) then
+	    {	
+		    _randomSmoke = "test_EmptyObjectForSmoke" createVehicle _position;  
+			_randomSmoke setPosATL (position _wreckVehicle);
+			_smoke = true;
+		};
 
-			for "_j" from 0 to 2 + floor (random 2) do
+		ExileReborn_allWorldPersistantObjects pushBack [(getPosATL _wreckVehicle),(getDir _wreckVehicle),_randWreck,_smoke];
+		/*
+		for "_n" from 1 to 2 + floor (random 3) do
+		{
+			if (random 1 > 0.7) then
 			{	
-				_randomSelection = [1,2,3,4];
-				_selection = selectRandom _randomSelection;
 
-				_item = [_selection] call JohnO_fnc_getRandomItems_new;
-				[_holder, _item] call ExileClient_util_containerCargo_add;
+				_holders = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_NATO_Support_F","Box_NATO_WpsSpecial_F","Box_NATO_Wps_F","Land_Box_AmmoOld_F"];	
+				_holder = createVehicle [(selectRandom _holders),(position _wreckVehicle),[], 10, "NONE"];
+				_holder setDir floor (random 360);
+				_holder call ExileClient_util_containerCargo_clear;
 
-				if (_selection isEqualTo 2) then
+				for "_j" from 0 to 2 + floor (random 2) do
 				{	
-					_magazines = getArray (configFile >> "CfgWeapons" >> _item >> "magazines");
-					_holder addMagazineCargoGlobal [(_magazines select 0), 1 + floor (random 3)];
-				};
+					_randomSelection = [1,2,3,4];
+					_selection = selectRandom _randomSelection;
+
+					_item = [_selection] call JohnO_fnc_getRandomItems_new;
+					[_holder, _item] call ExileClient_util_containerCargo_add;
+
+					if (_selection isEqualTo 2) then
+					{	
+						_magazines = getArray (configFile >> "CfgWeapons" >> _item >> "magazines");
+						_holder addMagazineCargoGlobal [(_magazines select 0), 1 + floor (random 3)];
+					};
+				};	
 			};	
 		};	
-	};	
-			
-	//_marker = createMarker [ format["HeliCrash%1", diag_tickTime], _position];
-	//_marker setMarkerType "hd_dot";	
+		*/		
+		//_marker = createMarker [ format["HeliCrash%1", diag_tickTime], _position];
+		//_marker setMarkerType "hd_dot";	
 
-	uiSleep 0.1;
-};
+		uiSleep 0.1;
+	};
 
-"Finished generating map wreckages,garbage and objects" call ExileServer_util_log;
+	profileNamespace setVariable ["ExileReborn_allWorldPersistantObjects",ExileReborn_allWorldPersistantObjects];
+	saveProfileNamespace;
+}
+else
+{
+	{
+		_wreckVehicle = createSimpleObject [(_x select 2),(_x select 0)];
 
+		_invisibleSelections = ["zasleh", "zasleh2", "box_nato_grenades_sign_f", "box_nato_ammoord_sign_f", "box_nato_support_sign_f"];
+		{
+			private "_x";
+	        if ((toLower _x) in _invisibleSelections) then 
+	        {
+	            _wreckVehicle hideSelection [_x, true];
+	        };
+	    }
+	    forEach (selectionNames _wreckVehicle);
 
+		_wreckVehicle setDir (_x select 1);
+	    _wreckVehicle setPosATL [position _wreckVehicle select 0,position _wreckVehicle select 1, 0];
+	    _wreckVehicle setVectorUp surfaceNormal position _wreckVehicle;
 
+	    if ((_x select 3) isEqualTo true) then
+	    {
+	    	if (random 1 > 0.5) then
+	    	{	
+	    		_randomSmoke = "test_EmptyObjectForSmoke" createVehicle (position _wreckVehicle);  
+				_randomSmoke setPosATL (position _wreckVehicle);
+			};	
+	    };
 
+	} forEach ExileReborn_allWorldPersistantObjects;
+};	
+
+"[Event: World Map Objects] Finished spawning world map objects!" call ExileServer_util_log;

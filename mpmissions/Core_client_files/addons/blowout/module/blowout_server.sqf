@@ -27,9 +27,13 @@ while {true} do
 
   sleep _prodleva;
 
+  _time = serverTime / 60;
+
+  _timeToRestart = 240 - _time;
+
   if (_chanceOfStorm > 0.6) then {format ["NAC: EVR Will procede chance greater then 0.6"] call ExileServer_util_log;} else {format ["NAC: EVR Will not occur chance less than 0.6"]call ExileServer_util_log;}; 
 
-  if (_chanceOfStorm > 0.6) then
+  if ((_chanceOfStorm > 0.6) && (_timeToRestart > 10)) then
   {  
 
     if(!ns_blowout) then 
@@ -106,5 +110,9 @@ while {true} do
     sleep 10;
     ns_blow_status = false; 
     publicVariable "ns_blow_status";
+  }
+  else
+  {
+    "Blowout will occur too close to restart - Cancelling event" call ExileServer_util_log;
   };  
 };

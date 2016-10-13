@@ -327,6 +327,6 @@ _fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Fee
 
 ExileReborn_allMapBuildings = [0,0,0] nearObjects ["House", 100000];
 {
-	_x setDamage (random 0.9);
+	_x setDamage 0.9;
 } forEach ExileReborn_allMapBuildings;	
 
