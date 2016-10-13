@@ -125,6 +125,7 @@ class CfgCraftingRecipes
 {
 #include "custom_crafting\cooking.hpp"
 #include "custom_crafting\bushkit.hpp"
+#include "custom_crafting\medical.hpp"
 class BreachingChargeBigMomma: Exile_AbstractCraftingRecipe
 {
 	name = "Breaching Charge (Big Momma)";
@@ -352,7 +353,6 @@ class CookPlasticBottleSaltWater: Exile_AbstractCraftingRecipe
 		{1, "Exile_Item_PlasticBottleSaltWater"}
 	};
 };
-
 class CookSausageGravy: Exile_AbstractCraftingRecipe
 {
 	name = "Cook Sausage Gravy";
@@ -1661,18 +1661,18 @@ class CfgExileArsenal
 	class Exile_Item_JunkMetal						{ quality = 1; price = 400; };
 	class Exile_Item_LightBulb						{ quality = 1; price = 20; };
 	class Exile_Item_MetalBoard						{ quality = 1; price = 600; };
-	//class Exile_Item_MetalHedgehogKit				{ quality = 1; price = 1200; };
+	class Exile_Item_MetalHedgehogKit				{ quality = 1; price = 1200; };
 	class Exile_Item_SafeKit						{ quality = 4; price = 25000; };
 	class Exile_Item_CodeLock						{ quality = 1; price = 5000; };
-	//class Exile_Item_Laptop						{ quality = 2; price = 9000; };
-	//class Exile_Item_BaseCameraKit				{ quality = 2; price = 5000; };
+	class Exile_Item_Laptop						{ quality = 2; price = 9000; };
+	class Exile_Item_BaseCameraKit				{ quality = 2; price = 5000; };
 	class Exile_Item_CamoTentKit					{ quality = 1; price = 250; };
 	class Exile_Item_MetalPole						{ quality = 1; price = 800; };
-	//class Exile_Item_MetalScrews					{ quality = 1; price = 100; };
-	//class Exile_Item_MetalWire						{ quality = 1; price = 100; };
-	//class Exile_Item_Cement							{ quality = 1; price = 20; };
-	//class Exile_Item_Sand							{ quality = 1; price = 20; };
-	//class Exile_Item_CarWheel						{ quality = 1; price = 1000; };
+	class Exile_Item_MetalScrews					{ quality = 1; price = 100; };
+	class Exile_Item_MetalWire						{ quality = 1; price = 100; };
+	class Exile_Item_Cement							{ quality = 1; price = 20; };
+	class Exile_Item_Sand							{ quality = 1; price = 20; };
+	class Exile_Item_CarWheel						{ quality = 1; price = 1000; };
 	
 	///////////////////////////////////////////////////////////////////////////////
 	// Food
@@ -1729,16 +1729,16 @@ class CfgExileArsenal
 	class Exile_Item_Pliers							{ quality = 2; price = 350; };
 	class Exile_Item_Grinder						{ quality = 2; price = 1250; };
 	class Exile_Item_Foolbox						{ quality = 2; price = 4000; };
-	//class Exile_Item_CordlessScrewdriver			{ quality = 1; price = 750; };
-	//class Exile_Item_FireExtinguisher				{ quality = 1; price = 650; };
-	//class Exile_Item_Hammer						{ quality = 1; price = 600; };
-	//class Exile_Item_OilCanister					{ quality = 1; price = 1750; };
-	//class Exile_Item_Screwdriver					{ quality = 1; price = 250; };
-	//class Exile_Item_Shovel						{ quality = 1; price = 700; };
-	//class Exile_Item_Wrench						{ quality = 1; price = 250; };
-	//class Exile_Item_SleepingMat					{ quality = 1; price = 1250; };
-	//class Exile_Item_ToiletPaper					{ quality = 1; price = 5; };
-	//class Exile_Item_ZipTie						{ quality = 1; price = 250; };
+	class Exile_Item_CordlessScrewdriver			{ quality = 1; price = 750; };
+	class Exile_Item_FireExtinguisher				{ quality = 1; price = 650; };
+	class Exile_Item_Hammer						{ quality = 1; price = 600; };
+	class Exile_Item_OilCanister					{ quality = 1; price = 1750; };
+	class Exile_Item_Screwdriver					{ quality = 1; price = 250; };
+	class Exile_Item_Shovel						{ quality = 1; price = 700; };
+	class Exile_Item_Wrench						{ quality = 1; price = 250; };
+	class Exile_Item_SleepingMat					{ quality = 1; price = 1250; };
+	class Exile_Item_ToiletPaper					{ quality = 1; price = 5; };
+	class Exile_Item_ZipTie						{ quality = 1; price = 250; };
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Navigation

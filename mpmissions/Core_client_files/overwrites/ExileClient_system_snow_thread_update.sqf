@@ -40,28 +40,31 @@ else
 	ExileSnowFar setDropInterval 0;
 };
 */
-if !(vehicle player != player) then 
-{
-	if ((_posASL >= 200) && (overcast >= 0.3)) then
+if (ExileClientEnvironmentTemperature < 6) then
+{	
+	if !(vehicle player != player) then 
 	{
-		_enableSnow = true;
+		if ((_posASL >= 200) && (overcast >= 0.3)) then
+		{
+			_enableSnow = true;
+			ExileSnowClose attachTo [vehicle player, [0, 4, 1]];
+			ExileSnowNear attachTo [vehicle player, [0, 4, 1.5]];
+			ExileSnowFar attachTo [vehicle player, [0, 4, 2]];
+		};
+	};	
+	if (_enableSnow) then 
+	{
 		ExileSnowClose attachTo [vehicle player, [0, 4, 1]];
 		ExileSnowNear attachTo [vehicle player, [0, 4, 1.5]];
 		ExileSnowFar attachTo [vehicle player, [0, 4, 2]];
+		ExileSnowClose setDropInterval 0.01;
+		ExileSnowNear setDropInterval 0.01;
+		ExileSnowFar setDropInterval 0.01;
+	}
+	else 
+	{
+		ExileSnowClose setDropInterval 0;
+		ExileSnowNear setDropInterval 0;
+		ExileSnowFar setDropInterval 0;
 	};
 };	
-if (_enableSnow) then 
-{
-	ExileSnowClose attachTo [vehicle player, [0, 4, 1]];
-	ExileSnowNear attachTo [vehicle player, [0, 4, 1.5]];
-	ExileSnowFar attachTo [vehicle player, [0, 4, 2]];
-	ExileSnowClose setDropInterval 0.01;
-	ExileSnowNear setDropInterval 0.01;
-	ExileSnowFar setDropInterval 0.01;
-}
-else 
-{
-	ExileSnowClose setDropInterval 0;
-	ExileSnowNear setDropInterval 0;
-	ExileSnowFar setDropInterval 0;
-};

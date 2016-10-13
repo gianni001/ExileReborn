@@ -14,7 +14,7 @@ if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 	if (random 1 >= 0.7) then
 	{
 		TownInvasionEvent = true;
-		_roamingRadius = 50;
+		_roamingRadius = 85;
 	};	
 
 	_position = [] call JohnO_fnc_findSafeTownPosition;
@@ -45,11 +45,28 @@ if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 
 	if (TownInvasionEvent) then
 	{	
+
+		_markerTypes = ["hd_end","hd_join","hd_warning","hd_unknown"];
+		_markerTextTypes = 
+		[
+			"Rioters",
+			"mission?!",
+			"here",
+			"vehicle",
+			"something here",
+			"stay away",
+			"??????",
+			"stash"
+		];
+
+		_markerType = selectRandom _markerTypes;
+		_markerText = selectRandom _markerTypes;
+
 		_marker = createMarker [ format["TownInvasion%1", diag_tickTime],_position];
-		_marker setMarkerType "ExileMissionStrongholdIcon";
-		_marker setMarkerText "Rioters";
+		_marker setMarkerType _markerType;
+		_marker setMarkerText _markerText;
 		
-		//Event_Cleanup_objectArray pushBack [_marker,time + Event_TownInvasion_DespawnTime,true];
+		Event_Cleanup_objectArray pushBack [_marker,time + Event_TownInvasion_DespawnTime,true];
 
 		_holder = createVehicle ["Exile_Container_SupplyBox", getMarkerPos _marker, [], 10, "NONE"];
 		Event_Cleanup_objectArray pushBack [_holder,time + Event_TownInvasion_DespawnTime,false];
@@ -58,7 +75,7 @@ if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 
 		_marker setMarkerPos getPos _holder;
 
-		deleteMarker _marker;
+		//deleteMarker _marker;
 
 		for "_i" from 0 to Event_TownInvasion_AmountOfLoot do
 		{	
