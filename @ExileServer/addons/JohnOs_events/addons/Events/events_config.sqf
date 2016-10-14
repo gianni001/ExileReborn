@@ -2,7 +2,7 @@
 /// ALTIS ///////////
 /////////////////////
 
-ExileRebornVersion = "0.7.8";
+ExileRebornVersion = "0.7.9";
 publicVariable "ExileRebornVersion";
 
 Event_DEBUG_Location = [0,0,0];

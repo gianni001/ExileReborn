@@ -2831,6 +2831,8 @@ class CfgExileCustomCode
     ExileServer_object_player_event_onMpKilled = "overwrites\server\ExileServer_object_player_event_onMpKilled.sqf";
     // Make sticks n leaves spawn when cutting trees
     ExileServer_object_tree_network_chopTreeRequest = "overwrites\server\ExileServer_object_tree_network_chopTreeRequest.sqf";
+    // Stop earthquakes destroying buildings near Reborn safe zones
+    ExileServer_system_event_earthQuake_start = "overwrites\server\ExileServer_system_event_earthQuake_start.sqf";
 
 };
 class CfgExileEnvironment
