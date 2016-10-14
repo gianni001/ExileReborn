@@ -42,6 +42,7 @@ forEach
 	['ExileServer_JohnO_network_updateRespectAndTabs','JohnOs_events\addons\functions\Server\ExileServer_JohnO_network_updateRespectAndTabs.sqf'],
 	['JohnO_fnc_countAIunits','JohnOs_events\addons\functions\Server\JohnO_fnc_countAIunits.sqf'],
 	['JohnO_fnc_generateMapGarbageAndWrecks','JohnOs_events\addons\functions\Server\JohnO_fnc_generateMapGarbageAndWrecks.sqf'],
+	['JohnO_fnc_getSpawnPositionInRegion','JohnOs_events\addons\functions\Server\JohnO_fnc_getSpawnPositionInRegion.sqf'],
 	// Events	
 	['JohnO_fnc_heliCrash_new','JohnOs_events\addons\Events\heliCrash\JohnO_fnc_heliCrash_new.sqf'],
 	['JohnO_fnc_supplyDropObject_new','JohnOs_events\addons\Events\supplyDrop\JohnO_fnc_supplyDropObject_new.sqf'],

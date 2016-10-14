@@ -34,7 +34,10 @@ if ((count ExileSpawnZoneMarkerPositions) isEqualTo 0) then
 		_mindist = 5; 																
 		_water = 0; 							
 		_shoremode = 0; 						
-		_blackList = [[[0, 0],[0,0]]]; 
+		_blackList = 
+		[
+			[[0, 0],[0,0]]
+		]; 
 
 		_position = [_spawnCenter,_min,_max,_mindist,_water,10,_shoremode,_blackList] call BIS_fnc_findSafePos;
 	};	
@@ -42,12 +45,19 @@ if ((count ExileSpawnZoneMarkerPositions) isEqualTo 0) then
 else 
 {
 	_spawnAreaPosition = getMarkerPos _spawnLocationMarkerName;
-	_spawnAreaRadius = getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "spawnZoneRadius");
-	_position = [_spawnAreaPosition, _spawnAreaRadius] call ExileClient_util_math_getRandomPositionInCircle;
+	_markerText = markerText _spawnLocationMarkerName;
+
+	//_spawnAreaRadius = getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "spawnZoneRadius");
+	//_position = [_spawnAreaPosition, _spawnAreaRadius] call ExileClient_util_math_getRandomPositionInCircle;
+
+	_position = [_spawnAreaPosition,_markerText] call JohnO_fnc_getSpawnPositionInRegion;
+	
+	/*
 	while {surfaceIsWater _position} do 
 	{
 		_position = [_spawnAreaPosition, _spawnAreaRadius] call ExileClient_util_math_getRandomPositionInCircle;
 	};
+	*/
 };
 _name = name _requestingPlayer;
 _clanID = (_accountData select 3);
