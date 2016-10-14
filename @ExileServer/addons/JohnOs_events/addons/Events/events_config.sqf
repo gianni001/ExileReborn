@@ -18,8 +18,9 @@ switch (toLower worldName) do
 		Event_DEBUG_Location = [14482.4,5879.49,0];
 		Event_world_size = 30000;
 		Event_world_centerPosition = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-		Event_world_blackListWEST = [[8318.59,26057],[28606.6,1865.55]];
-		Event_world_blackListEAST = [[1022.59,29321],[21470.6,2857.55]];
+		Event_world_blackListWEST = [[[8318.59,26057],[28606.6,1865.55]]];
+		Event_world_blackListEAST = [[[1022.59,29321],[21470.6,2857.55]]];
+		Event_world_ARMA_fuckYourWierdnessPosition = [10800.6,10604.9,0.00151062];
 
 		Event_RadAI_SpawnLocations = 
 		[
@@ -34,8 +35,8 @@ switch (toLower worldName) do
         Event_DEBUG_Location = [196.887,354.436,0];
         Event_world_size = 4000;
         Event_world_centerPosition = [6049.26,6239.63,0];
-        Event_world_blackListWEST = [[0,12288],[6300,0]];
-        Event_world_blackListEAST = [[12288,12288],[6300,0]];
+        Event_world_blackListWEST = [[[0,12288],[6300,0]]];
+        Event_world_blackListEAST = [[[12288,12288],[6300,0]]];
 
         Event_RadAI_SpawnLocations = 
         [
