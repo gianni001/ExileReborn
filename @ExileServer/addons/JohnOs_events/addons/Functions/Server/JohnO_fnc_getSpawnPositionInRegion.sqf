@@ -3,26 +3,18 @@ private ["_center","_region","_blackList"];
 _center = _this select 0;
 _region = _this select 1;
 
-_blackList = 
-[
-	[[0, 0],[0,0]]
-];
+_blackList = [];
 
 switch (_region) do
 {
 	case "West":
 	{
-		_blackList = 
-		[
-			Event_world_blackListWEST
-		];
+		_blackList = Event_world_blackListWEST;
+	
 	};
 	case "East":
 	{
-		_blackList = 
-		[
-			Event_world_blackListEAST
-		];
+		_blackList = Event_world_blackListEAST;
 	};
 };
 
