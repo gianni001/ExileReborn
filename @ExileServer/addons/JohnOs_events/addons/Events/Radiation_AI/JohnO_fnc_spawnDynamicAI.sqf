@@ -60,7 +60,7 @@ if (_currentAIcount < Event_RoamingAI_MaxAllowedAI) then
 		];
 
 		_markerType = selectRandom _markerTypes;
-		_markerText = selectRandom _markerTypes;
+		_markerText = selectRandom _markerTextTypes;
 
 		_marker = createMarker [ format["TownInvasion%1", diag_tickTime],_position];
 		_marker setMarkerType _markerType;
