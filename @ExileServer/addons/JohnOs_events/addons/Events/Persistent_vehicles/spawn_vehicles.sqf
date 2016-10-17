@@ -160,6 +160,16 @@ _vehicleArray =
 					_vehicleObject call ExileServer_object_vehicle_database_insert;
 					_vehicleObject call ExileServer_object_vehicle_database_update;
 
+					if (random 1 > 0.5) then
+					{
+						for "_i" from 0 to 2 + floor (random 5) do
+						{	
+							_item = [6] call JohnO_fnc_getRandomItems_new;
+					
+							[_vehicleObject, _item] call ExileClient_util_containerCargo_add;
+						}l	
+					};	
+
 					format ["[Event: Persistent Spawns] -- Spawned a %1 at location: %2 -- Max allowed: %3",_x select 0,_position, _x select 1] call ExileServer_util_log;
 				}
 				else
