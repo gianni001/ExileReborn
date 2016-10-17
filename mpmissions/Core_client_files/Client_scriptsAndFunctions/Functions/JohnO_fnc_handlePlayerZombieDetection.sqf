@@ -11,8 +11,6 @@ _chance = 75;
 if (ExileReborn_playerIsWounded) then {_chance = _chance + 25;};
 if (ExileReborn_playerIsInfected) then {_chance = _chance + 40;};	
 
-if ((count _nearFlags) > 0) exitWith {};
-
 if (_chance >= random 100) then
 {
 	_buildings = player nearObjects ["House", 300];
