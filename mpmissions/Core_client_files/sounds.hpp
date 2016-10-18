@@ -1,6 +1,6 @@
 class CfgSounds
 {
-    sounds[] = {code1,code2,code3,cough1,cough2,cough3,cough4,cough5,cough6,heart1,heart2,heart3,heart4,heart5,bl_begin,bl_hit1,bl_hit2,bl_hit3,bl_wave1,bl_wave2,bl_wave3,bl_psi,bl_full,bl_detect,apsi_on,apsi_off,ns_fx_misc4,ns_fx_drone1,ns_fx_drone2};
+    sounds[] = {code1,code2,code3,cough1,cough2,cough3,cough4,cough5,cough6,heart1,heart2,heart3,heart4,heart5,bl_begin,bl_hit1,bl_hit2,bl_hit3,bl_wave1,bl_wave2,bl_wave3,bl_psi,bl_full,bl_detect,apsi_on,apsi_off,ns_fx_misc4,ns_fx_drone1,ns_fx_drone2,hit1,hit2,hit3,hit4,hit5,hit6,hit7,hit8,hit9,legbreak};
 	
     class code1
     {
@@ -174,6 +174,67 @@ class CfgSounds
     {
         name = "Drone 2";
         sound[] = {"sounds\fx_drone2.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    // Hit sounds
+    class hit1
+    {
+        name = "Hit 1";
+        sound[] = {"sounds\hit1.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit2
+    {
+        name = "Hit 2";
+        sound[] = {"sounds\hit2.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit3
+    {
+        name = "Hit 3";
+        sound[] = {"sounds\hit3.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit4
+    {
+        name = "Hit 4";
+        sound[] = {"sounds\hit4.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit5
+    {
+        name = "Hit 5";
+        sound[] = {"sounds\hit5.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit6
+    {
+        name = "Hit 6";
+        sound[] = {"sounds\hit6.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit7
+    {
+        name = "Hit 7";
+        sound[] = {"sounds\hit7.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit8
+    {
+        name = "Hit 8";
+        sound[] = {"sounds\hit8.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class hit9
+    {
+        name = "Hit 9";
+        sound[] = {"sounds\hit9.ogg",1.0,1.0};
+        titles[] = {};
+    };
+    class legbreak
+    {
+        name = "Leagbreak";
+        sound[] = {"sounds\legbreak.ogg",1.0,1.0};
         titles[] = {};
     };
 };

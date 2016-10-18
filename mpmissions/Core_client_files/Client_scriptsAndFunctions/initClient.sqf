@@ -9,6 +9,7 @@ ExileReborn_lastHealingReward = time;
 ExileReborn_healingCoolDown = 180;
 ExileReborn_lastHeartBeat = time;
 ExileReborn_heartBeatInterval = 10;
+ExileRebornClient_CustomHit_soundIsPlaying = false;
 
 ExileReborn_userActionTimeout = 30;
 ExileReborn_userActionTimeout_lastCheck = time;

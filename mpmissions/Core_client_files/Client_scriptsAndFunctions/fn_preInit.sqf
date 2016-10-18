@@ -66,7 +66,9 @@ forEach
 	["JohnO_fnc_survivorLeave","Client_scriptsAndFunctions\Functions\JohnO_fnc_survivorLeave.sqf"],
 	["JohnO_fnc_bribeSurvivor","Client_scriptsAndFunctions\Functions\JohnO_fnc_bribeSurvivor.sqf"],
 	// Update respect and tabs
-	["JohnO_fnc_updateRespectAndTabs","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateRespectAndTabs.sqf"]
+	["JohnO_fnc_updateRespectAndTabs","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateRespectAndTabs.sqf"],
+	// Custom hit sounds
+	["JohnO_fnc_playCustomHitSound","Client_scriptsAndFunctions\Functions\JohnO_fnc_playCustomHitSound.sqf"]
 ];
 
 true

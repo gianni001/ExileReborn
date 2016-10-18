@@ -32,6 +32,8 @@ if !(alive player) then
 	player allowSprint true;
 	// EVR
 	profileNamespace setVariable ["ExileReborn_resistanceToEVR",0];
+	//Custom sound var 
+	ExileRebornClient_soundIsPlaying = false;
 };	
 
 if (time - ExileReborn_woundCheckInterval >= ExileReborn_lastWoundUpdate) then
