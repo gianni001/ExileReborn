@@ -7,6 +7,8 @@ lastCommsHack_coolDown = 600;
 ExileReborn_playerIsKnockedOut = false;
 ExileReborn_lastHealingReward = time;
 ExileReborn_healingCoolDown = 180;
+ExileReborn_lastHeartBeat = time;
+ExileReborn_heartBeatInterval = 10;
 
 ExileReborn_userActionTimeout = 30;
 ExileReborn_userActionTimeout_lastCheck = time;

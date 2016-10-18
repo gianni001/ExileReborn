@@ -24,7 +24,7 @@ forEach
 	["JohnO_fnc_applyPressureToWound","Client_scriptsAndFunctions\Functions\JohnO_fnc_applyPressureToWound.sqf"],
 	["JohnO_fnc_applyBandageToPlayer","Client_scriptsAndFunctions\Functions\JohnO_fnc_applyBandageToPlayer.sqf"],
 	["JohnO_fnc_applyInstaDocToPlayer","Client_scriptsAndFunctions\Functions\JohnO_fnc_applyInstaDocToPlayer.sqf"],
-	["JohnO_fnc_handleInfection","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleInfection.sqf"],
+	["JohnO_fnc_handleCustomEffects","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleCustomEffects.sqf"],
 	["JohnO_fnc_handleChemlightActions","Client_scriptsAndFunctions\Functions\JohnO_fnc_handleChemlightActions.sqf"],
 	// Vehicle repair
 	["JohnO_fnc_displayVehicleRepairInfo","Client_scriptsAndFunctions\Functions\JohnO_fnc_displayVehicleRepairInfo.sqf"],

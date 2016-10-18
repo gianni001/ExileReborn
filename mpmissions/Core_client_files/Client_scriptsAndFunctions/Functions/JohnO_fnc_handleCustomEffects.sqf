@@ -112,7 +112,16 @@ if (time - ExileReborn_woundCheckInterval >= ExileReborn_lastWoundUpdate) then
 	};
 
 	ExileReborn_lastWoundUpdate = time;
+};
+
+// Heartbeat when low health
+
+if (((damage player) >= 0.85) && (time - ExileReborn_heartBeatInterval >= ExileReborn_lastHeartBeat)) then
+{
+	playSound ["SndExileHeartbeatFast", true]; 
+	ExileReborn_lastHeartBeat = time;
 };	
+
 if (time - ExileReborn_ProfileSaveInterval >= ExileReborn_lastWoundUpdate) then
 {	
 	saveProfileNamespace;
