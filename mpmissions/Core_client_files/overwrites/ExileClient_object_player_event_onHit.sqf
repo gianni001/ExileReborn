@@ -25,4 +25,7 @@ if !(ExileRebornClient_CustomHit_soundIsPlaying) then
 	[] spawn JohnO_fnc_playCustomHitSound;
 };	
 
+titleText["","WHITE OUT",0.2];
+titleText["","WHITE IN",0.2];
+
 true
