@@ -118,7 +118,7 @@ if (time - ExileReborn_woundCheckInterval >= ExileReborn_lastWoundUpdate) then
 
 // Heartbeat when low health
 
-if (((damage player) >= 0.85) && (time - ExileReborn_heartBeatInterval >= ExileReborn_lastHeartBeat)) then
+if (((damage player) >= 0.85) && (time - ExileReborn_heartBeatInterval >= ExileReborn_lastHeartBeat) && (alive player)) then
 {
 	playSound ["SndExileHeartbeatFast", true]; 
 	ExileReborn_lastHeartBeat = time;

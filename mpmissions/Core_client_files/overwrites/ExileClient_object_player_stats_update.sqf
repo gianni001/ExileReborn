@@ -143,7 +143,7 @@ if (diag_tickTime - ExileClientPlayerLastHpRegenerationAt >= 60) then
 				_level = [ExileClientPlayerScore] call JohnO_fnc_getRespectTier;
 				_level = _level / 100;
 				player setDamage (((damage player) - ExileClientRecoveryAmmount - _level) max 0);
-				if (damage player > 0) then
+				if ((damage player > 0) && (alive player)) then
 				{	
 					["<t color='#00cc44' font='PuristaBold' size ='.6'>My wounds are healing</t>",(safezoneX + safezoneW) - 520 * pixelW - 60 * pixelW,(safezoneY + safezoneH) - 128 * pixelH - 60 * pixelH,5,1,0,789] spawn BIS_fnc_dynamicText;
 				};	
