@@ -62,34 +62,7 @@ if (ExileReborn_allWorldPersistantObjects isEqualTo []) then
 		};
 
 		ExileReborn_allWorldPersistantObjects pushBack [(getPosATL _wreckVehicle),(getDir _wreckVehicle),_randWreck,_smoke];
-		/*
-		for "_n" from 1 to 2 + floor (random 3) do
-		{
-			if (random 1 > 0.7) then
-			{	
-
-				_holders = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_NATO_Support_F","Box_NATO_WpsSpecial_F","Box_NATO_Wps_F","Land_Box_AmmoOld_F"];	
-				_holder = createVehicle [(selectRandom _holders),(position _wreckVehicle),[], 10, "NONE"];
-				_holder setDir floor (random 360);
-				_holder call ExileClient_util_containerCargo_clear;
-
-				for "_j" from 0 to 2 + floor (random 2) do
-				{	
-					_randomSelection = [1,2,3,4];
-					_selection = selectRandom _randomSelection;
-
-					_item = [_selection] call JohnO_fnc_getRandomItems_new;
-					[_holder, _item] call ExileClient_util_containerCargo_add;
-
-					if (_selection isEqualTo 2) then
-					{	
-						_magazines = getArray (configFile >> "CfgWeapons" >> _item >> "magazines");
-						_holder addMagazineCargoGlobal [(_magazines select 0), 1 + floor (random 3)];
-					};
-				};	
-			};	
-		};	
-		*/		
+			
 		//_marker = createMarker [ format["HeliCrash%1", diag_tickTime], _position];
 		//_marker setMarkerType "hd_dot";	
 
@@ -126,6 +99,13 @@ else
 				_randomSmoke setPosATL (position _wreckVehicle);
 			};	
 	    };
+
+	    if (random 1 > 0.97) then
+	    {
+	    	_popTabsObject = createVehicle ["Exile_PopTabs", (position _wreckVehicle), [], 10, "NONE"];
+	    	_amount = 500 + floor (random 5000);
+			_popTabsObject setVariable ["ExileMoney", _amount, true];
+	    };	
 
 	} forEach ExileReborn_allWorldPersistantObjects;
 };	

@@ -126,6 +126,8 @@ class CfgCraftingRecipes
 #include "custom_crafting\cooking.hpp"
 #include "custom_crafting\bushkit.hpp"
 #include "custom_crafting\medical.hpp"
+#include "custom_crafting\tools.hpp"
+#include "custom_crafting\items.hpp"
 class BreachingChargeBigMomma: Exile_AbstractCraftingRecipe
 {
 	name = "Breaching Charge (Big Momma)";
