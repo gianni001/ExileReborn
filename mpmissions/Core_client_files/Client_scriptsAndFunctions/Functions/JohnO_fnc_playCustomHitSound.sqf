@@ -6,4 +6,6 @@ _soundPath = [(str missionConfigFile), 0, -15] call BIS_fnc_trimString;
 _soundToPlay = _soundPath + (selectRandom _soundArray);
 playSound3D [_soundToPlay, player, false, getPos player, 10, 1, 35];
 
+uiSleep 3;
+
 ExileRebornClient_CustomHit_soundIsPlaying = false;
