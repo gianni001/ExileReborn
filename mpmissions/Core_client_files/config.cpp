@@ -2822,7 +2822,7 @@ class CfgExileCustomCode
     // Implement bush kits -- Why hasnt exile done this? Probably broken, lets find out..
     ExileClient_object_bush_attachGreenBush = "overwrites\ExileClient_object_bush_attachGreenBush.sqf";
     // Custom sound on hit
-    ExileClient_object_player_event_onHit = "overwrites\ExileClient_object_player_event_onHit.sqf";
+    //ExileClient_object_player_event_onHit = "overwrites\ExileClient_object_player_event_onHit.sqf";
     /** Server overwrites **/
 
     // Esseker spawn fix

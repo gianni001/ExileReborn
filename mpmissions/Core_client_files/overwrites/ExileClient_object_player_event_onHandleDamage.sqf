@@ -40,6 +40,7 @@ else
 		player setBleedingRemaining 90;
 
 		player setVariable ["JohnO_lastSourceOfDamage",_sourceOfDamage,true];
+
 		if !(ExileReborn_playerIsWounded) then
 		{	
 			ExileReborn_playerIsWounded = true;
@@ -47,6 +48,15 @@ else
 			profileNamespace setVariable ["ExileReborn_playerIsWounded",ExileReborn_playerIsWounded];
 			profileNamespace setVariable ["ExileReborn_woundWasTreated",ExileReborn_woundWasTreated];
 		};	
+
+		if !(ExileRebornClient_CustomHit_soundIsPlaying) then
+		{
+			ExileRebornClient_CustomHit_soundIsPlaying = true;
+			[] spawn JohnO_fnc_playCustomHitSound;
+		};	
+
+		titleText["","WHITE OUT",0.2];
+		titleText["","WHITE IN",0.2];
 	};	
 };	
 
