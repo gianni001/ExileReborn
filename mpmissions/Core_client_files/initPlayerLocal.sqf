@@ -234,9 +234,8 @@ switch (toLower worldName) do
             _trader attachTo [_logic, [0, 0, 0]];
             _trader switchMove (_animations select 0);
             _trader addEventHandler ["AnimDone", {_this call ExileClient_object_trader_event_onAnimationDone}];
-            }
+        }
         forEach _npcs;
-        };
     }; 
     case "namalsk":
     {
