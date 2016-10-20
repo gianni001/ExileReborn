@@ -11,8 +11,9 @@
  
 private["_message","_itemClassName","_consumingConfig","_configEffects","_feedbackString","_effectAttributeId","_effectValue","_effectDuration","_effectUnit","_effect","_addPlusCharacter","_bloodAlcohol","_bloodAlcoholComment","_animations","_animationIndex","_stopBleeding","_configSounds","_numberOfConfigSounds","_returnItemClass","_eating","_drinking","_soundToPlay"];
 
-_configEffects = [];
-_configEffects pushBack (_this select 0);
+//_configEffects = [];
+//_configEffects pushBack (_this select 0);
+_configEffects = _this select 0;
 _message = _this select 1;
 _soundToPlay = _this select 2;
 _eating = ["SndExileHeartbeatEating01", "SndExileHeartbeatEating02"];
@@ -55,12 +56,20 @@ _feedbackString = "";
 			if (_bloodAlcohol >= 3) then
 			{
 				_bloodAlcoholComment = "I feel.. funny..";
+				if (random 1 > 0.7) then
+				{
+					[20 + floor (random 40)] spawn JohnO_fnc_maintainKnockOut;
+				};
 			}
 			else 
 			{
 				if (_bloodAlcohol >= 2) then
 				{
 					_bloodAlcoholComment = "I don't feel so good.. were the berries poisonous?";
+					if (random 1 > 0.8) then
+					{
+						[20 + floor (random 20)] spawn JohnO_fnc_maintainKnockOut;
+					};	
 				}
 				else 
 				{

@@ -2837,6 +2837,8 @@ class CfgExileCustomCode
     ExileServer_object_tree_network_chopTreeRequest = "overwrites\server\ExileServer_object_tree_network_chopTreeRequest.sqf";
     // Stop earthquakes destroying buildings near Reborn safe zones
     ExileServer_system_event_earthQuake_start = "overwrites\server\ExileServer_system_event_earthQuake_start.sqf";
+    // more room for larger vehicles to spawn
+    ExileServer_system_trading_network_purchaseVehicleRequest = "overwrites\server\ExileServer_system_trading_network_purchaseVehicleRequest.sqf";
 
 };
 class CfgExileEnvironment
