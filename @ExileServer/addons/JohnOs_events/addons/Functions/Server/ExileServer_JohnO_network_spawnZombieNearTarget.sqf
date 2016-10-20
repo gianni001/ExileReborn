@@ -36,6 +36,9 @@ _group = createGroup WEST;
 {		
 	if ((random 1 > 0.98) && (_activeScripts < 130) && (_currentZombieCount < 150)) then
 	{	
+
+		if (_x distance Event_DEBUG_Location < 600) exitWith {};
+
 		_slectionArray = [_civMed,_civSlow,_walker];
 		_selection = selectRandom _slectionArray;
 		_unitType = selectRandom _selection;
