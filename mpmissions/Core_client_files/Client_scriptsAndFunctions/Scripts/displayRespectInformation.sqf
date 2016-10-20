@@ -32,6 +32,10 @@ switch (toLower worldName) do
 	{
 		_worldName = "TANOA";
 	};
+	case "namalsk":
+	{
+		_worldName = "NAMALSK";
+	};
 };
 
 [

@@ -57,6 +57,17 @@ switch (toLower worldName) do
 			[2321.05,13168.1,0],[2496.01,12909.5,0],[2687.29,12310.9,0]
 		];
 	};
+	case "namalsk":
+	{
+		Event_DEBUG_Location = [0,0,0];
+		Event_world_size = 15000;
+		Event_world_centerPosition = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+
+		Event_RadAI_SpawnLocations = 
+		[
+			//To do
+		];
+	};
 };
 
 /** Zombie stuff **/
