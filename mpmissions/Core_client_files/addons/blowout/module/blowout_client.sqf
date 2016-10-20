@@ -547,7 +547,7 @@ while {true} do
     titleText["","BLACK OUT",1];
     disableUserInput true;
 
-    if(ns_blowout_exile) then
+    if (ns_blowout_exile) then
     {
         _isinbuilding = false;
         _startPosition = getPosASL player;
@@ -580,27 +580,17 @@ while {true} do
             profileNamespace setVariable ["ExileReborn_resistanceToEVR",_newResistanceLevel];
             saveProfileNamespace;
         };
-    };
-    /*
-    if(ns_blow_itemtype == 3)then
-    {
-        if ([player] call fnc_hasAPSI) then
+
+        _playerVehicle = vehicle player;
+        if !(_playerVehicle isEqualTo player) then
         {
-            if ("ItemRadio" in (items player)) then
+            if (isEngineOn _playerVehicle) then
             {
-            player removeItem "itemRadio";
-            }
-            else
-            {
-                if ("ItemRadio" in (assigneditems player)) then
-                {
-                    player unassignItem "itemRadio";
-                    player removeItem "itemRadio";
-                };
-            };
-        };
+                _playerVehicle engineOn false;
+            };    
+        };    
     };
-    */
+    
     sleep 1;
     4 fadeSound 0;
     sleep 5;
