@@ -134,7 +134,6 @@ else
 												player removeItem "Exile_Item_DuctTape";
 												player removeItem "Exile_Item_JunkMetal";
 												player removeItem "Exile_Item_MetalPole";
-												player removeItem "Exile_Item_DuctTape";
 												player removeItem "Exile_Item_MetalScrews";
 												player removeItem "Exile_Item_MetalWire";
 												[
