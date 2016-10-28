@@ -34,6 +34,9 @@ if !(alive player) then
 	profileNamespace setVariable ["ExileReborn_resistanceToEVR",0];
 	//Custom sound var 
 	ExileRebornClient_soundIsPlaying = false;
+	// Unconcious states
+	ExileReborn_player_isUnconcious = false;
+	player setVariable ["ExileReborn_player_isUnconcious",ExileReborn_player_isUnconcious,true];
 };	
 
 if (time - ExileReborn_woundCheckInterval >= ExileReborn_lastWoundUpdate) then

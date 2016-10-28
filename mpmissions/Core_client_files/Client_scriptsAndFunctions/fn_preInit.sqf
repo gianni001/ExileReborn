@@ -68,8 +68,11 @@ forEach
 	// Update respect and tabs
 	["JohnO_fnc_updateRespectAndTabs","Client_scriptsAndFunctions\Functions\JohnO_fnc_updateRespectAndTabs.sqf"],
 	// Custom hit sounds
-	["JohnO_fnc_playCustomHitSound","Client_scriptsAndFunctions\Functions\JohnO_fnc_playCustomHitSound.sqf"]
+	["JohnO_fnc_playCustomHitSound","Client_scriptsAndFunctions\Functions\JohnO_fnc_playCustomHitSound.sqf"],
+	// Unconcious state
+	["JohnO_fnc_maintainUnconciousState","Client_scriptsAndFunctions\Functions\JohnO_fnc_maintainUnconciousState.sqf"],
+	// Revive player
+	["JohnO_fnc_reviveDownedPlayer","Client_scriptsAndFunctions\Functions\JohnO_fnc_reviveDownedPlayer.sqf"]
 ];
 
 true
-
