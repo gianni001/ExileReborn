@@ -29,6 +29,11 @@ switch (toLower worldName) do
 			// Cap strigla
 			[28336.5,25675,0],[28271.4,25748.3,0],[28150.5,25658,0],[28332.1,25802.2,0]
 		];
+		ExileReborn_allMapBuildings = [0,0,0] nearObjects ["House", 100000];
+		{
+			_x setDamage 0.9;
+		} forEach ExileReborn_allMapBuildings;	
+
 	};
 	case "esseker":
     {
@@ -56,6 +61,10 @@ switch (toLower worldName) do
 			[3082.74,11145.6,0],[3046,11278.4,0],[3031.87,11119.4,0],
 			[2321.05,13168.1,0],[2496.01,12909.5,0],[2687.29,12310.9,0]
 		];
+		ExileReborn_allMapBuildings = [0,0,0] nearObjects ["House", 100000];
+		{
+			_x setDamage 0.9;
+		} forEach ExileReborn_allMapBuildings;	
 	};
 	case "namalsk":
 	{
@@ -341,8 +350,4 @@ _fuelStations = nearestObjects [[0,0,0], ['Land_fs_feed_F','Land_FuelStation_Fee
 
 // Make the map look damaged
 
-ExileReborn_allMapBuildings = [0,0,0] nearObjects ["House", 100000];
-{
-	_x setDamage 0.9;
-} forEach ExileReborn_allMapBuildings;	
 
