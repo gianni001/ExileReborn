@@ -39,6 +39,10 @@ if ((_currentDamage + _amountOfDamage) > _damageRequired) then
 {		
 	if !(ExileReborn_player_isUnconcious) then
 	{
+		if (ExileClientIsAutoRunning) then
+		{
+			call ExileClient_system_autoRun_stop;
+		};
 		player allowDamage false;
 		ExileReborn_player_isUnconcious = true;
 		player setVariable ["ExileReborn_player_isUnconcious",ExileReborn_player_isUnconcious,true];
