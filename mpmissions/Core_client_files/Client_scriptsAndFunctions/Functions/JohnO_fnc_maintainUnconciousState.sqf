@@ -22,7 +22,8 @@ while {true} do
 		player allowDamage true;
 		ExileReborn_player_isUnconcious = false;
 		player setVariable ["ExileReborn_player_isUnconcious",ExileReborn_player_isUnconcious,true];
-		player switchMove "";
+		//player switchMove "";
+		player playaction "agonyStop"
 	};
 
 	titleText [format["Bleeding out...  %1",_deathTimer],"PLAIN"];
