@@ -23,7 +23,7 @@ while {true} do
 		ExileReborn_player_isUnconcious = false;
 		player setVariable ["ExileReborn_player_isUnconcious",ExileReborn_player_isUnconcious,true];
 		//player switchMove "";
-		player playaction "agonyStop"
+		player playaction "agonyStop";
 	};
 
 	titleText [format["Bleeding out...  %1",_deathTimer],"PLAIN"];
