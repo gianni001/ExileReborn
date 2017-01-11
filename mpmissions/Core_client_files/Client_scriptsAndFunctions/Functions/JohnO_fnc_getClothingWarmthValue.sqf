@@ -43,6 +43,7 @@ _veryWarmClothing =
 _midlyWarmClothing = 
 [
 	"Exile_Uniform_Woodland",
+	"Exile_Uniform_BambiOverall",
 	"U_O_SpecopsUniform_ocamo",
 	"U_O_SpecopsUniform_blk",
 	"U_B_SpecopsUniform_sgg",
